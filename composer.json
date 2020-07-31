@@ -1,0 +1,31 @@
+{
+  "name" : "bgavalda/cuina-de-profit",
+  "description" : "Cuina de profit",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Barbara Gavalda",
+      "email": "barbaragavalda@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "https://bgavalda@bitbucket.org/appaqui/freimguork-core.git"
+    },
+    {
+      "type": "vcs",
+      "url":  "https://bgavalda@bitbucket.org/appaqui/freimguork-appacman.git"
+    }
+  ],
+  "require": {
+    "appaqui/freimguork-core": "dev-master",
+    "appaqui/freimguork-appacman": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
