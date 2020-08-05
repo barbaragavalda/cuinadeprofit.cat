@@ -1,0 +1,6 @@
+{% set name = name|trans %}
+{% set class = '' %}
+{% if menu == code %}
+    {% set class = ' class="current"' %}
+{% endif %}
+<li><a href="{{ domain }}{{ name|lower }}" title="{{ name }}"{{ class|raw }}>{{ name }}</a></li>

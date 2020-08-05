@@ -2,17 +2,17 @@
 <html lang="{{ lang }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="shortcut icon" href="{{ staticDomain }}img/favicon.ico" type="image/x-icon">
 
-    <title>{{ metatag_title }}</title>
+    <title>{{ metatagTitle }}</title>
     <meta name="keywords" content="{{ metatagKeywords }}">
     <meta name="description" content="{{ metatagDescription }}">
 
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Cuina de profit">
+    <meta property="og:site_name" content="{{ webName }}">
     <meta property="og:url" content="{{ canonical }}">
     <meta property="og:title" content="{{ metatagTitle }}">
     <meta property="og:description" content="{{ metatagDescription }}">
@@ -20,15 +20,73 @@
     <meta property="og:image:width" content="{{ metatagImage['width'] }}">
     <meta property="og:image:height" content="{{ metatagImage['height'] }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ staticDomain }}css/style.css?v=1">
+    <link rel="stylesheet" href="{{ staticDomain }}css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ staticDomain }}css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ staticDomain }}css/style.css?v=1" type="text/css">
 
     {% block extraHead %}{% endblock %}
 </head>
 <body>
+    <header>
+        <div class="container-xl">
+            <div class="logo">
+                {% block startLogo %}<a href="{{ domain }}">{% endblock %}
+                    <img src="{{ staticDomain }}img/logo.png" alt="{{ webName }}">
+                {% block endLogo %}</a>{% endblock %}
+            </div>
+            <div class="menu">
+                <nav class="mobile-menu">
+                    <ul>
+                        {% include 'include/li-menu.twig' with{ name: 'Inicio', code: '' } %}
+                        {% include 'include/li-menu.twig' with{ name: 'Recetas', code: 'recipes' } %}
+                        {% include 'include/li-menu.twig' with{ name: 'Contacto', code: 'contact' } %}
+                    </ul>
+                </nav>
+                <div class="search-button grey-color">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
 
     {% block content %}{% endblock %}
 
-    {% block extraBody %}{% endblock %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="logo">
+                        <a href="{{ domain }}">
+                            <img src="{{ staticDomain }}img/logo.png" alt="{{ webName }}">
+                        </a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                        viverra maecenas accumsan lacus vel facilisis.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copy grey-color">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{ webName }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="search-model" class="black-bg">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="close grey-bg">+</div>
+            <form>
+                <input type="text" class="grey-color" placeholder="{% trans %}Busca aquí...{% endtrans %}">
+            </form>
+        </div>
+    </div>
 
+    <script src="{{ staticDomain }}js/jquery-3.3.1.min.js"></script>
+    <script src="{{ staticDomain }}js/bootstrap.min.js"></script>
+    <script src="{{ staticDomain }}js/main.js"></script>
+    {% block extraBody %}{% endblock %}
 </body>
 </html>

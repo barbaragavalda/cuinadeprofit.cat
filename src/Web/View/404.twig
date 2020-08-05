@@ -1,5 +1,8 @@
 {% extends 'basic.twig' %}
 
 {% block content %}
-    404
+    <div id="error-404" class="container white-color">
+        <h2 class="main-color">404</h2>
+        <h3>{{ 'Parece que nos hemos perdido. Para recuperar el rumbo, te proponemos que pruebes suerte con una %sreceta aleatoria%s.'|trans|format('<a href="#" class="secondary-color">', '</a>')|raw }}</h3>
+    </div>
 {% endblock %}

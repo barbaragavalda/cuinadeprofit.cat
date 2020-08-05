@@ -12,3 +12,36 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 
 # routing
+msgid "recetas"
+msgstr "receptes"
+
+msgid "contacto"
+msgstr "contacte"
+
+# menu
+msgid "Inicio"
+msgstr "Inici"
+
+msgid "Recetas"
+msgstr "Receptes"
+
+msgid "Contacto"
+msgstr "Contacte"
+
+msgid "Busca aquí..."
+msgstr "Busca aquí..."
+
+msgid "Parece que nos hemos perdido. Para recuperar el rumbo, te proponemos que pruebes suerte con una %sreceta aleatoria%s."
+msgstr "Sembla que ens hem perdut. Per recuperar el rumb, et proposem que provis sort amb una %srecepta aleatòria%s."
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""

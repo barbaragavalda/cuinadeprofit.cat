@@ -2,7 +2,7 @@
 
 $config = array(
 
-    'base_domain' => 'http://cuina-de-profit.cat/',
+    'base_domain' => 'https://cuina-de-profit.cat/',
 
     'wallaby' => array(
         'app'       => 'Appacman',
