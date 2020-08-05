@@ -3,7 +3,7 @@
 $config = array(
 
     'routing' => array(
-        '' => 'DefaultController'
+        '' => 'Home'
     )
 
 );

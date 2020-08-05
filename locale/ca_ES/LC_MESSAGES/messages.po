@@ -31,11 +31,13 @@ msgstr "Contacte"
 msgid "Busca aquí..."
 msgstr "Busca aquí..."
 
+# 404
 msgid "Parece que nos hemos perdido. Para recuperar el rumbo, te proponemos que pruebes suerte con una %sreceta aleatoria%s."
 msgstr "Sembla que ens hem perdut. Per recuperar el rumb, et proposem que provis sort amb una %srecepta aleatòria%s."
 
-msgid ""
-msgstr ""
+# home
+msgid "Últimas recetas"
+msgstr "Últimes receptes"
 
 msgid ""
 msgstr ""
