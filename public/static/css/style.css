@@ -34,11 +34,21 @@ header ul li li:after {
 	background: rgb(180, 190, 200);
 }
 .white-color, .black-bg, .grey-bg,
-input {
+input,
+.hover-effect .item .img:before {
 	color: rgb(235, 245, 255) !important;
+}
+.white-bg{
+	background: rgb(255, 255, 255);
 }
 footer {
 	background: rgb(226, 251, 247);
+}
+::selection {
+	background-color: rgb(171, 243, 234);
+}
+::-moz-selection {
+	background-color: rgb(171, 243, 234);
 }
 .main-color,
 header a:hover, header a.current {
@@ -48,8 +58,17 @@ header a:hover, header a.current {
 header ul li a:after{
 	background: rgb(65, 225, 200);
 }
-.secondary-color{
+.secondary-color,
+.hover-effect .item:hover .text{
 	color: rgb(246, 193, 67) !important;
+}
+.secondary-bg,
+.hover-effect .item:hover .img:after,
+.categories ul li:before{
+	background-color: rgb(246, 193, 67);
+}
+.categories ul li::after{
+	border-color: rgb(246, 193, 67);
 }
 
 /* generic */
@@ -71,6 +90,54 @@ input:focus, select:focus, button:focus, textarea:focus {
 
 section {
 	position: relative;
+}
+.item .img {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hover-effect .item{
+	position: relative;
+	cursor: pointer;
+}
+.hover-effect .item .img{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.hover-effect .item .text, .hover-effect .item .img:before, .hover-effect .item .img:after{
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	-ms-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+}
+.hover-effect .item .img:before, .hover-effect .item .img:after{
+	opacity: 0;
+}
+.hover-effect .item .img:before{
+	position: absolute;
+	z-index: 1;
+	content:"\f0f5";
+	font-family: FontAwesome, sans-serif;
+	font-size: 2em;
+}
+.hover-effect .item .img:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 0;
+}
+.hover-effect .item:hover .img:before{
+	opacity: 1;
+}
+.hover-effect .item:hover .img:after{
+	opacity: 0.5;
 }
 
 /* header */
@@ -207,9 +274,130 @@ header .search-button {
 /******************************
  * HOME
  ******************************/
+section {
+	padding-bottom: 30px;
+}
 section h5 {
 	display: block;
+	padding: 18px 40px;
+	text-align: center;
+}
+.title-left, .title-right {
 	width: 50%;
+}
+.title-right {
+	text-align: left;
+	float: right;
+}
+.title-left{
 	text-align: right;
-	padding: 18px 40px 18px 0;
+}
+
+.mosaic{
+	padding-top: 10px;
+}
+.mosaic .item{
+	text-align: center;
+	margin-bottom: 25px;
+}
+.mosaic .img {
+	height: 311px;
+}
+.mosaic .large-item .img {
+	height: 745px;
+}
+.mosaic .text {
+	padding: 5px 10px 0 10px;
+}
+.mosaic .text h3, .mosaic .text h4 {
+	line-height: 30px;
+	font-weight: 700;
+}
+.mosaic .large-item .text {
+	text-align: center;
+	display: inline-block;
+	margin-top: -56px;
+	padding: 20px 35px;
+	z-index: 999;
+	position: relative;
+}
+.mosaic .large-item .text span {
+	display: inline-block;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.categories{
+	padding-bottom: 50px;
+}
+.categories ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.categories ul li {
+	display: inline-block;
+	padding: 15px 40px;
+	font-weight: 700;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+.categories ul li:before, .categories ul li:after{
+	content: '';
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.categories ul li:before {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+.categories ul li::after {
+	left: 50%;
+	bottom: -12px;
+	border-top-width: 20px;
+	border-top-style: solid;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	-webkit-transform: translateX(-10px);
+	-moz-transform: translateX(-10px);
+	-ms-transform: translateX(-10px);
+	-o-transform: translateX(-10px);
+	transform: translateX(-10px);
+}
+.categories ul li:hover:before, .categories ul li:hover:after,
+.categories ul li.active:before, .categories ul li.active:after{
+	opacity: 1;
+}
+#filter-items .item {
+	float: left;
+	width: 20%;
+	padding: 0 10px;
+	margin-bottom: 30px;
+}
+#filter-items .item .img{
+	height: 150px;
+}
+#filter-items .item h5{
+	font-weight: 700;
+	line-height: 27px;
+	padding: 10px;
+}
+
+#great-recipes {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#great-recipes li {
+	float: left;
+	width: 50%;
+	padding: 10px 0;
+	margin-bottom: 20px;
+}
+#great-recipes .img{
+	height: 180px;
 }

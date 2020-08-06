@@ -39,6 +39,21 @@ msgstr "Sembla que ens hem perdut. Per recuperar el rumb, et proposem que provis
 msgid "Últimas recetas"
 msgstr "Últimes receptes"
 
+msgid "Por categorías"
+msgstr "Per categories"
+
+msgid "Recetas para triunfar"
+msgstr "receptes per triomfar"
+
+msgid "Todas"
+msgstr "Totes"
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
 msgid ""
 msgstr ""
 

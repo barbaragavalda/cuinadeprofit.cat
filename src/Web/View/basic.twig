@@ -37,9 +37,9 @@
             <div class="menu">
                 <nav class="mobile-menu">
                     <ul>
-                        {% include 'include/li-menu.twig' with{ name: 'Inicio', code: '' } %}
-                        {% include 'include/li-menu.twig' with{ name: 'Recetas', code: 'recipes' } %}
-                        {% include 'include/li-menu.twig' with{ name: 'Contacto', code: 'contact' } %}
+                        {% include 'include/li-menu.twig' with{ name: 'Inicio', link: '', code: '' } %}
+                        {% include 'include/li-menu.twig' with{ name: 'Recetas', link: 'recetas', code: 'recipes' } %}
+                        {% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %}
                     </ul>
                 </nav>
                 <div class="search-button grey-color">
@@ -53,7 +53,7 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <div class="container">
+        <div class="container-xl">
             <div class="row">
                 <div class="col-lg-5">
                     <div class="logo">
