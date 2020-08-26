@@ -2,7 +2,7 @@
  * COMMON
  ******************************/
 /* colors */
-body, header a {
+body, header a, .hover-effect .item a {
 	color: rgb(40, 50, 60) !important;
 }
 .black-bg{
@@ -59,7 +59,7 @@ header ul li a:after{
 	background: rgb(65, 225, 200);
 }
 .secondary-color,
-.hover-effect .item:hover .text{
+.hover-effect .item:hover a{
 	color: rgb(246, 193, 67) !important;
 }
 .secondary-bg,
@@ -100,6 +100,14 @@ section {
 .hover-effect .item{
 	position: relative;
 	cursor: pointer;
+}
+
+.hover-effect .item a {
+	display: block;
+	line-height: 30px;
+	font-weight: 700;
+	font-size: 1.5rem;
+	text-decoration: none;
 }
 .hover-effect .item .img{
 	display: flex;
@@ -309,10 +317,6 @@ section h5 {
 .mosaic .text {
 	padding: 5px 10px 0 10px;
 }
-.mosaic .text h3, .mosaic .text h4 {
-	line-height: 30px;
-	font-weight: 700;
-}
 .mosaic .large-item .text {
 	text-align: center;
 	display: inline-block;
@@ -381,9 +385,9 @@ section h5 {
 #filter-items .item .img{
 	height: 150px;
 }
-#filter-items .item h5{
-	font-weight: 700;
-	line-height: 27px;
+#filter-items .item a{
+	font-size: 1.25rem;
+	text-align: center;
 	padding: 10px;
 }
 

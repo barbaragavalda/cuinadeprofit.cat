@@ -27,7 +27,7 @@
                         <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/lasagna.jpg');"></div>
                         <div class="text white-bg">
                             <span class="grey-color">March 10, 2019</span>
-                            <h3>Cannellini Aglio e Olio with Salmon</h3>
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/1">Cannellini Aglio e Olio with Salmon</a>
                         </div>
                     </div>
                 </div>
@@ -35,13 +35,13 @@
                     <div class="item">
                         <div class="img" data-setbg="img/recipe-1.jpg" style="background-image: url('{{ staticDomain }}img/dummy/carrot-cake.jpg');"></div>
                         <div class="text">
-                            <h4>Raw Vegan Carrot Cake Bites with Avocado</h4>
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/2">Raw Vegan Carrot Cake Bites with Avocado</a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img" data-setbg="img/recipe-2.jpg" style="background-image: url('{{ staticDomain }}img/dummy/sushi.jpg');"></div>
                         <div class="text">
-                            <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/3">One Pot Weeknight Lasagna Soup Recipe</a>
                         </div>
                     </div>
                 </div>
@@ -49,13 +49,13 @@
                     <div class="item">
                         <div class="img" data-setbg="img/recipe-4.jpg" style="background-image: url('{{ staticDomain }}img/dummy/hamburger.jpg');"></div>
                         <div class="text">
-                            <h4>Beef Burger with French Fries and Salad</h4>
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/4">Beef Burger with French Fries and Salad</a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img" data-setbg="img/recipe-5.jpg" style="background-image: url('{{ staticDomain }}img/dummy/hummus.jpg');"></div>
                         <div class="text">
-                            <h4>Raspberry Pancakes with Honey and Butter</h4>
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/5">Raspberry Pancakes with Honey and Butter</a>
                         </div>
                     </div>
                 </div>
@@ -81,27 +81,27 @@
         <div id="filter-items" class="hover-effect clearfix">
             <div class="item mix all mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-1.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-2.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-3.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover glutenfree">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-5.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <h5 class="text">Sunday Brunch: Spaghetti and Eggs Recipe</h5>
+                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
         </div>
     </section>
@@ -120,10 +120,8 @@
                                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/pizza-2.jpg');"></div>
                             </div>
                             <div class="col-sm-8">
-                                <div class="cat-name">Vegan</div>
-                                <a href="#">
-                                    <h4>One Pot Weeknight Lasagna Soup Recipe</h4>
-                                </a>
+                                <div class="main-color">Vegan</div>
+                                <a href="#">One Pot Weeknight Lasagna Soup Recipe</a>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua.</p>
                             </div>
@@ -135,10 +133,8 @@
                                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/pizza-1.jpg');"></div>
                             </div>
                             <div class="col-sm-8">
-                                <div class="cat-name">Meat lover</div>
-                                <a href="#">
-                                    <h4>Veggie soup with Mushrooms</h4>
-                                </a>
+                                <div class="main-color">Meat lover</div>
+                                <a href="#">Veggie soup with Mushrooms</a>
                                 <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                                     magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
                             </div>
@@ -150,10 +146,8 @@
                                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/burrata.jpg');"></div>
                             </div>
                             <div class="col-sm-8">
-                                <div class="cat-name">Desert</div>
-                                <a href="#">
-                                    <h4>Caramel Ice Cream with Berries</h4>
-                                </a>
+                                <div class="main-color">Desert</div>
+                                <a href="#">Caramel Ice Cream with Berries</a>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua.</p>
                             </div>
@@ -165,10 +159,8 @@
                                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/calzone.jpg');"></div>
                             </div>
                             <div class="col-sm-8">
-                                <div class="cat-name">Desert</div>
-                                <a href="#">
-                                    <h4>Freash Octopuse with lime juice</h4>
-                                </a>
+                                <div class="main-color">Desert</div>
+                                <a href="#">Freash Octopuse with lime juice</a>
                                 <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                                     magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
                             </div>
