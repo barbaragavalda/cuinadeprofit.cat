@@ -3,7 +3,8 @@
 $config = array(
 
     'routing' => array(
-        '' => 'Home'
+        ''                     => 'Home',
+        _('receta') . '/{uri}' => 'Recipe\\Detail'
     )
 
 );

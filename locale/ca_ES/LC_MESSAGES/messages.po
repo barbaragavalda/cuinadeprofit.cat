@@ -15,6 +15,9 @@ msgstr ""
 msgid "recetas"
 msgstr "receptes"
 
+msgid "receta"
+msgstr "recepta"
+
 msgid "contacto"
 msgstr "contacte"
 
@@ -47,6 +50,22 @@ msgstr "receptes per triomfar"
 
 msgid "Todas"
 msgstr "Totes"
+
+# recipe
+msgid "Tiempo"
+msgstr "Temps"
+
+msgid "Comensales"
+msgstr "Comensals"
+
+msgid "Ingredientes"
+msgstr "Ingredients"
+
+msgid "Paso %s"
+msgstr "Pas %s"
+
+msgid ""
+msgstr ""
 
 msgid ""
 msgstr ""

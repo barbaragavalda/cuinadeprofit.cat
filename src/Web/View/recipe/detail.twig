@@ -1,0 +1,185 @@
+{% extends 'basic.twig' %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.css" type="text/css">
+{% endblock %}
+{% block extraBody %}
+    <script src="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var _totalSteps = 5,
+                _progressBar = $('.progress-bar'),
+                _steps = $('#recipe-detail h3');
+
+            $('.steps')
+                .on('init', function(event, slick){
+                    updateStates(1);
+                })
+                .slick({
+                    adaptiveHeight: true,
+                    arrows: false,
+                    infinite: false,
+                    pauseOnFocus: false
+                })
+                .on('afterChange', function(event, slick, currentSlide){
+                    updateStates(currentSlide+1);
+                });
+
+            function updateStates(step){
+                var steps = LANG.localize('step_x_of_total');
+                steps = steps.replace('%x', step);
+                steps = steps.replace('%t', _totalSteps);
+                _steps.html(steps);
+                _progressBar.css('width', ((100/(_totalSteps-1))*(step-1)) + '%');
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section id="recipe-detail" class="container-xl">
+        <div class="row">
+            <aside class="col-lg-5">
+                <div class="ingredients">
+                    <header>
+                        <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/lasagna.jpg')"></div>
+                        <h1 class="main-bg">Beef Burger with French Fries and Salad</h1>
+                        <ul class="black-bg">
+                            <li>{% trans %}Tiempo{% endtrans %}: <span>10 min</span></li>
+                            <li>{% trans %}Comensales{% endtrans %}: <span>4</span></li>
+                        </ul>
+                    </header>
+                    <div class=" grey-border">
+                        <h5>{% trans %}Ingredientes{% endtrans %}</h5>
+                        <ul>
+                            <li>1 brick of frozen udon</li>
+                            <li>1/2 cup kimchi, plus a bit of kimchi juice</li>
+                            <li>1 tablespoon of butter</li>
+                            <li>1 sac of mentaiko</li>
+                            <li>sliced green onions and nori, to finish</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            <div class="col-lg-7">
+                <h3></h3>
+                <div class="progress">
+                    <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
+                </div>
+                <div class="steps">
+                    <div>
+                        <span class="main-color">{{ 'Paso %s'|trans|format(1) }}</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
+                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
+                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
+                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
+                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                    </div>
+                    <div>
+                        <span class="main-color">{{ 'Paso %s'|trans|format(2) }}</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
+                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
+                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
+                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
+                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
+                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
+                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
+                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
+                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                    </div>
+                    <div>
+                        <span class="main-color">{{ 'Paso %s'|trans|format(3) }}</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div>
+                        <span class="main-color">{{ 'Paso %s'|trans|format(4) }}</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
+                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
+                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
+                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
+                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                    </div>
+                    <div>
+                        <span class="main-color">{{ 'Paso %s'|trans|format(5) }}</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
+                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
+                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
+                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
+                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
+                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                    </div>
+                </div>
+                {#<div class="recipe-right">#}
+                    {#<div class="instruction-list">#}
+                        {#<h3>Instructions</h3>#}
+                        {#<ul>#}
+                            {#<li>#}
+
+                            {#</li>#}
+                            {#<li>#}
+                                {#<span>02.</span>#}
+                                {#Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.#}
+                                {#Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,#}
+                                {#maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non#}
+                                {#auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,#}
+                                {#ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.#}
+                                {#Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis#}
+                                {#lacus, non rutrum diam volutpat id.#}
+                            {#</li>#}
+                            {#<li>#}
+                                {#<span>03.</span>#}
+                                {#Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor#}
+                                {#incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in#}
+                                {#sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque#}
+                                {#sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies#}
+                                {#volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit#}
+                                {#condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis#}
+                                {#porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.#}
+                            {#</li>#}
+                            {#<li>#}
+                                {#<span>04.</span>#}
+                                {#Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.#}
+                                {#Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,#}
+                                {#maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non#}
+                                {#auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,#}
+                                {#ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.#}
+                                {#Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis#}
+                                {#lacus, non rutrum diam volutpat id.#}
+                            {#</li>#}
+                        {#</ul>#}
+                    {#</div>#}
+                    {#<div class="notes">#}
+                        {#<h3>Notes</h3>#}
+                        {#<div class="notes-item">#}
+                            {#<span>i</span>#}
+                            {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor#}
+                                {#incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in#}
+                                {#sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque#}
+                                {#sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies#}
+                                {#volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit#}
+                                {#condimentum viverra.</p>#}
+                        {#</div>#}
+                        {#<div class="notes-item">#}
+                            {#<span>i</span>#}
+                            {#<p>Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin#}
+                                {#neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non,#}
+                                {#ultricies volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at#}
+                                {#elit condimentum viverra.</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            </div>
+        </div>
+    </section>
+{% endblock %}

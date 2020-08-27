@@ -27,7 +27,7 @@
     {% block extraHead %}{% endblock %}
 </head>
 <body>
-    <header>
+    <header id="main-header">
         <div class="container-xl">
             <div class="logo">
                 {% block startLogo %}<a href="{{ domain }}">{% endblock %}
@@ -84,9 +84,13 @@
         </div>
     </div>
 
-    <script src="{{ staticDomain }}js/jquery-3.3.1.min.js"></script>
-    <script src="{{ staticDomain }}js/bootstrap.min.js"></script>
+    <script src="{{ staticDomain }}js/plugin/jquery-3.3.1.min.js"></script>
+    <script src="{{ staticDomain }}js/plugin/bootstrap.min.js"></script>
+    <script src="{{ staticDomain }}js/lang.js"></script>
     <script src="{{ staticDomain }}js/main.js"></script>
+    <script>
+        var LANG = new Language('{{ lang }}');
+    </script>
     {% block extraBody %}{% endblock %}
 </body>
 </html>
