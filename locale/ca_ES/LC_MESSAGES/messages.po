@@ -52,6 +52,12 @@ msgid "Todas"
 msgstr "Totes"
 
 # recipe
+msgid "Tiempo preparación"
+msgstr "Temps preparació"
+
+msgid "Tiempo cocinando"
+msgstr "Temps cuinant"
+
 msgid "Tiempo"
 msgstr "Temps"
 

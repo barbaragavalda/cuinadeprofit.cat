@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : VMPHP7
+ Source Server         : VM
  Source Server Type    : MySQL
  Source Server Version : 100038
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100038
  File Encoding         : 65001
 
- Date: 04/09/2020 14:05:30
+ Date: 04/10/2020 19:29:22
 */
 
 SET NAMES utf8mb4;
@@ -308,7 +308,7 @@ CREATE TABLE `appacman_file` (
   `id_appacman_file` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_appacman_file`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4859 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of appacman_file
@@ -328,7 +328,14 @@ CREATE TABLE `appacman_file_resize` (
   `height` smallint(6) NOT NULL,
   `suffix` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_file_resize`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of appacman_file_resize
+-- ----------------------------
+BEGIN;
+INSERT INTO `appacman_file_resize` VALUES (1, 15, 400, 400, 'thumb');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for appacman_lang
@@ -885,6 +892,7 @@ CREATE TABLE `recipe_tag` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `recipe_tag` VALUES (1, 4);
+INSERT INTO `recipe_tag` VALUES (1, 11);
 COMMIT;
 
 -- ----------------------------

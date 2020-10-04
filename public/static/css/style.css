@@ -432,8 +432,11 @@ section h5 {
 	-o-transform: translateX(-60px);
 	transform: translateX(-60px);
 }
+.ingredients header .img + h1{
+	padding-top: 90px;
+}
 .ingredients header h1{
-	padding: 90px 20px 20px 20px;
+	padding: 20px;
 	margin-bottom: 0;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
