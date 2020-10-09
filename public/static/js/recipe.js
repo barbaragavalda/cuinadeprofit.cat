@@ -1,0 +1,102 @@
+'use strict';
+
+var Recipe = function(totalSteps, ingredients, currentAmount){
+
+    function init(){
+        initSteps();
+        initAmounts();
+    }
+
+    var _totalSteps = totalSteps,
+        _progressBar = $('.progress-bar'),
+        _steps = $('#recipe-detail h3');
+
+    /**
+     * steps slider
+     */
+    function initSteps(){
+        $('.steps')
+            .on('init', function(){
+                updateStates(1);
+            })
+            .slick({
+                adaptiveHeight: true,
+                prevArrow: $('#arrows .previous'),
+                nextArrow: $('#arrows .next'),
+                infinite: false,
+                pauseOnFocus: false
+            })
+            .on('afterChange', function(event, slick, currentSlide){
+                updateStates(currentSlide+1);
+            });
+    }
+
+    /**
+     * update progress bar
+     * @param step integer
+     */
+    function updateStates(step){
+        var steps = LANG.localize('step_x_of_total');
+        steps = steps.replace('%x', step);
+        steps = steps.replace('%t', _totalSteps);
+        _steps.html(steps);
+        _progressBar.css('width', ((100/(_totalSteps-1))*(step-1)) + '%');
+    }
+
+    var _ingredients = ingredients,
+        _currentAmount = currentAmount,
+        _amount = $('#amount');
+
+    /**
+     * change amount
+     */
+    function initAmounts() {
+        $('#add, #subtract').click(function(e){
+            var amount = parseFloat(_amount.val());
+
+            if( amount % 1 === 0 ){
+                if( $(this).attr('id') === 'add' ) amount++;
+                else amount--;
+            }else{
+                if( $(this).attr('id') === 'add' ) amount = Math.ceil(amount);
+                else amount = Math.floor(amount);
+            }
+
+            amountChanged(amount);
+
+            e.preventDefault();
+            return false;
+        });
+
+        _amount.change(function(){
+            var amount = parseFloat(_amount.val());
+            amountChanged(amount);
+        });
+    }
+
+    /**
+     * update amounts
+     * @param amount
+     */
+    function amountChanged(amount){
+        if( amount <= 0 ) amount = 1;
+        _amount.val(amount);
+
+        for(var i in _ingredients){
+            var span = $('span.' + _ingredients[i]['uri']),
+                unit = span.attr('data-unit'),
+                unitPlural = span.attr('data-plural'),
+                totalAmount = _ingredients[i]['amount'] / _currentAmount * amount;
+
+            if( totalAmount !== 1 && unitPlural !== '' ){
+                totalAmount += ' ' + unitPlural;
+            }else if(unit !== '' ){
+                totalAmount += ' ' + unit;
+            }
+            span.html(totalAmount);
+        }
+    }
+
+    init();
+
+};

@@ -1,0 +1,14 @@
+{% if ingredient.amount > 0 %}
+    <span class="{{ ingredient.uri }}" data-unit="{{ ingredient.unit }}" data-plural="{{ ingredient.unitPlural }}">
+        {{ ingredient.amount }}
+        {% if ingredient.amount != 1 and ingredient.unitPlural != '' %}
+            {{ ingredient.unitPlural }}
+        {% else %}
+            {{ ingredient.unit }}
+        {% endif %}
+    </span>
+{% endif %}
+<a href="{{ domain }}{% trans %}ingrediente{% endtrans %}/{{ ingredient.uri }}" class="main-color">{{ ingredient.name|lower }}</a>
+{% if ingredient.amount == 0 %}
+    {{ ingredient.unit }}
+{% endif %}

@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : VM
+ Source Server         : VMPHP7
  Source Server Type    : MySQL
  Source Server Version : 100038
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100038
  File Encoding         : 65001
 
- Date: 04/10/2020 19:29:22
+ Date: 09/10/2020 14:08:03
 */
 
 SET NAMES utf8mb4;
@@ -148,7 +148,7 @@ CREATE TABLE `appacman_field` (
   `show_on_list` tinyint(1) DEFAULT NULL,
   `show_on_breadcrumb` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of appacman_field
@@ -196,6 +196,7 @@ INSERT INTO `appacman_field` VALUES (39, 3, 'cook_time', 13, 6, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (40, 3, 'link', 12, 12, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (41, 4, 'order_ingredient', 13, 5, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (42, 4, 'is_alternative', 3, 4, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (43, 7, 'plural', NULL, 2, 1, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -209,7 +210,7 @@ CREATE TABLE `appacman_field_lang` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hint` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of appacman_field_lang
@@ -246,7 +247,7 @@ INSERT INTO `appacman_field_lang` VALUES (28, 28, 1, 'Ordre', NULL);
 INSERT INTO `appacman_field_lang` VALUES (29, 29, 1, 'Nom', NULL);
 INSERT INTO `appacman_field_lang` VALUES (30, 30, 1, 'URI', NULL);
 INSERT INTO `appacman_field_lang` VALUES (31, 31, 1, 'Variable', NULL);
-INSERT INTO `appacman_field_lang` VALUES (32, 32, 1, 'Nom', NULL);
+INSERT INTO `appacman_field_lang` VALUES (32, 32, 1, 'Singular', NULL);
 INSERT INTO `appacman_field_lang` VALUES (33, 33, 1, 'Nom', NULL);
 INSERT INTO `appacman_field_lang` VALUES (34, 34, 1, 'URI', NULL);
 INSERT INTO `appacman_field_lang` VALUES (35, 35, 1, 'Categoria', NULL);
@@ -257,6 +258,7 @@ INSERT INTO `appacman_field_lang` VALUES (39, 39, 1, 'Temps cuinat (min)', NULL)
 INSERT INTO `appacman_field_lang` VALUES (40, 40, 1, 'Link', NULL);
 INSERT INTO `appacman_field_lang` VALUES (41, 41, 1, 'Ordre', NULL);
 INSERT INTO `appacman_field_lang` VALUES (42, 42, 1, 'Alternativa?', NULL);
+INSERT INTO `appacman_field_lang` VALUES (43, 43, 1, 'Plural', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -893,6 +895,7 @@ CREATE TABLE `recipe_tag` (
 BEGIN;
 INSERT INTO `recipe_tag` VALUES (1, 4);
 INSERT INTO `recipe_tag` VALUES (1, 11);
+INSERT INTO `recipe_tag` VALUES (1, 13);
 COMMIT;
 
 -- ----------------------------
@@ -902,7 +905,7 @@ DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
   `id_tag` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tag
@@ -919,6 +922,8 @@ INSERT INTO `tag` VALUES (8);
 INSERT INTO `tag` VALUES (9);
 INSERT INTO `tag` VALUES (10);
 INSERT INTO `tag` VALUES (11);
+INSERT INTO `tag` VALUES (12);
+INSERT INTO `tag` VALUES (13);
 COMMIT;
 
 -- ----------------------------
@@ -932,7 +937,7 @@ CREATE TABLE `tag_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tag_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tag_lang
@@ -960,6 +965,10 @@ INSERT INTO `tag_lang` VALUES (19, 10, 1, 'Mexicà', 'mexica');
 INSERT INTO `tag_lang` VALUES (20, 10, 2, 'Mejicano', 'mejicano');
 INSERT INTO `tag_lang` VALUES (21, 11, 1, 'Mediterrani', 'mediterrani');
 INSERT INTO `tag_lang` VALUES (22, 11, 2, 'Mediterráneo', 'mediterraneo');
+INSERT INTO `tag_lang` VALUES (23, 12, 1, 'Dolç', 'dolc');
+INSERT INTO `tag_lang` VALUES (24, 12, 2, 'Dulce', 'dulce');
+INSERT INTO `tag_lang` VALUES (25, 13, 1, 'Salat', 'salat');
+INSERT INTO `tag_lang` VALUES (26, 13, 2, 'Salado', 'salado');
 COMMIT;
 
 -- ----------------------------
@@ -995,6 +1004,7 @@ CREATE TABLE `unit_lang` (
   `id_unit` tinyint(3) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
+  `plural` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_unit_lang`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
@@ -1002,24 +1012,24 @@ CREATE TABLE `unit_lang` (
 -- Records of unit_lang
 -- ----------------------------
 BEGIN;
-INSERT INTO `unit_lang` VALUES (1, 1, 1, 'cullerada (tbsp)');
-INSERT INTO `unit_lang` VALUES (2, 1, 2, 'cucharada (tbsp)');
-INSERT INTO `unit_lang` VALUES (3, 2, 1, 'culleradeta (tsp)');
-INSERT INTO `unit_lang` VALUES (4, 2, 2, 'cucharadita (tsp)');
-INSERT INTO `unit_lang` VALUES (5, 3, 1, 'grams');
-INSERT INTO `unit_lang` VALUES (6, 3, 2, 'gramos');
-INSERT INTO `unit_lang` VALUES (7, 4, 1, 'mililitres');
-INSERT INTO `unit_lang` VALUES (8, 4, 2, 'mililitros');
-INSERT INTO `unit_lang` VALUES (9, 5, 1, 'tassa (cup)');
-INSERT INTO `unit_lang` VALUES (10, 5, 2, 'taza (cup)');
-INSERT INTO `unit_lang` VALUES (11, 6, 1, 'fulles');
-INSERT INTO `unit_lang` VALUES (12, 6, 2, 'hojas');
-INSERT INTO `unit_lang` VALUES (13, 7, 1, 'pessic');
-INSERT INTO `unit_lang` VALUES (14, 7, 2, 'pellizco');
-INSERT INTO `unit_lang` VALUES (15, 8, 1, 'al gust');
-INSERT INTO `unit_lang` VALUES (16, 8, 2, 'al gusto');
-INSERT INTO `unit_lang` VALUES (17, 9, 1, 'raig');
-INSERT INTO `unit_lang` VALUES (18, 9, 2, 'chorro');
+INSERT INTO `unit_lang` VALUES (1, 1, 1, 'cullerada (tbsp)', 'cullerades (tbsp)');
+INSERT INTO `unit_lang` VALUES (2, 1, 2, 'cucharada (tbsp)', 'cucharadas (tbsp)');
+INSERT INTO `unit_lang` VALUES (3, 2, 1, 'culleradeta (tsp)', 'culleradetes (tsp)');
+INSERT INTO `unit_lang` VALUES (4, 2, 2, 'cucharadita (tsp)', 'cucharaditas (tsp)');
+INSERT INTO `unit_lang` VALUES (5, 3, 1, 'gram', 'grams');
+INSERT INTO `unit_lang` VALUES (6, 3, 2, 'gramo', 'gramos');
+INSERT INTO `unit_lang` VALUES (7, 4, 1, 'mililitre', 'mililitres');
+INSERT INTO `unit_lang` VALUES (8, 4, 2, 'mililitro', 'mililitros');
+INSERT INTO `unit_lang` VALUES (9, 5, 1, 'tassa (cup)', 'tasses (cup)');
+INSERT INTO `unit_lang` VALUES (10, 5, 2, 'taza (cup)', 'tazas (cup)');
+INSERT INTO `unit_lang` VALUES (11, 6, 1, 'fulla', 'fulles');
+INSERT INTO `unit_lang` VALUES (12, 6, 2, 'hoja', 'hojas');
+INSERT INTO `unit_lang` VALUES (13, 7, 1, 'pessic', 'pessics');
+INSERT INTO `unit_lang` VALUES (14, 7, 2, 'pellizco', 'pellizcos');
+INSERT INTO `unit_lang` VALUES (15, 8, 1, 'al gust', NULL);
+INSERT INTO `unit_lang` VALUES (16, 8, 2, 'al gusto', NULL);
+INSERT INTO `unit_lang` VALUES (17, 9, 1, 'raig', 'raigs');
+INSERT INTO `unit_lang` VALUES (18, 9, 2, 'chorro', 'chorros');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

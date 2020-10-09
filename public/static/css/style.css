@@ -37,7 +37,6 @@ input::placeholder {
 	border-color: rgb(180, 190, 200);
 }
 .white-color, .black-bg, .grey-bg,
-input,
 .hover-effect .item .img:before {
 	color: rgb(235, 245, 255) !important;
 }
@@ -45,7 +44,7 @@ input,
 	background: rgb(255, 255, 255);
 }
 footer {
-	background: rgb(226, 251, 247);
+	background: rgb(213, 248, 245);
 }
 ::selection {
 	background-color: rgb(171, 243, 234);
@@ -72,6 +71,12 @@ footer {
 }
 .categories ul li::after{
 	border-color: rgb(246, 193, 67);
+}
+.btn.focus, .btn:focus {
+	box-shadow: none;
+}
+var{
+	font-style: normal;
 }
 
 /* generic */
@@ -435,11 +440,13 @@ section h5 {
 .ingredients header .img + h1{
 	padding-top: 90px;
 }
-.ingredients header h1{
+.ingredients header .main-bg{
 	padding: 20px;
-	margin-bottom: 0;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
+}
+.ingredients header h1{
+	margin-bottom: 0;
 }
 .ingredients header ul{
 	padding: 20px;
@@ -457,17 +464,54 @@ section h5 {
 .ingredients header ul span{
 	font-weight: normal;
 }
+.ingredients header .input-group{
+	width: 100px;
+}
+.ingredients header .input-group .btn{
+	padding: 0 10px;
+	border: none;
+	font-size: 1.3em;
+}
+.ingredients header .input-group .form-control{
+	padding: 0;
+	height: auto;
+}
+.ingredients header .input-group input{
+	text-align: center;
+	border: none;
+}
 .ingredients > div{
 	padding: 20px;
 	border-width: 1px;
 	border-style: solid;
 }
-.steps{
-	padding-top: 40px;
-}
 .step span{
 	display: block;
 	padding-top: 20px;
+}
+#arrows{
+	padding: 10px 0;
+}
+#arrows .slick-disabled{
+	display: none !important;
+}
+#arrows .slick-arrow{
+	cursor: pointer;
+	font-size: 2em;
+	padding: 2px 15px !important;
+	text-align: center;
+}
+#arrows .previous{
+	float: left;
+}
+#arrows .next{
+	float: right;
+}
+.slick-slider {
+	-webkit-user-select: auto !important;
+	-moz-user-select: auto !important;
+	-ms-user-select: auto !important;
+	user-select: auto !important;
 }
 .slick-slide{
 	outline: none;

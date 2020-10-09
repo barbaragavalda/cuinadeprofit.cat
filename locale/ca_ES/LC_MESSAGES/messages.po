@@ -18,6 +18,9 @@ msgstr "receptes"
 msgid "receta"
 msgstr "recepta"
 
+msgid "ingrediente"
+msgstr "ingredient"
+
 msgid "contacto"
 msgstr "contacte"
 
@@ -64,14 +67,14 @@ msgstr "Temps"
 msgid "Comensales"
 msgstr "Comensals"
 
+msgid "Multiplicar por..."
+msgstr "Multiplicar per..."
+
 msgid "Ingredientes"
 msgstr "Ingredients"
 
 msgid "Paso %s"
 msgstr "Pas %s"
-
-msgid ""
-msgstr ""
 
 msgid ""
 msgstr ""

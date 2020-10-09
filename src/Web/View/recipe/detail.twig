@@ -5,33 +5,19 @@
 {% endblock %}
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.min.js"></script>
+    <script src="{{ staticDomain }}js/recipe.js"></script>
     <script>
         $(document).ready(function() {
-            var _totalSteps = 5,
-                _progressBar = $('.progress-bar'),
-                _steps = $('#recipe-detail h3');
+            {% set currentAmount = 1 %}
+            {% for spec in recipe.specs %}
+                {% if spec.type in ['amount', 'diners'] %}
+                    {% set currentAmount = spec.value %}
+                {% endif %}
+            {% endfor %}
 
-            $('.steps')
-                .on('init', function(){
-                    updateStates(1);
-                })
-                .slick({
-                    adaptiveHeight: true,
-                    arrows: false,
-                    infinite: false,
-                    pauseOnFocus: false
-                })
-                .on('afterChange', function(event, slick, currentSlide){
-                    updateStates(currentSlide+1);
-                });
-
-            function updateStates(step){
-                var steps = LANG.localize('step_x_of_total');
-                steps = steps.replace('%x', step);
-                steps = steps.replace('%t', _totalSteps);
-                _steps.html(steps);
-                _progressBar.css('width', ((100/(_totalSteps-1))*(step-1)) + '%');
-            }
+            var totalSteps = {{ recipe.steps|length }},
+                ingredients = {{ recipe.ingredients|json_encode|raw }};
+            new Recipe(totalSteps, ingredients, {{ currentAmount }});
         });
     </script>
 {% endblock %}
@@ -45,11 +31,31 @@
                         {% if recipe.image %}
                             <div class="img" style="background-image: url('{{ recipe.image }}')"></div>
                         {% endif %}
-                        <h1 class="main-bg">{{ recipe.name }}</h1>
+                        <div  class="main-bg">
+                            <h1>{{ recipe.name }}</h1>
+                            {% for tag in recipe.tags %}
+                                <a href="{{ domain }}{% trans %}tag{% endtrans %}/{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
+                            {% endfor %}
+                        </div>
                         {% if recipe.specs|length > 0 %}
                             <ul class="black-bg">
                                 {% for spec in recipe.specs %}
-                                    <li>{{ spec.name }}: <span>{{ spec.value }}</span></li>
+                                    <li>
+                                        {% if spec.type in ['amount', 'diners'] %}
+                                            <label for="amount" class="pt-2 float-left">{{ spec.name }}:</label>
+                                            <div class="input-group pt-1 ml-1 float-left">
+                                                <div class="input-group-prepend">
+                                                    <button id="subtract" class="btn secondary-bg" type="button">-</button>
+                                                </div>
+                                                <input id="amount" class="{{ spec.type }} form-control" type="text" value="{{ spec.value }}" />
+                                                <div class="input-group-append">
+                                                    <button id="add" class="btn secondary-bg" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            {{ spec.name }}: <span>{{ spec.value }}</span>
+                                        {% endif %}
+                                    </li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
@@ -57,131 +63,42 @@
                     <div class=" grey-border">
                         <h5>{% trans %}Ingredientes{% endtrans %}</h5>
                         <ul>
+                            {% set i = 0 %}
                             {% for ingredient in recipe.ingredients %}
-                                <li>{{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name|lower }}</li>
+                                {% if i < recipe.ingredients|length %}
+                                    <li>
+                                        {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
+                                        {% if recipe.ingredients[i+1].is_alternative %}
+                                            {% set i = i + 1 %}
+                                            ({% trans %}o{% endtrans %} {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %})
+                                        {% endif %}
+                                        {% set i = i + 1 %}
+                                    </li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
             </aside>
             <div class="col-lg-7">
-                <h3></h3>
-                <div class="progress">
-                    <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
-                </div>
-                <div class="steps">
-                    <div>
-                        <span class="main-color">{{ 'Paso %s'|trans|format(1) }}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                {% if recipe.steps|length > 0 %}
+                    <h3></h3>
+                    <div class="progress">
+                        <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
                     </div>
-                    <div>
-                        <span class="main-color">{{ 'Paso %s'|trans|format(2) }}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
+                    <div id="arrows" class="clearfix">
+                        <button type="button" class="previous btn main-bg white-color fa fa-angle-left"></button>
+                        <button type="button" class="next btn main-bg white-color fa fa-angle-right"></button>
                     </div>
-                    <div>
-                        <span class="main-color">{{ 'Paso %s'|trans|format(3) }}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet.</p>
+                    <div class="steps">
+                        {% for step in recipe.steps %}
+                            <div>
+                                <span class="main-color">{{ 'Paso %s'|trans|format(index.lopp) }}</span>
+                                <p>{{ step.description|raw }}</p>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div>
-                        <span class="main-color">{{ 'Paso %s'|trans|format(4) }}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
-                    </div>
-                    <div>
-                        <span class="main-color">{{ 'Paso %s'|trans|format(5) }}</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in
-                            sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque
-                            sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies
-                            volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit
-                            condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis
-                            porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.</p>
-                    </div>
-                </div>
-                {#<div class="recipe-right">#}
-                    {#<div class="instruction-list">#}
-                        {#<h3>Instructions</h3>#}
-                        {#<ul>#}
-                            {#<li>#}
-
-                            {#</li>#}
-                            {#<li>#}
-                                {#<span>02.</span>#}
-                                {#Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.#}
-                                {#Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,#}
-                                {#maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non#}
-                                {#auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,#}
-                                {#ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.#}
-                                {#Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis#}
-                                {#lacus, non rutrum diam volutpat id.#}
-                            {#</li>#}
-                            {#<li>#}
-                                {#<span>03.</span>#}
-                                {#Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor#}
-                                {#incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in#}
-                                {#sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque#}
-                                {#sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies#}
-                                {#volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit#}
-                                {#condimentum viverra. Suspendisse non lobortis nisi. Maecenas accumsan quam quis#}
-                                {#porta laoreet. Aliquam felis odio, aliquet fermentum semper at, porttitor ac mi.#}
-                            {#</li>#}
-                            {#<li>#}
-                                {#<span>04.</span>#}
-                                {#Donec sit amet enim tortor. Sed egestas nulla nibh, vitae porta velit sagittis eget.#}
-                                {#Donec vitae tellus semper, cursus sem id, iaculis purus. Aenean ligula risus,#}
-                                {#maximus tristique eros vel, auctor ornare tortor. Aliquam vel augue sapien. Duis non#}
-                                {#auctor ante, ac vestibulum tortor. Etiam quis dolor ultricies, dignissim ante a,#}
-                                {#ornare ipsum. Phasellus suscipit rhoncus nulla, quis bibendum tortor elementum ac.#}
-                                {#Nullam viverra tellus diam, nec accumsan orci aliquam sed. Sed placerat sagittis#}
-                                {#lacus, non rutrum diam volutpat id.#}
-                            {#</li>#}
-                        {#</ul>#}
-                    {#</div>#}
-                    {#<div class="notes">#}
-                        {#<h3>Notes</h3>#}
-                        {#<div class="notes-item">#}
-                            {#<span>i</span>#}
-                            {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor#}
-                                {#incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet. Donec in#}
-                                {#sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin neque#}
-                                {#sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultricies#}
-                                {#volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at elit#}
-                                {#condimentum viverra.</p>#}
-                        {#</div>#}
-                        {#<div class="notes-item">#}
-                            {#<span>i</span>#}
-                            {#<p>Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis, sollicitudin#}
-                                {#neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non,#}
-                                {#ultricies volutpat tellus. Cras egestas in lacus a finibus. Suspendisse sed urna at#}
-                                {#elit condimentum viverra.</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
+                {% endif %}
             </div>
         </div>
     </section>
