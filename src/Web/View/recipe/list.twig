@@ -1,0 +1,14 @@
+{% extends 'basic.twig' %}
+
+{% block content %}
+    <div id="list" class="container-xl">
+        {% if items is defined and items|length > 0 %}
+            <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
+            {% include 'include/list.twig' with { recipes: items } %}
+            {% include 'include/pagination.twig' %}
+        {% else %}
+            <h1 class="title">{% trans %}Resultados por{% endtrans %} {{ title|lower }}</h1>
+            {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="#" class="secondary-color">', '</a>')|raw }}
+        {% endif %}
+    </div>
+{% endblock %}

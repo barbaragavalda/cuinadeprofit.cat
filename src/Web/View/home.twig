@@ -112,62 +112,7 @@
         </div>
 
         <div class="container-xl">
-            <div class="col-lg-12">
-                <ul id="great-recipes" class="hover-effect clearfix">
-                    <li class="item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/pizza-2.jpg');"></div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="main-color">Vegan</div>
-                                <a href="#">One Pot Weeknight Lasagna Soup Recipe</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/pizza-1.jpg');"></div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="main-color">Meat lover</div>
-                                <a href="#">Veggie soup with Mushrooms</a>
-                                <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/burrata.jpg');"></div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="main-color">Desert</div>
-                                <a href="#">Caramel Ice Cream with Berries</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/calzone.jpg');"></div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="main-color">Desert</div>
-                                <a href="#">Freash Octopuse with lime juice</a>
-                                <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Lorem ipsum dolor sit amet, consectetur.</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            {% include 'include/list.twig' with { recipes: items } %}
         </div>
     </section>
 {% endblock %}

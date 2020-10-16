@@ -18,8 +18,17 @@ msgstr "receptes"
 msgid "receta"
 msgstr "recepta"
 
+msgid "categoria"
+msgstr "categoria"
+
 msgid "ingrediente"
 msgstr "ingredient"
+
+msgid "etiqueta"
+msgstr "etiqueta"
+
+msgid "dificultad"
+msgstr "dificultat"
 
 msgid "contacto"
 msgstr "contacte"
@@ -38,8 +47,8 @@ msgid "Busca aquí..."
 msgstr "Busca aquí..."
 
 # 404
-msgid "Parece que nos hemos perdido. Para recuperar el rumbo, te proponemos que pruebes suerte con una %sreceta aleatoria%s."
-msgstr "Sembla que ens hem perdut. Per recuperar el rumb, et proposem que provis sort amb una %srecepta aleatòria%s."
+msgid "Parece que nos hemos perdido. Para recuperar el rumbo: te proponemos que pruebes suerte con una %sreceta aleatoria%s."
+msgstr "Sembla que ens hem perdut. Per recuperar el rumb: et proposem que provis sort amb una %srecepta aleatòria%s."
 
 # home
 msgid "Últimas recetas"
@@ -73,20 +82,45 @@ msgstr "Multiplicar per..."
 msgid "Ingredientes"
 msgstr "Ingredients"
 
+msgid "o"
+msgstr "o"
+
+msgid "ver receta"
+msgstr "ver receta"
+
+msgid "Receta original"
+msgstr "Recepta original"
+
 msgid "Paso %s"
 msgstr "Pas %s"
 
-msgid ""
-msgstr ""
+msgid "hora"
+msgstr "hora"
 
-msgid ""
-msgstr ""
+msgid "horas"
+msgstr "hores"
 
-msgid ""
-msgstr ""
+msgid "minuto"
+msgstr "minut"
 
-msgid ""
-msgstr ""
+msgid "minutos"
+msgstr "minuts"
 
-msgid ""
-msgstr ""
+# search
+msgid "Resultados por"
+msgstr "Resultats per"
+
+msgid "Categoría"
+msgstr "Categoria"
+
+msgid "Dificultad"
+msgstr "Dificultat"
+
+msgid "Ingrediente"
+msgstr "Ingredient"
+
+msgid "Etiqueta"
+msgstr "Etiqueta"
+
+msgid "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
+msgstr "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."

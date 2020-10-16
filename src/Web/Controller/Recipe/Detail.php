@@ -4,15 +4,17 @@ namespace Web\Controller\Recipe;
 
 use Web\Controller\Controller;
 
-class Detail extends Controller {
+class Detail extends Controller
+{
 
-    public function run(){
+    public function run()
+    {
         $uri = $this->getParam('uri');
 
-        if( !empty($uri) ){
-            $recipe = new \Web\Model\Recipe\Detail();
+        if (!empty($uri)) {
+            $recipe     = new \Web\Model\Recipe\Detail();
             $recipeInfo = $recipe->get($uri);
-            if( count($recipeInfo) ){
+            if (count($recipeInfo)) {
                 $this->assign('recipe', $recipeInfo);
 
                 $this->assign('menu', 'recipes');

@@ -2,7 +2,8 @@
  * COMMON
  ******************************/
 /* colors */
-body, #main-header a, .hover-effect .item a {
+.black-color,
+body, #main-header a, .hover-effect .item h2 a {
 	color: rgb(40, 50, 60) !important;
 }
 .black-bg{
@@ -29,7 +30,7 @@ input::placeholder {
 .grey-color {
 	color: rgb(180, 190, 200);
 }
-.grey-bg,
+.grey-bg, .img,
 #main-header ul li li:after {
 	background: rgb(180, 190, 200);
 }
@@ -61,7 +62,7 @@ footer {
 	background: rgb(65, 225, 200);
 }
 .secondary-color,
-.hover-effect .item:hover a{
+.hover-effect .item:hover h2 a{
 	color: rgb(246, 193, 67) !important;
 }
 .secondary-bg,
@@ -110,7 +111,7 @@ section {
 	cursor: pointer;
 }
 
-.hover-effect .item a {
+.hover-effect .item h2 a {
 	display: block;
 	line-height: 30px;
 	font-weight: 700;
@@ -399,19 +400,36 @@ section h5 {
 	padding: 10px;
 }
 
-#great-recipes {
+#recipes {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
-#great-recipes li {
+#recipes li {
 	float: left;
 	width: 50%;
 	padding: 10px 0;
 	margin-bottom: 20px;
 }
-#great-recipes .img{
+#recipes li .row{
+	margin-right: 0;
+}
+#recipes li .col-sm-8{
+	padding-left: 0;
+}
+#recipes .img{
 	height: 180px;
+}
+
+/******************************
+ * LIST
+ ******************************/
+#list .title{
+	font-size: 2.5rem;
+	font-weight: 500;
+}
+#list .title h1{
+	display: inline;
 }
 
 /******************************
@@ -437,8 +455,8 @@ section h5 {
 	-o-transform: translateX(-60px);
 	transform: translateX(-60px);
 }
-.ingredients header .img + h1{
-	padding-top: 90px;
+.ingredients header .img + .main-bg{
+	padding-top: 100px;
 }
 .ingredients header .main-bg{
 	padding: 20px;
@@ -449,20 +467,25 @@ section h5 {
 	margin-bottom: 0;
 }
 .ingredients header ul{
-	padding: 20px;
+	padding: 10px;
 	text-align: center;
 	margin-bottom: 0;
 }
 .ingredients header ul li{
-	display: inline-block;
-	padding-right: 10px;
+	display: block;
+	text-align: center;
 	font-weight: bold;
+	padding: 3px 0;
 }
-.ingredients header ul li:last-child{
-	padding-right: 0;
+.ingredients header ul li.clearfix{
+	display: inline-block;
+	padding: 0;
 }
 .ingredients header ul span{
 	font-weight: normal;
+}
+.ingredients header label{
+	margin-bottom: 0;
 }
 .ingredients header .input-group{
 	width: 100px;
@@ -480,17 +503,23 @@ section h5 {
 	text-align: center;
 	border: none;
 }
-.ingredients > div{
+.ingredients .list{
 	padding: 20px;
 	border-width: 1px;
 	border-style: solid;
+}
+.ingredients .link a{
+	padding: 5px;
+	display: block;
+	text-align: center;
+	font-size: 0.9em;
 }
 .step span{
 	display: block;
 	padding-top: 20px;
 }
 #arrows{
-	padding: 10px 0;
+	padding: 10px 0 15px 0;
 }
 #arrows .slick-disabled{
 	display: none !important;

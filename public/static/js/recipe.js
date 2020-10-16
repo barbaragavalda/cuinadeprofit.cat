@@ -83,17 +83,22 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
         _amount.val(amount);
 
         for(var i in _ingredients){
-            var span = $('span.' + _ingredients[i]['uri']),
-                unit = span.attr('data-unit'),
-                unitPlural = span.attr('data-plural'),
-                totalAmount = _ingredients[i]['amount'] / _currentAmount * amount;
+            $('span.' + _ingredients[i]['uri']).each(function(){
+                var unit = $(this).attr('data-unit'),
+                    unitPlural = $(this).attr('data-plural'),
+                    fraction = parseFloat($(this).attr('data-fraction')),
+                    totalAmount = _ingredients[i]['amount'] / _currentAmount * amount;
 
-            if( totalAmount !== 1 && unitPlural !== '' ){
-                totalAmount += ' ' + unitPlural;
-            }else if(unit !== '' ){
-                totalAmount += ' ' + unit;
-            }
-            span.html(totalAmount);
+                if( !isNaN(fraction) ){
+                    totalAmount = Math.ceil(totalAmount * fraction);
+                }
+                if( totalAmount !== 1 && unitPlural !== '' ){
+                    totalAmount += ' ' + unitPlural;
+                }else if(unit !== '' ){
+                    totalAmount += ' ' + unit;
+                }
+                $(this).html(totalAmount);
+            });
         }
     }
 

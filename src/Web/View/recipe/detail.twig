@@ -31,17 +31,18 @@
                         {% if recipe.image %}
                             <div class="img" style="background-image: url('{{ recipe.image }}')"></div>
                         {% endif %}
-                        <div  class="main-bg">
+                        <div class="main-bg">
                             <h1>{{ recipe.name }}</h1>
+                            <div><a href="{{ domain }}{% trans %}dificultad{% endtrans %}/{{ recipe.difficultyURI }}" class="badge secondary-bg black-color">{{ recipe.difficulty }}</a></div>
                             {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{% trans %}tag{% endtrans %}/{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
+                                <a href="{{ domain }}{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                         {% if recipe.specs|length > 0 %}
                             <ul class="black-bg">
                                 {% for spec in recipe.specs %}
-                                    <li>
-                                        {% if spec.type in ['amount', 'diners'] %}
+                                    {% if spec.type in ['amount', 'diners'] %}
+                                        <li class="clearfix">
                                             <label for="amount" class="pt-2 float-left">{{ spec.name }}:</label>
                                             <div class="input-group pt-1 ml-1 float-left">
                                                 <div class="input-group-prepend">
@@ -52,15 +53,15 @@
                                                     <button id="add" class="btn secondary-bg" type="button">+</button>
                                                 </div>
                                             </div>
-                                        {% else %}
-                                            {{ spec.name }}: <span>{{ spec.value }}</span>
-                                        {% endif %}
-                                    </li>
+                                        </li>
+                                    {% else %}
+                                        <li>{{ spec.name }}: <span>{{ spec.value }}</span></li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         {% endif %}
                     </header>
-                    <div class=" grey-border">
+                    <div class="list grey-border">
                         <h5>{% trans %}Ingredientes{% endtrans %}</h5>
                         <ul>
                             {% set i = 0 %}
@@ -78,23 +79,32 @@
                             {% endfor %}
                         </ul>
                     </div>
+                    {% if recipe.link %}
+                        <div class="link grey-bg">
+                            <a href="{{ recipe.link }}" target="_blank" class="black-color">{% trans %}Receta original{% endtrans %}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </aside>
             <div class="col-lg-7">
                 {% if recipe.steps|length > 0 %}
-                    <h3></h3>
-                    <div class="progress">
-                        <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
-                    </div>
-                    <div id="arrows" class="clearfix">
-                        <button type="button" class="previous btn main-bg white-color fa fa-angle-left"></button>
-                        <button type="button" class="next btn main-bg white-color fa fa-angle-right"></button>
-                    </div>
+                    {% if recipe.steps|length > 1 %}
+                        <h3></h3>
+                        <div class="progress">
+                            <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div id="arrows" class="clearfix">
+                            <button type="button" class="previous btn secondary-bg white-color fa fa-angle-left"></button>
+                            <button type="button" class="next btn secondary-bg white-color fa fa-angle-right"></button>
+                        </div>
+                    {% endif %}
                     <div class="steps">
                         {% for step in recipe.steps %}
                             <div>
-                                <span class="main-color">{{ 'Paso %s'|trans|format(index.lopp) }}</span>
-                                <p>{{ step.description|raw }}</p>
+                            {% if recipe.steps|length > 1 %}
+                                <span class="main-color">{{ 'Paso %s'|trans|format(loop.index) }}</span>
+                            {% endif %}
+                            {{ step.description|raw }}
                             </div>
                         {% endfor %}
                     </div>

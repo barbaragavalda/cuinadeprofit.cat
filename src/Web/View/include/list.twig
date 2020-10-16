@@ -1,0 +1,32 @@
+<div class="col-lg-12">
+    <ul id="recipes" class="hover-effect clearfix">
+        {% for recipe in recipes %}
+            <li class="item">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="img" style="background-image: url('{{ recipe.image }}');"></div>
+                    </div>
+                    <div class="col-sm-8">
+                        {% if recipe.tags|length > 0 %}
+                            <div>
+                                {% set tags = [] %}
+                                {% for tag in recipe.tags %}
+                                    {% set tags = tags|merge(['<a href="' ~ domain ~ tag.uri ~ '" class="main-color">' ~ tag.name ~ '</a>']) %}
+                                {% endfor %}
+                                {{ tags|join(' | ')|raw }}
+                            </div>
+                        {% endif %}
+                        <h2><a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a></h2>
+                        <div>
+                            <a href="{{ domain }}{% trans %}dificultad{% endtrans %}/{{ recipe.difficultyURI }}" class="badge secondary-bg black-color">{{ recipe.difficulty }}</a>
+                            <small>{{ recipe.time }}</small>
+                        </div>
+                        {% if recipe.description %}
+                            {{ recipe.description|raw }}
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -11,9 +11,12 @@ class Detail extends Model
     public function get($uri)
     {
         $sql    = '
-            SELECT r.id_recipe, rl.name, rl.description, r.diners, r.prep_time, r.cook_time, r.image, r.link
+            SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.image, r.link,
+                rl.name, rl.description,
+                dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
+            INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
             WHERE rl.uri = :uri
         ';
         $params = array(
@@ -27,7 +30,7 @@ class Detail extends Model
             $this->id = $recipe['id_recipe'];
 
             $recipe['image'] = $this->getFile($recipe['image'], 'thumb');
-            $recipe['tags'] = $this->getTags();
+            $recipe['tags']  = $this->getTags();
             $recipe['specs'] = $this->getSpecs($recipe);
 
             $ingredients           = $this->getIngredients();
@@ -39,27 +42,35 @@ class Detail extends Model
         return array();
     }
 
-    private function getTags(){
+    public function getTags($all = true)
+    {
         $sql = '
-            SELECT DISTINCT t.name, t.uri
-            FROM (
-                    SELECT tl.name, tl.uri
-                    FROM recipe_tag AS rt
-                    INNER JOIN tag_lang AS tl ON rt.id_tag = tl.id_tag AND tl.id_appacman_lang = :lang
-                    WHERE rt.id_recipe = :id
+            SELECT tl.name, CONCAT("' . _('etiqueta') . '", "/", tl.uri) AS uri, t.order
+            FROM recipe_tag AS rt
+            INNER JOIN tag AS t ON rt.id_tag = t.id_tag
+            INNER JOIN tag_lang AS tl ON t.id_tag = tl.id_tag AND tl.id_appacman_lang = :lang
+            WHERE rt.id_recipe = :id
+        ';
+        if ($all) {
+            $sql .= '
                 UNION
-                    SELECT icl.name, icl.uri
+                    SELECT icl.name, CONCAT("' . _('categoria') . '", "/", icl.uri) AS uri, 1000 AS `order`
                     FROM ingredient AS i
                     INNER JOIN recipe_ingredient AS ri USING(id_ingredient)
                     INNER JOIN ingredient_category_lang AS icl ON icl.id_ingredient_category = i.id_ingredient_category AND icl.id_appacman_lang = :lang
                     WHERE ri.id_recipe = :id
-            ) AS t
+            ';
+        }
+        $sql = '
+            SELECT DISTINCT tags.name, tags.uri
+            FROM (' . $sql . ') AS tags
+            ORDER BY tags.order ASC, tags.name ASC
         ';
-        $params      = array(
+        $params = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
             'id'   => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
         );
-        $tags = $this->mysql->query($sql, $params);
+        $tags   = $this->mysql->query($sql, $params);
 
         if (count($tags)) {
             return $tags;
@@ -79,10 +90,12 @@ class Detail extends Model
         $specs = array();
 
         if (!empty($recipe['prep_time'])) {
-            $specs[] = array('name' => _('Tiempo preparación'), 'value' => $recipe['prep_time']);
+            $time    = self::formatTime($recipe['prep_time']);
+            $specs[] = array('name' => _('Tiempo preparación'), 'value' => $time);
         }
         if (!empty($recipe['cook_time'])) {
-            $specs[] = array('name' => _('Tiempo cocinando'), 'value' => $recipe['cook_time']);
+            $time    = self::formatTime($recipe['cook_time']);
+            $specs[] = array('name' => _('Tiempo cocinando'), 'value' => $time);
         }
 
         if (!empty($recipe['diners'])) {
@@ -94,6 +107,29 @@ class Detail extends Model
         return $specs;
     }
 
+    public static function formatTime($minutes)
+    {
+        $hours   = floor($minutes / 60);
+        $minutes = floor($minutes % 60);
+
+        $time = array();
+        if ($hours > 0) {
+            if ($hours == 1) {
+                $time[] = '1 ' . _('hora');
+            } else {
+                $time[] = $hours . ' ' . _('horas');
+            }
+        }
+        if ($minutes > 0) {
+            if ($minutes == 1) {
+                $time[] = '1 ' . _('minuto');
+            } else {
+                $time[] = $minutes . ' ' . _('minutos');
+            }
+        }
+        return implode(' ', $time);
+    }
+
     /**
      * ingredients
      * @return array
@@ -101,13 +137,14 @@ class Detail extends Model
     private function getIngredients()
     {
         $sql         = '
-            SELECT ri.amount, ul.name AS unit, ul.plural AS unitPlural, il.name, i.variable, il.uri, ri.is_alternative
+            SELECT ri.amount, ul.name AS unit, ul.plural AS unitPlural, il.name, i.variable, rl.uri AS recipe, il.uri, ri.is_alternative
             FROM recipe_ingredient AS ri
             INNER JOIN ingredient AS i ON ri.id_ingredient = i.id_ingredient
             INNER JOIN ingredient_lang AS il ON i.id_ingredient = il.id_ingredient AND il.id_appacman_lang = :lang
             LEFT JOIN unit_lang AS ul ON ri.id_unit = ul.id_unit AND ul.id_appacman_lang = :lang
+            LEFT JOIN recipe_lang AS rl ON i.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             WHERE ri.id_recipe = :id
-            ORDER BY ri.order_ingredient ASC
+            ORDER BY ri.order_ingredient ASC, ri.is_alternative ASC
         ';
         $params      = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
@@ -167,11 +204,11 @@ class Detail extends Model
         $span   = '';
         $amount = $ingredient['amount'];
         if ($amount > 0) {
-            $pattern = '/(\\' . $ingredient['variable'] . ')([(](.*)[)])?/';
+            $pattern = '/\\' . $ingredient['variable'] . '([\(]([^\)]+)[\)])?/';
             preg_match($pattern, $step['description'], $matches);
             $fraction = 1;
-            if (count($matches) == 4) {
-                $fraction = $matches[3];
+            if (count($matches) == 3) {
+                $fraction = $matches[2];
             }
 
             $data = ' data-unit="' . $ingredient['unit'] . '" data-plural="' . $ingredient['unitPlural'] . '"';
@@ -180,15 +217,18 @@ class Detail extends Model
             }
 
             $amount = $amount * $fraction;
-            $span   = '<span class="' . $uri . '"' . $data . '>' . $amount;
-            if ($ingredient['unit']) {
-                if ($amount != 1 && !empty($ingredient['unitPlural'])) {
-                    $span .= ' ' . $ingredient['unitPlural'];
-                } else {
-                    $span .= ' ' . $ingredient['unit'];
+            if ($amount > 0) {
+                $amount = $amount;
+                $span   = '<span class="' . $uri . '"' . $data . '>' . $amount;
+                if ($ingredient['unit']) {
+                    if ($amount != 1 && !empty($ingredient['unitPlural'])) {
+                        $span .= ' ' . $ingredient['unitPlural'];
+                    } else {
+                        $span .= ' ' . $ingredient['unit'];
+                    }
                 }
+                $span .= '</span>';
             }
-            $span .= '</span>';
         } else {
             $span = $ingredient['unit'];
         }
