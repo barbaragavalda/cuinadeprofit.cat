@@ -76,6 +76,12 @@ msgstr "Ingredients"
 msgid "o"
 msgstr "o"
 
+msgid "opcional"
+msgstr "opcional"
+
+msgid "ver receta"
+msgstr "ver receta"
+
 msgid "ver receta %s"
 msgstr "ver receta %s"
 

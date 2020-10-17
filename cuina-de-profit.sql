@@ -11,7 +11,7 @@
  Target Server Version : 100038
  File Encoding         : 65001
 
- Date: 17/10/2020 13:14:55
+ Date: 17/10/2020 14:04:02
 */
 
 SET NAMES utf8mb4;
@@ -150,7 +150,7 @@ CREATE TABLE `appacman_field` (
   `show_on_list` tinyint(1) unsigned DEFAULT NULL,
   `show_on_breadcrumb` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field
@@ -196,7 +196,7 @@ INSERT INTO `appacman_field` VALUES (37, 9, 'uri', 8, NULL, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (38, 3, 'prep_time', 13, 5, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (39, 3, 'cook_time', 13, 6, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (40, 3, 'link', 12, 12, NULL, NULL);
-INSERT INTO `appacman_field` VALUES (41, 4, 'order_ingredient', 13, 5, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (41, 4, 'order_ingredient', 13, 6, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (42, 4, 'is_alternative', 3, 4, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (43, 7, 'plural', NULL, 2, 1, NULL);
 INSERT INTO `appacman_field` VALUES (44, 6, 'ingredient_recipe', 21, 3, NULL, NULL);
@@ -205,6 +205,7 @@ INSERT INTO `appacman_field` VALUES (46, 10, 'id_ingredient', 22, NULL, NULL, NU
 INSERT INTO `appacman_field` VALUES (47, 10, 'id_recipe', 2, 2, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (48, 10, 'type', NULL, 1, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (49, 10, 'order', 13, 3, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (50, 4, 'is_optional', 3, 5, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -218,7 +219,7 @@ CREATE TABLE `appacman_field_lang` (
   `name` varchar(255) DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field_lang
@@ -273,6 +274,7 @@ INSERT INTO `appacman_field_lang` VALUES (46, 46, 1, 'ID ingredient', NULL);
 INSERT INTO `appacman_field_lang` VALUES (47, 47, 1, 'Recepta', NULL);
 INSERT INTO `appacman_field_lang` VALUES (48, 48, 1, 'Nom', NULL);
 INSERT INTO `appacman_field_lang` VALUES (49, 49, 1, 'Ordre', NULL);
+INSERT INTO `appacman_field_lang` VALUES (50, 50, 1, '¿Opcional?', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -650,7 +652,7 @@ CREATE TABLE `ingredient` (
   `id_recipe_homemade` smallint(5) unsigned DEFAULT NULL,
   `id_recipe_quick` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient
@@ -693,6 +695,7 @@ INSERT INTO `ingredient` VALUES (34, '$soySauce', NULL, NULL, NULL);
 INSERT INTO `ingredient` VALUES (35, '$mirin', NULL, NULL, NULL);
 INSERT INTO `ingredient` VALUES (36, '$nori', 14, NULL, NULL);
 INSERT INTO `ingredient` VALUES (37, '$dashiPowder', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (38, '$riceVinegar', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -782,7 +785,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -862,6 +865,8 @@ INSERT INTO `ingredient_lang` VALUES (71, 36, 1, 'Nori', 'nori');
 INSERT INTO `ingredient_lang` VALUES (72, 36, 2, 'Nori', 'nori');
 INSERT INTO `ingredient_lang` VALUES (73, 37, 1, 'Dashi en pols', 'dashi-en-pols');
 INSERT INTO `ingredient_lang` VALUES (74, 37, 2, 'Dashi en polvo', 'dashi-en-polvo');
+INSERT INTO `ingredient_lang` VALUES (75, 38, 1, 'Vinagre d\'arròs', 'vinagre-darros');
+INSERT INTO `ingredient_lang` VALUES (76, 38, 2, 'Vinagre de arroz', 'vinagre-de-arroz');
 COMMIT;
 
 -- ----------------------------
@@ -874,7 +879,7 @@ CREATE TABLE `ingredient_recipe` (
   `id_recipe` smallint(5) unsigned NOT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient_recipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_recipe
@@ -882,6 +887,9 @@ CREATE TABLE `ingredient_recipe` (
 BEGIN;
 INSERT INTO `ingredient_recipe` VALUES (1, 31, 6, 1);
 INSERT INTO `ingredient_recipe` VALUES (2, 31, 7, 2);
+INSERT INTO `ingredient_recipe` VALUES (3, 25, 8, 0);
+INSERT INTO `ingredient_recipe` VALUES (4, 17, 3, 0);
+INSERT INTO `ingredient_recipe` VALUES (5, 27, 5, 0);
 COMMIT;
 
 -- ----------------------------
@@ -892,9 +900,9 @@ CREATE TABLE `ingredient_recipe_lang` (
   `id_ingredient_recipe_lang` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `id_ingredient_recipe` smallint(5) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_ingredient_recipe_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_recipe_lang
@@ -904,6 +912,12 @@ INSERT INTO `ingredient_recipe_lang` VALUES (1, 1, 1, 'Casolana');
 INSERT INTO `ingredient_recipe_lang` VALUES (2, 1, 2, 'Casera');
 INSERT INTO `ingredient_recipe_lang` VALUES (3, 2, 1, 'Instantania');
 INSERT INTO `ingredient_recipe_lang` VALUES (4, 2, 2, 'Instantànea');
+INSERT INTO `ingredient_recipe_lang` VALUES (5, 3, 1, NULL);
+INSERT INTO `ingredient_recipe_lang` VALUES (6, 3, 2, NULL);
+INSERT INTO `ingredient_recipe_lang` VALUES (7, 4, 1, NULL);
+INSERT INTO `ingredient_recipe_lang` VALUES (8, 4, 2, NULL);
+INSERT INTO `ingredient_recipe_lang` VALUES (9, 5, 1, NULL);
+INSERT INTO `ingredient_recipe_lang` VALUES (10, 5, 2, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -920,7 +934,7 @@ CREATE TABLE `recipe` (
   `link` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_recipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe
@@ -933,6 +947,7 @@ INSERT INTO `recipe` VALUES (4, 2, 2, 55, 40, 3, NULL, '2020-10-16 13:06:45');
 INSERT INTO `recipe` VALUES (5, 1, 2, 45, 20, 2, NULL, '2020-10-16 13:13:34');
 INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, NULL, NULL, '2020-10-16 14:31:42');
 INSERT INTO `recipe` VALUES (7, 1, 0, 0, 15, NULL, NULL, '2020-10-16 19:42:07');
+INSERT INTO `recipe` VALUES (8, 1, 2, 25, 20, NULL, NULL, '2020-10-17 13:25:02');
 COMMIT;
 
 -- ----------------------------
@@ -946,56 +961,63 @@ CREATE TABLE `recipe_ingredient` (
   `id_ingredient` smallint(5) unsigned NOT NULL,
   `id_unit` tinyint(3) unsigned DEFAULT NULL,
   `is_alternative` tinyint(1) unsigned DEFAULT '0',
+  `is_optional` tinyint(1) unsigned DEFAULT '0',
   `order_ingredient` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_ingredient
 -- ----------------------------
 BEGIN;
-INSERT INTO `recipe_ingredient` VALUES (1, 1, '80', 1, 3, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (2, 1, '80', 10, 3, 1, '1');
-INSERT INTO `recipe_ingredient` VALUES (3, 1, '3', 2, 2, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (4, 1, '15', 3, NULL, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (5, 1, '70', 4, 3, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (6, 1, '2', 5, 1, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (7, 1, '1', 11, 9, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (8, 1, '8', 7, 6, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (9, 1, '0', 8, 8, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (10, 1, '0', 9, 8, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (11, 3, '20', 7, 3, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (12, 3, '2', 24, 1, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (13, 3, '75', 23, 3, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (14, 3, '75', 18, 3, 1, '3');
-INSERT INTO `recipe_ingredient` VALUES (15, 3, '30', 2, 4, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (16, 2, '200', 12, 3, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (17, 2, '2', 13, NULL, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (18, 2, '2', 22, 2, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (19, 2, '1', 9, 2, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (20, 2, '1', 21, 2, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (21, 2, '4', 20, 10, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (22, 2, '2', 19, NULL, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (23, 2, '150', 14, 3, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (24, 2, '1500', 15, 4, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (25, 2, '400', 16, 3, 0, '10');
-INSERT INTO `recipe_ingredient` VALUES (26, 2, '150', 17, 3, 0, '11');
-INSERT INTO `recipe_ingredient` VALUES (27, 2, '150', 18, 3, 0, '12');
-INSERT INTO `recipe_ingredient` VALUES (28, 5, '200', 25, 3, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (29, 5, '240', 26, 4, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (30, 4, '200', 27, 3, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (31, 4, '0.5', 13, NULL, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (32, 4, '0.5', 28, NULL, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (33, 6, '500', 26, 4, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (34, 6, '5', 29, 3, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (35, 6, '5', 30, 3, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (36, 4, '200', 31, 4, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (37, 4, '4', 32, NULL, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (38, 4, '3', 34, 1, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (39, 4, '1.5', 35, 1, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (40, 4, '0.5', 33, 1, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (41, 4, '1', 36, NULL, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (42, 7, '500', 26, 4, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (1, 1, '80', 1, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (2, 1, '80', 10, 3, 1, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (3, 1, '3', 2, 2, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (4, 1, '15', 3, NULL, 0, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (5, 1, '70', 4, 3, 0, 0, '4');
+INSERT INTO `recipe_ingredient` VALUES (6, 1, '2', 5, 1, 0, 0, '5');
+INSERT INTO `recipe_ingredient` VALUES (7, 1, '1', 11, 9, 0, 0, '6');
+INSERT INTO `recipe_ingredient` VALUES (8, 1, '8', 7, 6, 0, 0, '7');
+INSERT INTO `recipe_ingredient` VALUES (9, 1, '0', 8, 8, 0, 0, '8');
+INSERT INTO `recipe_ingredient` VALUES (10, 1, '0', 9, 8, 0, 0, '9');
+INSERT INTO `recipe_ingredient` VALUES (11, 3, '20', 7, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (12, 3, '2', 24, 1, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (13, 3, '75', 23, 3, 0, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (14, 3, '75', 18, 3, 1, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (15, 3, '30', 2, 4, 0, 0, '4');
+INSERT INTO `recipe_ingredient` VALUES (16, 2, '200', 12, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (17, 2, '2', 13, NULL, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (18, 2, '2', 22, 2, 0, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (19, 2, '1', 9, 2, 0, 0, '4');
+INSERT INTO `recipe_ingredient` VALUES (20, 2, '1', 21, 2, 0, 0, '5');
+INSERT INTO `recipe_ingredient` VALUES (21, 2, '4', 20, 10, 0, 0, '6');
+INSERT INTO `recipe_ingredient` VALUES (22, 2, '2', 19, NULL, 0, 0, '7');
+INSERT INTO `recipe_ingredient` VALUES (23, 2, '150', 14, 3, 0, 0, '8');
+INSERT INTO `recipe_ingredient` VALUES (24, 2, '1500', 15, 4, 0, 0, '9');
+INSERT INTO `recipe_ingredient` VALUES (25, 2, '400', 16, 3, 0, 0, '10');
+INSERT INTO `recipe_ingredient` VALUES (26, 2, '150', 17, 3, 0, 0, '11');
+INSERT INTO `recipe_ingredient` VALUES (27, 2, '150', 18, 3, 0, 0, '12');
+INSERT INTO `recipe_ingredient` VALUES (28, 5, '200', 25, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (29, 5, '240', 26, 4, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (30, 4, '200', 27, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (31, 4, '0.5', 13, NULL, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (32, 4, '0.5', 28, NULL, 0, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (33, 6, '500', 26, 4, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (34, 6, '5', 29, 3, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (35, 6, '5', 30, 3, 0, 0, '3');
+INSERT INTO `recipe_ingredient` VALUES (36, 4, '200', 31, 4, 0, 0, '4');
+INSERT INTO `recipe_ingredient` VALUES (37, 4, '4', 32, NULL, 0, 0, '5');
+INSERT INTO `recipe_ingredient` VALUES (38, 4, '3', 34, 1, 0, 0, '6');
+INSERT INTO `recipe_ingredient` VALUES (39, 4, '1.5', 35, 1, 0, 0, '7');
+INSERT INTO `recipe_ingredient` VALUES (40, 4, '0.5', 33, 1, 0, 0, '8');
+INSERT INTO `recipe_ingredient` VALUES (41, 4, '1', 36, NULL, 0, 0, '9');
+INSERT INTO `recipe_ingredient` VALUES (42, 7, '500', 26, 4, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (43, 8, '200', 25, 3, 0, 0, '1');
+INSERT INTO `recipe_ingredient` VALUES (44, 8, '200', 26, 4, 0, 0, '2');
+INSERT INTO `recipe_ingredient` VALUES (45, 8, '3', 29, 3, 0, 1, '3');
+INSERT INTO `recipe_ingredient` VALUES (46, 8, '40', 38, 4, 0, 0, '4');
+INSERT INTO `recipe_ingredient` VALUES (47, 8, '1.5', 33, 1, 0, 0, '5');
+INSERT INTO `recipe_ingredient` VALUES (48, 8, '0.5', 22, 2, 0, 0, '6');
 COMMIT;
 
 -- ----------------------------
@@ -1010,7 +1032,7 @@ CREATE TABLE `recipe_lang` (
   `uri` varchar(255) NOT NULL,
   `description` text,
   PRIMARY KEY (`id_recipe_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_lang
@@ -1030,6 +1052,8 @@ INSERT INTO `recipe_lang` VALUES (11, 6, 1, 'Dashi casolà', 'dashi-casola', '<p
 INSERT INTO `recipe_lang` VALUES (12, 6, 2, 'Dashi casero', 'dashi-casero', '<p>Sopa básica en la cocina nipona a base de bonito seco en copos. Animaros a prepararla, ya que se nota mucho la diferencia con el instantáneo.</p>');
 INSERT INTO `recipe_lang` VALUES (13, 7, 1, 'Dashi instantani', 'dashi-instantani', '<p>Sopa bàsica a la cuina nipona.</p>');
 INSERT INTO `recipe_lang` VALUES (14, 7, 2, 'Dashi instantáneo', 'dashi-instantaneo', '<p>Sopa básica en la cocina nipona.</p>');
+INSERT INTO `recipe_lang` VALUES (15, 8, 1, 'Arròs de sushi', 'arros-de-sushi', '<p>Arròs per fer sushi.</p>');
+INSERT INTO `recipe_lang` VALUES (16, 8, 2, 'Arroz de sushi', 'arroz-de-sushi', '<p>Arroz para sushi.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -1042,7 +1066,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(9) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -1072,6 +1096,10 @@ INSERT INTO `recipe_step` VALUES (21, 4, NULL, 2);
 INSERT INTO `recipe_step` VALUES (22, 4, NULL, 3);
 INSERT INTO `recipe_step` VALUES (23, 4, NULL, 4);
 INSERT INTO `recipe_step` VALUES (24, 7, NULL, 1);
+INSERT INTO `recipe_step` VALUES (25, 8, NULL, 1);
+INSERT INTO `recipe_step` VALUES (26, 8, NULL, 2);
+INSERT INTO `recipe_step` VALUES (27, 8, NULL, 3);
+INSERT INTO `recipe_step` VALUES (28, 8, NULL, 4);
 COMMIT;
 
 -- ----------------------------
@@ -1084,7 +1112,7 @@ CREATE TABLE `recipe_step_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
   PRIMARY KEY (`id_recipe_step_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -1128,8 +1156,8 @@ INSERT INTO `recipe_step_lang` VALUES (35, 18, 1, '<p>Passat aquest temps, escal
 INSERT INTO `recipe_step_lang` VALUES (36, 18, 2, '<p>Pasado este tiempo, calentamos la cazuela a fuego lento y antes de que empiece a hervir retiramos el $kombu (aproximadamente 15 minutos).</p><p>Subimos a fuego medio y añadimos el $katsuobushi. En el momento que empieza a hervir: apagamos el fuego y lo dejamos reposar 10 minutos.</p>');
 INSERT INTO `recipe_step_lang` VALUES (37, 19, 1, 'Colem el caldo i pressionem el $katsuobushi perquè deixi anar tot el caldo que ha absorbit.');
 INSERT INTO `recipe_step_lang` VALUES (38, 19, 2, '<p>Colar el caldo y presionamos el $katsuobushi para que suelte todo el caldo que ha absorbido.</p>');
-INSERT INTO `recipe_step_lang` VALUES (39, 20, 1, '<p>Preparem [5].</p><p>Tallem:</p><ul><li>el $chickenBreasts en daus d\'aproximadament 2 cm</li><li>la part blanca del $leek en diagonal en trossos de 1 cm de gruix</li><li>l\'alga $nori en quadrats.</li></ul>');
-INSERT INTO `recipe_step_lang` VALUES (40, 20, 2, '<p>Preparamos [5].</p><p>Cortamos:</p><ul><li>el $chickenBreasts en dados de aproximadamente 2 cm</li><li>la parte blanca del $leek en diagonal en trozos de 1 cm de espesor</li><li>la alga $nori en cuadrados.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (39, 20, 1, '<p>Preparem l\'arròs amb la recepta [5] i el [6] o [7].</p><p>Tallem:</p><ul><li>el $chickenBreasts en daus d\'aproximadament 2 cm</li><li>la part blanca del $leek en diagonal en trossos de 1 cm de gruix</li><li>l\'alga $nori en quadrats.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (40, 20, 2, '<p>Preparamos el arroz con la receta [5] y el [6] o [7].</p><p>Cortamos:</p><ul><li>el $chickenBreasts en dados de aproximadamente 2 cm</li><li>la parte blanca del $leek en diagonal en trozos de 1 cm de espesor</li><li>la alga $nori en cuadrados.</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (41, 21, 1, '<p>Portar a ebullició el $dashi amb el $leek a foc mitjà.</p><p>Quan arrenqui el bull afegim el $chickenBreasts, $sugar, $mirin y $soySauce i ho cuinem fins que el pollastre estigui cuit (uns 5-10 minuts).</p>');
 INSERT INTO `recipe_step_lang` VALUES (42, 21, 2, '<p>Llevar a ebullición el $dashi con el $leek a fuego medio.</p><p>Cuando rompa a hervir añadimos el $chickenBreasts, $sugar, $mirin y $soySauce y lo cocinamos hasta que el pollo esté cocido (unos 5-10 minutos).</p>');
 INSERT INTO `recipe_step_lang` VALUES (43, 22, 1, '<p>Comencem a preparar el plat, ja que això anirà de pressa: repartim el $gohan en bols individuals que cobrirem amb una <i>truita</i> individual de dos ous per cadascun dels comensals.</p><p>En una paella prèviament escalfada, afegim la part proporcional de la sopa amb els seus ingredients (en el nostre cas la meitat). Incorporem els 2 ous batuts.</p><p>Quan la clara comenci a quallar: tapem la paella durant 30 segons i finalment cobrim l\'arròs amb la <i>truita</i> que ha quedat no gaire feta i cremosa.</p>');
@@ -1138,6 +1166,14 @@ INSERT INTO `recipe_step_lang` VALUES (45, 23, 1, '<p>Decorem amb els quadrats d
 INSERT INTO `recipe_step_lang` VALUES (46, 23, 2, '<p>Decoramos con los cuadrados de alga $nori que le dará un toque salado.</p>');
 INSERT INTO `recipe_step_lang` VALUES (47, 24, 1, '<p>Escalfem l\'$water en una cassola. Quan comenci a bullir: afegim el $dashiPowder i removem fins que es dissolgui per complet.</p>');
 INSERT INTO `recipe_step_lang` VALUES (48, 24, 2, '<p>Calentamos el $water en una cazuela. Cuando empiece a hervir: añadimos el $dashiPowder y removemos hasta que se disuelva por completo.</p>');
+INSERT INTO `recipe_step_lang` VALUES (49, 25, 1, '<p>Hem de rentar l\'arròs per treure-li el midó.</p><p>Omplim un bol gran d\'aigua, afegim l\'$sushiRice i amb la mà (com si tinguéssim una pilota de tenis dins) donem unes 20 voltes aproximadament.<br></p><p>Colem l\'arròs per descartar aquesta aigua i repetim el procés 3 o 4 vegades.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (50, 25, 2, '<p>Debemos lavar el arroz para sacarle el almidón.</p><p>Llenamos un bol grande de agua, añadimos el $sushiRice y con la mano (como si tuviéramos una pelota de tenis dentro) damos unas 20 vueltas aproximadamente.<br></p><p>Colar el arroz para descartar esta agua y repetimos el proceso 3 o 4 veces.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (51, 26, 1, '<p>En una cassola gruixuda i que tingui tapa (millor si és de vidre per veure quan comença a bullir) afegim l\'$sushiRice escorregut, l\'$water i el $kombu.</p><p>Encenem el foc al màxim i quan comenci a bullir el baixem al mínim. Ha d\'estar al mínim durant 10 minuts.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (52, 26, 2, '<p>En una cacerola gruesa y que tenga tapa (mejor si es de vidrio para ver cuando empieza a hervir) añadimos el $sushiRice escurrido, el $water y el $kombu.</p><p>Encendemos el fuego al máximo y cuando empiece a hervir lo bajamos al mínimo. Debe estar al mínimo durante 10 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (53, 27, 1, '<p>Apaguem el foc i deixem reposar 10 minuts més <b>sense treure la tapa</b>.</p><p>Mentrestant preparem el vinagre: combinem el $riceVinegar, el $sugar i la $salt en un bol que escalfarem al microones durant 30 segons per aconseguir dissoldre els ingredients.</p>');
+INSERT INTO `recipe_step_lang` VALUES (54, 27, 2, '<p>Apagamos el fuego y dejamos reposar 10 minutos más <b>sin quitar la tapa</b>.</p><p>Mientras preparamos el vinagre: combinamos el $riceVinegar, el $sugar y la $salt en un bol que calentaremos en el microondas durante 30 segundos para conseguir disolver los ingredientes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (55, 28, 1, '<p>Passats els 10 minuts de repòs de l\'arròs, traiem la tapa i retirem el $kombu.</p><p>En una safata refredarem l\'arròs amanint-lo amb el vinagre que hem fet i barrejant-ho tot bé.</p><p>Us animem a fer una cerca per internet per aprendre com s\'ha de fer el procés de refredament segons la cuina japonesa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (56, 28, 2, '<p>Pasados los 10 minutos de reposo del arroz, sacamos la tapa y retiramos el $kombu.</p><p>En una bandeja enfriaremos el arroz aderezándolo con el vinagre que hemos hecho y mezclándolo todo bien.</p><p>Os animamos a hacer una búsqueda por internet para aprender cómo realizar el proceso de enfriamiento según la cocina japonesa.<br></p>');
 COMMIT;
 
 -- ----------------------------
@@ -1174,6 +1210,8 @@ INSERT INTO `recipe_tag` VALUES (6, 13);
 INSERT INTO `recipe_tag` VALUES (7, 6);
 INSERT INTO `recipe_tag` VALUES (7, 7);
 INSERT INTO `recipe_tag` VALUES (7, 13);
+INSERT INTO `recipe_tag` VALUES (8, 7);
+INSERT INTO `recipe_tag` VALUES (8, 13);
 COMMIT;
 
 -- ----------------------------

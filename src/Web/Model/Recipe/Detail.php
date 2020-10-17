@@ -146,7 +146,9 @@ class Detail extends Model
     private function getIngredients()
     {
         $sql = '
-            SELECT ri.id_ingredient, ri.amount, ul.name AS unit, ul.plural AS unitPlural, il.name, i.variable, il.uri, ri.is_alternative
+            SELECT ri.id_ingredient, ri.amount, ri.is_alternative, ri.is_optional,
+                ul.name AS unit, ul.plural AS unitPlural, 
+                il.name, i.variable, il.uri
             FROM recipe_ingredient AS ri
             INNER JOIN ingredient AS i ON ri.id_ingredient = i.id_ingredient
             INNER JOIN ingredient_lang AS il ON i.id_ingredient = il.id_ingredient AND il.id_appacman_lang = :lang
@@ -212,24 +214,24 @@ class Detail extends Model
             'id' => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
         );
         $steps = $this->mysql->query($sql, $params);
-
+        
         if (count($steps)) {
             $config = Config::getInstance();
             $domain = $config->getDomain();
 
             // replace recipes
             foreach ($steps as &$step) {
-                $patternRecipe = '/\[([^\)]+)\]/';
-                preg_match($patternRecipe, $step['description'], $matches);
+                $patternRecipe = '/\[(\d)\]/';
+                preg_match_all($patternRecipe, $step['description'], $matches);
                 if( count($matches)){
-                    for($i=1; $i<count($matches); $i++){
+                    for($i=0; $i<count($matches[0]); $i++){
                         $recipe = new Detail();
-                        $recipe->setID($matches[$i]);
+                        $recipe->setID($matches[1][$i]);
                         $recipeInfo = $recipe->get();
                         if( count($recipeInfo)){
                             $url = $domain . _('receta') . '/' . $recipeInfo['uri'];
                             $link = '<a href="' . $url . '" class="main-color">' . mb_strtolower($recipeInfo['name']) . '</a>';
-                            $step['description'] = str_replace($matches[0], $link, $step['description']);
+                            $step['description'] = str_replace($matches[0][$i], $link, $step['description']);
                         }
                     }
                 }

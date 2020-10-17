@@ -15,7 +15,12 @@
 {% if ingredient.recipes|length > 0 %}
     {% set links = [] %}
     {% for recipe in ingredient.recipes %}
-        {% set links = links|merge(['<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ 'ver receta %s'|trans|format(recipe.type|lower) ~ '</a>']) %}
+        {% set name = 'ver receta'|trans %}
+        {% if recipe.type %}
+            {% set name = 'ver receta %s'|trans|format(recipe.type|lower) %}
+        {% endif %}
+        {% set links = links|merge(['<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ name ~ '</a>']) %}
     {% endfor %}
     <small>({{ links|join(' | ')|raw }})</small>
 {% endif %}
+{% if ingredient.is_optional %}({% trans %}opcional{% endtrans %}){% endif %}
