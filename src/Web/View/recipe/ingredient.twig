@@ -11,7 +11,11 @@
         {% endif %}
     </span>
 {% endif %}
-<a href="{{ domain }}{% trans %}ingrediente{% endtrans %}/{{ ingredient.uri }}" class="main-color">{{ ingredient.name|lower }}</a>{{ finalUnit }}
-{% if ingredient.recipe %}
-    <small>(<a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ ingredient.recipe }}" class="black-color" target="_blank">{% trans %}ver receta{% endtrans %}</a>)</small>
+<a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ ingredient.uri }}" class="main-color">{{ ingredient.name|lower }}</a>{{ finalUnit }}
+{% if ingredient.recipes|length > 0 %}
+    {% set links = [] %}
+    {% for recipe in ingredient.recipes %}
+        {% set links = links|merge(['<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ 'ver receta %s'|trans|format(recipe.type|lower) ~ '</a>']) %}
+    {% endfor %}
+    <small>({{ links|join(' | ')|raw }})</small>
 {% endif %}

@@ -18,17 +18,8 @@ msgstr "receptes"
 msgid "receta"
 msgstr "recepta"
 
-msgid "categoria"
-msgstr "categoria"
-
-msgid "ingrediente"
-msgstr "ingredient"
-
-msgid "etiqueta"
-msgstr "etiqueta"
-
-msgid "dificultad"
-msgstr "dificultat"
+msgid "recetas"
+msgstr "receptes"
 
 msgid "contacto"
 msgstr "contacte"
@@ -85,8 +76,8 @@ msgstr "Ingredients"
 msgid "o"
 msgstr "o"
 
-msgid "ver receta"
-msgstr "ver receta"
+msgid "ver receta %s"
+msgstr "ver receta %s"
 
 msgid "Receta original"
 msgstr "Recepta original"
@@ -107,14 +98,20 @@ msgid "minutos"
 msgstr "minuts"
 
 # search
+msgid "Filtrar"
+msgstr "Filtrar"
+
+msgid "Limpiar"
+msgstr "Eliminar"
+
 msgid "Resultados por"
 msgstr "Resultats per"
 
-msgid "Categoría"
-msgstr "Categoria"
-
 msgid "Dificultad"
 msgstr "Dificultat"
+
+msgid "Categoría"
+msgstr "Categoria"
 
 msgid "Ingrediente"
 msgstr "Ingredient"

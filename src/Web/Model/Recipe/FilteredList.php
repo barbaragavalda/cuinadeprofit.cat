@@ -51,7 +51,7 @@ class FilteredList extends Paginated
         $sql     = '
             SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.image, (prep_time + cook_time) AS time,
                 rl.name, rl.uri, rl.description,
-                dl.name AS difficulty, dl.uri AS difficultyURI
+                dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang

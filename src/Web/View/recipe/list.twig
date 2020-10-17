@@ -1,14 +1,51 @@
 {% extends 'basic.twig' %}
 
+{% block extraHead %}
+    <link rel="stylesheet" href="{{ staticDomain }}js/plugin/OverlayScrollbars/css/OverlayScrollbars.min.css" type="text/css">
+{% endblock %}
+{% block extraBody %}
+    <script src="{{ staticDomain }}js/plugin/OverlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="{{ staticDomain }}js/recipes.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.filter ul').each(function(){
+                OverlayScrollbars($(this), {
+                    className       : 'os-theme-dark'
+                });
+            });
+
+            new Recipes();
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <div id="list" class="container-xl">
-        {% if items is defined and items|length > 0 %}
-            <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
-            {% include 'include/list.twig' with { recipes: items } %}
-            {% include 'include/pagination.twig' %}
-        {% else %}
-            <h1 class="title">{% trans %}Resultados por{% endtrans %} {{ title|lower }}</h1>
-            {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="#" class="secondary-color">', '</a>')|raw }}
-        {% endif %}
+        <div class="row">
+            <div class="col">
+                {% set buttons %}
+                    <div class="btn-group-sm">
+                        <button type="button" class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
+                        <a href="{{ domain }}{% trans %}recetas{% endtrans %}" type="button" class="btn white-bg grey-border">{% trans %}Limpiar{% endtrans %}</a>
+                    </div>
+                {% endset %}
+                {{ buttons }}
+                {% include 'recipe/checkboxes.twig' with{ title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
+                {% include 'recipe/checkboxes.twig' with{ title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
+                {% include 'recipe/checkboxes.twig' with{ title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
+                {% include 'recipe/checkboxes.twig' with{ title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
+                {{ buttons }}
+            </div>
+            <div class="col-10">
+                {% if items is defined and items|length > 0 %}
+                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
+                    {% include 'include/list.twig' with { recipes: items } %}
+                    {% include 'include/pagination.twig' %}
+                {% else %}
+                    <h1 class="title">{% trans %}Resultados por{% endtrans %} {{ title|lower }}</h1>
+                    {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="#" class="secondary-color">', '</a>')|raw }}
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}

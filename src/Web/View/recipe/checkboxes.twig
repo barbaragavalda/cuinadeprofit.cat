@@ -1,0 +1,38 @@
+<div class="filter">
+    <h6>{{ title }}</h6>
+    {% if checkboxes|length > 10 %}
+        <div class="input-group input-group-sm mb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control search" />
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    {% endif %}
+    {% set selected = [] %}
+    {% set normal = [] %}
+    {% for checkbox in checkboxes %}
+        {% set li %}
+            <li class="custom-control custom-checkbox">
+                {% set checked = '' %}
+                {% if filters[field] == checkbox.id %}
+                    {% set checked = 'checked' %}
+                {% endif %}
+                <input type="checkbox" class="custom-control-input" name="{{ field }}[]" id="{{ field }}-{{ checkbox.id }}" {{ checked }} />
+                <label class="custom-control-label" for="{{ field }}-{{ checkbox.id }}"><small>{{ checkbox.name }}</small></label>
+            </li>
+        {% endset %}
+
+        {% if checkboxes|length > 10 and filters[field] == checkbox.id %}
+            {% set selected = selected|merge([li]) %}
+        {% else %}
+            {% set normal = normal|merge([li]) %}
+        {% endif %}
+    {% endfor %}
+    <ul>
+        {{ selected|join|raw }}
+        {{ normal|join|raw }}
+    </ul>
+</div>

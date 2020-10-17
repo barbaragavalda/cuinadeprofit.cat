@@ -33,9 +33,9 @@
                         {% endif %}
                         <div class="main-bg">
                             <h1>{{ recipe.name }}</h1>
-                            <div><a href="{{ domain }}{% trans %}dificultad{% endtrans %}/{{ recipe.difficultyURI }}" class="badge secondary-bg black-color">{{ recipe.difficulty }}</a></div>
+                            {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
+                                <a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                         {% if recipe.specs|length > 0 %}
@@ -71,7 +71,7 @@
                                         {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
                                         {% if recipe.ingredients[i+1].is_alternative %}
                                             {% set i = i + 1 %}
-                                            ({% trans %}o{% endtrans %} {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %})
+                                            {% trans %}o{% endtrans %} {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
                                         {% endif %}
                                         {% set i = i + 1 %}
                                     </li>

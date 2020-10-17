@@ -7,15 +7,10 @@ $config = array(
 
         '' => 'Home',
 
-        _('receta') . '/{uri}'             => 'Recipe\\Detail',
-        _('categoria') . '/{uri}'          => 'Recipe\\Search\\Category',
-        _('categoria') . '/{uri}/{page}'   => 'Recipe\\Search\\Category',
-        _('dificultad') . '/{uri}'         => 'Recipe\\Search\\Difficulty',
-        _('dificultad') . '/{uri}/{page}'  => 'Recipe\\Search\\Difficulty',
-        _('etiqueta') . '/{uri}'           => 'Recipe\\Search\\Tag',
-        _('etiqueta') . '/{uri}/{page}'    => 'Recipe\\Search\\Tag',
-        _('ingrediente') . '/{uri}'        => 'Recipe\\Search\\Ingredient',
-        _('ingrediente') . '/{uri}/{page}' => 'Recipe\\Search\\Ingredient'
+        _('receta') . '/{uri}' => 'Recipe\\Detail',
+        _('recetas') => 'Recipe\\Search',
+        _('recetas') . '/{param1}' => 'Recipe\\Search',
+        _('recetas') . '/{param1}/{param2}' => 'Recipe\\Search',
     )
 
 );

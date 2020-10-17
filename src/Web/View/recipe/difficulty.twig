@@ -1,0 +1,10 @@
+{% set classDifficulty = 'main-bg black-color' %}
+{% if recipe.id_difficulty == 2 %}
+    {% set classDifficulty = 'secondary-bg black-color' %}
+{% else %}
+    {% if recipe.id_difficulty == 3 %}
+        {% set classDifficulty = 'danger-bg white-color' %}
+    {% else %}
+    {% endif %}
+{% endif %}
+<div><a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ recipe.difficultyURI }}" class="badge {{ classDifficulty }}">{{ recipe.difficulty }}</a></div>

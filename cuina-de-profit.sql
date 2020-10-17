@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : VMPHP7
+ Source Server         : VM
  Source Server Type    : MySQL
  Source Server Version : 100038
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100038
  File Encoding         : 65001
 
- Date: 16/10/2020 16:41:17
+ Date: 17/10/2020 13:14:55
 */
 
 SET NAMES utf8mb4;
@@ -91,7 +91,7 @@ CREATE TABLE `appacman_content` (
   `order_by` varchar(255) DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_content`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_content
@@ -106,6 +106,7 @@ INSERT INTO `appacman_content` VALUES (6, 'ingredient', 'fa-shopping-cart', 2, 1
 INSERT INTO `appacman_content` VALUES (7, 'unit', 'fa-flask', 2, 1, '`name` ASC', 4);
 INSERT INTO `appacman_content` VALUES (8, 'tag', 'fa-tag', 2, 1, '`order` ASC', 5);
 INSERT INTO `appacman_content` VALUES (9, 'ingredient_category', 'fa-tag', 2, 1, '`name` ASC', 3);
+INSERT INTO `appacman_content` VALUES (10, 'ingredient_recipe', NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -118,7 +119,7 @@ CREATE TABLE `appacman_content_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_content_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_content_lang
@@ -133,6 +134,7 @@ INSERT INTO `appacman_content_lang` VALUES (6, 6, 1, 'Ingredients');
 INSERT INTO `appacman_content_lang` VALUES (7, 7, 1, 'Unitats');
 INSERT INTO `appacman_content_lang` VALUES (8, 8, 1, 'Etiquetes');
 INSERT INTO `appacman_content_lang` VALUES (9, 9, 1, 'Categoria');
+INSERT INTO `appacman_content_lang` VALUES (10, 10, 1, 'Ingredient: receptes');
 COMMIT;
 
 -- ----------------------------
@@ -148,7 +150,7 @@ CREATE TABLE `appacman_field` (
   `show_on_list` tinyint(1) unsigned DEFAULT NULL,
   `show_on_breadcrumb` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field
@@ -197,8 +199,12 @@ INSERT INTO `appacman_field` VALUES (40, 3, 'link', 12, 12, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (41, 4, 'order_ingredient', 13, 5, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (42, 4, 'is_alternative', 3, 4, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (43, 7, 'plural', NULL, 2, 1, NULL);
-INSERT INTO `appacman_field` VALUES (44, 6, 'id_recipe', 2, 4, 1, NULL);
+INSERT INTO `appacman_field` VALUES (44, 6, 'ingredient_recipe', 21, 3, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (45, 8, 'order', 13, 2, 1, NULL);
+INSERT INTO `appacman_field` VALUES (46, 10, 'id_ingredient', 22, NULL, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (47, 10, 'id_recipe', 2, 2, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (48, 10, 'type', NULL, 1, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (49, 10, 'order', 13, 3, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -212,7 +218,7 @@ CREATE TABLE `appacman_field_lang` (
   `name` varchar(255) DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field_lang
@@ -261,8 +267,12 @@ INSERT INTO `appacman_field_lang` VALUES (40, 40, 1, 'Link', NULL);
 INSERT INTO `appacman_field_lang` VALUES (41, 41, 1, 'Ordre', NULL);
 INSERT INTO `appacman_field_lang` VALUES (42, 42, 1, 'Alternativa?', NULL);
 INSERT INTO `appacman_field_lang` VALUES (43, 43, 1, 'Plural', NULL);
-INSERT INTO `appacman_field_lang` VALUES (44, 44, 1, 'Receta', NULL);
+INSERT INTO `appacman_field_lang` VALUES (44, 44, 1, 'Receptes', NULL);
 INSERT INTO `appacman_field_lang` VALUES (45, 45, 1, 'Ordre', NULL);
+INSERT INTO `appacman_field_lang` VALUES (46, 46, 1, 'ID ingredient', NULL);
+INSERT INTO `appacman_field_lang` VALUES (47, 47, 1, 'Recepta', NULL);
+INSERT INTO `appacman_field_lang` VALUES (48, 48, 1, 'Nom', NULL);
+INSERT INTO `appacman_field_lang` VALUES (49, 49, 1, 'Ordre', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -637,50 +647,52 @@ CREATE TABLE `ingredient` (
   `id_ingredient` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `variable` varchar(255) NOT NULL,
   `id_ingredient_category` tinyint(3) unsigned DEFAULT NULL,
-  `id_recipe` smallint(5) unsigned DEFAULT NULL,
+  `id_recipe_homemade` smallint(5) unsigned DEFAULT NULL,
+  `id_recipe_quick` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient
 -- ----------------------------
 BEGIN;
-INSERT INTO `ingredient` VALUES (1, '$dryTomatoes', 4, 0);
-INSERT INTO `ingredient` VALUES (2, '$virginOliveOil', NULL, 0);
-INSERT INTO `ingredient` VALUES (3, '$blackOlives', NULL, 0);
-INSERT INTO `ingredient` VALUES (4, '$goatRollCheese', 8, 0);
-INSERT INTO `ingredient` VALUES (5, '$creamCheese', 8, 0);
-INSERT INTO `ingredient` VALUES (6, '$lemon', 4, 0);
-INSERT INTO `ingredient` VALUES (7, '$basil', 10, 0);
-INSERT INTO `ingredient` VALUES (8, '$provencalHerbs', 10, 0);
-INSERT INTO `ingredient` VALUES (9, '$pepper', 9, 0);
-INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 4, 0);
-INSERT INTO `ingredient` VALUES (11, '$lemonJuice', NULL, 0);
-INSERT INTO `ingredient` VALUES (12, '$baconStrips', 1, 0);
-INSERT INTO `ingredient` VALUES (13, '$chickenBreasts', 6, 0);
-INSERT INTO `ingredient` VALUES (14, '$freshSpinach', 3, 0);
-INSERT INTO `ingredient` VALUES (15, '$milk', 11, 0);
-INSERT INTO `ingredient` VALUES (16, '$fettuccine', 12, 0);
-INSERT INTO `ingredient` VALUES (17, '$pesto', NULL, 3);
-INSERT INTO `ingredient` VALUES (18, '$parmesan', 8, 0);
-INSERT INTO `ingredient` VALUES (19, '$onion', 5, 0);
-INSERT INTO `ingredient` VALUES (20, '$garlic', 5, 0);
-INSERT INTO `ingredient` VALUES (21, '$garlicPowder', 9, 0);
-INSERT INTO `ingredient` VALUES (22, '$salt', 9, 0);
-INSERT INTO `ingredient` VALUES (23, '$pecorino', 8, 0);
-INSERT INTO `ingredient` VALUES (24, '$pineNut', 13, 0);
-INSERT INTO `ingredient` VALUES (25, '$sushiRice', 7, NULL);
-INSERT INTO `ingredient` VALUES (26, '$water', NULL, NULL);
-INSERT INTO `ingredient` VALUES (27, '$gohan', 7, 5);
-INSERT INTO `ingredient` VALUES (28, '$leek', 3, NULL);
-INSERT INTO `ingredient` VALUES (29, '$kombu', 14, NULL);
-INSERT INTO `ingredient` VALUES (30, '$katsuobushi', 2, NULL);
-INSERT INTO `ingredient` VALUES (31, '$dashi', NULL, 6);
-INSERT INTO `ingredient` VALUES (32, '$egg', NULL, NULL);
-INSERT INTO `ingredient` VALUES (33, '$sugar', NULL, NULL);
-INSERT INTO `ingredient` VALUES (34, '$soySauce', NULL, NULL);
-INSERT INTO `ingredient` VALUES (35, '$mirin', NULL, NULL);
-INSERT INTO `ingredient` VALUES (36, '$nori', 14, NULL);
+INSERT INTO `ingredient` VALUES (1, '$dryTomatoes', 4, NULL, NULL);
+INSERT INTO `ingredient` VALUES (2, '$virginOliveOil', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (3, '$blackOlives', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (4, '$goatRollCheese', 8, NULL, NULL);
+INSERT INTO `ingredient` VALUES (5, '$creamCheese', 8, NULL, NULL);
+INSERT INTO `ingredient` VALUES (6, '$lemon', 4, NULL, NULL);
+INSERT INTO `ingredient` VALUES (7, '$basil', 10, NULL, NULL);
+INSERT INTO `ingredient` VALUES (8, '$provencalHerbs', 10, NULL, NULL);
+INSERT INTO `ingredient` VALUES (9, '$pepper', 9, NULL, NULL);
+INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 4, NULL, NULL);
+INSERT INTO `ingredient` VALUES (11, '$lemonJuice', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (12, '$baconStrips', 1, NULL, NULL);
+INSERT INTO `ingredient` VALUES (13, '$chickenBreasts', 6, NULL, NULL);
+INSERT INTO `ingredient` VALUES (14, '$freshSpinach', 3, NULL, NULL);
+INSERT INTO `ingredient` VALUES (15, '$milk', 11, NULL, NULL);
+INSERT INTO `ingredient` VALUES (16, '$fettuccine', 12, NULL, NULL);
+INSERT INTO `ingredient` VALUES (17, '$pesto', NULL, 3, NULL);
+INSERT INTO `ingredient` VALUES (18, '$parmesan', 8, NULL, NULL);
+INSERT INTO `ingredient` VALUES (19, '$onion', 5, NULL, NULL);
+INSERT INTO `ingredient` VALUES (20, '$garlic', 5, NULL, NULL);
+INSERT INTO `ingredient` VALUES (21, '$garlicPowder', 9, NULL, NULL);
+INSERT INTO `ingredient` VALUES (22, '$salt', 9, NULL, NULL);
+INSERT INTO `ingredient` VALUES (23, '$pecorino', 8, NULL, NULL);
+INSERT INTO `ingredient` VALUES (24, '$pineNut', 13, NULL, NULL);
+INSERT INTO `ingredient` VALUES (25, '$sushiRice', 7, NULL, NULL);
+INSERT INTO `ingredient` VALUES (26, '$water', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (27, '$gohan', 7, 5, NULL);
+INSERT INTO `ingredient` VALUES (28, '$leek', 3, NULL, NULL);
+INSERT INTO `ingredient` VALUES (29, '$kombu', 14, NULL, NULL);
+INSERT INTO `ingredient` VALUES (30, '$katsuobushi', 2, NULL, NULL);
+INSERT INTO `ingredient` VALUES (31, '$dashi', NULL, 6, NULL);
+INSERT INTO `ingredient` VALUES (32, '$egg', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (33, '$sugar', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (34, '$soySauce', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (35, '$mirin', NULL, NULL, NULL);
+INSERT INTO `ingredient` VALUES (36, '$nori', 14, NULL, NULL);
+INSERT INTO `ingredient` VALUES (37, '$dashiPowder', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -770,7 +782,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -848,6 +860,50 @@ INSERT INTO `ingredient_lang` VALUES (69, 35, 1, 'Mirin', 'mirin');
 INSERT INTO `ingredient_lang` VALUES (70, 35, 2, 'Mirin', 'mirin');
 INSERT INTO `ingredient_lang` VALUES (71, 36, 1, 'Nori', 'nori');
 INSERT INTO `ingredient_lang` VALUES (72, 36, 2, 'Nori', 'nori');
+INSERT INTO `ingredient_lang` VALUES (73, 37, 1, 'Dashi en pols', 'dashi-en-pols');
+INSERT INTO `ingredient_lang` VALUES (74, 37, 2, 'Dashi en polvo', 'dashi-en-polvo');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for ingredient_recipe
+-- ----------------------------
+DROP TABLE IF EXISTS `ingredient_recipe`;
+CREATE TABLE `ingredient_recipe` (
+  `id_ingredient_recipe` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_ingredient` smallint(5) unsigned NOT NULL,
+  `id_recipe` smallint(5) unsigned NOT NULL,
+  `order` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_ingredient_recipe`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ingredient_recipe
+-- ----------------------------
+BEGIN;
+INSERT INTO `ingredient_recipe` VALUES (1, 31, 6, 1);
+INSERT INTO `ingredient_recipe` VALUES (2, 31, 7, 2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for ingredient_recipe_lang
+-- ----------------------------
+DROP TABLE IF EXISTS `ingredient_recipe_lang`;
+CREATE TABLE `ingredient_recipe_lang` (
+  `id_ingredient_recipe_lang` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_ingredient_recipe` smallint(5) unsigned NOT NULL,
+  `id_appacman_lang` tinyint(3) unsigned NOT NULL,
+  `type` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_ingredient_recipe_lang`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ingredient_recipe_lang
+-- ----------------------------
+BEGIN;
+INSERT INTO `ingredient_recipe_lang` VALUES (1, 1, 1, 'Casolana');
+INSERT INTO `ingredient_recipe_lang` VALUES (2, 1, 2, 'Casera');
+INSERT INTO `ingredient_recipe_lang` VALUES (3, 2, 1, 'Instantania');
+INSERT INTO `ingredient_recipe_lang` VALUES (4, 2, 2, 'Instantànea');
 COMMIT;
 
 -- ----------------------------
@@ -864,18 +920,19 @@ CREATE TABLE `recipe` (
   `link` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_recipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe
 -- ----------------------------
 BEGIN;
-INSERT INTO `recipe` VALUES (1, 1, 0, 30, 15, NULL, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
+INSERT INTO `recipe` VALUES (1, 3, 0, 30, 15, NULL, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
 INSERT INTO `recipe` VALUES (2, 1, 4, 0, 60, NULL, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
 INSERT INTO `recipe` VALUES (3, 1, 4, 5, 0, NULL, NULL, '2020-10-15 16:54:38');
-INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, 3, NULL, '2020-10-16 13:06:45');
+INSERT INTO `recipe` VALUES (4, 2, 2, 55, 40, 3, NULL, '2020-10-16 13:06:45');
 INSERT INTO `recipe` VALUES (5, 1, 2, 45, 20, 2, NULL, '2020-10-16 13:13:34');
 INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, NULL, NULL, '2020-10-16 14:31:42');
+INSERT INTO `recipe` VALUES (7, 1, 0, 0, 15, NULL, NULL, '2020-10-16 19:42:07');
 COMMIT;
 
 -- ----------------------------
@@ -891,7 +948,7 @@ CREATE TABLE `recipe_ingredient` (
   `is_alternative` tinyint(1) unsigned DEFAULT '0',
   `order_ingredient` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_ingredient
@@ -938,6 +995,7 @@ INSERT INTO `recipe_ingredient` VALUES (38, 4, '3', 34, 1, 0, '6');
 INSERT INTO `recipe_ingredient` VALUES (39, 4, '1.5', 35, 1, 0, '7');
 INSERT INTO `recipe_ingredient` VALUES (40, 4, '0.5', 33, 1, 0, '8');
 INSERT INTO `recipe_ingredient` VALUES (41, 4, '1', 36, NULL, 0, '9');
+INSERT INTO `recipe_ingredient` VALUES (42, 7, '500', 26, 4, 0, '1');
 COMMIT;
 
 -- ----------------------------
@@ -952,7 +1010,7 @@ CREATE TABLE `recipe_lang` (
   `uri` varchar(255) NOT NULL,
   `description` text,
   PRIMARY KEY (`id_recipe_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_lang
@@ -964,12 +1022,14 @@ INSERT INTO `recipe_lang` VALUES (3, 2, 1, 'Pasta cremosa de pollastre, bacó i 
 INSERT INTO `recipe_lang` VALUES (4, 2, 2, 'Pasta cremosa de pollo, bacon y espinacas', 'pasta-cremosa-de-pollo-bacon-y-espinacas', '<p>Pasta hervida con leche y que se puede preparar de principio a fin en la misma olla.</p>');
 INSERT INTO `recipe_lang` VALUES (5, 3, 1, 'Pesto', 'pesto', '<p>Salsa perfecta no tan sols per pasta, sinó també per amanides i entrepans.</p>');
 INSERT INTO `recipe_lang` VALUES (6, 3, 2, 'Pesto', 'pesto', '<p>Salsa perfecta no sólo para pasta, sino también para ensaladas y bocadillos.</p>');
-INSERT INTO `recipe_lang` VALUES (7, 4, 1, 'Oyako Don', 'oyako-don', 'Bol d\'arròs blanc amb una truita super cremosa de pollastres i porros.');
-INSERT INTO `recipe_lang` VALUES (8, 4, 2, 'Oyako Don', 'oyako-don', '<p>Bol de arroz blanco con una tortilla super cremosa de pollos y puerros.</p>');
+INSERT INTO `recipe_lang` VALUES (7, 4, 1, 'Oyako Don', 'oyako-don', 'Bol d\'arròs blanc amb una truita super cremosa de pollastre i porros.');
+INSERT INTO `recipe_lang` VALUES (8, 4, 2, 'Oyako Don', 'oyako-don', '<p>Bol de arroz blanco con una tortilla super cremosa de pollo y puerros.</p>');
 INSERT INTO `recipe_lang` VALUES (9, 5, 1, 'Gohan (arròs japonés)', 'gohan-arros-japones', '<p>Plat bàsic de la cuina japonesa. Un arròs aglutinat que ens servirà com a base per altres plats o com a simple acompanyament.</p>');
 INSERT INTO `recipe_lang` VALUES (10, 5, 2, 'Gohan (arroz japonés)', 'gohan-arroz-japones', '<p>Plato básico de la cocina japonesa. Un arroz aglutinado que nos servirá como base para otros platos o como simple acompañamiento.</p>');
-INSERT INTO `recipe_lang` VALUES (11, 6, 1, 'Dashi casolà', 'dashi-casola', '<p>Sopa bàsica a la cuina nipona a base de bonítol sec en flocs.</p>');
-INSERT INTO `recipe_lang` VALUES (12, 6, 2, 'Dashi casero', 'dashi-casero', '<p>Sopa básica en la cocina nipona a base de bonito seco en copos.</p>');
+INSERT INTO `recipe_lang` VALUES (11, 6, 1, 'Dashi casolà', 'dashi-casola', '<p>Sopa bàsica a la cuina nipona a base de bonítol sec en flocs. Animeu-vos a preparar-la, ja que es nota molt la diferència amb l\'instantani.</p>');
+INSERT INTO `recipe_lang` VALUES (12, 6, 2, 'Dashi casero', 'dashi-casero', '<p>Sopa básica en la cocina nipona a base de bonito seco en copos. Animaros a prepararla, ya que se nota mucho la diferencia con el instantáneo.</p>');
+INSERT INTO `recipe_lang` VALUES (13, 7, 1, 'Dashi instantani', 'dashi-instantani', '<p>Sopa bàsica a la cuina nipona.</p>');
+INSERT INTO `recipe_lang` VALUES (14, 7, 2, 'Dashi instantáneo', 'dashi-instantaneo', '<p>Sopa básica en la cocina nipona.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -982,7 +1042,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(9) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -1011,6 +1071,7 @@ INSERT INTO `recipe_step` VALUES (20, 4, NULL, 1);
 INSERT INTO `recipe_step` VALUES (21, 4, NULL, 2);
 INSERT INTO `recipe_step` VALUES (22, 4, NULL, 3);
 INSERT INTO `recipe_step` VALUES (23, 4, NULL, 4);
+INSERT INTO `recipe_step` VALUES (24, 7, NULL, 1);
 COMMIT;
 
 -- ----------------------------
@@ -1023,7 +1084,7 @@ CREATE TABLE `recipe_step_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
   PRIMARY KEY (`id_recipe_step_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -1037,13 +1098,13 @@ INSERT INTO `recipe_step_lang` VALUES (5, 3, 1, '<p>Afegim tots els ingredients 
 INSERT INTO `recipe_step_lang` VALUES (6, 3, 2, '<p>Añadimos todos los ingredientes en un robot de cocina o vaso de batidora y triturar hasta obtener una pasta más bien densa.</p><p>Lo probamos y rectificamos añadiendo más $pepper, $lemonJuice, $basil, $provencalHerbs o $creamCheese.</p>');
 INSERT INTO `recipe_step_lang` VALUES (7, 4, 1, '<p>Finalment ho servim en un bol acompanyat de torrades.</p><p>Sabem que la pinta no sempre és molt agradable... però confieu en nosaltres i animeu-vos a fer aquesta recepta tant fàcil que segur que us encantarà per afegir als vostres pica-pica.</p>');
 INSERT INTO `recipe_step_lang` VALUES (8, 4, 2, '<p>Finalmente lo servimos en un cuenco acompañado de tostadas.</p><p>Sabemos que la pinta no siempre es muy agradable... pero confiad en nosotros y animaros a hacer esta receta tan fácil que seguro que os encantará para añadir a vuestros picoteos.</p>');
-INSERT INTO `recipe_step_lang` VALUES (9, 5, 1, '<p>Afegim tots els ingredients al vas de la batedora o al processador d\'aliments i ho piquem fins a obtenir el pesto.</p><p>A mi m\'agrada que no quedi massa liquida, però podeu afegir tant $virginOliveOil(0) com vulgueu fins que us quedi la textura desitjada.</p><p>Per conservar-ho: a la nevera en un pot petit amb un raig d\'oli per cobrir la salsa i evitar que l\'aire el faci malbé.</p>');
+INSERT INTO `recipe_step_lang` VALUES (9, 5, 1, '<p>Afegim tots els ingredients al vas de la batedora o al processador d\'aliments i ho piquem fins a obtenir el pesto.</p><p>A mi m\'agrada que no quedi massa líquid, però podeu afegir tant $virginOliveOil(0) com vulgueu fins que us quedi la textura desitjada.</p><p>Per conservar-ho: a la nevera en un pot petit amb un raig d\'oli per cobrir la salsa i evitar que l\'aire el faci malbé.</p>');
 INSERT INTO `recipe_step_lang` VALUES (10, 5, 2, '<p>Añadimos todos los ingredientes en el vaso de la batidora o el procesador de alimentos y lo picamos hasta obtener el pesto.</p><p>A mí me gusta que no quede demasiado liquido, pero puede añadir tanto $virginOliveOil(0) como desee hasta que quede la textura deseada.</p><p>Para conservarlo: en la nevera en un bote pequeño con un chorro de aceite para cubrir la salsa y evitar que el aire el estropee.</p>');
-INSERT INTO `recipe_step_lang` VALUES (11, 6, 1, '<p>Ho prepararem tot (de principi a fi) en una olla o cassola prou gran on poder bullir tota la pasta.</p><p>A foc mig-alt daurem tot el $baconStrips fins que estiguin daurades. Mentrestant:</p><ul><li>tallem el $chickenBreasts en daus </li><li>piquem l\'$garlic </li><li>tallem la $onion en juliana.</li></ul>');
-INSERT INTO `recipe_step_lang` VALUES (12, 6, 2, '<p>Lo prepararemos todo (de principio a fin) en una olla o cacerola suficientemente grande donde poder hervir toda la pasta.</p><p>A fuego medio-alto doramos todo el $baconStrips hasta que estén doradas. Mientras:</p><ul><li>cortamos el $chickenBreasts en dados</li><li>picamos el $garlic</li><li>cortamos la $onion en juliana.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (11, 6, 1, '<p>Ho prepararem tot (de principi a fi) en una olla o cassola prou gran on poder bullir tota la pasta.</p><p>A foc mig-alt daurem les $baconStrips fins que estiguin cruixents. Mentrestant:</p><ul><li>tallem el $chickenBreasts en daus </li><li>piquem l\'$garlic </li><li>tallem la $onion en juliana.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (12, 6, 2, '<p>Lo prepararemos todo (de principio a fin) en una olla o cacerola suficientemente grande donde poder hervir toda la pasta.</p><p>A fuego medio-alto doramos las $baconStrips hasta que estén crujientes. Mientras:</p><ul><li>cortamos el $chickenBreasts en dados</li><li>picamos el $garlic</li><li>cortamos la $onion en juliana.</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (13, 7, 1, '<p>Afegim el $chickenBreasts, la $salt ,el $pepper i l\'$garlicPowder.</p><p>Quan el pollastre hagi perdut el color rosa, el retirem de la cassola i deixem només les $baconStrips(0) daurades.</p>');
 INSERT INTO `recipe_step_lang` VALUES (14, 7, 2, '<p>Añadimos el $chickenBreasts, la $salt, el $pepper y el $garlicPowder.</p><p>Cuando el pollo haya perdido el color rosa, lo retiramos de la cazuela y dejamos sólo las $baconStrips(0) doradas.</p>');
-INSERT INTO `recipe_step_lang` VALUES (15, 8, 1, '<p>Afegim l\'$garlic i la $onion i ho cuinem tot fins que la ceba estigui potxat. Si cal: baixem el foc.</p>');
+INSERT INTO `recipe_step_lang` VALUES (15, 8, 1, '<p>Afegim l\'$garlic i la $onion i ho cuinem tot fins que la ceba estigui <i>potxada</i>. Si cal: baixem el foc.</p>');
 INSERT INTO `recipe_step_lang` VALUES (16, 8, 2, '<p>Añadimos el $garlic y la $ onion y lo cocinamos todo hasta que la cebolla esté pochada. Si es necesario: bajamos el fuego.</p>');
 INSERT INTO `recipe_step_lang` VALUES (17, 9, 1, '<p>Afegim els $freshSpinach i els cuinem fins que s\'estovin i redueixin.</p>');
 INSERT INTO `recipe_step_lang` VALUES (18, 9, 2, '<p>Añadimos los $freshSpinach y los cocinamos hasta que se ablanden y reduzcan.</p>');
@@ -1053,12 +1114,12 @@ INSERT INTO `recipe_step_lang` VALUES (21, 11, 1, '<p>Destapem i anem remenant i
 INSERT INTO `recipe_step_lang` VALUES (22, 11, 2, '<p>Destapamos y vamos removiendo y añadiendo más $milk(0.3333) si es necesario hasta que la pasta esté cocida (como haríamos en un risotto).</p>');
 INSERT INTO `recipe_step_lang` VALUES (23, 12, 1, '<p>Quan la pasta estigui feta, finalitzem el plat afegint el $chickenBreasts anteriorment retirat, el $pesto i el $parmesan. Llest per servir!</p>');
 INSERT INTO `recipe_step_lang` VALUES (24, 12, 2, '<p>Cuando la pasta esté hecha, finalizamos el plato añadiendo el $chickenBreasts anteriormente retirado, el $pesto y el $parmesan. ¡Listo para servir!</p>');
-INSERT INTO `recipe_step_lang` VALUES (25, 13, 1, '<p>Hem de rentar l\'arròs per treure-li el midó.</p><p>Omplim un bol gran d\'aigua, afegim l\'$sushiRice i amb la mà (en posició com si tinguéssim una pilota de tenis dins) donem unes 20 voltes aproximadament. </p><p>Colem l\'arròs per descartar aquesta aigua i repetim el procés 3 o 4 vegades.</p>');
-INSERT INTO `recipe_step_lang` VALUES (26, 13, 2, '<p>Debemos lavar el arroz para sacarle el almidón.</p><p>Llenamos un bol grande de agua, añadimos el $sushiRice y con la mano (en posición como si tuviéramos una pelota de tenis dentro) damos unas 20 vueltas aproximadamente. </p><p>Colar el arroz para descartar esta agua y repetimos el proceso 3 o 4 veces.</p>');
+INSERT INTO `recipe_step_lang` VALUES (25, 13, 1, '<p>Hem de rentar l\'arròs per treure-li el midó.</p><p>Omplim un bol gran d\'aigua, afegim l\'$sushiRice i amb la mà (com si tinguéssim una pilota de tenis dins) donem unes 20 voltes aproximadament. </p><p>Colem l\'arròs per descartar aquesta aigua i repetim el procés 3 o 4 vegades.</p>');
+INSERT INTO `recipe_step_lang` VALUES (26, 13, 2, '<p>Debemos lavar el arroz para sacarle el almidón.</p><p>Llenamos un bol grande de agua, añadimos el $sushiRice y con la mano (como si tuviéramos una pelota de tenis dentro) damos unas 20 vueltas aproximadamente. </p><p>Colar el arroz para descartar esta agua y repetimos el proceso 3 o 4 veces.</p>');
 INSERT INTO `recipe_step_lang` VALUES (27, 14, 1, '<p>Deixem reposar l\'$sushiRice cobert d\'aigua en el bol durant 30 minuts perquè el gra absorbeixi aigua.</p>');
 INSERT INTO `recipe_step_lang` VALUES (28, 14, 2, '<p>Dejamos reposar el $sushiRice cubierto de agua en el bol durante 30 minutos para que el grano absorba agua.</p>');
-INSERT INTO `recipe_step_lang` VALUES (29, 15, 1, '<p>Afegim en una cassola gruixuda i que tingui tapa (millor si és de vidre per veure quan comença a bullir) l\'$sushiRice escorregut i l\'$water.</p><p>Encenem el foc a foc fort i quan comença a bullir ho baixem al mínim. Ha d\'estar al mínim durant 10 minuts.</p>');
-INSERT INTO `recipe_step_lang` VALUES (30, 15, 2, '<p>Añadimos en una cacerola gruesa y que tenga tapa (mejor si es de vidrio para ver cuando empieza a hervir) el $sushiRice escurrido y el $water.</p><p>Encendemos el fuego a fuego fuerte y cuando empieza a hervir lo bajamos al mínimo. Debe estar al mínimo durante 10 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (29, 15, 1, '<p>En una cassola gruixuda i que tingui tapa (millor si és de vidre per veure quan comença a bullir) afegim l\'$sushiRice escorregut i l\'$water.</p><p>Encenem el foc al màxim i quan comenci a bullir el baixem al mínim. Ha d\'estar al mínim durant 10 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (30, 15, 2, '<p>En una cacerola gruesa y que tenga tapa (mejor si es de vidrio para ver cuando empieza a hervir) añadimos el $sushiRice escurrido y el $water.</p><p>Encendemos el fuego al máximo y cuando empiece a hervir lo bajamos al mínimo. Debe estar al mínimo durante 10 minutos.</p>');
 INSERT INTO `recipe_step_lang` VALUES (31, 16, 1, '<p>Apaguem el foc i deixem reposar 10 minuts més <b>sense treure la tapa</b> i llest.</p>');
 INSERT INTO `recipe_step_lang` VALUES (32, 16, 2, '<p>Apagamos el fuego y dejamos reposar 10 minutos más <b>sin quitar la tapa</b> y listo.</p>');
 INSERT INTO `recipe_step_lang` VALUES (33, 17, 1, 'Posar el $kombu en remull en una cassola amb l\'$water durant almenys 30 minuts (poden ser hores o la nit abans).');
@@ -1071,10 +1132,12 @@ INSERT INTO `recipe_step_lang` VALUES (39, 20, 1, '<p>Preparem [5].</p><p>Tallem
 INSERT INTO `recipe_step_lang` VALUES (40, 20, 2, '<p>Preparamos [5].</p><p>Cortamos:</p><ul><li>el $chickenBreasts en dados de aproximadamente 2 cm</li><li>la parte blanca del $leek en diagonal en trozos de 1 cm de espesor</li><li>la alga $nori en cuadrados.</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (41, 21, 1, '<p>Portar a ebullició el $dashi amb el $leek a foc mitjà.</p><p>Quan arrenqui el bull afegim el $chickenBreasts, $sugar, $mirin y $soySauce i ho cuinem fins que el pollastre estigui cuit (uns 5-10 minuts).</p>');
 INSERT INTO `recipe_step_lang` VALUES (42, 21, 2, '<p>Llevar a ebullición el $dashi con el $leek a fuego medio.</p><p>Cuando rompa a hervir añadimos el $chickenBreasts, $sugar, $mirin y $soySauce y lo cocinamos hasta que el pollo esté cocido (unos 5-10 minutos).</p>');
-INSERT INTO `recipe_step_lang` VALUES (43, 22, 1, '<p>Comencem a preparar el plat, ja que això anirà de pressa: repartim el $gohan en bols individuals que cobrirem amb una <i>truita</i> individual de dos ous per cadascun dels comensals.</p><p>En una paella prèviament escalfada, afegim la part proporcional de la sopa amb els seus ingredients (en el nostre cas la meitat). Incorporem els 2 ous batuts.</p><p>Quan la clara comenci a quallar: tapem la paella durant 30 segons i finalment tapem l\'arròs amb la <i>truita</i> que ha quedat no gaire feta i cremosa.</p>');
-INSERT INTO `recipe_step_lang` VALUES (44, 22, 2, '<p>Empezamos a preparar el plato, ya que esto irá deprisa: repartimos el $gohan en cuencos individuales que cubriremos con una <i>tortilla</i> individual de dos huevos por cada uno de los comensales.</p><p>En una sartén previamente calentada, añadimos la parte proporcional de la sopa con sus ingredientes (en nuestro caso la mitad). Incorporamos los 2 huevos batidos.</p><p>Cuando la clara empiece a cuajar: tapamos la sartén durante 30 segundos y finalmente tapamos el arroz con la <i>tortilla</i> que ha quedado no muy hecha y cremosa.</p>');
-INSERT INTO `recipe_step_lang` VALUES (45, 23, 1, '<p>Decorem amb els quadrats d\'alga $nori que li donarà un toc salat.</p>');
+INSERT INTO `recipe_step_lang` VALUES (43, 22, 1, '<p>Comencem a preparar el plat, ja que això anirà de pressa: repartim el $gohan en bols individuals que cobrirem amb una <i>truita</i> individual de dos ous per cadascun dels comensals.</p><p>En una paella prèviament escalfada, afegim la part proporcional de la sopa amb els seus ingredients (en el nostre cas la meitat). Incorporem els 2 ous batuts.</p><p>Quan la clara comenci a quallar: tapem la paella durant 30 segons i finalment cobrim l\'arròs amb la <i>truita</i> que ha quedat no gaire feta i cremosa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (44, 22, 2, '<p>Empezamos a preparar el plato, ya que esto irá deprisa: repartimos el $gohan en cuencos individuales que cubriremos con una <i>tortilla</i> individual de dos huevos por cada uno de los comensales.</p><p>En una sartén previamente calentada, añadimos la parte proporcional de la sopa con sus ingredientes (en nuestro caso la mitad). Incorporamos los 2 huevos batidos.</p><p>Cuando la clara empiece a cuajar: tapamos la sartén durante 30 segundos y finalmente cubrimos el arroz con la <i>tortilla</i> que ha quedado no muy hecha y cremosa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (45, 23, 1, '<p>Decorem amb els quadrats d\'alga $nori que l\'hi donarà un toc salat.</p>');
 INSERT INTO `recipe_step_lang` VALUES (46, 23, 2, '<p>Decoramos con los cuadrados de alga $nori que le dará un toque salado.</p>');
+INSERT INTO `recipe_step_lang` VALUES (47, 24, 1, '<p>Escalfem l\'$water en una cassola. Quan comenci a bullir: afegim el $dashiPowder i removem fins que es dissolgui per complet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (48, 24, 2, '<p>Calentamos el $water en una cazuela. Cuando empiece a hervir: añadimos el $dashiPowder y removemos hasta que se disuelva por completo.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -1108,6 +1171,9 @@ INSERT INTO `recipe_tag` VALUES (5, 13);
 INSERT INTO `recipe_tag` VALUES (6, 6);
 INSERT INTO `recipe_tag` VALUES (6, 7);
 INSERT INTO `recipe_tag` VALUES (6, 13);
+INSERT INTO `recipe_tag` VALUES (7, 6);
+INSERT INTO `recipe_tag` VALUES (7, 7);
+INSERT INTO `recipe_tag` VALUES (7, 13);
 COMMIT;
 
 -- ----------------------------

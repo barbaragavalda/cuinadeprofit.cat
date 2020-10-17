@@ -54,11 +54,15 @@ footer {
 	background-color: rgb(171, 243, 234);
 }
 .main-color,
-#main-header a:hover, #main-header a.current {
+#main-header a:hover, #main-header a.current{
 	color: rgb(65, 225, 200) !important;
 }
+.custom-control-input:checked~.custom-control-label::before{
+	border-color: rgb(65, 225, 200);
+}
 .main-bg,
-#main-header ul li a:after{
+#main-header ul li a:after,
+.custom-control-input:checked~.custom-control-label::before{
 	background: rgb(65, 225, 200);
 }
 .secondary-color,
@@ -73,11 +77,16 @@ footer {
 .categories ul li::after{
 	border-color: rgb(246, 193, 67);
 }
-.btn.focus, .btn:focus {
+.danger-bg{
+	background-color: rgb(252, 2, 84);
+}
+.focus, .btn:focus,
+.form-control:focus,
+.custom-control-input:focus~.custom-control-label::before {
 	box-shadow: none;
 }
-var{
-	font-style: normal;
+.form-control:focus{
+	border-color: #ced4da;
 }
 
 /* generic */
@@ -419,6 +428,32 @@ section h5 {
 }
 #recipes .img{
 	height: 180px;
+}
+.filter{
+	padding: 20px 3px;
+}
+.filter h6{
+	margin-bottom: 3px;
+}
+.filter .input-group-append{
+	display: none;
+}
+.filter input[type="text"], .filter .input-group-text{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.filter .input-group-text{
+	background: none;
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.filter ul{
+	margin: 0;
+	padding: 0 0 0 5px;
+	max-height: 240px;
+	overflow-y: scroll;
 }
 
 /******************************
