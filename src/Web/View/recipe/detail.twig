@@ -101,10 +101,16 @@
                     <div class="steps">
                         {% for step in recipe.steps %}
                             <div>
-                            {% if recipe.steps|length > 1 %}
-                                <span class="main-color">{{ 'Paso %s'|trans|format(loop.index) }}</span>
-                            {% endif %}
-                            {{ step.description|raw }}
+                                {% set currentStep = 'Paso %s'|trans|format(loop.index)  %}
+                                {% if recipe.steps|length > 1 %}
+                                    <span class="main-color">{{ currentStep }}</span>
+                                {% endif %}
+                                {{ step.description|raw }}
+                                {% if step.image %}
+                                    <div>
+                                        <img src="{{ step.image }}" name="{{ recipe.name }} - {{ currentStep }}" />
+                                    </div>
+                                {% endif %}
                             </div>
                         {% endfor %}
                     </div>

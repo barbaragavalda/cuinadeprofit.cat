@@ -8,6 +8,10 @@ use Core\Utils\Config;
 class Detail extends Model
 {
 
+    const PATTERN_RECIPE = '/\[(\d)\]/';
+    const PATTERN_DINERS = '$diners';
+    const PATTERN_PARENTHESIS = '/[ ]([\(]([^\)]+)[\)])?/';
+
     public function get($uri = null)
     {
         $where = '';
@@ -44,7 +48,7 @@ class Detail extends Model
 
             $ingredients = $this->getIngredients();
             $recipe['ingredients'] = $ingredients;
-            $recipe['steps'] = $this->getSteps($ingredients);
+            $recipe['steps'] = $this->getSteps($ingredients, $recipe['diners']);
 
             return $recipe;
         }
@@ -197,10 +201,11 @@ class Detail extends Model
      * steps
      *
      * @param array $ingredients
+     * @param integer $diners
      *
      * @return array
      */
-    private function getSteps($ingredients)
+    private function getSteps($ingredients, $diners)
     {
         $sql = '
             SELECT rs.image_step AS image, rsl.description_step AS description
@@ -219,22 +224,10 @@ class Detail extends Model
             $config = Config::getInstance();
             $domain = $config->getDomain();
 
-            // replace recipes
             foreach ($steps as &$step) {
-                $patternRecipe = '/\[(\d)\]/';
-                preg_match_all($patternRecipe, $step['description'], $matches);
-                if( count($matches)){
-                    for($i=0; $i<count($matches[0]); $i++){
-                        $recipe = new Detail();
-                        $recipe->setID($matches[1][$i]);
-                        $recipeInfo = $recipe->get();
-                        if( count($recipeInfo)){
-                            $url = $domain . _('receta') . '/' . $recipeInfo['uri'];
-                            $link = '<a href="' . $url . '" class="main-color">' . mb_strtolower($recipeInfo['name']) . '</a>';
-                            $step['description'] = str_replace($matches[0][$i], $link, $step['description']);
-                        }
-                    }
-                }
+                $step['image'] = $this->getFile($step['image'], 'step');
+                $step['description'] = $this->replaceRecipes($step['description'], $domain . _('receta') . '/');
+                $step['description'] = $this->replaceDiners($step['description'], $diners);
             }
 
             // replace ingredients
@@ -244,9 +237,7 @@ class Detail extends Model
                 $link = '<a href="' . $url . '" class="black-color"><b>' . mb_strtolower($ingredient['name']) . '</b></a>';
 
                 foreach ($steps as &$step) {
-                    $patternIngredient = '/\\' . $ingredient['variable'] . '([\(]([^\)]+)[\)])?/';
-                    $replacement = $link . $this->getSpanAmount($patternIngredient, $step, $uri, $ingredient);
-                    $step['description'] = preg_replace($patternIngredient, $replacement, $step['description']);
+                    $step['description'] = $this->getSpanAmount($step['description'], $uri, $ingredient, $link);
                 }
             }
             return $steps;
@@ -254,20 +245,47 @@ class Detail extends Model
         return array();
     }
 
-    private function getSpanAmount($pattern, $step, $uri, $ingredient)
+    private function replaceRecipes($description, $url){
+        preg_match_all(self::PATTERN_RECIPE, $description, $matches);
+
+        if( count($matches)){
+            for($i=0; $i<count($matches[0]); $i++){
+                $recipe = new Detail();
+                $recipe->setID($matches[1][$i]);
+                $recipeInfo = $recipe->get();
+                if( count($recipeInfo)){
+                    $url .= $recipeInfo['uri'];
+                    $link = '<a href="' . $url . '" class="main-color">' . mb_strtolower($recipeInfo['name']) . '</a>';
+                    $description = str_replace($matches[0][$i], $link, $description);
+                }
+            }
+        }
+        
+        return $description;
+    }
+
+    private function replaceDiners($description, $diners){
+        if( $diners > 0 ){
+            $spanDiners = '<span class="diners">'.$diners.'</span>';
+            $description = str_replace(self::PATTERN_DINERS, $spanDiners, $description);
+        }
+        return $description;
+    }
+
+    private function getSpanAmount($description, $uri, $ingredient, $link = '')
     {
         $span = '';
         $amount = $ingredient['amount'];
+        $pattern = '/\\' . $ingredient['variable'] . '([\(]([^\)]+)[\)])?/';
         if ($amount > 0) {
-            preg_match($pattern, $step['description'], $matches);
+            preg_match($pattern, $description, $matches);
             $fraction = 1;
             if (count($matches) == 3) {
                 $fraction = $matches[2];
             }
 
-            $patternParenthesis = '/[ ]([\(]([^\)]+)[\)])?/';
-            $unit = preg_replace($patternParenthesis, '', $ingredient['unit']);
-            $unitPlural = preg_replace($patternParenthesis, '', $ingredient['unitPlural']);
+            $unit = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
+            $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
             $data = ' data-unit="' . $unit . '" data-plural="' . $unitPlural . '"';
             if ($fraction != 1) {
                 $data .= ' data-fraction="' . $fraction . '"';
@@ -292,8 +310,8 @@ class Detail extends Model
         if ($span != '') {
             $span = ' <small>(' . $span . ')</small>';
         }
-
-        return $span;
+        
+        return preg_replace($pattern, $link . $span, $description);
     }
 
 }

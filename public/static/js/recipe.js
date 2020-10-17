@@ -82,6 +82,8 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
         if( amount <= 0 ) amount = 1;
         _amount.val(amount);
 
+        $('span.diners').html(amount);
+
         for(var i in _ingredients){
             $('span.' + _ingredients[i]['uri']).each(function(){
                 var unit = $(this).attr('data-unit'),
