@@ -20,7 +20,7 @@
                 {% if filters[field] == checkbox.id %}
                     {% set checked = 'checked' %}
                 {% endif %}
-                <input type="checkbox" class="custom-control-input" name="{{ field }}[]" id="{{ field }}-{{ checkbox.id }}" {{ checked }} />
+                <input type="checkbox" class="custom-control-input" name="{{ field }}[]" id="{{ field }}-{{ checkbox.id }}" value="{{ checkbox.id }}" {{ checked }} />
                 <label class="custom-control-label" for="{{ field }}-{{ checkbox.id }}"><small>{{ checkbox.name }}</small></label>
             </li>
         {% endset %}

@@ -18,6 +18,9 @@ msgstr "receptes"
 msgid "receta"
 msgstr "recepta"
 
+msgid "aleatoria"
+msgstr "aleatoria"
+
 msgid "recetas"
 msgstr "receptes"
 
@@ -124,6 +127,24 @@ msgstr "Ingredient"
 
 msgid "Etiqueta"
 msgstr "Etiqueta"
+
+msgid "Tiempo"
+msgstr "Temps"
+
+msgid "< 15 min"
+msgstr "< 15 min"
+
+msgid "15-30 min"
+msgstr "15-30 min"
+
+msgid "30 min - 1 hora"
+msgstr "30 min - 1 hora"
+
+msgid "1-2 horas"
+msgstr "1-2 horas"
+
+msgid "> 2 horas"
+msgstr "> 2 horas"
 
 msgid "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
 msgstr "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."

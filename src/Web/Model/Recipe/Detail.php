@@ -15,12 +15,17 @@ class Detail extends Model
     public function get($uri = null)
     {
         $where = '';
+        $orderBy = '';
         $params = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
         );
         if( $uri != null ){
-            $where = 'WHERE rl.uri = :uri';
-            $params['uri'] = array('value' => $uri, 'type' => \PDO::PARAM_STR);
+            if ($uri == _('aleatoria') ){
+                $orderBy = 'ORDER BY RAND()';
+            }else{
+                $where = 'WHERE rl.uri = :uri';
+                $params['uri'] = array('value' => $uri, 'type' => \PDO::PARAM_STR);
+            }
         }
         if( $this->id > 0 ){
             $where = 'WHERE r.id_recipe = :id';
@@ -35,6 +40,7 @@ class Detail extends Model
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
             ' . $where . '
+            ' . $orderBy . '
         ';
         $recipe = $this->mysql->query($sql, $params);
 

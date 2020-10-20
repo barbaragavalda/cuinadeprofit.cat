@@ -21,16 +21,18 @@
 
 {% block content %}
     <div id="list" class="container-xl">
-        <div class="row">
+        <form method="POST" class="row">
             <div class="col">
                 {% set buttons %}
                     <div class="btn-group-sm">
-                        <button type="button" class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
+                        <button type="submit" name="filter" class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
                         <a href="{{ domain }}{% trans %}recetas{% endtrans %}" type="button" class="btn white-bg grey-border">{% trans %}Limpiar{% endtrans %}</a>
                     </div>
                 {% endset %}
+
                 {{ buttons }}
                 {% include 'recipe/checkboxes.twig' with{ title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
+                {% include 'recipe/checkboxes.twig' with{ title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
                 {% include 'recipe/checkboxes.twig' with{ title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
                 {% include 'recipe/checkboxes.twig' with{ title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
                 {% include 'recipe/checkboxes.twig' with{ title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
@@ -43,9 +45,9 @@
                     {% include 'include/pagination.twig' %}
                 {% else %}
                     <h1 class="title">{% trans %}Resultados por{% endtrans %} {{ title|lower }}</h1>
-                    {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="#" class="secondary-color">', '</a>')|raw }}
+                    {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
                 {% endif %}
             </div>
-        </div>
+        </form>
     </div>
 {% endblock %}

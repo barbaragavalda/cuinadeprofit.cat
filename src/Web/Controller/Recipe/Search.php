@@ -4,7 +4,7 @@ namespace Web\Controller\Recipe;
 
 use Web\Controller\Controller;
 use Web\Model\Recipe\FilteredList;
-use Web\Model\Recipe\Util;
+use Web\Model\Recipe\Filter;
 
 class Search extends Controller
 {
@@ -20,13 +20,20 @@ class Search extends Controller
     private $filters = array();
 
     /**
+     * @var \Web\Model\Recipe\Filter
+     */
+    private $filter = null;
+
+    /**
      * @var \Web\Model\Recipe\FilteredList
      */
     protected $list = null;
 
     public function run()
     {
+        $this->filter = new Filter();
         $this->filter();
+
         $this->list = new FilteredList($this->page);
         $this->list->setFilters($this->filters);
         $this->list->initAll();
@@ -34,52 +41,70 @@ class Search extends Controller
         $this->assign('pagination', $this->list->paginate());
         $this->assign('filters', $this->filters);
 
-        $util = new Util();
-        $this->assign('difficulties', $util->getDifficulty());
-        $this->assign('categories', $util->getCategory());
-        $this->assign('tags', $util->getTag());
-        $this->assign('ingredients', $util->getIngredient());
+        $this->assign('difficulties', $this->filter->getDifficulty());
+        $this->assign('times', $this->filter->getTime());
+        $this->assign('categories', $this->filter->getCategory());
+        $this->assign('tags', $this->filter->getTag());
+        $this->assign('ingredients', $this->filter->getIngredient());
         $this->template('recipe/list.twig');
     }
 
-    private function filter(){
-        $this->checkFilter('param1');
-        $this->checkFilter('param2');
+    /**
+     *
+     */
+    private function filter()
+    {
+        if( isset($_POST['filter']) ){
+
+        }else{
+            $this->checkParam('param1');
+            $this->checkParam('param2');
+        }
     }
 
-    private function checkFilter($key){
-        $param = $this->getParam($key);
-        if( is_numeric($param) ){
+    /**
+     * load current page or filter from URI
+     * @param string $paramName
+     */
+    private function checkParam($paramName)
+    {
+        $param = $this->getParam($paramName);
+        if (is_numeric($param)) {
             $this->page = $param;
-        }else{
-            if( !empty($param)){
-                $util     = new Util();
-
+        } else {
+            if (!empty($param)) {
                 // difficulty
-                $difficulty = $util->getDifficulty($param);
+                $difficulty = $this->filter->getDifficulty($param);
                 if (count($difficulty)) {
-                    $this->filters['difficulty'] = $difficulty['id'];
+                    $this->addFilter(Filter::DIFFICULTY, $difficulty['id']);
                 }
 
                 // category
-                $category = $util->getCategory($param);
+                $category = $this->filter->getCategory($param);
                 if (count($category)) {
-                    $this->filters['category'] = $category['id'];
+                    $this->addFilter(Filter::CATEGORY, $category['id']);
                 }
 
                 // ingredient
-                $ingredient = $util->getIngredient($param);
+                $ingredient = $this->filter->getIngredient($param);
                 if (count($ingredient)) {
-                    $this->filters['ingredient'] = $ingredient['id'];
+                    $this->addFilter(Filter::INGREDIENT, $ingredient['id']);
                 }
 
                 // tag
-                $tag = $util->getTag($param);
+                $tag = $this->filter->getTag($param);
                 if (count($tag)) {
-                    $this->filters['tag'] = $tag['id'];
+                    $this->addFilter(Filter::TAG, $tag['id']);
                 }
             }
         }
+    }
+
+    private function addFilter($key, $value){
+        if( !array_key_exists($key, $this->filters) ){
+            $this->filters[$key] = array();
+        }
+        $this->filters[$key][] = $value;
     }
 
 }

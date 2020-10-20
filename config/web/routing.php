@@ -8,6 +8,7 @@ $config = array(
         '' => 'Home',
 
         _('receta') . '/{uri}' => 'Recipe\\Detail',
+        _('receta') . '/' . _('aleatoria') => 'Recipe\\Detail',
         _('recetas') => 'Recipe\\Search',
         _('recetas') . '/{param1}' => 'Recipe\\Search',
         _('recetas') . '/{param1}/{param2}' => 'Recipe\\Search',
