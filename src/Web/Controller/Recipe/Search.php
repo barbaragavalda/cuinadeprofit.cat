@@ -34,11 +34,12 @@ class Search extends Controller
         $this->filter = new Filter();
         $this->filter();
 
-        $this->list = new FilteredList($this->page);
+        $this->list = new FilteredList($this->filters['page']);
         $this->list->setFilters($this->filters);
         $this->list->initAll();
         $this->assign('items', $this->list->getItemsPage());
         $this->assign('pagination', $this->list->paginate());
+        $this->assign('link', _('recetas'));
         $this->assign('filters', $this->filters);
 
         $this->assign('difficulties', $this->filter->getDifficulty());
@@ -54,57 +55,79 @@ class Search extends Controller
      */
     private function filter()
     {
-        if( isset($_POST['filter']) ){
+        $params = $this->checkParams();
 
-        }else{
-            $this->checkParam('param1');
-            $this->checkParam('param2');
-        }
-    }
-
-    /**
-     * load current page or filter from URI
-     * @param string $paramName
-     */
-    private function checkParam($paramName)
-    {
-        $param = $this->getParam($paramName);
-        if (is_numeric($param)) {
-            $this->page = $param;
-        } else {
-            if (!empty($param)) {
-                // difficulty
-                $difficulty = $this->filter->getDifficulty($param);
-                if (count($difficulty)) {
-                    $this->addFilter(Filter::DIFFICULTY, $difficulty['id']);
-                }
-
-                // category
-                $category = $this->filter->getCategory($param);
-                if (count($category)) {
-                    $this->addFilter(Filter::CATEGORY, $category['id']);
-                }
-
-                // ingredient
-                $ingredient = $this->filter->getIngredient($param);
-                if (count($ingredient)) {
-                    $this->addFilter(Filter::INGREDIENT, $ingredient['id']);
-                }
-
-                // tag
-                $tag = $this->filter->getTag($param);
-                if (count($tag)) {
-                    $this->addFilter(Filter::TAG, $tag['id']);
+        $this->filters = array('page' => 1);
+        foreach ($params as $param) {
+            if (is_numeric($param)) {
+                $this->filters['page'] = $param;
+            } else {
+                $explode = explode('&', $param);
+                foreach ($explode as $value) {
+                    $this->checkParam($value);
                 }
             }
         }
     }
 
-    private function addFilter($key, $value){
-        if( !array_key_exists($key, $this->filters) ){
-            $this->filters[$key] = array();
+    private function checkParams()
+    {
+        $params = array();
+
+        for ($i = 1; $i < 7; $i++) {
+            $param = $this->getParam('param' . $i);
+            if ($param !== false) {
+                $params[] = $param;
+            }
         }
-        $this->filters[$key][] = $value;
+
+        return $params;
+    }
+
+    /**
+     * load current page or filter from URI
+     *
+     * @param string $value
+     */
+    private function checkParam($value)
+    {
+        // difficulty
+        $difficulty = $this->filter->getDifficulty($value);
+        if (count($difficulty)) {
+            $this->addFilter(Filter::DIFFICULTY, $difficulty['id']);
+        }
+
+        // time
+        $time = $this->filter->getTime($value);
+        if (count($time)) {
+            $this->filters[ Filter::TIME ] = $time;
+        }
+
+        // category
+        $category = $this->filter->getCategory($value);
+        if (count($category)) {
+            $this->addFilter(Filter::CATEGORY, $category['id']);
+        }
+
+        // ingredient
+        $ingredient = $this->filter->getIngredient($value);
+        if (count($ingredient)) {
+            $this->addFilter(Filter::INGREDIENT, $ingredient['id']);
+        }
+
+        // tag
+        $tag = $this->filter->getTag($value);
+        if (count($tag)) {
+            $this->addFilter(Filter::TAG, $tag['id']);
+        }
+    }
+
+    private function addFilter($key, $value)
+    {
+        if (!array_key_exists($key, $this->filters)) {
+            $this->filters[ $key ] = array();
+        }
+        $this->filters[ $key ][] = $value;
     }
 
 }

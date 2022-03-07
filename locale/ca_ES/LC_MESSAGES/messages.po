@@ -148,3 +148,9 @@ msgstr "> 2 horas"
 
 msgid "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
 msgstr "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."
+
+msgid "Anterior"
+msgstr "Anterior"
+
+msgid "Siguente"
+msgstr "Següent"

@@ -15,12 +15,16 @@
     {% set normal = [] %}
     {% for checkbox in checkboxes %}
         {% set li %}
-            <li class="custom-control custom-checkbox">
+            <li class="custom-control custom-{{ type }}">
                 {% set checked = '' %}
                 {% if filters[field] == checkbox.id %}
                     {% set checked = 'checked' %}
                 {% endif %}
-                <input type="checkbox" class="custom-control-input" name="{{ field }}[]" id="{{ field }}-{{ checkbox.id }}" value="{{ checkbox.id }}" {{ checked }} />
+                {% set multiple = '' %}
+                {% if field == 'checkbox' %}
+                    {% set multiple = '[]' %}
+                {% endif %}
+                <input type="{{ type }}" class="custom-control-input" name="{{ field }}{{ multiple }}" id="{{ field }}-{{ checkbox.id }}" value="{{ checkbox.id }}" {{ checked }} />
                 <label class="custom-control-label" for="{{ field }}-{{ checkbox.id }}"><small>{{ checkbox.name }}</small></label>
             </li>
         {% endset %}

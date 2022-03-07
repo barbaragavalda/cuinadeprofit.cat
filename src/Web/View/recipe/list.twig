@@ -14,7 +14,7 @@
                 });
             });
 
-            new Recipes();
+            new Recipes('{{ domain ~ 'recetas'|trans }}/');
         });
     </script>
 {% endblock %}
@@ -31,11 +31,11 @@
                 {% endset %}
 
                 {{ buttons }}
-                {% include 'recipe/checkboxes.twig' with{ title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
-                {% include 'recipe/checkboxes.twig' with{ title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
-                {% include 'recipe/checkboxes.twig' with{ title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
-                {% include 'recipe/checkboxes.twig' with{ title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
-                {% include 'recipe/checkboxes.twig' with{ title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
+                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
+                {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
+                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
+                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
+                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
                 {{ buttons }}
             </div>
             <div class="col-10">

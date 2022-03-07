@@ -1,10 +1,19 @@
 'use strict';
 
-var Recipes = function(){
+var Recipes = function(link){
 
-    var _search = $('.search');
+    var _link = link,
+        _search = $('.search');
 
     function init(){
+        search();
+        filter();
+    }
+
+    /**
+     * search events
+     */
+    function search(){
         $('.input-group-append').click(function(){
             var input = $(this).parent().find('input');
             input.val('');
@@ -22,6 +31,11 @@ var Recipes = function(){
         });
     }
 
+    /**
+     * start search
+     * @param obj
+     * @param query
+     */
     function open(obj, query){
         var search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
@@ -43,6 +57,10 @@ var Recipes = function(){
         return value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
+    /**
+     * end search
+     * @param obj
+     */
     function close(obj){
         var search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
@@ -53,6 +71,60 @@ var Recipes = function(){
 
         var lis = search.parent().find('ul li');
         lis.show();
+    }
+
+    function filter(){
+        var difficulty = $('input[name="difficulty"]'),
+            time = $('input[name="time"]'),
+            tag = $('input[name="tag[]"]'),
+            category = $('input[name="category[]"]'),
+            ingredient = $('input[name="ingredient[]"]');
+
+        $('#list form').submit(function(e){
+            var url = [],
+                difficulties = addArray(difficulty),
+                times = addArray(time),
+                tags = addArray(tag),
+                categories = addArray(category),
+                ingredients = addArray(ingredient);
+
+            if( difficulties !== '' ){
+                url.push(difficulties);
+            }
+            if( times !== '' ){
+                url.push(times);
+            }
+            if( tags !== '' ){
+                url.push(tags);
+            }
+            if( categories !== '' ){
+                url.push(categories);
+            }
+            if( ingredients !== '' ){
+                url.push(ingredients);
+            }
+
+            if( url.length > 0 ){
+                window.location = _link + url.join('/');
+            }
+
+            e.preventDefault();
+            return false;
+        });
+    }
+
+    function addArray(object){
+        var values = object.map(function(idx, elem) {
+            if( $(this).is(':checked') ){
+                return $(elem).val();
+            }
+        }).get();
+
+        var url = '';
+        if( values.length > 0 ){
+            url = values.join('&');
+        }
+        return url;
     }
 
     init();

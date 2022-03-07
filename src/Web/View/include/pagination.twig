@@ -1,21 +1,32 @@
 {% if pagination %}
-    <nav>
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
+    <div class="text-center">
+        <nav class="btn-group">
+            {% if pagination.current > 1 %}
+                <a href="{{ domain }}{{ link }}/{{ pagination.current - 1 }}" class="btn main-color grey-border">
                     <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">{% trans %}Anterior{% endtrans %}</span>
                 </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+            {% endif %}
+
+            {% for page in pagination.pages %}
+                {% if page matches '/^\\d+$/' %}
+                    {% set classBtn = 'main-color grey-border' %}
+                    {% if pagination.current == page %}
+                        {% set classBtn = ' main-bg white-color' %}
+                    {% endif %}
+                    <a href="{{ domain }}{{ link }}/{{ page }}" class="btn {{ classBtn }}">{{ '%02d'|format(page) }}</a>
+                {% else %}
+                    ...
+                {% endif %}
+            {% endfor %}
+
+            {% set lastPage = pagination.pages[ pagination.pages|length - 1 ] %}
+            {% if pagination.current < lastPage %}
+                <a href="{{ domain }}{{ link }}/{{ pagination.current + 1 }}" class="btn main-color grey-border">
                     <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">{% trans %}Siguente{% endtrans %}</span>
                 </a>
-            </li>
-        </ul>
-    </nav>
+            {% endif %}
+        </nav>
+    </div>
 {% endif %}
