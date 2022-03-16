@@ -158,7 +158,7 @@ class Detail extends Model
         $sql = '
             SELECT ri.id_ingredient, ri.amount, ri.is_alternative, ri.is_optional,
                 ul.name AS unit, ul.plural AS unitPlural, 
-                il.name, i.variable, il.uri
+                i.id_recipe, il.name, i.variable, il.uri
             FROM recipe_ingredient AS ri
             INNER JOIN ingredient AS i ON ri.id_ingredient = i.id_ingredient
             INNER JOIN ingredient_lang AS il ON i.id_ingredient = il.id_ingredient AND il.id_appacman_lang = :lang
@@ -174,7 +174,7 @@ class Detail extends Model
 
         if (count($ingredients)) {
             foreach ($ingredients as &$ingredient) {
-                $ingredient['recipes'] = $this->getIngredientRecipes($ingredient['id_ingredient']);
+                $ingredient['recipes'] = $this->getIngredientRecipes($ingredient['id_recipe']);
             }
             return $ingredients;
         }
@@ -183,22 +183,21 @@ class Detail extends Model
 
     private function getIngredientRecipes($id)
     {
-        $sql = '
-            SELECT irl.type, rl.uri
-            FROM ingredient_recipe AS ir
-            INNER JOIN ingredient_recipe_lang AS irl ON ir.id_ingredient_recipe = irl.id_ingredient_recipe AND irl.id_appacman_lang = :lang
-            INNER JOIN recipe_lang AS rl ON ir.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
-            WHERE ir.id_ingredient = :id
-            ORDER BY ir.order ASC
-        ';
-        $params = array(
-            'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
-            'id' => array('value' => $id, 'type' => \PDO::PARAM_INT)
-        );
-        $recipes = $this->mysql->query($sql, $params);
+        if( !empty($id) ){
+            $sql = '
+                SELECT rl.uri
+                FROM recipe_lang AS rl
+                WHERE rl.id_recipe = :id AND rl.id_appacman_lang = :lang
+            ';
+            $params = array(
+                'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
+                'id' => array('value' => $id, 'type' => \PDO::PARAM_INT)
+            );
+            $recipes = $this->mysql->query($sql, $params);
 
-        if (count($recipes)) {
-            return $recipes;
+            if (count($recipes)) {
+                return $recipes;
+            }
         }
         return array();
     }

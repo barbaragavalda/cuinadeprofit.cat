@@ -26,7 +26,7 @@ class FilteredList extends Paginated
                 INNER JOIN recipe_ingredient AS ri ON r.id_recipe = ri.id_recipe
                 INNER JOIN ingredient AS i ON i.id_ingredient = ri.id_ingredient
                 INNER JOIN ingredient_category AS ic ON i.id_ingredient_category = ic.id_ingredient_category 
-                    AND ic.id_ingredient_category IN(' . implode(', ', $this->filters['category']) . ')
+                    AND ic.id_ingredient_category IN(' . implode(', "', $this->filters['category']) . '")
             ';
         }
         if (array_key_exists('time', $this->filters)) {
