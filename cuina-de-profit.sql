@@ -11,7 +11,7 @@
  Target Server Version : 100331
  File Encoding         : 65001
 
- Date: 16/03/2022 22:56:35
+ Date: 18/03/2022 14:01:37
 */
 
 SET NAMES utf8mb4;
@@ -316,7 +316,7 @@ CREATE TABLE `appacman_file` (
   `id_appacman_file` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_file`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_file
@@ -330,6 +330,14 @@ INSERT INTO `appacman_file` VALUES (5, '5_doritos.jpeg');
 INSERT INTO `appacman_file` VALUES (6, '6_doritos-2.jpeg');
 INSERT INTO `appacman_file` VALUES (7, '7_torrades-guacamole-mozzarella-cherry.jpeg');
 INSERT INTO `appacman_file` VALUES (8, '8_galletas-parmesano.jpeg');
+INSERT INTO `appacman_file` VALUES (9, '9_zite-alla-genovese.png');
+INSERT INTO `appacman_file` VALUES (10, '10_tiramisu-pistacchio.jpg');
+INSERT INTO `appacman_file` VALUES (11, '11_artur-rutkowski-2leopvy3oj0-unsplash.jpg');
+INSERT INTO `appacman_file` VALUES (12, '12_caldo-dashi-1.jpeg');
+INSERT INTO `appacman_file` VALUES (13, '13_tapenade-tomates-secos-7-web.jpeg');
+INSERT INTO `appacman_file` VALUES (14, '14_pasta-pesto.png');
+INSERT INTO `appacman_file` VALUES (15, '15_truita-espinacs.jpeg');
+INSERT INTO `appacman_file` VALUES (16, '16_entrepa-porro-brie.jpeg');
 COMMIT;
 
 -- ----------------------------
@@ -646,7 +654,7 @@ CREATE TABLE `ingredient` (
   `id_ingredient_category` tinyint(3) unsigned DEFAULT NULL,
   `id_recipe` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient
@@ -661,14 +669,14 @@ INSERT INTO `ingredient` VALUES (6, '$lemon', 4, 0);
 INSERT INTO `ingredient` VALUES (7, '$basil', 10, 0);
 INSERT INTO `ingredient` VALUES (8, '$provencalHerbs', 10, 0);
 INSERT INTO `ingredient` VALUES (9, '$pepper', 9, 0);
-INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 4, 0);
+INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 13, NULL);
 INSERT INTO `ingredient` VALUES (11, '$lemonJuice', NULL, 0);
 INSERT INTO `ingredient` VALUES (12, '$baconStrips', 1, 0);
 INSERT INTO `ingredient` VALUES (13, '$chickenBreasts', 6, 0);
 INSERT INTO `ingredient` VALUES (14, '$freshSpinach', 3, 0);
 INSERT INTO `ingredient` VALUES (15, '$milk', 11, 0);
 INSERT INTO `ingredient` VALUES (16, '$fettuccine', 12, 0);
-INSERT INTO `ingredient` VALUES (17, '$pesto', NULL, 3);
+INSERT INTO `ingredient` VALUES (17, '$pesto', 16, 3);
 INSERT INTO `ingredient` VALUES (18, '$parmesan', 8, 0);
 INSERT INTO `ingredient` VALUES (19, '$onion', 5, 0);
 INSERT INTO `ingredient` VALUES (20, '$garlic', 5, 0);
@@ -686,28 +694,65 @@ INSERT INTO `ingredient` VALUES (31, '$dashi', NULL, 6);
 INSERT INTO `ingredient` VALUES (32, '$egg', NULL, NULL);
 INSERT INTO `ingredient` VALUES (33, '$sugar', NULL, NULL);
 INSERT INTO `ingredient` VALUES (34, '$soySauce', 16, NULL);
-INSERT INTO `ingredient` VALUES (35, '$mirin', NULL, NULL);
+INSERT INTO `ingredient` VALUES (35, '$mirin', 18, NULL);
 INSERT INTO `ingredient` VALUES (36, '$nori', 14, NULL);
-INSERT INTO `ingredient` VALUES (37, '$cornTortitas', 15, NULL);
+INSERT INTO `ingredient` VALUES (37, '$cornTortitas', NULL, NULL);
 INSERT INTO `ingredient` VALUES (38, '$onionPowder', 9, NULL);
 INSERT INTO `ingredient` VALUES (39, '$sweetPaprika', 9, NULL);
 INSERT INTO `ingredient` VALUES (40, '$cheesePowder', 8, NULL);
 INSERT INTO `ingredient` VALUES (41, '$guacamole', 16, NULL);
 INSERT INTO `ingredient` VALUES (42, '$mozzarellaBalls', 8, NULL);
 INSERT INTO `ingredient` VALUES (43, '$toast', 17, NULL);
-INSERT INTO `ingredient` VALUES (44, '$cherryTomatoes', 5, NULL);
+INSERT INTO `ingredient` VALUES (44, '$cherryTomatoes', 4, NULL);
 INSERT INTO `ingredient` VALUES (45, '$blackSesameSeeds', 9, NULL);
-INSERT INTO `ingredient` VALUES (46, '$flour', NULL, NULL);
-INSERT INTO `ingredient` VALUES (47, '$butter', NULL, NULL);
+INSERT INTO `ingredient` VALUES (46, '$flour', 15, NULL);
+INSERT INTO `ingredient` VALUES (47, '$butter', 11, NULL);
 INSERT INTO `ingredient` VALUES (48, '$thyme', 9, NULL);
 INSERT INTO `ingredient` VALUES (49, '$stewBeef ', 1, NULL);
 INSERT INTO `ingredient` VALUES (50, '$sweetOnion', 5, NULL);
 INSERT INTO `ingredient` VALUES (51, '$carrot', 5, NULL);
 INSERT INTO `ingredient` VALUES (52, '$celery', 5, NULL);
 INSERT INTO `ingredient` VALUES (53, '$bayLeaf', 10, NULL);
-INSERT INTO `ingredient` VALUES (54, '$whiteWine', 15, NULL);
+INSERT INTO `ingredient` VALUES (54, '$whiteWine', 18, NULL);
 INSERT INTO `ingredient` VALUES (55, '$zite10', 12, NULL);
 INSERT INTO `ingredient` VALUES (56, '$rigatoni', 12, NULL);
+INSERT INTO `ingredient` VALUES (57, '$pistachios', 13, NULL);
+INSERT INTO `ingredient` VALUES (58, '$icingSugar', NULL, NULL);
+INSERT INTO `ingredient` VALUES (59, '$sunflowerOil', NULL, NULL);
+INSERT INTO `ingredient` VALUES (60, '$mascarpone', 8, NULL);
+INSERT INTO `ingredient` VALUES (61, '$whiteChocolate', NULL, NULL);
+INSERT INTO `ingredient` VALUES (62, '$coffee', NULL, NULL);
+INSERT INTO `ingredient` VALUES (63, '$ladyFinger', NULL, NULL);
+INSERT INTO `ingredient` VALUES (64, '$pureCocoaPowder', NULL, NULL);
+INSERT INTO `ingredient` VALUES (65, '$slicesCheese', 8, NULL);
+INSERT INTO `ingredient` VALUES (66, '$tomatoSauce', 16, NULL);
+INSERT INTO `ingredient` VALUES (67, '$pear', 4, NULL);
+INSERT INTO `ingredient` VALUES (68, '$cayennePowder', 9, NULL);
+INSERT INTO `ingredient` VALUES (69, '$lemonPeel', NULL, NULL);
+INSERT INTO `ingredient` VALUES (70, '$camembert', 8, NULL);
+INSERT INTO `ingredient` VALUES (71, '$brie', 8, NULL);
+INSERT INTO `ingredient` VALUES (72, '$baguette', 17, NULL);
+INSERT INTO `ingredient` VALUES (73, '$oliveOil', NULL, NULL);
+INSERT INTO `ingredient` VALUES (74, '$potato', 5, NULL);
+INSERT INTO `ingredient` VALUES (75, '$spicyOil', NULL, NULL);
+INSERT INTO `ingredient` VALUES (76, '$espinalerSauce', 16, NULL);
+INSERT INTO `ingredient` VALUES (77, '$vermut', 18, NULL);
+INSERT INTO `ingredient` VALUES (78, '$turmeric', 9, NULL);
+INSERT INTO `ingredient` VALUES (79, '$spicyPaprika', 9, NULL);
+INSERT INTO `ingredient` VALUES (80, '$zucchini', 3, NULL);
+INSERT INTO `ingredient` VALUES (81, '$puffPastry', NULL, NULL);
+INSERT INTO `ingredient` VALUES (82, '$cookedHam', 19, NULL);
+INSERT INTO `ingredient` VALUES (83, '$whiteSesameSeeds', 9, NULL);
+INSERT INTO `ingredient` VALUES (84, '$freshMozzarella', 8, NULL);
+INSERT INTO `ingredient` VALUES (85, '$biscottiGoccioleDark', NULL, NULL);
+INSERT INTO `ingredient` VALUES (86, '$chocolateCookies', NULL, NULL);
+INSERT INTO `ingredient` VALUES (87, '$hazelnutCream', NULL, NULL);
+INSERT INTO `ingredient` VALUES (88, '$pizzaDough', NULL, NULL);
+INSERT INTO `ingredient` VALUES (89, '$burrata', 8, NULL);
+INSERT INTO `ingredient` VALUES (90, '$gorgonzola', 8, NULL);
+INSERT INTO `ingredient` VALUES (91, '$taleggio', 8, NULL);
+INSERT INTO `ingredient` VALUES (92, '$gratedMozzarella', 8, NULL);
+INSERT INTO `ingredient` VALUES (93, '$bufalaStracciatella', 8, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -717,7 +762,7 @@ DROP TABLE IF EXISTS `ingredient_category`;
 CREATE TABLE `ingredient_category` (
   `id_ingredient_category` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_ingredient_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_category
@@ -740,6 +785,9 @@ INSERT INTO `ingredient_category` VALUES (14);
 INSERT INTO `ingredient_category` VALUES (15);
 INSERT INTO `ingredient_category` VALUES (16);
 INSERT INTO `ingredient_category` VALUES (17);
+INSERT INTO `ingredient_category` VALUES (18);
+INSERT INTO `ingredient_category` VALUES (19);
+INSERT INTO `ingredient_category` VALUES (20);
 COMMIT;
 
 -- ----------------------------
@@ -753,7 +801,7 @@ CREATE TABLE `ingredient_category_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_category_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_category_lang
@@ -787,12 +835,18 @@ INSERT INTO `ingredient_category_lang` VALUES (25, 13, 1, 'Fruit sec', 'fruit-se
 INSERT INTO `ingredient_category_lang` VALUES (26, 13, 2, 'Fruto seco', 'fruto-seco');
 INSERT INTO `ingredient_category_lang` VALUES (27, 14, 1, 'Alga', 'alga');
 INSERT INTO `ingredient_category_lang` VALUES (28, 14, 2, 'Alga', 'alga');
-INSERT INTO `ingredient_category_lang` VALUES (29, 15, 1, 'Altres', 'altres');
-INSERT INTO `ingredient_category_lang` VALUES (30, 15, 2, 'Otros', 'otros');
+INSERT INTO `ingredient_category_lang` VALUES (29, 15, 1, 'Cereal', 'cereal');
+INSERT INTO `ingredient_category_lang` VALUES (30, 15, 2, 'Cereal', 'cereal');
 INSERT INTO `ingredient_category_lang` VALUES (31, 16, 1, 'Salsa', 'salsa');
 INSERT INTO `ingredient_category_lang` VALUES (32, 16, 2, 'Salsa', 'salsa');
 INSERT INTO `ingredient_category_lang` VALUES (33, 17, 1, 'Pa', 'pa');
 INSERT INTO `ingredient_category_lang` VALUES (34, 17, 2, 'Pan', 'pan');
+INSERT INTO `ingredient_category_lang` VALUES (35, 18, 1, 'Beguda', 'beguda');
+INSERT INTO `ingredient_category_lang` VALUES (36, 18, 2, 'Bebida', 'bebida');
+INSERT INTO `ingredient_category_lang` VALUES (37, 19, 1, 'Embotit', 'embotit');
+INSERT INTO `ingredient_category_lang` VALUES (38, 19, 2, 'Embutido', 'embutido');
+INSERT INTO `ingredient_category_lang` VALUES (39, 20, 1, 'Llegums', 'llegums');
+INSERT INTO `ingredient_category_lang` VALUES (40, 20, 2, 'Legumbres', 'legumbres');
 COMMIT;
 
 -- ----------------------------
@@ -806,7 +860,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -924,6 +978,80 @@ INSERT INTO `ingredient_lang` VALUES (109, 55, 1, 'Zite nº10', 'zite-n10');
 INSERT INTO `ingredient_lang` VALUES (110, 55, 2, 'Zite nº10', 'zite-n10');
 INSERT INTO `ingredient_lang` VALUES (111, 56, 1, 'Rigatoni', 'rigatoni');
 INSERT INTO `ingredient_lang` VALUES (112, 56, 2, 'Rigatoni', 'rigatoni');
+INSERT INTO `ingredient_lang` VALUES (113, 57, 1, 'Festucs', 'festucs');
+INSERT INTO `ingredient_lang` VALUES (114, 57, 2, 'Pistachos', 'pistachos');
+INSERT INTO `ingredient_lang` VALUES (115, 58, 1, 'Sucre glas', 'sucre-glas');
+INSERT INTO `ingredient_lang` VALUES (116, 58, 2, 'Azucar glas', 'azucar-glas');
+INSERT INTO `ingredient_lang` VALUES (117, 59, 1, 'Oli de girasol', 'oli-de-girasol');
+INSERT INTO `ingredient_lang` VALUES (118, 59, 2, 'Aceite de girasol', 'aceite-de-girasol');
+INSERT INTO `ingredient_lang` VALUES (119, 60, 1, 'Mascarpone', 'mascarpone');
+INSERT INTO `ingredient_lang` VALUES (120, 60, 2, 'Mascarpone', 'mascarpone');
+INSERT INTO `ingredient_lang` VALUES (121, 61, 1, 'Xocolata blanca', 'xocolata-blanca');
+INSERT INTO `ingredient_lang` VALUES (122, 61, 2, 'Chocolate blanco', 'chocolate-blanco');
+INSERT INTO `ingredient_lang` VALUES (123, 62, 1, 'Café', 'cafe');
+INSERT INTO `ingredient_lang` VALUES (124, 62, 2, 'Café', 'cafe');
+INSERT INTO `ingredient_lang` VALUES (125, 63, 1, 'Melindros', 'melindros');
+INSERT INTO `ingredient_lang` VALUES (126, 63, 2, 'Bizcochos de soletilla', 'bizcochos-de-soletilla');
+INSERT INTO `ingredient_lang` VALUES (127, 64, 1, 'Cacau pur en pols', 'cacau-pur-en-pols');
+INSERT INTO `ingredient_lang` VALUES (128, 64, 2, 'Cacao puro en polvo', 'cacao-puro-en-polvo');
+INSERT INTO `ingredient_lang` VALUES (129, 65, 1, 'Rodanxes de formatge', 'rodanxes-de-formatge');
+INSERT INTO `ingredient_lang` VALUES (130, 65, 2, 'Lonchas de queso', 'lonchas-de-queso');
+INSERT INTO `ingredient_lang` VALUES (131, 66, 1, 'Tomàquet fregit', 'tomaquet-fregit');
+INSERT INTO `ingredient_lang` VALUES (132, 66, 2, 'Tomate frito', 'tomate-frito');
+INSERT INTO `ingredient_lang` VALUES (133, 67, 1, 'Pera', 'pera');
+INSERT INTO `ingredient_lang` VALUES (134, 67, 2, 'Pera', 'pera');
+INSERT INTO `ingredient_lang` VALUES (135, 68, 1, 'Caiena en pols', 'caiena-en-pols');
+INSERT INTO `ingredient_lang` VALUES (136, 68, 2, 'Cayena en polvo', 'cayena-en-polvo');
+INSERT INTO `ingredient_lang` VALUES (137, 69, 1, 'Pell de llimona', 'pell-de-llimona');
+INSERT INTO `ingredient_lang` VALUES (138, 69, 2, 'Piel de limón', 'piel-de-limon');
+INSERT INTO `ingredient_lang` VALUES (139, 70, 1, 'Camembert', 'camembert');
+INSERT INTO `ingredient_lang` VALUES (140, 70, 2, 'Camembert', 'camembert');
+INSERT INTO `ingredient_lang` VALUES (141, 71, 1, 'Brie', 'brie');
+INSERT INTO `ingredient_lang` VALUES (142, 71, 2, 'Brie', 'brie');
+INSERT INTO `ingredient_lang` VALUES (143, 72, 1, 'Baguette', 'baguette');
+INSERT INTO `ingredient_lang` VALUES (144, 72, 2, 'Baguette', 'baguette');
+INSERT INTO `ingredient_lang` VALUES (145, 73, 1, 'Oli d\'oliva', 'oli-doliva');
+INSERT INTO `ingredient_lang` VALUES (146, 73, 2, 'Aceite de oliva', 'aceite-de-oliva');
+INSERT INTO `ingredient_lang` VALUES (147, 74, 1, 'Patata', 'patata');
+INSERT INTO `ingredient_lang` VALUES (148, 74, 2, 'Patata', 'patata');
+INSERT INTO `ingredient_lang` VALUES (149, 75, 1, 'Oli picant', 'oli-picant');
+INSERT INTO `ingredient_lang` VALUES (150, 75, 2, 'Aceite picante', 'aceite-picante');
+INSERT INTO `ingredient_lang` VALUES (151, 76, 1, 'Salsa Espinaler', 'salsa-espinaler');
+INSERT INTO `ingredient_lang` VALUES (152, 76, 2, 'Salsa Espinaler', 'salsa-espinaler');
+INSERT INTO `ingredient_lang` VALUES (153, 77, 1, 'Vermut', 'vermut');
+INSERT INTO `ingredient_lang` VALUES (154, 77, 2, 'Vermut', 'vermut');
+INSERT INTO `ingredient_lang` VALUES (155, 78, 1, 'Cúrcuma', 'curcuma');
+INSERT INTO `ingredient_lang` VALUES (156, 78, 2, 'Cúrcuma', 'curcuma');
+INSERT INTO `ingredient_lang` VALUES (157, 79, 1, 'Pebre vermell picant', 'pebre-vermell-picant');
+INSERT INTO `ingredient_lang` VALUES (158, 79, 2, 'Pimentón de la Vera', 'pimenton-de-la-vera');
+INSERT INTO `ingredient_lang` VALUES (159, 80, 1, 'Carbassó', 'carbasso');
+INSERT INTO `ingredient_lang` VALUES (160, 80, 2, 'Calabaín', 'calabain');
+INSERT INTO `ingredient_lang` VALUES (161, 81, 1, 'Pasta de full', 'pasta-de-full');
+INSERT INTO `ingredient_lang` VALUES (162, 81, 2, 'Hojaldre', 'hojaldre');
+INSERT INTO `ingredient_lang` VALUES (163, 82, 1, 'Pernil dolç', 'pernil-dolc');
+INSERT INTO `ingredient_lang` VALUES (164, 82, 2, 'Jamón cocido', 'jamon-cocido');
+INSERT INTO `ingredient_lang` VALUES (165, 83, 1, 'Llavors de sèsam blanc', 'llavors-de-sesam-blanc');
+INSERT INTO `ingredient_lang` VALUES (166, 83, 2, 'Semillas de sésamo blanco', 'semillas-de-sesamo-blanco');
+INSERT INTO `ingredient_lang` VALUES (167, 84, 1, 'Mozzarella fresca', 'mozzarella-fresca');
+INSERT INTO `ingredient_lang` VALUES (168, 84, 2, 'Mozzarella fresca', 'mozzarella-fresca');
+INSERT INTO `ingredient_lang` VALUES (169, 85, 1, 'Biscotti Gocciole Extra Dark', 'biscotti-gocciole-extra-dark');
+INSERT INTO `ingredient_lang` VALUES (170, 85, 2, 'Biscotti Gocciole Extra Dark', 'biscotti-gocciole-extra-dark');
+INSERT INTO `ingredient_lang` VALUES (171, 86, 1, 'Galetes de xocolata', 'galetes-de-xocolata');
+INSERT INTO `ingredient_lang` VALUES (172, 86, 2, 'Galletas de xocolate', 'galletas-de-xocolate');
+INSERT INTO `ingredient_lang` VALUES (173, 87, 1, 'Crema d\'avellanes', 'crema-davellanes');
+INSERT INTO `ingredient_lang` VALUES (174, 87, 2, 'Crema de avellanas', 'crema-de-avellanas');
+INSERT INTO `ingredient_lang` VALUES (175, 88, 1, 'Massa de pizza', 'massa-de-pizza');
+INSERT INTO `ingredient_lang` VALUES (176, 88, 2, 'Masa de pizza', 'masa-de-pizza');
+INSERT INTO `ingredient_lang` VALUES (177, 89, 1, 'Burrata', 'burrata');
+INSERT INTO `ingredient_lang` VALUES (178, 89, 2, 'Burrata', 'burrata');
+INSERT INTO `ingredient_lang` VALUES (179, 90, 1, 'Gorgonzola', 'gorgonzola');
+INSERT INTO `ingredient_lang` VALUES (180, 90, 2, 'Gorgonzola', 'gorgonzola');
+INSERT INTO `ingredient_lang` VALUES (181, 91, 1, 'Taleggio', 'taleggio');
+INSERT INTO `ingredient_lang` VALUES (182, 91, 2, 'Taleggio', 'taleggio');
+INSERT INTO `ingredient_lang` VALUES (183, 92, 1, 'Mozzarella ratllada', 'mozzarella-ratllada');
+INSERT INTO `ingredient_lang` VALUES (184, 92, 2, 'Mozzarella rallada', 'mozzarella-rallada');
+INSERT INTO `ingredient_lang` VALUES (185, 93, 1, 'Stracciatella di bufala', 'stracciatella-di-bufala');
+INSERT INTO `ingredient_lang` VALUES (186, 93, 2, 'Stracciatella di bufala', 'stracciatella-di-bufala');
 COMMIT;
 
 -- ----------------------------
@@ -946,27 +1074,27 @@ CREATE TABLE `recipe` (
 -- Records of recipe
 -- ----------------------------
 BEGIN;
-INSERT INTO `recipe` VALUES (1, 1, 0, 30, 15, NULL, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
-INSERT INTO `recipe` VALUES (2, 1, 4, 0, 60, NULL, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
-INSERT INTO `recipe` VALUES (3, 1, 4, 5, 0, NULL, NULL, '2020-10-15 16:54:38');
+INSERT INTO `recipe` VALUES (1, 1, 0, 30, 15, 13, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
+INSERT INTO `recipe` VALUES (2, 1, 4, 0, 60, 14, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
+INSERT INTO `recipe` VALUES (3, 1, 4, 5, 0, 11, NULL, '2020-10-15 16:54:38');
 INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, 3, NULL, '2020-10-16 13:06:45');
 INSERT INTO `recipe` VALUES (5, 1, 2, 45, 20, 2, NULL, '2020-10-16 13:13:34');
-INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, NULL, NULL, '2020-10-16 14:31:42');
+INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, 12, NULL, '2020-10-16 14:31:42');
 INSERT INTO `recipe` VALUES (7, 1, 2, 15, 5, 5, 'https://www.instagram.com/p/CFsLgWohr5k/', '2022-03-16 18:35:12');
 INSERT INTO `recipe` VALUES (8, 1, 2, 5, 0, 7, 'https://www.instagram.com/p/CCih-Nvq4ww/', '2022-03-16 18:58:55');
 INSERT INTO `recipe` VALUES (9, 1, 8, 15, 10, 8, 'https://www.instagram.com/p/B7ZLOybCvz_/', '2022-03-16 19:19:37');
-INSERT INTO `recipe` VALUES (10, 1, 2, 15, 255, NULL, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
-INSERT INTO `recipe` VALUES (11, 2, 0, 0, 0, NULL, 'https://www.instagram.com/p/CQS_qi6KpcI/', '2022-03-16 19:40:06');
-INSERT INTO `recipe` VALUES (12, 1, 1, 0, 0, NULL, 'https://www.instagram.com/p/CMQJ_i6L42p/', '2022-03-16 19:45:10');
-INSERT INTO `recipe` VALUES (13, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CNcLLYLBHGz/', '2022-03-16 19:46:59');
-INSERT INTO `recipe` VALUES (14, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B-IAWixn1T3/', '2022-03-16 19:52:27');
-INSERT INTO `recipe` VALUES (15, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B0bHFpPDyMG/', '2022-03-16 19:54:10');
-INSERT INTO `recipe` VALUES (16, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CLo8pkIgM5n/', '2022-03-16 19:55:48');
+INSERT INTO `recipe` VALUES (10, 1, 2, 15, 270, 9, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
+INSERT INTO `recipe` VALUES (11, 2, 4, 150, 0, 10, 'https://chefincamicia.com/ricetta/tiramisu-pistacchio-cioccolato-bianco/', '2022-03-16 19:40:06');
+INSERT INTO `recipe` VALUES (12, 1, 1, 5, 5, 15, 'https://www.instagram.com/p/CMQJ_i6L42p/', '2022-03-16 19:45:10');
+INSERT INTO `recipe` VALUES (13, 1, 1, 0, 0, 16, 'https://www.instagram.com/p/CNcLLYLBHGz/', '2022-03-16 19:46:59');
+INSERT INTO `recipe` VALUES (14, 1, 2, 45, 15, NULL, NULL, '2022-03-16 19:52:27');
+INSERT INTO `recipe` VALUES (15, 1, 2, 10, 30, NULL, 'https://www.instagram.com/p/B0bHFpPDyMG/', '2022-03-16 19:54:10');
+INSERT INTO `recipe` VALUES (16, 1, 8, 90, 0, NULL, 'https://www.instagram.com/p/CLo8pkIgM5n/', '2022-03-16 19:55:48');
 INSERT INTO `recipe` VALUES (17, 3, 0, 0, 0, NULL, 'https://www.instagram.com/p/B9Ty0R5CyWZ/', '2022-03-16 19:57:06');
-INSERT INTO `recipe` VALUES (18, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/BvE20Uki8Ih/', '2022-03-16 19:58:27');
+INSERT INTO `recipe` VALUES (18, 1, 1, 10, 10, NULL, 'https://www.instagram.com/p/BvE20Uki8Ih/', '2022-03-16 19:58:27');
 INSERT INTO `recipe` VALUES (19, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CFIC-sdoFLs/', '2022-03-16 19:59:51');
 INSERT INTO `recipe` VALUES (20, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/BlVytV8nryM/', '2022-03-16 20:01:38');
-INSERT INTO `recipe` VALUES (21, 3, 0, 0, 0, NULL, 'https://www.instagram.com/p/B_-HTW8j8T3/', '2022-03-16 20:02:53');
+INSERT INTO `recipe` VALUES (21, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B_-HTW8j8T3/', '2022-03-16 20:02:53');
 INSERT INTO `recipe` VALUES (22, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B2ZA-nPgItU/', '2022-03-16 20:05:36');
 INSERT INTO `recipe` VALUES (23, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B1lyJ96jDVt/', '2022-03-16 20:06:47');
 INSERT INTO `recipe` VALUES (24, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B_hdd_MBF5G/', '2022-03-16 20:09:16');
@@ -1002,87 +1130,155 @@ CREATE TABLE `recipe_ingredient` (
   `id_unit` tinyint(3) unsigned DEFAULT NULL,
   `is_alternative` tinyint(1) unsigned DEFAULT 0,
   `is_optional` tinyint(1) unsigned DEFAULT 0,
-  `order_ingredient` varchar(255) DEFAULT NULL,
+  `order_ingredient` tinyint(3) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_ingredient
 -- ----------------------------
 BEGIN;
-INSERT INTO `recipe_ingredient` VALUES (1, 1, '80', 1, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (2, 1, '80', 10, 3, 1, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (3, 1, '3', 2, 2, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (4, 1, '15', 3, NULL, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (5, 1, '70', 4, 3, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (6, 1, '2', 5, 1, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (7, 1, '1', 11, 9, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (8, 1, '8', 7, 6, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (9, 1, '0', 8, 8, 0, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (10, 1, '0', 9, 8, 0, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (11, 3, '20', 7, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (12, 3, '2', 24, 1, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (13, 3, '75', 23, 3, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (14, 3, '75', 18, 3, 1, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (15, 3, '30', 2, 4, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (16, 2, '200', 12, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (17, 2, '2', 13, NULL, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (18, 2, '2', 22, 2, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (19, 2, '1', 9, 2, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (20, 2, '1', 21, 2, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (21, 2, '4', 20, 10, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (22, 2, '2', 19, NULL, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (23, 2, '150', 14, 3, 0, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (24, 2, '1500', 15, 4, 0, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (25, 2, '400', 16, 3, 0, 0, '10');
-INSERT INTO `recipe_ingredient` VALUES (26, 2, '150', 17, 3, 0, 0, '11');
-INSERT INTO `recipe_ingredient` VALUES (27, 2, '150', 18, 3, 0, 0, '12');
-INSERT INTO `recipe_ingredient` VALUES (28, 5, '200', 25, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (29, 5, '240', 26, 4, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (30, 4, '200', 27, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (31, 4, '0.5', 13, NULL, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (32, 4, '0.5', 28, NULL, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (33, 6, '500', 26, 4, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (34, 6, '5', 29, 3, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (35, 6, '5', 30, 3, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (36, 4, '200', 31, 4, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (37, 4, '4', 32, NULL, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (38, 4, '3', 34, 1, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (39, 4, '1.5', 35, 1, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (40, 4, '0.5', 33, 1, 0, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (41, 4, '1', 36, NULL, 0, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (42, 7, '2', 37, NULL, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (43, 7, '5', 2, 1, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (44, 7, '5', 26, 1, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (45, 7, '3', 39, 1, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (46, 7, '3', 40, 1, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (47, 7, '1', 22, 7, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (48, 7, '1', 38, 7, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (49, 8, '4', 10, NULL, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (50, 8, '200', 41, 3, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (51, 8, '12', 42, NULL, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (52, 8, '6', 44, NULL, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (53, 8, '0', 2, 8, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (54, 8, '0', 7, 8, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (55, 8, '0', 45, 8, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (56, 8, '0', 22, 8, 0, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (57, 8, '0', 9, 8, 0, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (58, 9, '250', 18, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (59, 9, '250', 46, 3, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (60, 9, '175', 47, 3, 0, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (61, 9, '0', 22, 8, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (62, 9, '0', 9, 8, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (63, 9, '0', 48, 8, 0, 1, '6');
-INSERT INTO `recipe_ingredient` VALUES (64, 10, '250', 49, 3, 0, 0, '1');
-INSERT INTO `recipe_ingredient` VALUES (65, 10, '160', 55, 3, 0, 0, '2');
-INSERT INTO `recipe_ingredient` VALUES (66, 10, '160', 56, 3, 1, 0, '3');
-INSERT INTO `recipe_ingredient` VALUES (67, 10, '500', 50, 3, 0, 0, '4');
-INSERT INTO `recipe_ingredient` VALUES (68, 10, '100', 51, 3, 0, 0, '5');
-INSERT INTO `recipe_ingredient` VALUES (69, 10, '100', 52, 3, 0, 0, '6');
-INSERT INTO `recipe_ingredient` VALUES (70, 10, '1', 53, NULL, 0, 0, '7');
-INSERT INTO `recipe_ingredient` VALUES (71, 10, '100', 54, 4, 0, 0, '8');
-INSERT INTO `recipe_ingredient` VALUES (72, 10, '80', 18, 3, 0, 0, '9');
-INSERT INTO `recipe_ingredient` VALUES (73, 10, '0', 22, 8, 0, 0, '10');
+INSERT INTO `recipe_ingredient` VALUES (1, 1, '80', 1, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (2, 1, '80', 10, 3, 1, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (3, 1, '3', 2, 2, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (4, 1, '15', 3, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (5, 1, '70', 4, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (6, 1, '2', 5, 1, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (7, 1, '1', 11, 9, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (8, 1, '8', 7, 6, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (9, 1, '0', 8, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (10, 1, '0', 9, 8, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (11, 3, '20', 7, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (12, 3, '2', 24, 1, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (13, 3, '75', 23, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (14, 3, '75', 18, 3, 1, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (15, 3, '30', 2, 4, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (16, 2, '200', 12, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (17, 2, '2', 13, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (18, 2, '2', 22, 2, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (19, 2, '1', 9, 2, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (20, 2, '1', 21, 2, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (21, 2, '4', 20, 10, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (22, 2, '2', 19, NULL, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (23, 2, '150', 14, 3, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (24, 2, '1500', 15, 4, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (25, 2, '400', 16, 3, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (26, 2, '150', 17, 3, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (27, 2, '150', 18, 3, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (28, 5, '200', 25, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (29, 5, '240', 26, 4, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (30, 4, '200', 27, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (31, 4, '0.5', 13, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (32, 4, '0.5', 28, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (33, 6, '500', 26, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (34, 6, '5', 29, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (35, 6, '5', 30, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (36, 4, '200', 31, 4, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (37, 4, '4', 32, NULL, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (38, 4, '3', 34, 1, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (39, 4, '1.5', 35, 1, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (40, 4, '0.5', 33, 1, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (41, 4, '1', 36, NULL, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (42, 7, '2', 37, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (43, 7, '5', 73, 1, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (44, 7, '5', 26, 1, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (45, 7, '3', 39, 1, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (46, 7, '3', 40, 1, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (47, 7, '1', 22, 7, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (48, 7, '1', 38, 7, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (49, 8, '4', 10, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (50, 8, '200', 41, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (51, 8, '12', 42, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (52, 8, '6', 44, NULL, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (53, 8, '0', 2, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (54, 8, '0', 7, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (55, 8, '0', 45, 8, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (56, 8, '0', 22, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (57, 8, '0', 9, 8, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (58, 9, '250', 18, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (59, 9, '250', 46, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (60, 9, '175', 47, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (61, 9, '0', 22, 8, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (62, 9, '0', 9, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (63, 9, '0', 48, 8, 0, 1, 6);
+INSERT INTO `recipe_ingredient` VALUES (64, 10, '250', 49, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (65, 10, '250', 55, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (66, 10, '250', 56, 3, 1, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (67, 10, '500', 50, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (68, 10, '100', 51, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (69, 10, '100', 52, 3, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (70, 10, '1', 53, NULL, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (71, 10, '100', 54, 4, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (72, 10, '80', 18, 3, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (73, 10, '0', 22, 8, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (74, 11, '140', 57, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (75, 11, '50', 58, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (76, 11, '10', 59, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (77, 11, '500', 60, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (78, 11, '150', 61, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (79, 11, '80', 33, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (80, 11, '2', 32, NULL, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (81, 11, '100', 62, 4, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (82, 11, '12', 63, NULL, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (83, 11, '0', 64, 8, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (84, 12, '0.25', 19, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (85, 12, '200', 14, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (86, 12, '2', 32, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (87, 12, '2', 65, NULL, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (88, 12, '0', 66, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (89, 12, '0', 22, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (90, 12, '0', 9, 8, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (91, 13, '2', 72, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (92, 13, '1', 52, 11, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (93, 13, '2', 67, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (94, 13, '2', 33, 1, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (95, 13, '0', 68, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (96, 13, '0', 69, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (97, 13, '3', 28, NULL, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (98, 13, '1', 70, NULL, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (99, 13, '1', 71, NULL, 1, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (100, 13, '0', 73, 8, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (101, 13, '0', 22, 8, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (102, 13, '0', 9, 8, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (103, 12, '0', 73, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (104, 14, '1', 74, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (105, 14, '0', 73, 13, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (106, 14, '2', 75, 1, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (107, 14, '2', 66, 1, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (108, 14, '8', 76, 12, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (109, 14, '4', 77, 12, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (110, 14, '0', 9, 8, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (111, 14, '1', 78, 7, 0, 1, 8);
+INSERT INTO `recipe_ingredient` VALUES (112, 14, '1', 79, 2, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (113, 14, '0.5', 20, 10, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (114, 14, '1', 32, NULL, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (115, 14, '250', 59, 4, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (116, 14, '0', 22, 8, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (117, 15, '1', 81, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (118, 15, '1', 80, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (119, 15, '1', 84, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (120, 15, '120', 82, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (121, 15, '1', 32, NULL, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (122, 15, '0', 22, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (123, 15, '0', 9, 8, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (124, 15, '0', 73, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (125, 15, '0', 83, 8, 0, 0, 0);
+INSERT INTO `recipe_ingredient` VALUES (126, 16, '400', 85, 3, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (127, 16, '400', 86, 3, 1, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (128, 16, '500', 60, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (129, 16, '4', 32, NULL, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (130, 16, '120', 33, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (131, 16, '0', 87, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (132, 16, '120', 62, 4, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (133, 16, '0', 64, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (134, 18, '1', 88, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (135, 18, '40', 90, 3, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (136, 18, '50', 91, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (137, 18, '50', 92, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (138, 18, '40', 93, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (139, 18, '1', 89, NULL, 1, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (140, 18, '40', 4, 3, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (141, 18, '30', 18, 3, 0, 0, 8);
 COMMIT;
 
 -- ----------------------------
@@ -1115,22 +1311,22 @@ INSERT INTO `recipe_lang` VALUES (9, 5, 1, 'Gohan (arròs japonés)', 'gohan-arr
 INSERT INTO `recipe_lang` VALUES (10, 5, 2, 'Gohan (arroz japonés)', 'gohan-arroz-japones', '<p>Plato básico de la cocina japonesa. Un arroz aglutinado que nos servirá como base para otros platos o como simple acompañamiento.</p>');
 INSERT INTO `recipe_lang` VALUES (11, 6, 1, 'Dashi casolà', 'dashi-casola', '<p>Sopa bàsica a la cuina nipona a base de bonítol sec en flocs.</p>');
 INSERT INTO `recipe_lang` VALUES (12, 6, 2, 'Dashi casero', 'dashi-casero', '<p>Sopa básica en la cocina nipona a base de bonito seco en copos.</p>');
-INSERT INTO `recipe_lang` VALUES (13, 7, 1, 'Doritos casolans', 'doritos-casolans', NULL);
-INSERT INTO `recipe_lang` VALUES (14, 7, 2, 'Doritos hechos en casa', 'doritos-hechos-en-casa', NULL);
+INSERT INTO `recipe_lang` VALUES (13, 7, 1, 'Doritos casolans', 'doritos-casolans', '<p>Les patates de bossa que pots fer a casa teva amb les toritas que t\'han sobrat.</p>');
+INSERT INTO `recipe_lang` VALUES (14, 7, 2, 'Doritos hechos en casa', 'doritos-hechos-en-casa', '<p>Las patatas de bolsa que puedes hacer en tu casa con las tortitas que te han sobrado.</p>');
 INSERT INTO `recipe_lang` VALUES (15, 8, 1, 'Torrades de guacamole, mozzarella i cherry', 'torrades-de-guacamole-mozzarella-i-cherry', NULL);
 INSERT INTO `recipe_lang` VALUES (16, 8, 2, 'Tostadas de guacamole, mozzarella y cherry', 'tostadas-de-guacamole-mozzarella-y-cherry', NULL);
-INSERT INTO `recipe_lang` VALUES (17, 9, 1, 'Galetes de permesà', 'galetes-de-permesa', NULL);
-INSERT INTO `recipe_lang` VALUES (18, 9, 2, 'Galletas de parmesano', 'galletas-de-parmesano', NULL);
-INSERT INTO `recipe_lang` VALUES (19, 10, 1, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', NULL);
-INSERT INTO `recipe_lang` VALUES (20, 10, 2, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', NULL);
+INSERT INTO `recipe_lang` VALUES (17, 9, 1, 'Galetes de permesà', 'galetes-de-permesa', '<p>Una tapa que enamorarà als fanàtics del formatge.</p>');
+INSERT INTO `recipe_lang` VALUES (18, 9, 2, 'Galletas de parmesano', 'galletas-de-parmesano', '<p>Una tapa que enamorará a los fanáticos del queso.</p>');
+INSERT INTO `recipe_lang` VALUES (19, 10, 1, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', '<p>T\'animo a preparar aquesta pasta si tens una tarda lliure: et sorprendrà.</p>');
+INSERT INTO `recipe_lang` VALUES (20, 10, 2, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', '<p>Te animo a preparar esta pasta si tienes una tarde libre: te sorprenderá.</p>');
 INSERT INTO `recipe_lang` VALUES (21, 11, 1, 'Tiramisú de pistatxo i xocolata blanca', 'tiramisu-de-pistatxo-i-xocolata-blanca', NULL);
 INSERT INTO `recipe_lang` VALUES (22, 11, 2, 'Tiramisú de pistacho y chocolate blanco', 'tiramisu-de-pistacho-y-chocolate-blanco', NULL);
-INSERT INTO `recipe_lang` VALUES (23, 12, 1, 'Truita d\'espinacs i formatge', 'truita-despinacs-i-formatge', NULL);
-INSERT INTO `recipe_lang` VALUES (24, 12, 2, 'Tortilla de espinacas y queso', 'tortilla-de-espinacas-y-queso', NULL);
-INSERT INTO `recipe_lang` VALUES (25, 13, 1, 'Entrepà de porro i brie', 'entrepa-de-porro-i-brie', NULL);
-INSERT INTO `recipe_lang` VALUES (26, 13, 2, 'Bocata de puerro y brie', 'bocata-de-puerro-y-brie', NULL);
-INSERT INTO `recipe_lang` VALUES (27, 14, 1, 'Patates braves', 'patates-braves', NULL);
-INSERT INTO `recipe_lang` VALUES (28, 14, 2, 'Patatas bravas', 'patatas-bravas', NULL);
+INSERT INTO `recipe_lang` VALUES (23, 12, 1, 'Truita d\'espinacs i formatge', 'truita-despinacs-i-formatge', '<p>Sopar bo i fàcil en pocs minuts.</p>');
+INSERT INTO `recipe_lang` VALUES (24, 12, 2, 'Tortilla de espinacas y queso', 'tortilla-de-espinacas-y-queso', '<p>Cena buena y fácil en pocos minutos.</p>');
+INSERT INTO `recipe_lang` VALUES (25, 13, 1, 'Entrepà de porro i Camembert', 'entrepa-de-porro-i-camembert', NULL);
+INSERT INTO `recipe_lang` VALUES (26, 13, 2, 'Bocata de puerro y Camembert', 'bocata-de-puerro-y-camembert', NULL);
+INSERT INTO `recipe_lang` VALUES (27, 14, 1, 'Patates braves', 'patates-braves', '<p>Una recepta que aniràs millorant amb el temps i la pràctica.</p>');
+INSERT INTO `recipe_lang` VALUES (28, 14, 2, 'Patatas bravas', 'patatas-bravas', '<p>Una receta que irás mejorando con el tiempo y la práctica.</p>');
 INSERT INTO `recipe_lang` VALUES (29, 15, 1, 'Pasta de full farcida', 'pasta-de-full-farcida', NULL);
 INSERT INTO `recipe_lang` VALUES (30, 15, 2, 'Hojaldre relleno', 'hojaldre-relleno', NULL);
 INSERT INTO `recipe_lang` VALUES (31, 16, 1, 'Tiramisú de xocolata', 'tiramisu-de-xocolata', NULL);
@@ -1199,7 +1395,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(9) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -1249,6 +1445,38 @@ INSERT INTO `recipe_step` VALUES (41, 10, NULL, 3);
 INSERT INTO `recipe_step` VALUES (42, 10, NULL, 4);
 INSERT INTO `recipe_step` VALUES (43, 10, NULL, 5);
 INSERT INTO `recipe_step` VALUES (44, 10, NULL, 5);
+INSERT INTO `recipe_step` VALUES (45, 11, NULL, 1);
+INSERT INTO `recipe_step` VALUES (46, 11, NULL, 2);
+INSERT INTO `recipe_step` VALUES (47, 11, NULL, 3);
+INSERT INTO `recipe_step` VALUES (48, 11, NULL, 4);
+INSERT INTO `recipe_step` VALUES (49, 11, NULL, 5);
+INSERT INTO `recipe_step` VALUES (50, 11, NULL, 6);
+INSERT INTO `recipe_step` VALUES (51, 12, NULL, 1);
+INSERT INTO `recipe_step` VALUES (52, 12, NULL, 2);
+INSERT INTO `recipe_step` VALUES (53, 12, NULL, 3);
+INSERT INTO `recipe_step` VALUES (54, 13, NULL, 1);
+INSERT INTO `recipe_step` VALUES (55, 13, NULL, 2);
+INSERT INTO `recipe_step` VALUES (56, 13, NULL, 3);
+INSERT INTO `recipe_step` VALUES (57, 14, NULL, 1);
+INSERT INTO `recipe_step` VALUES (58, 14, NULL, 2);
+INSERT INTO `recipe_step` VALUES (59, 14, NULL, 3);
+INSERT INTO `recipe_step` VALUES (60, 14, NULL, 4);
+INSERT INTO `recipe_step` VALUES (61, 14, NULL, 5);
+INSERT INTO `recipe_step` VALUES (62, 14, NULL, 6);
+INSERT INTO `recipe_step` VALUES (63, 15, NULL, 1);
+INSERT INTO `recipe_step` VALUES (64, 15, NULL, 2);
+INSERT INTO `recipe_step` VALUES (65, 15, NULL, 3);
+INSERT INTO `recipe_step` VALUES (66, 15, NULL, 4);
+INSERT INTO `recipe_step` VALUES (67, 15, NULL, 5);
+INSERT INTO `recipe_step` VALUES (68, 15, NULL, 6);
+INSERT INTO `recipe_step` VALUES (69, 16, NULL, 1);
+INSERT INTO `recipe_step` VALUES (70, 16, NULL, 2);
+INSERT INTO `recipe_step` VALUES (71, 16, NULL, 3);
+INSERT INTO `recipe_step` VALUES (72, 16, NULL, 4);
+INSERT INTO `recipe_step` VALUES (73, 18, NULL, 1);
+INSERT INTO `recipe_step` VALUES (74, 18, NULL, 2);
+INSERT INTO `recipe_step` VALUES (75, 18, NULL, 3);
+INSERT INTO `recipe_step` VALUES (76, 18, NULL, 4);
 COMMIT;
 
 -- ----------------------------
@@ -1261,7 +1489,7 @@ CREATE TABLE `recipe_step_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
   PRIMARY KEY (`id_recipe_step_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -1317,8 +1545,8 @@ INSERT INTO `recipe_step_lang` VALUES (47, 24, 1, '<p>Preescalfem el forn a 170�
 INSERT INTO `recipe_step_lang` VALUES (48, 24, 2, '<p>Precalentamos el horno a 170ºC.</p>');
 INSERT INTO `recipe_step_lang` VALUES (49, 25, 1, '<p>Tallem les $cornTortitas com a la foto.</p>');
 INSERT INTO `recipe_step_lang` VALUES (50, 25, 2, '<p>Cortamos las $cornTortitas como en la foto.</p>');
-INSERT INTO `recipe_step_lang` VALUES (51, 26, 1, '<p>En un bol barregem la resta d\'ingredients ($virginOliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) fins que obtinguem una barreja homogènia. Afegim els triangles perquè es vagin impregnant bé.</p>');
-INSERT INTO `recipe_step_lang` VALUES (52, 26, 2, '<p>En un cuenco mezclamos el resto de ingredientes ($virginOliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) hasta que obtengamos una mezcla homogénea. Añadimos los triángulos para que se vayan impregnando bien.</p>');
+INSERT INTO `recipe_step_lang` VALUES (51, 26, 1, '<p>En un bol barregem la resta d\'ingredients ($oliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) fins que obtinguem una barreja homogènia. Afegim els triangles perquè es vagin impregnant bé.</p>');
+INSERT INTO `recipe_step_lang` VALUES (52, 26, 2, '<p>En un cuenco mezclamos el resto de ingredientes ($oliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) hasta que obtengamos una mezcla homogénea. Añadimos los triángulos para que se vayan impregnando bien.</p>');
 INSERT INTO `recipe_step_lang` VALUES (53, 27, 1, '<p>En una safata de forn sobre un paper vegetal, anem col·locant els triangles impregnats de la barreja separats: que no es toquin ni quedi un damunt l\'altre.</p>');
 INSERT INTO `recipe_step_lang` VALUES (54, 27, 2, '<p>En una bandeja de horno sobre un papel vegetal, vamos colocando los triangulitos impregnados de la mezcla separados: que no se toquen ni quede uno encima de otro.</p>');
 INSERT INTO `recipe_step_lang` VALUES (55, 28, 1, '<p>Enfornar fins que comencin a daurar i llest! No patiu, després d\'un ratolí de sortir del forn, quedaran ben cruixents.</p>');
@@ -1353,8 +1581,72 @@ INSERT INTO `recipe_step_lang` VALUES (83, 42, 1, '<p>Afegim el $whiteWine fins 
 INSERT INTO `recipe_step_lang` VALUES (84, 42, 2, '<p>Añadimos el $whiteWine hasta evaporar el alcohol.</p>');
 INSERT INTO `recipe_step_lang` VALUES (85, 43, 1, '<p>Ho cobrim tot amb la ceba i afegim una mica de $salt i les $bayLeaf.</p><p>Tapem la cassola i ho deixem cuinar durant 4 hores, barrejant cada 30 minuts.</p>');
 INSERT INTO `recipe_step_lang` VALUES (86, 43, 2, '<p>Cubrimos todo con la cebolla y añadimos un poco de $salt y las $bayLeaf.</p><p>Tapamos la cazuela y dejamos cocinar durante 4 horas, mezclando cada 30 minutos.</p>');
-INSERT INTO `recipe_step_lang` VALUES (87, 44, 1, '<p>Ho cobrim tot amb la ceba i afegim una mica de $salt i les $bayLeaf.</p><p>Tapem la cassola i ho deixem cuinar durant 4 hores, barrejant cada 30 minuts.</p>');
-INSERT INTO `recipe_step_lang` VALUES (88, 44, 2, '<p>Cubrimos todo con la cebolla y añadimos un poco de $salt y las $bayLeaf.</p><p>Tapamos la cazuela y dejamos cocinar durante 4 horas, mezclando cada 30 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (87, 44, 1, '<p>Quan ja tenim la carn llesta, partim els $zite10 en 3 parts i els bullim en abundant aigua salda.</p><p>Passat el temps de cocció, ho afegim a la salsa i incorporem també una mica d\'aigua de cocció. En uns 3-5 minuts ja tenim llesta la nostra pasta!</p>');
+INSERT INTO `recipe_step_lang` VALUES (88, 44, 2, '<p>Cuando ya tenemos la carne lista, partimos los $zite10 en 3 partes y los hervimos en abundante agua salda.</p><p>Pasado el tiempo de cocción, añadimos a la salsa e incorporamos también un poco de agua de cocción. ¡En unos 3-5 minutos ya tenemos lista nuestra pasta!</p>');
+INSERT INTO `recipe_step_lang` VALUES (89, 45, 1, '<p>Començarem per la crema de $pistachios(0.714285): aquests han de ser sense closca ni pell. Els deixem en remull durant 1 hora i després el triturem molt bé en una processadora junt amb el $icingSugar i el $sunflowerOil fins a obtenir una textura similar a la crema d\'avellanes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (90, 45, 2, '<p>Empezaremos por la quema de $pistachios(0.714285): éstos deben ser sin caparazón ni piel. Los dejamos a remojo durante 1 hora y después lo trituramos muy bien en una procesadora junto con el $icingSugar y el $sunflowerOil hasta obtener una textura similar a la quema de avellanas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (91, 46, 1, '<p>Fonem la $whiteChocolate al bany maria.</p>');
+INSERT INTO `recipe_step_lang` VALUES (92, 46, 2, '<p>Fundamos la $whiteChocolate en el baño maría.</p>');
+INSERT INTO `recipe_step_lang` VALUES (93, 47, 1, '<p>Continuem amb els $egg. Separem la clara dels rovells en dos bols grandets.</p><p>Batem el $sugar junt amb els rovells amb l\'ajuda del minipimer i les varetes fins a obtenir una espuma densa tant blanquinosa com sigui possible.</p>');
+INSERT INTO `recipe_step_lang` VALUES (94, 47, 2, '<p>Continuamos con los $egg. Separamos la clara de las yemas en dos cuencos grandecitos.</p><p>Batimos el $sugar junto con las yemas con la ayuda del minipimer y las varillas hasta obtener una espuma densa lo más blanquecina posible.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (95, 48, 1, '<p>Incorporem als rovells el $mascarpone gradualment mentre ho seguim integrant amb les varetes.</p><p>A continuació, incorporem també la xocolata fosa i la crema de festucs.</p>');
+INSERT INTO `recipe_step_lang` VALUES (96, 48, 2, '<p>Incorporamos a las yemas el $mascarpone gradualmente mientras lo seguimos integrando con las varillas.</p><p>A continuación, incorporamos también el chocolate fundido y la crema de pistachos.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (97, 49, 1, '<p>Muntem les clares a punt de neu i les incorporem a la barreja anterior a poc a poc i amb moviments envolvents per no eliminar l\'espuma de les clares.</p>');
+INSERT INTO `recipe_step_lang` VALUES (98, 49, 2, '<p>Montamos las claras a punto de nieve y las incorporamos a la mezcla anterior despacio y con movimientos envolventes para no eliminar la espuma de las claras.</p>');
+INSERT INTO `recipe_step_lang` VALUES (99, 50, 1, '<p>Emplatem en una safata: fem una capa de $ladyFinger(0.5) sucats de $coffee, afegim la meitat de la barreja d\'ous, festucs, xocolata i mascarpone. Repetim perquè el tiramisú tingui dues capes.</p><p>Finalment, empolvorem amb $pureCocoaPowder i amb uns $pistachios(0.2858) picats per decorar.</p><p>Deixem refredar mínim una hora a la nevera.</p>');
+INSERT INTO `recipe_step_lang` VALUES (100, 50, 2, '<p>Emplatamos en una bandeja: hacemos una capa de $ladyFinger(0.5) mojados de $coffee, añadimos la mitad de la mezcla de huevos, pistachos, chocolate y mascarpone. Repetimos para que el tiramisú tenga dos capas.</p><p>Por último, espolvoreamos con $pureCocoaPowder y con unos $pistachios(0.2858) picados para decorar.</p><p>Dejamos enfriar mínimo una hora en la nevera.</p>');
+INSERT INTO `recipe_step_lang` VALUES (101, 51, 1, '<p>Sofregim la $onion i un cop daurada afegim els $freshSpinach.</p>');
+INSERT INTO `recipe_step_lang` VALUES (102, 51, 2, '<p>Pochamos la $onion y una vez dorada agregamos las $freshSpinach.</p>');
+INSERT INTO `recipe_step_lang` VALUES (103, 52, 1, '<p>Batem els $egg amb una mica de $salt i $pepper i quan els espinacs hagin reduït afegim els ous.</p>');
+INSERT INTO `recipe_step_lang` VALUES (104, 52, 2, '<p>Batimos los $egg con un poco de $salt y $pepper y cuando las espinacas hayan reducido agregamos los huevos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (105, 53, 1, '<p>Quallem per un costat i en donar la volta posem per sobre una mica de tomàquet fregit casolà i les $slicesCheese, fins que quedi fos i llest per clavar la dent.</p>');
+INSERT INTO `recipe_step_lang` VALUES (106, 53, 2, '<p>Cuajamos por un lado y al dar la vuelta ponemos por encima un poco de tomate frito casero y las $slicesCheese, hasta que quede derretido y listo para hincar el diente.</p>');
+INSERT INTO `recipe_step_lang` VALUES (107, 54, 1, '<p>Netejar la tija del $celery traient la part fibrosa.</p><p>Talleu l\'api i la $pear en cubs per pochar-ho a foc lent en una paella amb una mica de $oliveOil, el $sugar, la $cayennePowder i una mica de $lemonPeel.</p><p>Quan estigui llest el triturem amb el minipimer i ho reservem.</p>');
+INSERT INTO `recipe_step_lang` VALUES (108, 54, 2, '<p>Limpiar el tallo del $celery quitando la parte fibrosa.</p><p>Cortar el apio y la $pear en cubos para pocharlo a fuego lento en una sartén con un poco de $oliveOil, el $sugar, la $cayennePowder y un poco de $lemonPeel.</p><p>Cuando esté listo lo trituramos con el minipimer y lo reservamos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (109, 55, 1, '<p>Ofeguem els $leek en una paella amb un rajolí de $oliveOil a foc mitjà amb una mica de $salt.</p><p>Cuinem durant uns 5-10 minuts per obtenir un resultat torrat i cruixent.</p>');
+INSERT INTO `recipe_step_lang` VALUES (110, 55, 2, '<p>Rehogamos los $leek en una sartén con un chorrito de $oliveOil a fuego medio con un poco de $salt.</p><p>Cocinamos durante unos 5-10 minutos para obtener un resultado tostado y crujiente.</p>');
+INSERT INTO `recipe_step_lang` VALUES (111, 56, 1, '<p>Finalitzem l\'entrepà: tallem la $baguette per la meitat i el torrem en una paella durant uns 3-4 minuts. Tallem el $camembert a rodanxes fines.</p><p>Estenem una mica de la crema de pera sobre la base del pa, completar amb les rodanxes de Camembert i els porros estofats.</p>');
+INSERT INTO `recipe_step_lang` VALUES (112, 56, 2, '<p>Finalizamos el bocadillo: cortamos la $baguette por la mitad y tostar en una paella durante unos 3-4 minutos. Cortamos el $camembert en rodajas finas.</p><p>Extendemos un poco de la crema de pera y apio sobre la base del pan, completar con las rodajas de Camembert y los puerros estofados.</p>');
+INSERT INTO `recipe_step_lang` VALUES (113, 57, 1, '<p>Preparem les $potato, les tallem en daus no molt petits i les salpebrem. Ho deixem reposar 15 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (114, 57, 2, '<p>Preparamos las $potato, las cortamos en dados no muy pequeños y salpimentamos. Dejar reposar 15 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (115, 58, 1, '<p>Mentrestant, podem preparar l\'allioli ràpid: al túrmix afegim l\'$sunflowerOil, $garlic, $egg i la $salt i ho batem a velocitat baixa mantenint el braç a l\'inferior del vas. Quan hagi començat a emulsionar, podem fer petits moviments a dalt i a baix per acabar d\'integrar-ho tot i triturar l\'all per complet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (116, 58, 2, '<p>Mientras tanto, podemos preparar el alioli rápido: al túrmix añadimos el $sunflowerOil, $garlic, $egg y la $salt y lo batimos a velocidad baja manteniendo el brazo en el inferior del vaso. Cuando haya empezado a emulsionar, podemos realizar pequeños movimientos arriba y abajo para acabar de integrarlo todo y triturar el ajo por completo.</p>');
+INSERT INTO `recipe_step_lang` VALUES (117, 59, 1, '<p>També podem anar preparant la salsa vermella.</p><p>En un bol afegim tots els ingredients ($spicyOil, $tomatoSauce, $espinalerSauce, $vermut, $pepper, $turmeric i $spicyPaprika)  els barregem bé i ho deixem reposar un mínim de 10 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (118, 59, 2, '<p>También podemos ir preparando la salsa roja.</p><p>En un cuenco añadimos todos los ingredientes ($spicyOil, $tomatoSauce, $espinalerSauce, $vermut, $pepper, $turmeric y $spicyPaprika) los mezclamos bien y lo dejamos reposar un mínimo de 10 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (119, 60, 1, '<p>Passats els minuts, eliminem l\'excés d\'aigua i les fregim durant 5 minuts <b>a 150ºC</b>.<br></p><p>Les colem i les escorrem i les col·loquem en un bol que taparem amb paper d\'alumini 15 minuts més perquè s\'acabin d\'estovar per dins.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (120, 60, 2, '<p>Pasados los minutos, eliminamos el exceso de agua y freímos durante 5 minutos <b>a 150ºC</b>.</p><p>Las colamos y las escurrimos y las colocamos en un cuenco que taparemos con papel de aluminio 15 minutos más para que se acaben de ablandar por dentro.</p>');
+INSERT INTO `recipe_step_lang` VALUES (121, 61, 1, '<p>Tornem a eliminar l\'excés de líquid i fem la segona fregida de les patates <b>a 190ºC</b> durant uns 4 minuts o fins que les patates quedin daurades al nostre gust.</p>');
+INSERT INTO `recipe_step_lang` VALUES (122, 61, 2, '<p>Volvemos a eliminar el exceso de líquido y hacemos la segunda fritura de las patatas <b>a 190ºC</b> durante unos 4 minutos o hasta que las patatas queden doradas a nuestro gusto.</p>');
+INSERT INTO `recipe_step_lang` VALUES (123, 62, 1, '<p>Emplatem! Col·loquem les patates a un bol, la salsa vermella i, per sobre de tot, l\'allioli.</p><p>Opcionalment, podem afegir un rajolí d\'oli (o oli picant) per decorar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (124, 62, 2, '<p>Emplatamos! Colocamos las patatas en un cuenco, la salsa roja y, por encima de todo, el alioli.</p><p>Opcionalmente, podemos añadir un chorrito de aceite (u aceite picante) para decorar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (125, 63, 1, '<p>Tallem el $zucchini en làmines i el salpebrem.</p><p>El marquem a la paella amb una mica d\'$oliveOil i el reservem.</p>');
+INSERT INTO `recipe_step_lang` VALUES (126, 63, 2, '<p>Cortamos el $zucchini en láminas y lo salpimentamos.</p><p>Lo marcamos en la sartén con un poco de $oliveOil y lo reservamos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (127, 64, 1, '<p>Preescalfem el forn a 190ºC.</p>');
+INSERT INTO `recipe_step_lang` VALUES (128, 64, 2, '<p>Precalentamos el horno a 190ºC.</p>');
+INSERT INTO `recipe_step_lang` VALUES (129, 65, 1, '<p>Tallem la $freshMozzarella la reservem.</p>');
+INSERT INTO `recipe_step_lang` VALUES (130, 65, 2, '<p>Cortamos la $freshMozzarella la reservamos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (131, 66, 1, '<p>Estenem la $puffPastry i en la meitat dreta (deixant un espai per poder embolicar-ho més tard) col·loquem la meitat de la Mozzarella, el carabassó, el $cookedHam i la resta de Mozzarella. Afegim una mica de $pepper.</p>');
+INSERT INTO `recipe_step_lang` VALUES (132, 66, 2, '<p>Extendemos la $puffPastry y en la mitad derecha (dejando un espacio para poder envolverlo más tarde) colocamos la mitad de la Mozzarella, el calabacín, el $cookedHam y el resto de Mozzarella. Añadimos un poco de $pepper.</p>');
+INSERT INTO `recipe_step_lang` VALUES (133, 67, 1, '<p>Emboliquem la pasta de full primer la part inferior, superior i dreta (que han de ser les més petites) i després la part esquerra que ha de cobrir tots els ingredients.</p><p>Amb un ganivet, fem unes marques en forma de quadrícula.</p><p>Pintem la pasta de full amb l\'$egg batut.</p>');
+INSERT INTO `recipe_step_lang` VALUES (134, 67, 2, '<p>Envolvemos el hojaldre primero la parte inferior, superior y derecha (que deben ser las más pequeñas) y después la parte izquierda que debe cubrir todos los ingredientes.</p><p>Con un cuchillo, hacemos unas marcas en forma de cuadrícula.</p><p>Pintamos el hojaldre con el $egg batido.</p>');
+INSERT INTO `recipe_step_lang` VALUES (135, 68, 1, '<p>Ho enfornem durant 20 minuts o fins que estigui daurat.</p>');
+INSERT INTO `recipe_step_lang` VALUES (136, 68, 2, '<p>Hornear durante 20 minutos o hasta que esté dorado.</p>');
+INSERT INTO `recipe_step_lang` VALUES (137, 69, 1, '<p>Comencem amb els $egg. Separem la clara dels rovells en dos bols grandets.</p><p>Batem el $sugar junt amb els rovells amb l\'ajuda del minipimer i les varetes fins a obtenir una espuma densa tant blanquinosa com sigui possible.</p>');
+INSERT INTO `recipe_step_lang` VALUES (138, 69, 2, '<p>Empezamos con los $egg. Separamos la clara de las yemas en dos cuencos grandecitos.</p><p>Batimos el $sugar junto con las yemas con la ayuda del minipimer y las varillas hasta obtener una espuma densa lo más blanquecina posible.</p>');
+INSERT INTO `recipe_step_lang` VALUES (139, 70, 1, '<p>Incorporem als rovells el $mascarpone gradualment mentre ho seguim integrant amb les varetes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (140, 70, 2, '<p>Incorporamos a las yemas el $mascarpone gradualmente mientras lo seguimos integrando con las varillas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (141, 71, 1, '<p>Muntem les clares a punt de neu i les incorporem a la barreja anterior a poc a poc i amb moviments envolvents per no eliminar l\'espuma de les clares.</p>');
+INSERT INTO `recipe_step_lang` VALUES (142, 71, 2, '<p>Montamos las claras a punto de nieve y las incorporamos a la mezcla anterior despacio y con movimientos envolventes para no eliminar la espuma de las claras.</p>');
+INSERT INTO `recipe_step_lang` VALUES (143, 72, 1, '<p>Emplatem en una safata: fem una capa de $biscottiGoccioleDark(0.5) sucades de $coffee, afegim la meitat de la barreja d\'ous i mascarpone. Amb una cullera repartim una mica de $hazelnutCream.</p><p>Repetim perquè el tiramisú tingui dues capes.</p><p>Finalment, empolvorem amb $pureCocoaPowder per decorar.</p><p>Deixem refredar mínim una hora a la nevera.</p>');
+INSERT INTO `recipe_step_lang` VALUES (144, 72, 2, '<p>Emplatamos en una bandeja: hacemos una capa de $biscottiGoccioleDark(0.5) mojadas de $coffee, añadimos la mitad de la mezcla de huevos y mascarpone. Con una cuchara repartimos un poco de $hazelnutCream.</p><p>Repetimos para que el tiramisú tenga dos capas.<br></p><p>Por último, espolvoreamos con $pureCocoaPowder para decorar.<br></p><p>Dejamos enfriar mínimo una hora en la nevera.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (145, 73, 1, '<p>Preescalfem el forn a 300ºC o al màxim que et permeti el teu forn.</p>');
+INSERT INTO `recipe_step_lang` VALUES (146, 73, 2, '<p>Precalentamos el horno a 300ºC o lo máximo que te permita tu horno.</p>');
+INSERT INTO `recipe_step_lang` VALUES (147, 74, 1, '<p>Sobre de la massa de pizza repartim la $gratedMozzarella, el $gorgonzola i el  $taleggio.</p><p>Quan el forn estigui calent, enfornem la pizza durant uns 5-10 minuts, fins que t\'agradi com queden de desfets o torrats els formatges.</p>');
+INSERT INTO `recipe_step_lang` VALUES (148, 74, 2, '<p>Encima de la masa de pizza repartimos $gratedMozzarella, $gorgonzola y $taleggio.</p><p>Cuando el horno esté caliente, horneamos la pizza durante unos 5-10 minutos, hasta que te guste lo que quedan de deshechos o tostados los quesos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (149, 75, 1, '<p>Mentrestant tallem el $parmesan en làmines amb l\'ajuda d\'un pelador de patates.</p>');
+INSERT INTO `recipe_step_lang` VALUES (150, 75, 2, '<p>Mientras tanto cortamos el $parmesan en láminas con la ayuda de un pelador de patatas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (151, 76, 1, '<p>Quan traiem la pizza del forn només ens queda repartir la $bufalaStracciatella, el $goatRollCheese, el $parmesan i... a gaudir!</p>');
+INSERT INTO `recipe_step_lang` VALUES (152, 76, 2, '<p>Cuando sacamos la pizza del horno sólo nos queda repartir la $bufalaStracciatella, el $goatRollCheese, el $parmesan y... ¡a disfrutar!</p>');
 COMMIT;
 
 -- ----------------------------
@@ -1396,7 +1688,6 @@ INSERT INTO `recipe_tag` VALUES (8, 4);
 INSERT INTO `recipe_tag` VALUES (8, 11);
 INSERT INTO `recipe_tag` VALUES (8, 13);
 INSERT INTO `recipe_tag` VALUES (8, 16);
-INSERT INTO `recipe_tag` VALUES (9, 3);
 INSERT INTO `recipe_tag` VALUES (9, 4);
 INSERT INTO `recipe_tag` VALUES (9, 13);
 INSERT INTO `recipe_tag` VALUES (10, 1);
@@ -1411,9 +1702,9 @@ INSERT INTO `recipe_tag` VALUES (13, 1);
 INSERT INTO `recipe_tag` VALUES (13, 13);
 INSERT INTO `recipe_tag` VALUES (14, 4);
 INSERT INTO `recipe_tag` VALUES (14, 13);
-INSERT INTO `recipe_tag` VALUES (15, 2);
 INSERT INTO `recipe_tag` VALUES (15, 3);
 INSERT INTO `recipe_tag` VALUES (15, 11);
+INSERT INTO `recipe_tag` VALUES (15, 13);
 INSERT INTO `recipe_tag` VALUES (15, 16);
 INSERT INTO `recipe_tag` VALUES (16, 5);
 INSERT INTO `recipe_tag` VALUES (16, 8);
@@ -1588,7 +1879,7 @@ DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
   `id_unit` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_unit`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of unit
@@ -1604,6 +1895,9 @@ INSERT INTO `unit` VALUES (7);
 INSERT INTO `unit` VALUES (8);
 INSERT INTO `unit` VALUES (9);
 INSERT INTO `unit` VALUES (10);
+INSERT INTO `unit` VALUES (11);
+INSERT INTO `unit` VALUES (12);
+INSERT INTO `unit` VALUES (13);
 COMMIT;
 
 -- ----------------------------
@@ -1617,7 +1911,7 @@ CREATE TABLE `unit_lang` (
   `name` varchar(255) NOT NULL,
   `plural` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_unit_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of unit_lang
@@ -1643,6 +1937,12 @@ INSERT INTO `unit_lang` VALUES (17, 9, 1, 'raig', 'raigs');
 INSERT INTO `unit_lang` VALUES (18, 9, 2, 'chorro', 'chorros');
 INSERT INTO `unit_lang` VALUES (19, 10, 1, 'dent', 'dents');
 INSERT INTO `unit_lang` VALUES (20, 10, 2, 'diente', 'dientes');
+INSERT INTO `unit_lang` VALUES (21, 11, 1, 'branca', 'branques');
+INSERT INTO `unit_lang` VALUES (22, 11, 2, 'rama', 'ramas');
+INSERT INTO `unit_lang` VALUES (23, 12, 1, 'gota', 'gotes');
+INSERT INTO `unit_lang` VALUES (24, 12, 2, 'gota', 'gotas');
+INSERT INTO `unit_lang` VALUES (25, 13, 1, 'abundant', 'abundant');
+INSERT INTO `unit_lang` VALUES (26, 13, 2, 'abundante', 'abundante');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -8,31 +8,31 @@ use Core\Utils\Config;
 class Detail extends Model
 {
 
-    const PATTERN_RECIPE = '/\[(\d)\]/';
-    const PATTERN_DINERS = '$diners';
+    const PATTERN_RECIPE      = '/\[(\d)\]/';
+    const PATTERN_DINERS      = '$diners';
     const PATTERN_PARENTHESIS = '/[ ]([\(]([^\)]+)[\)])?/';
 
     public function get($uri = null)
     {
-        $where = '';
+        $where   = '';
         $orderBy = '';
-        $params = array(
+        $params  = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
         );
-        if( $uri != null ){
-            if ($uri == _('aleatoria') ){
+        if ($uri != null) {
+            if ($uri == _('aleatoria')) {
                 $orderBy = 'ORDER BY RAND()';
-            }else{
-                $where = 'WHERE rl.uri = :uri';
+            } else {
+                $where         = 'WHERE rl.uri = :uri';
                 $params['uri'] = array('value' => $uri, 'type' => \PDO::PARAM_STR);
             }
         }
-        if( $this->id > 0 ){
-            $where = 'WHERE r.id_recipe = :id';
+        if ($this->id > 0) {
+            $where        = 'WHERE r.id_recipe = :id';
             $params['id'] = array('value' => $this->id, 'type' => \PDO::PARAM_INT);
         }
-        
-        $sql = '
+
+        $sql    = '
             SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.image, r.link,
                 rl.name, rl.uri, rl.description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
@@ -45,16 +45,16 @@ class Detail extends Model
         $recipe = $this->mysql->query($sql, $params);
 
         if (count($recipe)) {
-            $recipe = $recipe[0];
+            $recipe   = $recipe[0];
             $this->id = $recipe['id_recipe'];
 
             $recipe['image'] = $this->getFile($recipe['image'], 'thumb');
-            $recipe['tags'] = $this->getTags();
+            $recipe['tags']  = $this->getTags();
             $recipe['specs'] = $this->getSpecs($recipe);
 
-            $ingredients = $this->getIngredients();
+            $ingredients           = $this->getIngredients();
             $recipe['ingredients'] = $ingredients;
-            $recipe['steps'] = $this->getSteps($ingredients, $recipe['diners']);
+            $recipe['steps']       = $this->getSteps($ingredients, $recipe['diners']);
 
             return $recipe;
         }
@@ -80,16 +80,16 @@ class Detail extends Model
                     WHERE ri.id_recipe = :id
             ';
         }
-        $sql = '
+        $sql    = '
             SELECT DISTINCT tags.name, tags.uri
             FROM (' . $sql . ') AS tags
             ORDER BY tags.order ASC, tags.name ASC
         ';
         $params = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
-            'id' => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
+            'id'   => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
         );
-        $tags = $this->mysql->query($sql, $params);
+        $tags   = $this->mysql->query($sql, $params);
 
         if (count($tags)) {
             return $tags;
@@ -109,11 +109,11 @@ class Detail extends Model
         $specs = array();
 
         if (!empty($recipe['prep_time'])) {
-            $time = self::formatTime($recipe['prep_time']);
+            $time    = self::formatTime($recipe['prep_time']);
             $specs[] = array('name' => _('Tiempo preparación'), 'value' => $time);
         }
         if (!empty($recipe['cook_time'])) {
-            $time = self::formatTime($recipe['cook_time']);
+            $time    = self::formatTime($recipe['cook_time']);
             $specs[] = array('name' => _('Tiempo cocinando'), 'value' => $time);
         }
 
@@ -128,7 +128,7 @@ class Detail extends Model
 
     public static function formatTime($minutes)
     {
-        $hours = floor($minutes / 60);
+        $hours   = floor($minutes / 60);
         $minutes = floor($minutes % 60);
 
         $time = array();
@@ -155,7 +155,7 @@ class Detail extends Model
      */
     private function getIngredients()
     {
-        $sql = '
+        $sql         = '
             SELECT ri.id_ingredient, ri.amount, ri.is_alternative, ri.is_optional,
                 ul.name AS unit, ul.plural AS unitPlural, 
                 i.id_recipe, il.name, i.variable, il.uri
@@ -166,9 +166,9 @@ class Detail extends Model
             WHERE ri.id_recipe = :id
             ORDER BY ri.order_ingredient ASC, ri.is_alternative ASC
         ';
-        $params = array(
+        $params      = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
-            'id' => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
+            'id'   => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
         );
         $ingredients = $this->mysql->query($sql, $params);
 
@@ -183,15 +183,15 @@ class Detail extends Model
 
     private function getIngredientRecipes($id)
     {
-        if( !empty($id) ){
-            $sql = '
+        if (!empty($id)) {
+            $sql     = '
                 SELECT rl.uri
                 FROM recipe_lang AS rl
                 WHERE rl.id_recipe = :id AND rl.id_appacman_lang = :lang
             ';
-            $params = array(
+            $params  = array(
                 'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
-                'id' => array('value' => $id, 'type' => \PDO::PARAM_INT)
+                'id'   => array('value' => $id, 'type' => \PDO::PARAM_INT)
             );
             $recipes = $this->mysql->query($sql, $params);
 
@@ -205,14 +205,14 @@ class Detail extends Model
     /**
      * steps
      *
-     * @param array $ingredients
+     * @param array   $ingredients
      * @param integer $diners
      *
      * @return array
      */
     private function getSteps($ingredients, $diners)
     {
-        $sql = '
+        $sql    = '
             SELECT rs.image_step AS image, rsl.description_step AS description
             FROM recipe_step AS rs
             INNER JOIN recipe_step_lang AS rsl ON rs.id_recipe_step = rsl.id_recipe_step AND rsl.id_appacman_lang = :lang
@@ -221,25 +221,29 @@ class Detail extends Model
         ';
         $params = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
-            'id' => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
+            'id'   => array('value' => $this->id, 'type' => \PDO::PARAM_INT)
         );
-        $steps = $this->mysql->query($sql, $params);
-        
+        $steps  = $this->mysql->query($sql, $params);
+
         if (count($steps)) {
             $config = Config::getInstance();
             $domain = $config->getDomain();
 
             foreach ($steps as &$step) {
-                $step['image'] = $this->getFile($step['image'], 'step');
+                $step['image']       = $this->getFile($step['image'], 'step');
                 $step['description'] = $this->replaceRecipes($step['description'], $domain . _('receta') . '/');
                 $step['description'] = $this->replaceDiners($step['description'], $diners);
             }
 
             // replace ingredients
             foreach ($ingredients as $ingredient) {
-                $uri = $ingredient['uri'];
-                $url = $domain . _('recetas') . '/' . $uri;
-                $link = '<a href="' . $url . '" class="black-color"><b>' . mb_strtolower($ingredient['name']) . '</b></a>';
+                $uri  = $ingredient['uri'];
+                $url  = $domain . _('recetas') . '/' . $uri;
+                $link = '<a href="'
+                    . $url
+                    . '" class="black-color"><b>'
+                    . mb_strtolower($ingredient['name'])
+                    . '</b></a>';
 
                 foreach ($steps as &$step) {
                     $step['description'] = $this->getSpanAmount($step['description'], $uri, $ingredient, $link);
@@ -250,28 +254,34 @@ class Detail extends Model
         return array();
     }
 
-    private function replaceRecipes($description, $url){
+    private function replaceRecipes($description, $url)
+    {
         preg_match_all(self::PATTERN_RECIPE, $description, $matches);
 
-        if( count($matches)){
-            for($i=0; $i<count($matches[0]); $i++){
+        if (count($matches)) {
+            for ($i = 0; $i < count($matches[0]); $i++) {
                 $recipe = new Detail();
-                $recipe->setID($matches[1][$i]);
+                $recipe->setID($matches[1][ $i ]);
                 $recipeInfo = $recipe->get();
-                if( count($recipeInfo)){
-                    $url .= $recipeInfo['uri'];
-                    $link = '<a href="' . $url . '" class="main-color">' . mb_strtolower($recipeInfo['name']) . '</a>';
-                    $description = str_replace($matches[0][$i], $link, $description);
+                if (count($recipeInfo)) {
+                    $url         .= $recipeInfo['uri'];
+                    $link        = '<a href="'
+                        . $url
+                        . '" class="main-color">'
+                        . mb_strtolower($recipeInfo['name'])
+                        . '</a>';
+                    $description = str_replace($matches[0][ $i ], $link, $description);
                 }
             }
         }
-        
+
         return $description;
     }
 
-    private function replaceDiners($description, $diners){
-        if( $diners > 0 ){
-            $spanDiners = '<span class="diners">'.$diners.'</span>';
+    private function replaceDiners($description, $diners)
+    {
+        if ($diners > 0) {
+            $spanDiners  = '<span class="diners">' . $diners . '</span>';
             $description = str_replace(self::PATTERN_DINERS, $spanDiners, $description);
         }
         return $description;
@@ -279,24 +289,29 @@ class Detail extends Model
 
     private function getSpanAmount($description, $uri, $ingredient, $link = '')
     {
-        $span = '';
-        $amount = $ingredient['amount'];
+        $span    = '';
+        $amount  = $ingredient['amount'];
         $pattern = '/\\' . $ingredient['variable'] . '([\(]([^\)]+)[\)])?/';
         if ($amount > 0) {
+
             preg_match($pattern, $description, $matches);
             $fraction = 1;
             if (count($matches) == 3) {
                 $fraction = $matches[2];
             }
 
-            $unit = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
+            $unit       = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
             $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
-            $data = ' data-unit="' . $unit . '" data-plural="' . $unitPlural . '"';
+            $data       = ' data-unit="' . $unit . '" data-plural="' . $unitPlural . '"';
             if ($fraction != 1) {
                 $data .= ' data-fraction="' . $fraction . '"';
             }
 
             $amount = $amount * $fraction;
+            if (is_float($amount)) {
+                $amount = number_format($amount, 1);
+            }
+
             if ($amount > 0) {
                 $span = '<span class="' . $uri . '"' . $data . '>' . $amount;
                 if ($ingredient['unit']) {
@@ -315,7 +330,7 @@ class Detail extends Model
         if ($span != '') {
             $span = ' <small>(' . $span . ')</small>';
         }
-        
+
         return preg_replace($pattern, $link . $span, $description);
     }
 
