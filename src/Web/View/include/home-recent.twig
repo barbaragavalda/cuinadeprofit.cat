@@ -1,0 +1,7 @@
+<div class="item {{ type }}">
+    <div class="img" style="background-image: url('{{ item.image }}');"></div>
+    <div class="text white-bg">
+        <span class="tertiary-color">{{ item.created }}</span>
+        <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ item.uri }}" class="secondary-color">{{ item.name }}</a>
+    </div>
+</div>

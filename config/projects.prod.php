@@ -2,7 +2,7 @@
 
 $config = array(
 
-    'base_domain' => 'https://cuina-de-profit.cat/',
+    'base_domain' => 'https://cdp.optisistem.com/',
 
     'wallaby' => array(
         'app'       => 'Appacman',

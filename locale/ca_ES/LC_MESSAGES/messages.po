@@ -52,10 +52,13 @@ msgid "Por categorías"
 msgstr "Per categories"
 
 msgid "Recetas para triunfar"
-msgstr "receptes per triomfar"
+msgstr "Receptes per triomfar"
 
 msgid "Todas"
 msgstr "Totes"
+
+msgid "%e %B %G"
+msgstr "%e %B %G"
 
 # recipe
 msgid "Tiempo preparación"

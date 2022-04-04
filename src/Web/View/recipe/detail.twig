@@ -23,9 +23,9 @@
 {% endblock %}
 
 {% block content %}
-    <section id="recipe-detail" class="container-xl">
+    <section id="recipe-detail" class="container-fluid">
         <div class="row">
-            <aside class="col-lg-5">
+            <aside class="col-lg-4">
                 <div class="ingredients">
                     <header>
                         {% if recipe.image %}
@@ -39,7 +39,7 @@
                             {% endfor %}
                         </div>
                         {% if recipe.specs|length > 0 %}
-                            <ul class="black-bg">
+                            <ul class="main-bg">
                                 {% for spec in recipe.specs %}
                                     {% if spec.type in ['amount', 'diners'] %}
                                         <li class="clearfix">
@@ -80,13 +80,13 @@
                         </ul>
                     </div>
                     {% if recipe.link %}
-                        <div class="link grey-bg">
+                        <div class="link tertiary-bg">
                             <a href="{{ recipe.link }}" target="_blank" class="black-color">{% trans %}Receta original{% endtrans %}</a>
                         </div>
                     {% endif %}
                 </div>
             </aside>
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 {% if recipe.steps|length > 0 %}
                     {% if recipe.steps|length > 1 %}
                         <h3></h3>

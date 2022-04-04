@@ -4,81 +4,74 @@
 /* colors */
 .black-color,
 body, #main-header a, .hover-effect .item h2 a {
-	color: rgb(40, 50, 60) !important;
+	color: rgb(24, 47, 65) !important;
 }
-.black-bg{
-	background-color: rgb(40, 50, 60);
-}
-.black-bg input {
-	border-color: rgb(100, 110, 120) !important;
-}
-input::-webkit-input-placeholder {
-	color: rgb(100, 110, 120);
-}
-input::-moz-placeholder {
-	color: rgb(100, 110, 120);
-}
-input:-ms-input-placeholder {
-	color: rgb(100, 110, 120);
-}
-input::-ms-input-placeholder {
-	color: rgb(100, 110, 120);
-}
-input::placeholder {
-	color: rgb(100, 110, 120);
-}
-.grey-color {
-	color: rgb(180, 190, 200);
-}
-.grey-bg, .img,
-#main-header ul li li:after {
-	background: rgb(180, 190, 200);
-}
-.grey-border{
+.grey-border,
+.form-control:focus{
 	border-color: rgb(180, 190, 200);
 }
-.white-color, .black-bg, .grey-bg,
+.white-color, .main-bg, .grey-bg,
 .hover-effect .item .img:before {
-	color: rgb(235, 245, 255) !important;
+	color: white !important;
 }
 .white-bg{
-	background: rgb(255, 255, 255);
-}
-footer {
-	background: rgb(213, 248, 245);
+	background: white;
 }
 ::selection {
-	background-color: rgb(171, 243, 234);
+	background: rgb(223, 237, 235);
 }
 ::-moz-selection {
-	background-color: rgb(171, 243, 234);
+	background: rgb(223, 237, 235);
 }
 .main-color,
 #main-header a:hover, #main-header a.current{
-	color: rgb(65, 225, 200) !important;
+	color: rgb(24, 47, 65) !important;
 }
-.custom-control-input:checked~.custom-control-label::before{
-	border-color: rgb(65, 225, 200);
+.main-border{
+	border-color: rgb(24, 47, 65);
 }
 .main-bg,
-#main-header ul li a:after,
-.custom-control-input:checked~.custom-control-label::before{
-	background: rgb(65, 225, 200);
+#main-header ul li a:after{
+	background: rgb(24, 47, 65);
 }
 .secondary-color,
 .hover-effect .item:hover h2 a{
-	color: rgb(246, 193, 67) !important;
+	color: rgb(241, 147, 114) !important;
 }
 .secondary-bg,
 .hover-effect .item:hover .img:after,
-.categories ul li:before{
-	background-color: rgb(246, 193, 67);
+.categories ul li:before,
+.custom-control-input:checked~.custom-control-label::before{
+	background-color: rgb(241, 147, 114);
 }
-.categories ul li::after{
-	border-color: rgb(246, 193, 67);
+.secondary-border,
+.categories ul li::after,
+.custom-control-input:checked~.custom-control-label::before{
+	border-color: rgb(241, 147, 114);
 }
-.danger-bg{
-	background-color: rgb(252, 2, 84);
+.tertiary-color{
+	color: rgb(150, 197, 189);
+}
+input::-webkit-input-placeholder {
+	color: rgb(150, 197, 189);
+}
+input::-moz-placeholder {
+	color: rgb(150, 197, 189);
+}
+input:-ms-input-placeholder {
+	color: rgb(150, 197, 189);
+}
+input::-ms-input-placeholder {
+	color: rgb(150, 197, 189);
+}
+input::placeholder {
+	color: rgb(150, 197, 189);
+}
+.tertiary-bg{
+	background-color: rgb(150, 197, 189);
+}
+.tertiary-border{
+	border-color: rgb(150, 197, 189);
 }
 .focus, .btn:focus,
 .form-control:focus,
@@ -278,7 +271,9 @@ footer{
 #search-model input {
 	width: 500px;
 	font-size: 40px;
-	border: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
 	border-bottom-width: 2px;
 	border-bottom-style: solid;
 }
@@ -404,6 +399,7 @@ section h5 {
 	height: 150px;
 }
 #filter-items .item a{
+	display: block;
 	font-size: 1.25rem;
 	text-align: center;
 	padding: 10px;

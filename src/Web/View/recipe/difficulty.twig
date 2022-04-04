@@ -1,9 +1,9 @@
-{% set classDifficulty = 'main-bg black-color' %}
+{% set classDifficulty = 'tertiary-bg black-color' %}
 {% if recipe.id_difficulty == 2 %}
-    {% set classDifficulty = 'secondary-bg black-color' %}
+    {% set classDifficulty = 'main-bg' %}
 {% else %}
     {% if recipe.id_difficulty == 3 %}
-        {% set classDifficulty = 'danger-bg white-color' %}
+        {% set classDifficulty = 'secondary-bg black-color' %}
     {% else %}
     {% endif %}
 {% endif %}

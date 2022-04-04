@@ -3,7 +3,7 @@
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/mixitup.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             if ($('#filter-items').length > 0) {
                 var containerEl = document.querySelector('#filter-items');
                 var mixer = mixitup(containerEl);
@@ -18,53 +18,37 @@
 {% endblock %}
 
 {% block content %}
-    <section>
-        <h5 class="title-left main-bg white-color">{% trans %}Últimas recetas{% endtrans %}</h5>
-        <div class="container-xl">
-            <div class="mosaic hover-effect row">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="item large-item">
-                        <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/lasagna.jpg');"></div>
-                        <div class="text white-bg">
-                            <span class="grey-color">March 10, 2019</span>
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/1">Cannellini Aglio e Olio with Salmon</a>
-                        </div>
+    {% if recent|length > 0 %}
+        <section>
+            <h5 class="title-left main-bg">{% trans %}Últimas recetas{% endtrans %}</h5>
+            <div class="container-fluid">
+                <div class="mosaic hover-effect row">
+                    <div class="col-lg-6 order-lg-2">
+                        {% include 'include/home-recent.twig' with{ item: recent[0], type: 'large-item' } %}
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 order-lg-1">
-                    <div class="item">
-                        <div class="img" data-setbg="img/recipe-1.jpg" style="background-image: url('{{ staticDomain }}img/dummy/carrot-cake.jpg');"></div>
-                        <div class="text">
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/2">Raw Vegan Carrot Cake Bites with Avocado</a>
-                        </div>
+                    <div class="col-lg-3 col-md-6 order-lg-1">
+                        {% if recent|length > 1 %}
+                            {% include 'include/home-recent.twig' with{ item: recent[1] } %}
+                        {% endif %}
+                        {% if recent|length > 3 %}
+                            {% include 'include/home-recent.twig' with{ item: recent[3] } %}
+                        {% endif %}
                     </div>
-                    <div class="item">
-                        <div class="img" data-setbg="img/recipe-2.jpg" style="background-image: url('{{ staticDomain }}img/dummy/sushi.jpg');"></div>
-                        <div class="text">
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/3">One Pot Weeknight Lasagna Soup Recipe</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 order-lg-3">
-                    <div class="item">
-                        <div class="img" data-setbg="img/recipe-4.jpg" style="background-image: url('{{ staticDomain }}img/dummy/hamburger.jpg');"></div>
-                        <div class="text">
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/4">Beef Burger with French Fries and Salad</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img" data-setbg="img/recipe-5.jpg" style="background-image: url('{{ staticDomain }}img/dummy/hummus.jpg');"></div>
-                        <div class="text">
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/5">Raspberry Pancakes with Honey and Butter</a>
-                        </div>
+                    <div class="col-lg-3 col-md-6 order-lg-3">
+                        {% if recent|length > 2 %}
+                            {% include 'include/home-recent.twig' with{ item: recent[2] } %}
+                        {% endif %}
+                        {% if recent|length > 4 %}
+                            {% include 'include/home-recent.twig' with{ item: recent[4] } %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 
-    <section class="container-xl">
-        <h5 class="title main-bg white-color">{% trans %}Por categorías{% endtrans %}</h5>
+    <section class="container-fluid">
+        <h5 class="title main-bg">{% trans %}Por categorías{% endtrans %}</h5>
 
         <div class="row">
             <div class="col-lg-12">
@@ -81,37 +65,36 @@
         <div id="filter-items" class="hover-effect clearfix">
             <div class="item mix all mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-1.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-2.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover mostpopular">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-3.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover glutenfree">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-5.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
             <div class="item mix all meatlover">
                 <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <a href="#" class="text">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
             </div>
         </div>
     </section>
 
     <section>
         <div class="clearfix">
-            <h5 class="title-right main-bg white-color">{% trans %}Recetas para triunfar{% endtrans %}</h5>
+            <h5 class="title-right main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
         </div>
-
-        <div class="container-xl">
+        <div class="container-fluid">
             {% include 'include/list.twig' with { recipes: items } %}
         </div>
     </section>

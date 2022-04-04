@@ -3,20 +3,22 @@
 namespace Web\Model\Recipe;
 
 use Core\Model\Paginated;
+use Core\Model\Utils\DateUtils;
 
 class FilteredList extends Paginated
 {
 
-    public function __construct($page)
+    public function __construct($page, $itemsPerPage = 12)
     {
-        parent::__construct($page, 12, false);
+        parent::__construct($page, $itemsPerPage, false);
     }
 
     public function initAll()
     {
         $where     = '';
         $innerJoin = '';
-        $having = '';
+        $having    = '';
+        $limit     = '';
         $params    = array(
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
         );
@@ -30,9 +32,9 @@ class FilteredList extends Paginated
             ';
         }
         if (array_key_exists('time', $this->filters)) {
-            $having = 'HAVING time BETWEEN :timeStart AND :timeEnd';
+            $having              = 'HAVING time BETWEEN :timeStart AND :timeEnd';
             $params['timeStart'] = array('value' => $this->filters['time'][0], 'type' => \PDO::PARAM_INT);
-            $params['timeEnd'] = array('value' => $this->filters['time'][1], 'type' => \PDO::PARAM_INT);
+            $params['timeEnd']   = array('value' => $this->filters['time'][1], 'type' => \PDO::PARAM_INT);
         }
         if (array_key_exists('difficulty', $this->filters)) {
             $where = 'WHERE r.id_difficulty IN(' . implode(', ', $this->filters['difficulty']) . ')';
@@ -51,9 +53,12 @@ class FilteredList extends Paginated
                     AND t.id_tag IN(' . implode(', ', $this->filters['tag']) . ')
             ';
         }
+        if (array_key_exists('new', $this->filters)) {
+            $limit = 'LIMIT 5';
+        }
 
         $sql     = '
-            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.image, (prep_time + cook_time) AS time,
+            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.image, (prep_time + cook_time) AS time, r.created,
                 rl.name, rl.uri, rl.description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
@@ -63,6 +68,7 @@ class FilteredList extends Paginated
             ' . $where . '
             ' . $having . '
             ORDER BY r.created DESC, rl.name ASC
+            ' . $limit . '
         ';
         $recipes = $this->mysql->query($sql, $params);
 
@@ -74,6 +80,9 @@ class FilteredList extends Paginated
                 $recipe['image'] = $this->getFile($recipe['image'], 'list');
                 $recipe['time']  = Detail::formatTime($recipe['time']);
                 $recipe['tags']  = $recipeModel->getTags(false);
+
+                $date = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
+                $recipe['created'] = utf8_encode(strftime(_('%e %B %G'), $date->getTimestamp()));
             }
             $this->items = $recipes;
         }

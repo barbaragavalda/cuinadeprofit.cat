@@ -42,7 +42,7 @@
                         {% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %}
                     </ul>
                 </nav>
-                <div class="search-button grey-color">
+                <div class="search-button secondary-color">
                     <i class="fa fa-search"></i>
                 </div>
             </div>
@@ -52,7 +52,7 @@
 
     {% block content %}{% endblock %}
 
-    <footer>
+    <footer class="main-bg">
         <div class="container-xl">
             <div class="row">
                 <div class="col-lg-5">
@@ -68,18 +68,18 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="copy grey-color">
+                    <div class="copy secondary-color">
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{ webName }}
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <div id="search-model" class="black-bg">
+    <div id="search-model" class="main-bg">
         <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="close grey-bg">+</div>
+            <div class="close tertiary-bg">+</div>
             <form>
-                <input type="text" class="grey-color" placeholder="{% trans %}Busca aquí...{% endtrans %}">
+                <input type="text" class="secondary-border white-color" placeholder="{% trans %}Busca aquí...{% endtrans %}">
             </form>
         </div>
     </div>
