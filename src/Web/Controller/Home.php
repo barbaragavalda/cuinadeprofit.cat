@@ -9,6 +9,7 @@ class Home extends Controller
     {
         $model = new \Web\Model\Home();
         $this->assign('recent', $model->getRecent());
+        $this->assign('categories', $model->getCategories());
         $this->assign('succeed', $model->getRecipesToSucceed());
 
         $this->template('home.twig');

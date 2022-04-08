@@ -5,14 +5,19 @@
     <script>
         $(document).ready(function () {
             if ($('#filter-items').length > 0) {
-                var containerEl = document.querySelector('#filter-items');
-                var mixer = mixitup(containerEl);
+                var containerEl = document.querySelector('#filter-items'),
+                    categories = $('.categories ul li');
+                mixitup(containerEl, {
+                    load: {
+                        filter: $(categories[0]).attr('data-filter')
+                    }
+                });
+
+                categories.on('click', function () {
+                    categories.removeClass('active');
+                    $(this).addClass('active');
+                });
             }
-            var categories = $('.categories ul li');
-            categories.on('click', function () {
-                categories.removeClass('active');
-                $(this).addClass('active');
-            });
         });
     </script>
 {% endblock %}
@@ -47,55 +52,51 @@
         </section>
     {% endif %}
 
-    <section class="container-fluid">
-        <h5 class="title main-bg">{% trans %}Por categorías{% endtrans %}</h5>
+    {% if categories|length > 0 %}
+        <section class="container-fluid">
+            <h5 class="title main-bg">{% trans %}Por categorías{% endtrans %}</h5>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="categories">
-                    <ul>
-                        <li data-filter="*" class="active">{% trans %}Todas{% endtrans %}</li>
-                        <li data-filter=".mostpopular">Most popular</li>
-                        <li data-filter=".meatlover">Meat Lover</li>
-                        <li data-filter=".glutenfree">Gluten Free</li>
-                    </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="categories">
+                        <ul>
+                            {% for category in categories %}
+                                {% set isActive = ' class="active"' %}
+                                {% if loop.index != 1 %}
+                                    {% set isActive = '' %}
+                                {% endif %}
+                                <li data-filter=".{{ category.id }}"{{ isActive|raw }}>{{ category.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="filter-items" class="hover-effect clearfix">
-            <div class="item mix all mostpopular">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-1.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
+            <div id="filter-items" class="hover-effect clearfix">
+                {% for category in categories %}
+                    {% for recipe in category.recipes %}
+                        {% set classItem = '' %}
+                        {% for tag in recipe.tags %}
+                            {% set classItem = classItem ~ ' ' ~ tag.uri %}
+                        {% endfor %}
+                        <div class="item mix{{ classItem }}">
+                            {% include 'include/image.twig' with { url: recipe.image } %}
+                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}"
+                               class="text secondary-color">{{ recipe.name }}</a>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
             </div>
-            <div class="item mix all mostpopular">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-2.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
-            </div>
-            <div class="item mix all meatlover mostpopular">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-3.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
-            </div>
-            <div class="item mix all meatlover">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
-            </div>
-            <div class="item mix all meatlover glutenfree">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-5.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
-            </div>
-            <div class="item mix all meatlover">
-                <div class="img" style="background-image: url('{{ staticDomain }}img/dummy/salad-4.jpg')"></div>
-                <a href="#" class="text secondary-color">Sunday Brunch: Spaghetti and Eggs Recipe</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 
-    <section>
-        <div class="clearfix">
-            <h5 class="title-right main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
-        </div>
-        <div class="container-fluid">
-            {% include 'include/list.twig' with { recipes: items } %}
-        </div>
-    </section>
+    {% if succeed|length > 0 %}
+        <section>
+            <div class="clearfix">
+                <h5 class="title-right main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
+            </div>
+            <div class="container-fluid">
+                {% include 'include/list.twig' with { recipes: succeed } %}
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}

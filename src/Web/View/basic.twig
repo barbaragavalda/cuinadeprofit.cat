@@ -31,9 +31,19 @@
         <div class="container-xl">
             <div class="logo">
                 {% block startLogo %}<a href="{{ domain }}">{% endblock %}
-                    <img src="{{ staticDomain }}img/logo.png" alt="{{ webName }}">
+                    <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
                 {% block endLogo %}</a>{% endblock %}
             </div>
+            <ul id="languages">
+                {% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}
+                {% for item in langs %}
+                    {% set class = '' %}
+                    {% if item.uri == lang %}
+                        {% set class = ' class="current"' %}
+                    {% endif %}
+                    <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>
+                {% endfor %}
+            </ul>
             <div class="menu">
                 <nav class="mobile-menu">
                     <ul>
@@ -58,12 +68,10 @@
                 <div class="col-lg-5">
                     <div class="logo">
                         <a href="{{ domain }}">
-                            <img src="{{ staticDomain }}img/logo.png" alt="{{ webName }}">
+                            <img src="{{ staticDomain }}img/logo-white.png" alt="{{ webName }}">
                         </a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                        viverra maecenas accumsan lacus vel facilisis.</p>
+                    <p>{% trans %}En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día.{% endtrans %}</p>
                 </div>
             </div>
             <div class="row">

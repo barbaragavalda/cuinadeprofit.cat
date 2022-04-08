@@ -1,0 +1,5 @@
+{% set image = staticDomain ~ 'img/dummy.png' %}
+{% if url %}
+    {% set image = url %}
+{% endif %}
+<div class="img" style="background-image: url('{{ image }}');"></div>

@@ -2,7 +2,7 @@
 
 {% block content %}
     <div id="error-404" class="container white-color">
-        <h2 class="main-color">404</h2>
+        <h2 class="tertiary-color">404</h2>
         <h3>{{ 'Parece que nos hemos perdido. Para recuperar el rumbo, te proponemos que pruebes suerte con una %sreceta aleatoria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}</h3>
     </div>
 {% endblock %}

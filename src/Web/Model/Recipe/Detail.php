@@ -64,7 +64,7 @@ class Detail extends Model
     public function getTags($all = true)
     {
         $sql = '
-            SELECT tl.name, tl.uri, t.order
+            SELECT tl.name, tl.uri, t.is_highlighted, t.order
             FROM recipe_tag AS rt
             INNER JOIN tag AS t ON rt.id_tag = t.id_tag
             INNER JOIN tag_lang AS tl ON t.id_tag = tl.id_tag AND tl.id_appacman_lang = :lang
@@ -73,7 +73,7 @@ class Detail extends Model
         if ($all) {
             $sql .= '
                 UNION
-                    SELECT icl.name, icl.uri, 1000 AS `order`
+                    SELECT icl.name, icl.uri, 0 AS is_highlighted, 1000 AS `order`
                     FROM ingredient AS i
                     INNER JOIN recipe_ingredient AS ri USING(id_ingredient)
                     INNER JOIN ingredient_category_lang AS icl ON icl.id_ingredient_category = i.id_ingredient_category AND icl.id_appacman_lang = :lang
@@ -81,7 +81,7 @@ class Detail extends Model
             ';
         }
         $sql    = '
-            SELECT DISTINCT tags.name, tags.uri
+            SELECT DISTINCT tags.name, tags.uri, tags.is_highlighted
             FROM (' . $sql . ') AS tags
             ORDER BY tags.order ASC, tags.name ASC
         ';

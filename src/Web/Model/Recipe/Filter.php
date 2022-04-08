@@ -67,12 +67,12 @@ class Filter extends Model
         return $this->get(self::INGREDIENT, $uri);
     }
 
-    public function getTag($uri = null)
+    public function getTag($uri = null, $isHighlighted = false)
     {
-        return $this->get(self::TAG, $uri);
+        return $this->get(self::TAG, $uri, $isHighlighted);
     }
 
-    private function get($table, $uri = null)
+    private function get($table, $uri = null, $isHighlighted = false)
     {
         $where  = '';
         $params = array(
@@ -81,6 +81,9 @@ class Filter extends Model
         if ($uri != null) {
             $where         = 'AND tl.uri = :uri';
             $params['uri'] = array('value' => $uri, 'type' => \PDO::PARAM_STR);
+        }
+        if ($isHighlighted) {
+            $where = 'AND t.is_highlighted = 1';
         }
 
         $orderBy = 'tl.name ASC';
@@ -94,7 +97,7 @@ class Filter extends Model
         }
 
         $sql   = '
-            SELECT tl.uri AS id, tl.name
+            SELECT t.id_' . $table . ', tl.uri AS id, tl.name
             FROM ' . $table . ' AS t
             INNER JOIN ' . $table . '_lang AS tl ON t.id_' . $table . ' = tl.id_' . $table . ' 
                 AND tl.id_appacman_lang = :lang ' . $where . '

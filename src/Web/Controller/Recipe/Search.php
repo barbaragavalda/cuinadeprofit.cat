@@ -47,6 +47,8 @@ class Search extends Controller
         $this->assign('categories', $this->filter->getCategory());
         $this->assign('tags', $this->filter->getTag());
         $this->assign('ingredients', $this->filter->getIngredient());
+
+        $this->assign('menu', 'recipes');
         $this->template('recipe/list.twig');
     }
 

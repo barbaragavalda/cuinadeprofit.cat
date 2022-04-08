@@ -11,7 +11,7 @@
  Target Server Version : 100331
  File Encoding         : 65001
 
- Date: 18/03/2022 14:01:37
+ Date: 08/04/2022 12:59:03
 */
 
 SET NAMES utf8mb4;
@@ -148,7 +148,7 @@ CREATE TABLE `appacman_field` (
   `show_on_list` tinyint(1) unsigned DEFAULT NULL,
   `show_on_breadcrumb` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field
@@ -200,6 +200,8 @@ INSERT INTO `appacman_field` VALUES (43, 7, 'plural', NULL, 2, 1, NULL);
 INSERT INTO `appacman_field` VALUES (44, 6, 'id_recipe', 2, 4, 1, NULL);
 INSERT INTO `appacman_field` VALUES (45, 8, 'order', 13, 2, 1, NULL);
 INSERT INTO `appacman_field` VALUES (46, 4, 'is_optional', 3, 5, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (47, 3, 'is_highlighted', 3, 2, NULL, NULL);
+INSERT INTO `appacman_field` VALUES (48, 8, 'is_highlighted', 3, 3, 1, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -213,7 +215,7 @@ CREATE TABLE `appacman_field_lang` (
   `name` varchar(255) DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_field_lang
@@ -265,6 +267,8 @@ INSERT INTO `appacman_field_lang` VALUES (43, 43, 1, 'Plural', NULL);
 INSERT INTO `appacman_field_lang` VALUES (44, 44, 1, 'Receta', NULL);
 INSERT INTO `appacman_field_lang` VALUES (45, 45, 1, 'Ordre', NULL);
 INSERT INTO `appacman_field_lang` VALUES (46, 46, 1, 'Opcional?', NULL);
+INSERT INTO `appacman_field_lang` VALUES (47, 47, 1, 'Destacada?', NULL);
+INSERT INTO `appacman_field_lang` VALUES (48, 48, 1, 'Destacada?', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -654,7 +658,7 @@ CREATE TABLE `ingredient` (
   `id_ingredient_category` tinyint(3) unsigned DEFAULT NULL,
   `id_recipe` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient
@@ -753,6 +757,9 @@ INSERT INTO `ingredient` VALUES (90, '$gorgonzola', 8, NULL);
 INSERT INTO `ingredient` VALUES (91, '$taleggio', 8, NULL);
 INSERT INTO `ingredient` VALUES (92, '$gratedMozzarella', 8, NULL);
 INSERT INTO `ingredient` VALUES (93, '$bufalaStracciatella', 8, NULL);
+INSERT INTO `ingredient` VALUES (94, '$cookedChickpeas', 20, NULL);
+INSERT INTO `ingredient` VALUES (95, '$tahini', 13, NULL);
+INSERT INTO `ingredient` VALUES (96, '$redWine', 18, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -860,7 +867,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -1052,6 +1059,12 @@ INSERT INTO `ingredient_lang` VALUES (183, 92, 1, 'Mozzarella ratllada', 'mozzar
 INSERT INTO `ingredient_lang` VALUES (184, 92, 2, 'Mozzarella rallada', 'mozzarella-rallada');
 INSERT INTO `ingredient_lang` VALUES (185, 93, 1, 'Stracciatella di bufala', 'stracciatella-di-bufala');
 INSERT INTO `ingredient_lang` VALUES (186, 93, 2, 'Stracciatella di bufala', 'stracciatella-di-bufala');
+INSERT INTO `ingredient_lang` VALUES (187, 94, 1, 'Cigrons cuits', 'cigrons-cuits');
+INSERT INTO `ingredient_lang` VALUES (188, 94, 2, 'Garbanzos cocidos', 'garbanzos-cocidos');
+INSERT INTO `ingredient_lang` VALUES (189, 95, 1, 'Tahina', 'tahina');
+INSERT INTO `ingredient_lang` VALUES (190, 95, 2, 'Tahini', 'tahini');
+INSERT INTO `ingredient_lang` VALUES (191, 96, 1, 'Vi negre', 'vi-negre');
+INSERT INTO `ingredient_lang` VALUES (192, 96, 2, 'Vino tinto', 'vino-tinto');
 COMMIT;
 
 -- ----------------------------
@@ -1065,6 +1078,7 @@ CREATE TABLE `recipe` (
   `prep_time` smallint(5) DEFAULT NULL,
   `cook_time` smallint(5) DEFAULT NULL,
   `image` mediumint(9) unsigned DEFAULT NULL,
+  `is_highlighted` tinyint(1) unsigned DEFAULT 0,
   `link` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_recipe`) USING BTREE
@@ -1074,48 +1088,48 @@ CREATE TABLE `recipe` (
 -- Records of recipe
 -- ----------------------------
 BEGIN;
-INSERT INTO `recipe` VALUES (1, 1, 0, 30, 15, 13, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
-INSERT INTO `recipe` VALUES (2, 1, 4, 0, 60, 14, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
-INSERT INTO `recipe` VALUES (3, 1, 4, 5, 0, 11, NULL, '2020-10-15 16:54:38');
-INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, 3, NULL, '2020-10-16 13:06:45');
-INSERT INTO `recipe` VALUES (5, 1, 2, 45, 20, 2, NULL, '2020-10-16 13:13:34');
-INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, 12, NULL, '2020-10-16 14:31:42');
-INSERT INTO `recipe` VALUES (7, 1, 2, 15, 5, 5, 'https://www.instagram.com/p/CFsLgWohr5k/', '2022-03-16 18:35:12');
-INSERT INTO `recipe` VALUES (8, 1, 2, 5, 0, 7, 'https://www.instagram.com/p/CCih-Nvq4ww/', '2022-03-16 18:58:55');
-INSERT INTO `recipe` VALUES (9, 1, 8, 15, 10, 8, 'https://www.instagram.com/p/B7ZLOybCvz_/', '2022-03-16 19:19:37');
-INSERT INTO `recipe` VALUES (10, 1, 2, 15, 270, 9, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
-INSERT INTO `recipe` VALUES (11, 2, 4, 150, 0, 10, 'https://chefincamicia.com/ricetta/tiramisu-pistacchio-cioccolato-bianco/', '2022-03-16 19:40:06');
-INSERT INTO `recipe` VALUES (12, 1, 1, 5, 5, 15, 'https://www.instagram.com/p/CMQJ_i6L42p/', '2022-03-16 19:45:10');
-INSERT INTO `recipe` VALUES (13, 1, 1, 0, 0, 16, 'https://www.instagram.com/p/CNcLLYLBHGz/', '2022-03-16 19:46:59');
-INSERT INTO `recipe` VALUES (14, 1, 2, 45, 15, NULL, NULL, '2022-03-16 19:52:27');
-INSERT INTO `recipe` VALUES (15, 1, 2, 10, 30, NULL, 'https://www.instagram.com/p/B0bHFpPDyMG/', '2022-03-16 19:54:10');
-INSERT INTO `recipe` VALUES (16, 1, 8, 90, 0, NULL, 'https://www.instagram.com/p/CLo8pkIgM5n/', '2022-03-16 19:55:48');
-INSERT INTO `recipe` VALUES (17, 3, 0, 0, 0, NULL, 'https://www.instagram.com/p/B9Ty0R5CyWZ/', '2022-03-16 19:57:06');
-INSERT INTO `recipe` VALUES (18, 1, 1, 10, 10, NULL, 'https://www.instagram.com/p/BvE20Uki8Ih/', '2022-03-16 19:58:27');
-INSERT INTO `recipe` VALUES (19, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CFIC-sdoFLs/', '2022-03-16 19:59:51');
-INSERT INTO `recipe` VALUES (20, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/BlVytV8nryM/', '2022-03-16 20:01:38');
-INSERT INTO `recipe` VALUES (21, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B_-HTW8j8T3/', '2022-03-16 20:02:53');
-INSERT INTO `recipe` VALUES (22, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B2ZA-nPgItU/', '2022-03-16 20:05:36');
-INSERT INTO `recipe` VALUES (23, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B1lyJ96jDVt/', '2022-03-16 20:06:47');
-INSERT INTO `recipe` VALUES (24, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/B_hdd_MBF5G/', '2022-03-16 20:09:16');
-INSERT INTO `recipe` VALUES (25, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CAZ5oWmoVdx/', '2022-03-16 20:10:22');
-INSERT INTO `recipe` VALUES (26, 1, 0, 0, 0, NULL, NULL, '2022-03-16 20:12:02');
-INSERT INTO `recipe` VALUES (27, 1, 0, 0, 0, NULL, 'https://www.directoalpaladar.com/recetas-de-carnes-y-aves/receta-de-pollo-a-la-crema-con-tomates-secos', '2022-03-16 20:13:56');
-INSERT INTO `recipe` VALUES (28, 1, 0, 0, 0, NULL, 'https://www.directoalpaladar.com/recetas-de-sopas-y-cremas/receta-de-vichyssoise-tradicional-la-crema-de-puerros-para-disfrutar-en-frio-y-tambien-en-caliente', '2022-03-16 20:14:46');
-INSERT INTO `recipe` VALUES (29, 1, 0, 0, 0, NULL, 'https://www.tasteofhome.com/recipes/french-market-sandwiches/', '2022-03-16 20:17:40');
-INSERT INTO `recipe` VALUES (30, 1, 0, 0, 0, NULL, 'https://www.directoalpaladar.com/cultura-gastronomica/que-raclette-suiza-como-se-prepara', '2022-03-16 20:21:02');
-INSERT INTO `recipe` VALUES (31, 1, 0, 0, 0, NULL, 'https://www.recetasderechupete.com/tartar-de-salmon-al-estilo-clasico-receta-paso-a-paso/10154/', '2022-03-16 20:22:08');
-INSERT INTO `recipe` VALUES (32, 1, 0, 0, 0, NULL, 'https://www.shanazrafiq.com/2016/01/street-style-masala-egg-bun-bun-omelet/', '2022-03-16 20:23:49');
-INSERT INTO `recipe` VALUES (33, 1, 0, 0, 0, NULL, 'https://www.chinasichuanfood.com/biang-biang-mian-biang-biang-noodles/', '2022-03-16 20:25:46');
-INSERT INTO `recipe` VALUES (34, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CFFIOq1AFnd/', '2022-03-16 20:27:49');
-INSERT INTO `recipe` VALUES (35, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CBK3OaugsSl/', '2022-03-16 20:29:19');
-INSERT INTO `recipe` VALUES (36, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CNR9UKyhxOS/', '2022-03-16 20:31:25');
-INSERT INTO `recipe` VALUES (37, 2, 0, 0, 0, NULL, 'https://www.instagram.com/p/B-U--1blCM6/', '2022-03-16 20:33:10');
-INSERT INTO `recipe` VALUES (38, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CFFUnuoFhQf/', '2022-03-16 20:35:56');
-INSERT INTO `recipe` VALUES (39, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CPIso5gq8g9/', '2022-03-16 20:37:22');
-INSERT INTO `recipe` VALUES (40, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/Bx7GHJrnwj-/', '2022-03-16 20:38:19');
-INSERT INTO `recipe` VALUES (41, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CJgNZwBAOTN/', '2022-03-16 20:40:03');
-INSERT INTO `recipe` VALUES (42, 1, 0, 0, 0, NULL, 'https://www.instagram.com/p/CP-00KtLRmW/', '2022-03-16 20:41:48');
+INSERT INTO `recipe` VALUES (1, 1, 0, 30, 15, 13, 0, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
+INSERT INTO `recipe` VALUES (2, 1, 4, 0, 60, 14, 0, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
+INSERT INTO `recipe` VALUES (3, 1, 4, 5, 0, 11, 0, NULL, '2020-10-15 16:54:38');
+INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, 3, 1, NULL, '2020-10-16 13:06:45');
+INSERT INTO `recipe` VALUES (5, 1, 2, 45, 20, 2, 0, NULL, '2020-10-16 13:13:34');
+INSERT INTO `recipe` VALUES (6, 1, 0, 45, 15, 12, 0, NULL, '2020-10-16 14:31:42');
+INSERT INTO `recipe` VALUES (7, 1, 2, 15, 5, 5, 0, 'https://www.instagram.com/p/CFsLgWohr5k/', '2022-03-16 18:35:12');
+INSERT INTO `recipe` VALUES (8, 1, 2, 5, 0, 7, 0, 'https://www.instagram.com/p/CCih-Nvq4ww/', '2022-03-16 18:58:55');
+INSERT INTO `recipe` VALUES (9, 1, 8, 15, 10, 8, 1, 'https://www.instagram.com/p/B7ZLOybCvz_/', '2022-03-16 19:19:37');
+INSERT INTO `recipe` VALUES (10, 1, 2, 15, 270, 9, 0, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
+INSERT INTO `recipe` VALUES (11, 2, 4, 150, 0, 10, 0, 'https://chefincamicia.com/ricetta/tiramisu-pistacchio-cioccolato-bianco/', '2022-03-16 19:40:06');
+INSERT INTO `recipe` VALUES (12, 1, 1, 5, 5, 15, 0, 'https://www.instagram.com/p/CMQJ_i6L42p/', '2022-03-16 19:45:10');
+INSERT INTO `recipe` VALUES (13, 1, 1, 20, 20, 16, 1, 'https://www.instagram.com/p/CNcLLYLBHGz/', '2022-03-16 19:46:59');
+INSERT INTO `recipe` VALUES (14, 1, 2, 45, 15, NULL, 0, NULL, '2022-03-16 19:52:27');
+INSERT INTO `recipe` VALUES (15, 1, 2, 10, 30, NULL, 0, 'https://www.instagram.com/p/B0bHFpPDyMG/', '2022-03-16 19:54:10');
+INSERT INTO `recipe` VALUES (16, 1, 8, 90, NULL, NULL, 1, 'https://www.instagram.com/p/CLo8pkIgM5n/', '2022-03-16 19:55:48');
+INSERT INTO `recipe` VALUES (17, 3, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/B9Ty0R5CyWZ/', '2022-03-16 19:57:06');
+INSERT INTO `recipe` VALUES (18, 1, 1, 10, 10, NULL, 0, 'https://www.instagram.com/p/BvE20Uki8Ih/', '2022-03-16 19:58:27');
+INSERT INTO `recipe` VALUES (19, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CFIC-sdoFLs/', '2022-03-16 19:59:51');
+INSERT INTO `recipe` VALUES (20, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/BlVytV8nryM/', '2022-03-16 20:01:38');
+INSERT INTO `recipe` VALUES (21, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/B_-HTW8j8T3/', '2022-03-16 20:02:53');
+INSERT INTO `recipe` VALUES (22, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/B2ZA-nPgItU/', '2022-03-16 20:05:36');
+INSERT INTO `recipe` VALUES (23, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/B1lyJ96jDVt/', '2022-03-16 20:06:47');
+INSERT INTO `recipe` VALUES (24, 1, 6, 5, 0, NULL, 0, NULL, '2022-03-16 20:09:16');
+INSERT INTO `recipe` VALUES (25, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CAZ5oWmoVdx/', '2022-03-16 20:10:22');
+INSERT INTO `recipe` VALUES (26, 1, 0, 0, 0, NULL, 0, NULL, '2022-03-16 20:12:02');
+INSERT INTO `recipe` VALUES (27, 1, 0, 0, 0, NULL, 0, 'https://www.directoalpaladar.com/recetas-de-carnes-y-aves/receta-de-pollo-a-la-crema-con-tomates-secos', '2022-03-16 20:13:56');
+INSERT INTO `recipe` VALUES (28, 1, 0, 0, 0, NULL, 0, 'https://www.directoalpaladar.com/recetas-de-sopas-y-cremas/receta-de-vichyssoise-tradicional-la-crema-de-puerros-para-disfrutar-en-frio-y-tambien-en-caliente', '2022-03-16 20:14:46');
+INSERT INTO `recipe` VALUES (29, 1, 0, 0, 0, NULL, 0, 'https://www.tasteofhome.com/recipes/french-market-sandwiches/', '2022-03-16 20:17:40');
+INSERT INTO `recipe` VALUES (30, 1, 0, 0, 0, NULL, 0, 'https://www.directoalpaladar.com/cultura-gastronomica/que-raclette-suiza-como-se-prepara', '2022-03-16 20:21:02');
+INSERT INTO `recipe` VALUES (31, 1, 0, 0, 0, NULL, 0, 'https://www.recetasderechupete.com/tartar-de-salmon-al-estilo-clasico-receta-paso-a-paso/10154/', '2022-03-16 20:22:08');
+INSERT INTO `recipe` VALUES (32, 1, 0, 0, 0, NULL, 0, 'https://www.shanazrafiq.com/2016/01/street-style-masala-egg-bun-bun-omelet/', '2022-03-16 20:23:49');
+INSERT INTO `recipe` VALUES (33, 1, 0, 0, 0, NULL, 0, 'https://www.chinasichuanfood.com/biang-biang-mian-biang-biang-noodles/', '2022-03-16 20:25:46');
+INSERT INTO `recipe` VALUES (34, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CFFIOq1AFnd/', '2022-03-16 20:27:49');
+INSERT INTO `recipe` VALUES (35, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CBK3OaugsSl/', '2022-03-16 20:29:19');
+INSERT INTO `recipe` VALUES (36, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CNR9UKyhxOS/', '2022-03-16 20:31:25');
+INSERT INTO `recipe` VALUES (37, 2, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/B-U--1blCM6/', '2022-03-16 20:33:10');
+INSERT INTO `recipe` VALUES (38, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CFFUnuoFhQf/', '2022-03-16 20:35:56');
+INSERT INTO `recipe` VALUES (39, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CPIso5gq8g9/', '2022-03-16 20:37:22');
+INSERT INTO `recipe` VALUES (40, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/Bx7GHJrnwj-/', '2022-03-16 20:38:19');
+INSERT INTO `recipe` VALUES (41, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CJgNZwBAOTN/', '2022-03-16 20:40:03');
+INSERT INTO `recipe` VALUES (42, 1, 0, 0, 0, NULL, 0, 'https://www.instagram.com/p/CP-00KtLRmW/', '2022-03-16 20:41:48');
 COMMIT;
 
 -- ----------------------------
@@ -1132,7 +1146,7 @@ CREATE TABLE `recipe_ingredient` (
   `is_optional` tinyint(1) unsigned DEFAULT 0,
   `order_ingredient` tinyint(3) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_ingredient
@@ -1198,9 +1212,9 @@ INSERT INTO `recipe_ingredient` VALUES (57, 8, '0', 9, 8, 0, 0, 9);
 INSERT INTO `recipe_ingredient` VALUES (58, 9, '250', 18, 3, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (59, 9, '250', 46, 3, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (60, 9, '175', 47, 3, 0, 0, 3);
-INSERT INTO `recipe_ingredient` VALUES (61, 9, '0', 22, 8, 0, 0, 4);
-INSERT INTO `recipe_ingredient` VALUES (62, 9, '0', 9, 8, 0, 0, 5);
-INSERT INTO `recipe_ingredient` VALUES (63, 9, '0', 48, 8, 0, 1, 6);
+INSERT INTO `recipe_ingredient` VALUES (61, 9, NULL, 22, 8, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (62, 9, NULL, 9, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (63, 9, NULL, 48, 8, 0, 1, 6);
 INSERT INTO `recipe_ingredient` VALUES (64, 10, '250', 49, 3, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (65, 10, '250', 55, 3, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (66, 10, '250', 56, 3, 1, 0, 3);
@@ -1232,14 +1246,14 @@ INSERT INTO `recipe_ingredient` VALUES (91, 13, '2', 72, NULL, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (92, 13, '1', 52, 11, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (93, 13, '2', 67, NULL, 0, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (94, 13, '2', 33, 1, 0, 0, 4);
-INSERT INTO `recipe_ingredient` VALUES (95, 13, '0', 68, 8, 0, 0, 5);
-INSERT INTO `recipe_ingredient` VALUES (96, 13, '0', 69, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (95, 13, NULL, 68, 8, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (96, 13, NULL, 69, 8, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (97, 13, '3', 28, NULL, 0, 0, 7);
 INSERT INTO `recipe_ingredient` VALUES (98, 13, '1', 70, NULL, 0, 0, 8);
 INSERT INTO `recipe_ingredient` VALUES (99, 13, '1', 71, NULL, 1, 0, 9);
-INSERT INTO `recipe_ingredient` VALUES (100, 13, '0', 73, 8, 0, 0, 10);
-INSERT INTO `recipe_ingredient` VALUES (101, 13, '0', 22, 8, 0, 0, 11);
-INSERT INTO `recipe_ingredient` VALUES (102, 13, '0', 9, 8, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (100, 13, NULL, 73, 8, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (101, 13, NULL, 22, 8, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (102, 13, NULL, 9, 8, 0, 0, 12);
 INSERT INTO `recipe_ingredient` VALUES (103, 12, '0', 73, 8, 0, 0, 8);
 INSERT INTO `recipe_ingredient` VALUES (104, 14, '1', 74, NULL, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (105, 14, '0', 73, 13, 0, 0, 2);
@@ -1268,9 +1282,9 @@ INSERT INTO `recipe_ingredient` VALUES (127, 16, '400', 86, 3, 1, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (128, 16, '500', 60, 3, 0, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (129, 16, '4', 32, NULL, 0, 0, 4);
 INSERT INTO `recipe_ingredient` VALUES (130, 16, '120', 33, 3, 0, 0, 5);
-INSERT INTO `recipe_ingredient` VALUES (131, 16, '0', 87, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (131, 16, NULL, 87, 8, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (132, 16, '120', 62, 4, 0, 0, 7);
-INSERT INTO `recipe_ingredient` VALUES (133, 16, '0', 64, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (133, 16, NULL, 64, 8, 0, 0, 8);
 INSERT INTO `recipe_ingredient` VALUES (134, 18, '1', 88, NULL, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (135, 18, '40', 90, 3, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (136, 18, '50', 91, 3, 0, 0, 3);
@@ -1279,6 +1293,13 @@ INSERT INTO `recipe_ingredient` VALUES (138, 18, '40', 93, 3, 0, 0, 5);
 INSERT INTO `recipe_ingredient` VALUES (139, 18, '1', 89, NULL, 1, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (140, 18, '40', 4, 3, 0, 0, 7);
 INSERT INTO `recipe_ingredient` VALUES (141, 18, '30', 18, 3, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (142, 24, '400', 94, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (143, 24, '1', 95, 2, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (144, 24, '50', 73, 4, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (145, 24, '40', 11, 4, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (146, 24, '0.5', 22, 2, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (147, 24, '0', 39, 8, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (148, 24, '0', 79, 8, 1, 0, 7);
 COMMIT;
 
 -- ----------------------------
@@ -1395,7 +1416,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(9) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -1477,6 +1498,10 @@ INSERT INTO `recipe_step` VALUES (73, 18, NULL, 1);
 INSERT INTO `recipe_step` VALUES (74, 18, NULL, 2);
 INSERT INTO `recipe_step` VALUES (75, 18, NULL, 3);
 INSERT INTO `recipe_step` VALUES (76, 18, NULL, 4);
+INSERT INTO `recipe_step` VALUES (77, 24, NULL, 1);
+INSERT INTO `recipe_step` VALUES (78, 24, NULL, 2);
+INSERT INTO `recipe_step` VALUES (79, 24, NULL, 3);
+INSERT INTO `recipe_step` VALUES (80, 24, NULL, 5);
 COMMIT;
 
 -- ----------------------------
@@ -1489,7 +1514,7 @@ CREATE TABLE `recipe_step_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
   PRIMARY KEY (`id_recipe_step_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -1647,6 +1672,14 @@ INSERT INTO `recipe_step_lang` VALUES (149, 75, 1, '<p>Mentrestant tallem el $pa
 INSERT INTO `recipe_step_lang` VALUES (150, 75, 2, '<p>Mientras tanto cortamos el $parmesan en láminas con la ayuda de un pelador de patatas.</p>');
 INSERT INTO `recipe_step_lang` VALUES (151, 76, 1, '<p>Quan traiem la pizza del forn només ens queda repartir la $bufalaStracciatella, el $goatRollCheese, el $parmesan i... a gaudir!</p>');
 INSERT INTO `recipe_step_lang` VALUES (152, 76, 2, '<p>Cuando sacamos la pizza del horno sólo nos queda repartir la $bufalaStracciatella, el $goatRollCheese, el $parmesan y... ¡a disfrutar!</p>');
+INSERT INTO `recipe_step_lang` VALUES (153, 77, 1, '<p>Escorreu els $cookedChickpeas reservant el líquid sobrant.</p>');
+INSERT INTO `recipe_step_lang` VALUES (154, 77, 2, '<p>Escurrimos los $cookedChickpeas reservando el líquido sobrante.</p>');
+INSERT INTO `recipe_step_lang` VALUES (155, 78, 1, '<p>En el vas del túrmix afegim els cigrons, $tahini, $oliveOil, $lemonJuice i la $salt.</p><p>Compte amb la quantitat dels ingredients, però sobretot amb el suc de llimona i la Tahina. Ves provant com queda: sempre ets a temps d\'afegir-ne més. Amb la pràctica, aprendràs quines són les quantitats que més t\'agraden.</p>');
+INSERT INTO `recipe_step_lang` VALUES (156, 78, 2, '<p>En el vaso del turmix añadimos los garbanzos, $tahini, $oliveOil, $lemonJuice y la $salt.</p><p>Cuidado con la cantidad de los ingredientes, pero sobre todo con el zumo de limón y la Tahina. Ve probando cómo queda: siempre estás a tiempo de añadir más. Con la práctica, aprenderás cuáles son las cantidades que más te gustan.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (157, 79, 1, '<p>Tritura-ho tot amb el túrmix. Si queda molt espès, pots afegir el líquid dels cigrons fins que tingui la textura desitjada.</p>');
+INSERT INTO `recipe_step_lang` VALUES (158, 79, 2, '<p>Tritura todo con el túrmix. Si queda muy espeso, puedes añadir el líquido de los garbanzos hasta que tenga la textura deseada.</p>');
+INSERT INTO `recipe_step_lang` VALUES (159, 80, 1, '<p>Emplata-ho empolvorant una mica de $sweetPaprika o $spicyPaprika i un raig d\'oli.</p><p>Ho pots acompanyar amb torradetes o amb palets de pastanaga.</p>');
+INSERT INTO `recipe_step_lang` VALUES (160, 80, 2, '<p>Emplatar espolvoreando un poco de $sweetPaprika o $spicyPaprika y un chorro de aceite.</p><p>Lo puedes acompañar con tostaditas o con palitos de zanahoria.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -1795,30 +1828,31 @@ COMMIT;
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
   `id_tag` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `is_highlighted` tinyint(1) unsigned DEFAULT 0,
   `order` tinyint(3) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id_tag`)
+  PRIMARY KEY (`id_tag`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
 BEGIN;
-INSERT INTO `tag` VALUES (1, 2);
-INSERT INTO `tag` VALUES (2, 2);
-INSERT INTO `tag` VALUES (3, 2);
-INSERT INTO `tag` VALUES (4, 2);
-INSERT INTO `tag` VALUES (5, 2);
-INSERT INTO `tag` VALUES (6, 3);
-INSERT INTO `tag` VALUES (7, 3);
-INSERT INTO `tag` VALUES (8, 3);
-INSERT INTO `tag` VALUES (9, 4);
-INSERT INTO `tag` VALUES (10, 3);
-INSERT INTO `tag` VALUES (11, 3);
-INSERT INTO `tag` VALUES (12, 1);
-INSERT INTO `tag` VALUES (13, 1);
-INSERT INTO `tag` VALUES (14, 3);
-INSERT INTO `tag` VALUES (15, 3);
-INSERT INTO `tag` VALUES (16, 4);
+INSERT INTO `tag` VALUES (1, 1, 2);
+INSERT INTO `tag` VALUES (2, 0, 2);
+INSERT INTO `tag` VALUES (3, 1, 2);
+INSERT INTO `tag` VALUES (4, 1, 2);
+INSERT INTO `tag` VALUES (5, 0, 2);
+INSERT INTO `tag` VALUES (6, 0, 3);
+INSERT INTO `tag` VALUES (7, 1, 3);
+INSERT INTO `tag` VALUES (8, 1, 3);
+INSERT INTO `tag` VALUES (9, 0, 4);
+INSERT INTO `tag` VALUES (10, 0, 3);
+INSERT INTO `tag` VALUES (11, 0, 3);
+INSERT INTO `tag` VALUES (12, 0, 1);
+INSERT INTO `tag` VALUES (13, 0, 1);
+INSERT INTO `tag` VALUES (14, 0, 3);
+INSERT INTO `tag` VALUES (15, 0, 3);
+INSERT INTO `tag` VALUES (16, 0, 4);
 COMMIT;
 
 -- ----------------------------

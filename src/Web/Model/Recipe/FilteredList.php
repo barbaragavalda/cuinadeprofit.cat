@@ -15,7 +15,7 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $where     = '';
+        $where     = array();
         $innerJoin = '';
         $having    = '';
         $limit     = '';
@@ -37,7 +37,7 @@ class FilteredList extends Paginated
             $params['timeEnd']   = array('value' => $this->filters['time'][1], 'type' => \PDO::PARAM_INT);
         }
         if (array_key_exists('difficulty', $this->filters)) {
-            $where = 'WHERE r.id_difficulty IN(' . implode(', ', $this->filters['difficulty']) . ')';
+            $where[] = 'r.id_difficulty IN(' . implode(', ', $this->filters['difficulty']) . ')';
         }
         if (array_key_exists('ingredient', $this->filters)) {
             $innerJoin = '
@@ -54,7 +54,15 @@ class FilteredList extends Paginated
             ';
         }
         if (array_key_exists('new', $this->filters)) {
-            $limit = 'LIMIT 5';
+            $limit = 'LIMIT ' . $this->itemsPerPage;
+        }
+        if (array_key_exists('highlighted', $this->filters)) {
+            $where[] = 'r.is_highlighted = 1';
+            $limit   = 'LIMIT ' . $this->itemsPerPage;
+        }
+        if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
+            $where[] = 'r.id_recipe NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
+            $limit   = 'LIMIT ' . $this->itemsPerPage;
         }
 
         $sql     = '
@@ -65,7 +73,7 @@ class FilteredList extends Paginated
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
             ' . $innerJoin . '
-            ' . $where . '
+            ' . $this->getWhere($where) . '
             ' . $having . '
             ORDER BY r.created DESC, rl.name ASC
             ' . $limit . '
@@ -81,7 +89,7 @@ class FilteredList extends Paginated
                 $recipe['time']  = Detail::formatTime($recipe['time']);
                 $recipe['tags']  = $recipeModel->getTags(false);
 
-                $date = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
+                $date              = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
                 $recipe['created'] = utf8_encode(strftime(_('%e %B %G'), $date->getTimestamp()));
             }
             $this->items = $recipes;

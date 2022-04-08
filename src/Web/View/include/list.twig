@@ -4,7 +4,7 @@
             <li class="item">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="img" style="background-image: url('{{ recipe.image }}');"></div>
+                        {% include 'include/image.twig' with { url: recipe.image } %}
                     </div>
                     <div class="col-sm-8">
                         {% if recipe.tags|length > 0 %}
