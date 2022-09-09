@@ -85,7 +85,7 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
         $('span.diners').html(amount);
 
         for(var i in _ingredients){
-            $('span.' + _ingredients[i]['uri']).each(function(){
+            $('span.ingredient-' + _ingredients[i]['uri']).each(function(){
                 var unit = $(this).attr('data-unit'),
                     unitPlural = $(this).attr('data-plural'),
                     fraction = parseFloat($(this).attr('data-fraction')),

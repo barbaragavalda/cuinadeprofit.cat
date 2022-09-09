@@ -313,7 +313,7 @@ class Detail extends Model
             }
 
             if ($amount > 0) {
-                $span = '<span class="' . $uri . '"' . $data . '>' . $amount;
+                $span = '<span class="ingredient-' . $uri . '"' . $data . '>' . $amount;
                 if ($ingredient['unit']) {
                     if ($amount != 1 && !empty($unitPlural)) {
                         $span .= ' ' . $unitPlural;

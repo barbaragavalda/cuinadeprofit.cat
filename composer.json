@@ -11,11 +11,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url":  "https://bgavalda@bitbucket.org/appaqui/freimguork-core.git"
+      "url":  "git@bitbucket.org:appaqui/freimguork-core.git"
     },
     {
       "type": "vcs",
-      "url":  "https://bgavalda@bitbucket.org/appaqui/freimguork-appacman.git"
+      "url":  "git@bitbucket.org:appaqui/freimguork-appacman.git"
     }
   ],
   "require": {

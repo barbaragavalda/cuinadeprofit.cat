@@ -21,8 +21,8 @@
 
 {% block content %}
     <div id="list" class="container-fluid">
-        <form method="POST" class="row">
-            <div class="col">
+        <div class="row">
+            <form method="POST" class="col">
                 {% set buttons %}
                     <div class="btn-group-sm">
                         <button type="submit" name="filter" class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
@@ -30,17 +30,24 @@
                     </div>
                 {% endset %}
 
-                {{ buttons }}
-                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
-                {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
-                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
-                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
-                {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
-                {{ buttons }}
-            </div>
-            <div class="col-10">
+                <a href="#" id="show-filters" class="grey-color">{% trans %}Mostrar filtros{% endtrans %}</a>
+                <div>
+                    {{ buttons }}
+                    <div class="filters">
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
+                    </div>
+                    {{ buttons }}
+                </div>
+            </form>
+            <div class="col-lg-10">
                 {% if items is defined and items|length > 0 %}
-                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
+                    {% if filtered %}
+                        <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
+                    {% endif %}
                     {% include 'include/list.twig' with { recipes: items } %}
                     {% include 'include/pagination.twig' %}
                 {% else %}
@@ -48,6 +55,6 @@
                     {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
                 {% endif %}
             </div>
-        </form>
+        </div>
     </div>
 {% endblock %}

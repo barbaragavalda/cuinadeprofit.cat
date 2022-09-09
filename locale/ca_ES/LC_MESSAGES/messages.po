@@ -110,6 +110,9 @@ msgid "minutos"
 msgstr "minuts"
 
 # search
+msgid "Mostrar filtros"
+msgstr "Mostrar filtros"
+
 msgid "Filtrar"
 msgstr "Filtrar"
 

@@ -25,14 +25,14 @@
 {% block content %}
     <section id="recipe-detail" class="container-fluid">
         <div class="row">
-            <aside class="col-lg-4">
+            <aside class="col-md-4">
                 <div class="ingredients">
                     <header>
                         {% if recipe.image %}
-                            <div class="img" style="background-image: url('{{ recipe.image }}')"></div>
+                            {% include 'include/image.twig' with { url: recipe.image } %}
                         {% endif %}
-                        <div class="main-bg">
-                            <h1>{{ recipe.name }}</h1>
+                        <div class="resume grey-bg">
+                            <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
                                 <a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
@@ -86,7 +86,7 @@
                     {% endif %}
                 </div>
             </aside>
-            <div class="col-lg-8">
+            <div class="col-md-8">
                 {% if recipe.steps|length > 0 %}
                     {% if recipe.steps|length > 1 %}
                         <h3></h3>

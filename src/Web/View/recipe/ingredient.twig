@@ -2,7 +2,7 @@
 {% if ingredient.amount == 0 %}
     {% set finalUnit = ' ' ~ ingredient.unit  %}
 {% else %}
-    <span class="{{ ingredient.uri }}" data-unit="{{ ingredient.unit }}" data-plural="{{ ingredient.unitPlural }}">
+    <span class="ingredient-{{ ingredient.uri }}" data-unit="{{ ingredient.unit }}" data-plural="{{ ingredient.unitPlural }}">
         {{ ingredient.amount }}
         {% if ingredient.amount != 1 and ingredient.unitPlural != '' %}
             {{ ingredient.unitPlural }}

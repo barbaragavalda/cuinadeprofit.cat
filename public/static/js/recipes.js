@@ -74,13 +74,22 @@ var Recipes = function(link){
     }
 
     function filter(){
-        var difficulty = $('input[name="difficulty"]'),
+        var form = $('#list form');
+
+        $('#show-filters').click(function(e){
+            form.find('> div').fadeToggle();
+
+            e.preventDefault();
+            return false;
+        });
+
+        var difficulty = $('input[name="difficulty[]"]'),
             time = $('input[name="time"]'),
             tag = $('input[name="tag[]"]'),
             category = $('input[name="category[]"]'),
             ingredient = $('input[name="ingredient[]"]');
 
-        $('#list form').submit(function(e){
+        form.submit(function(e){
             var url = [],
                 difficulties = addArray(difficulty),
                 times = addArray(time),

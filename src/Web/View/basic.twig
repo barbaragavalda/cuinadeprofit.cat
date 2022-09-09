@@ -34,27 +34,27 @@
                     <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
                 {% block endLogo %}</a>{% endblock %}
             </div>
-            <ul id="languages">
-                {% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}
-                {% for item in langs %}
-                    {% set class = '' %}
-                    {% if item.uri == lang %}
-                        {% set class = ' class="current"' %}
-                    {% endif %}
-                    <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>
-                {% endfor %}
-            </ul>
+            {#<ul id="languages">#}
+                {#{% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}#}
+                {#{% for item in langs %}#}
+                    {#{% set class = '' %}#}
+                    {#{% if item.uri == lang %}#}
+                        {#{% set class = ' class="current"' %}#}
+                    {#{% endif %}#}
+                    {#<li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
             <div class="menu">
                 <nav class="mobile-menu">
                     <ul>
                         {% include 'include/li-menu.twig' with{ name: 'Inicio', link: '', code: '' } %}
                         {% include 'include/li-menu.twig' with{ name: 'Recetas', link: 'recetas', code: 'recipes' } %}
-                        {% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %}
+                        {#{% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %}#}
                     </ul>
                 </nav>
-                <div class="search-button secondary-color">
-                    <i class="fa fa-search"></i>
-                </div>
+                {#<div class="search-button secondary-color">#}
+                    {#<i class="fa fa-search"></i>#}
+                {#</div>#}
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>

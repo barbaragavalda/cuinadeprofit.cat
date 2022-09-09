@@ -10,6 +10,12 @@ body, #main-header a, .hover-effect .item h2 a {
 .form-control:focus{
 	border-color: rgb(180, 190, 200);
 }
+.grey-bg{
+	background: rgb(233, 236, 239);
+}
+.grey-color{
+	color: rgb(180, 190, 200);
+}
 .white-color, .main-bg, .grey-bg,
 .hover-effect .item .img:before {
 	color: white !important;
@@ -82,7 +88,36 @@ input::placeholder {
 	border-color: #ced4da;
 }
 
+/* font */
+@font-face {
+	font-family: 'MsMadi';
+	src: url('../font/MsMadi-Regular.ttf');
+}
+.ms-madi{
+	font-family: 'MsMadi', sans-serif;
+}
+h1.ms-madi {
+	font-size: 3.5rem;
+	line-height: 1em;
+}
+h2.ms-madi a {
+	font-size: 1.8rem !important;
+	line-height: 1em;
+	margin-top: 5px;
+}
+.hover-effect .item .ms-madi {
+	font-size: 1.4rem;
+}
+
 /* generic */
+*{
+	box-sizing: border-box;
+}
+body, html{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
 input{
 	background: none;
 }
@@ -110,9 +145,7 @@ section {
 
 .hover-effect .item{
 	position: relative;
-	cursor: pointer;
 }
-
 .hover-effect .item h2 a {
 	display: block;
 	line-height: 30px;
@@ -125,6 +158,7 @@ section {
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	z-index: 0;
 }
 .hover-effect .item .text, .hover-effect .item .img:before, .hover-effect .item .img:after{
 	-webkit-transition: all .4s;
@@ -228,7 +262,7 @@ section {
 #main-header #languages{
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: 10px;
 }
 #main-header #languages li{
 	margin-right: 0;
@@ -409,16 +443,17 @@ section h5 {
 #filter-items .item {
 	width: 20%;
 	padding: 0 10px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 #filter-items .item .img{
 	height: 150px;
 }
 #filter-items .item a{
 	display: block;
-	font-size: 1.25rem;
+	font-size: 1.6rem;
+	line-height: 1.1em;
 	text-align: center;
-	padding: 10px;
+	padding: 0 10px 10px;
 }
 
 #recipes {
@@ -471,6 +506,9 @@ section h5 {
 /******************************
  * LIST
  ******************************/
+#show-filters{
+	display: none;
+}
 #list .title{
 	font-size: 2.5rem;
 	font-weight: 500;
@@ -482,6 +520,9 @@ section h5 {
 /******************************
  * RECIPE
  ******************************/
+#recipe-detail{
+	max-width: 1500px;
+}
 #recipe-detail .col-lg-7, .ingredients header{
 	padding-top: 30px;
 }
@@ -494,28 +535,36 @@ section h5 {
 	top: 0;
 	width: 120px;
 	height: 120px;
-	-webkit-border-radius: 15px 15px 5px 5px;
-	-moz-border-radius: 15px 15px 5px 5px;
-	border-radius: 15px 15px 5px 5px;
 	left: 50%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	-webkit-transform: translateX(-60px);
 	-moz-transform: translateX(-60px);
 	-ms-transform: translateX(-60px);
 	-o-transform: translateX(-60px);
 	transform: translateX(-60px);
 }
-.ingredients header .img + .main-bg{
+.ingredients header .img + .resume{
 	padding-top: 100px;
 }
-.ingredients header .main-bg{
+.ingredients header >*:not(.img){
 	padding: 20px;
-	-webkit-border-top-left-radius: 15px;
-	border-top-left-radius: 15px;
-	-webkit-border-top-right-radius: 15px;
-	border-top-right-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.ingredients header .resume{
+	margin-bottom: 20px;
+}
+.ingredients header > ul{
+	-webkit-border-bottom-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;;
+	-webkit-border-bottom-right-radius: 0 !important;;
+	border-bottom-right-radius: 0 !important;;
 }
 .ingredients header h1{
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 .ingredients header ul{
 	padding: 10px;
@@ -558,6 +607,9 @@ section h5 {
 	padding: 20px;
 	border-width: 1px;
 	border-style: solid;
+}
+.ingredients .list h5{
+	padding: 0;
 }
 .ingredients .link a{
 	padding: 5px;
@@ -602,4 +654,77 @@ section h5 {
 	max-height: 350px;
 	text-align: center;
 	margin: 0 auto;
+}
+
+/******************************
+ * RESPONSIVE
+ ******************************/
+@media only screen and (max-width: 993px) {
+
+	/* home */
+	#filter-items .item{
+		width: 25%;
+	}
+
+	/* list */
+	#show-filters{
+		display: block;
+		text-decoration: underline;
+	}
+	#list form > div{
+		display: none;
+	}
+	#list .filters{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	#list .filters > div{
+		width: 33.33%;
+	}
+	#list .filters > div:nth-child(1),
+	#list .filters > div:nth-child(2){
+		width: 50%;
+	}
+
+}
+@media only screen and (max-width: 767px) {
+
+	.title, .title-left, .title-right {
+		width: 100%;
+		text-align: left;
+	}
+
+	/* home */
+	.mosaic .large-item .img{
+		height: 500px;
+	}
+	#filter-items .item{
+		width: 33.33%;
+	}
+
+	/* recipe */
+	#recipe-detail aside{
+		margin-bottom: 20px;
+	}
+
+}
+@media only screen and (max-width: 577px) {
+
+	/* home */
+	#filter-items .item{
+		width: 50%;
+	}
+	#recipes li{
+		width: 100%;
+	}
+
+}
+@media only screen and (max-width: 400px) {
+
+	/* home */
+	#filter-items .item{
+		width: 100%;
+	}
+
 }

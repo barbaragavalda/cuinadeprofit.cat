@@ -53,38 +53,40 @@
     {% endif %}
 
     {% if categories|length > 0 %}
-        <section class="container-fluid">
+        <section>
             <h5 class="title main-bg">{% trans %}Por categorías{% endtrans %}</h5>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="categories">
-                        <ul>
-                            {% for category in categories %}
-                                {% set isActive = ' class="active"' %}
-                                {% if loop.index != 1 %}
-                                    {% set isActive = '' %}
-                                {% endif %}
-                                <li data-filter=".{{ category.id }}"{{ isActive|raw }}>{{ category.name }}</li>
-                            {% endfor %}
-                        </ul>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="categories">
+                            <ul>
+                                {% for category in categories %}
+                                    {% set isActive = ' class="active"' %}
+                                    {% if loop.index != 1 %}
+                                        {% set isActive = '' %}
+                                    {% endif %}
+                                    <li data-filter=".{{ category.uri }}"{{ isActive|raw }}>{{ category.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="filter-items" class="hover-effect clearfix">
-                {% for category in categories %}
-                    {% for recipe in category.recipes %}
-                        {% set classItem = '' %}
-                        {% for tag in recipe.tags %}
-                            {% set classItem = classItem ~ ' ' ~ tag.uri %}
+                <div id="filter-items" class="hover-effect clearfix">
+                    {% for category in categories %}
+                        {% for recipe in category.recipes %}
+                            {% set classItem = '' %}
+                            {% for tag in recipe.tags %}
+                                {% set classItem = classItem ~ ' ' ~ tag.uri %}
+                            {% endfor %}
+                            <div class="item mix{{ classItem }}">
+                                {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri } %}
+                                <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}"
+                                   class="ms-madi text secondary-color">{{ recipe.name }}</a>
+                            </div>
                         {% endfor %}
-                        <div class="item mix{{ classItem }}">
-                            {% include 'include/image.twig' with { url: recipe.image } %}
-                            <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}"
-                               class="text secondary-color">{{ recipe.name }}</a>
-                        </div>
                     {% endfor %}
-                {% endfor %}
+                </div>
             </div>
         </section>
     {% endif %}

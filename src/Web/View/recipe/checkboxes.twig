@@ -17,19 +17,25 @@
         {% set li %}
             <li class="custom-control custom-{{ type }}">
                 {% set checked = '' %}
-                {% if filters[field] == checkbox.id %}
-                    {% set checked = 'checked' %}
+                {% if field == 'time' %}
+                    {% if filters[field][0] == checkbox.id[0] %}
+                        {% set checked = 'checked' %}
+                    {% endif %}
+                {% else %}
+                    {% if checkbox.id in filters[field] %}
+                        {% set checked = 'checked' %}
+                    {% endif %}
                 {% endif %}
                 {% set multiple = '' %}
-                {% if field == 'checkbox' %}
+                {% if type == 'checkbox' %}
                     {% set multiple = '[]' %}
                 {% endif %}
-                <input type="{{ type }}" class="custom-control-input" name="{{ field }}{{ multiple }}" id="{{ field }}-{{ checkbox.id }}" value="{{ checkbox.id }}" {{ checked }} />
-                <label class="custom-control-label" for="{{ field }}-{{ checkbox.id }}"><small>{{ checkbox.name }}</small></label>
+                <input type="{{ type }}" class="custom-control-input" name="{{ field }}{{ multiple }}" id="{{ field }}-{{ checkbox.uri }}" value="{{ checkbox.uri }}" {{ checked }} />
+                <label class="custom-control-label" for="{{ field }}-{{ checkbox.uri }}"><small>{{ checkbox.name }}</small></label>
             </li>
         {% endset %}
 
-        {% if checkboxes|length > 10 and filters[field] == checkbox.id %}
+        {% if checkboxes|length > 10 and filters[field] == checkbox.uri %}
             {% set selected = selected|merge([li]) %}
         {% else %}
             {% set normal = normal|merge([li]) %}

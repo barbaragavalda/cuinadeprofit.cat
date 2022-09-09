@@ -32,7 +32,7 @@ class Home extends Model
         $notIn  = $this->ids;
         foreach ($tags as &$tag) {
             $list = new FilteredList(1, 10);
-            $list->setFilters(array('tag' => array($tag['id_tag']), 'not_in' => $notIn));
+            $list->setFilters(array('tag' => array($tag['id']), 'not_in' => $notIn));
             $list->initAll();
             $recipes        = $list->getItemsPage();
             $notIn          = array_merge($notIn, array_column($recipes, 'id_recipe'));

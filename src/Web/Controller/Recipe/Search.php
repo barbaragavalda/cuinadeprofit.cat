@@ -31,6 +31,11 @@ class Search extends Controller
 
     public function run()
     {
+        $filtered = false;
+        if (count($this->filters) > 1) {
+//            $filtered = true;
+        }
+
         $this->filter = new Filter();
         $this->filter();
 
@@ -40,6 +45,7 @@ class Search extends Controller
         $this->assign('items', $this->list->getItemsPage());
         $this->assign('pagination', $this->list->paginate());
         $this->assign('link', _('recetas'));
+        $this->assign('filtered', $filtered);
         $this->assign('filters', $this->filters);
 
         $this->assign('difficulties', $this->filter->getDifficulty());

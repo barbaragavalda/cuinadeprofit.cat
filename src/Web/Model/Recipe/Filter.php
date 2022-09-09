@@ -24,16 +24,16 @@ class Filter extends Model
     {
         if ($uri == null) {
             return array(
-                array('id' => self::LESS_15M, 'name' => _('< 15 min')),
-                array('id' => self::BETWEEN_15M_30M, 'name' => _('15-30 min')),
-                array('id' => self::BETWEEN_30M_1H, 'name' => _('30 min - 1 hora')),
-                array('id' => self::BETWEEN_1H_2H, 'name' => _('1-2 horas')),
-                array('id' => self::MORE_2H, 'name' => _('> 2 horas'))
+                array('id' => array(1, 15), 'uri' => self::LESS_15M, 'name' => _('< 15 min')),
+                array('id' => array(16, 30), 'uri' => self::BETWEEN_15M_30M, 'name' => _('15-30 min')),
+                array('id' => array(31, 60), 'uri' => self::BETWEEN_30M_1H, 'name' => _('30 min - 1 hora')),
+                array('id' => array(61, 120), 'uri' => self::BETWEEN_1H_2H, 'name' => _('1-2 horas')),
+                array('id' => array(121, PHP_INT_MAX), 'uri' => self::MORE_2H, 'name' => _('> 2 horas'))
             );
         } else {
             switch (urldecode($uri)) {
                 case self::LESS_15M:
-                    return array(0, 15);
+                    return array(1, 15);
                     break;
                 case self::BETWEEN_15M_30M:
                     return array(16, 30);
@@ -97,7 +97,7 @@ class Filter extends Model
         }
 
         $sql   = '
-            SELECT t.id_' . $table . ', tl.uri AS id, tl.name
+            SELECT t.id_' . $table . ' AS id, tl.uri AS uri, tl.name
             FROM ' . $table . ' AS t
             INNER JOIN ' . $table . '_lang AS tl ON t.id_' . $table . ' = tl.id_' . $table . ' 
                 AND tl.id_appacman_lang = :lang ' . $where . '

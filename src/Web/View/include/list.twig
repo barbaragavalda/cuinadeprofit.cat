@@ -4,7 +4,7 @@
             <li class="item">
                 <div class="row">
                     <div class="col-sm-4">
-                        {% include 'include/image.twig' with { url: recipe.image } %}
+                        {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri } %}
                     </div>
                     <div class="col-sm-8">
                         {% if recipe.tags|length > 0 %}
@@ -16,7 +16,7 @@
                                 {{ tags|join(' | ')|raw }}
                             </div>
                         {% endif %}
-                        <h2><a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a></h2>
+                        <h2 class="ms-madi"><a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a></h2>
                         <div>
                             {% include 'recipe/difficulty.twig' %}
                             <small>{{ recipe.time }}</small>
