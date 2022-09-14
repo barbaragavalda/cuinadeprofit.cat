@@ -5,7 +5,7 @@
 {% endblock %}
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/OverlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <script src="{{ staticDomain }}js/recipes.js"></script>
+    <script src="{{ staticDomain }}js/recipes.js?v={{ staticVersion }}"></script>
     <script>
         $(document).ready(function() {
             $('.filter ul').each(function(){

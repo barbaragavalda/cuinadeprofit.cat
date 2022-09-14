@@ -11,6 +11,7 @@ abstract class Controller extends \Core\Controller\Controller
     {
         $this->defaultMetatags();
 
+        $this->assign('staticVersion', 5);
         $this->run();
     }
 
@@ -29,6 +30,22 @@ abstract class Controller extends \Core\Controller\Controller
                 'height' => 630
             )
         );
+    }
+
+    protected function overrideMetadata($info)
+    {
+        if (array_key_exists('metatag_title', $info) && $info['metatag_title']) {
+            $this->assign('metatagTitle', $info['metatag_title'] . ' | Cuina de Profit');
+        }
+        if (array_key_exists('metatag_keywords', $info) && $info['metatag_keywords']) {
+            $this->assign('metatagKeywords', $info['metatag_keywords']);
+        }
+        if (array_key_exists('metatag_description', $info) && $info['metatag_description']) {
+            $this->assign('metatagDescription', $info['metatag_description']);
+        }
+        if (array_key_exists('metatag_image', $info) && $info['metatag_image']) {
+            $this->assign('metatagImage', $info['metatag_image']);
+        }
     }
 
 }

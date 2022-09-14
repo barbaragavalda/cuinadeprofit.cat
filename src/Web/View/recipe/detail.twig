@@ -5,7 +5,7 @@
 {% endblock %}
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="{{ staticDomain }}js/recipe.js"></script>
+    <script src="{{ staticDomain }}js/recipe.js?v={{ staticVersion }}"></script>
     <script>
         $(document).ready(function() {
             {% set currentAmount = 1 %}
@@ -42,9 +42,9 @@
                             <ul class="main-bg">
                                 {% for spec in recipe.specs %}
                                     {% if spec.type in ['amount', 'diners'] %}
-                                        <li class="clearfix">
-                                            <label for="amount" class="pt-2 float-left">{{ spec.name }}:</label>
-                                            <div class="input-group pt-1 ml-1 float-left">
+                                        <li class="multiplier">
+                                            <label for="amount" class="pt-2">{{ spec.name }}:</label>
+                                            <div class="input-group pt-1 ml-1">
                                                 <div class="input-group-prepend">
                                                     <button id="subtract" class="btn secondary-bg" type="button">-</button>
                                                 </div>

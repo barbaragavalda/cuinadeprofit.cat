@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="{{ staticDomain }}css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ staticDomain }}css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ staticDomain }}css/style.css?v=1" type="text/css">
+    <link rel="stylesheet" href="{{ staticDomain }}css/style.css?v={{ staticVersion }}" type="text/css">
 
     {% block extraHead %}{% endblock %}
 </head>
@@ -34,16 +34,16 @@
                     <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
                 {% block endLogo %}</a>{% endblock %}
             </div>
-            {#<ul id="languages">#}
-                {#{% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}#}
-                {#{% for item in langs %}#}
-                    {#{% set class = '' %}#}
-                    {#{% if item.uri == lang %}#}
-                        {#{% set class = ' class="current"' %}#}
-                    {#{% endif %}#}
-                    {#<li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>#}
-                {#{% endfor %}#}
-            {#</ul>#}
+            <ul id="languages">
+                {% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}
+                {% for item in langs %}
+                    {% set class = '' %}
+                    {% if item.uri == lang %}
+                        {% set class = ' class="current"' %}
+                    {% endif %}
+                    <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>
+                {% endfor %}
+            </ul>
             <div class="menu">
                 <nav class="mobile-menu">
                     <ul>
@@ -94,8 +94,8 @@
 
     <script src="{{ staticDomain }}js/plugin/jquery-3.3.1.min.js"></script>
     <script src="{{ staticDomain }}js/plugin/bootstrap.min.js"></script>
-    <script src="{{ staticDomain }}js/lang.js"></script>
-    <script src="{{ staticDomain }}js/main.js"></script>
+    <script src="{{ staticDomain }}js/lang.js?v={{ staticVersion }}"></script>
+    <script src="{{ staticDomain }}js/main.js?v={{ staticVersion }}"></script>
     <script>
         var LANG = new Language('{{ lang }}');
     </script>

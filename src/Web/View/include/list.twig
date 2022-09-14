@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-    <ul id="recipes" class="hover-effect clearfix">
+    <ul id="recipes" class="hover-effect">
         {% for recipe in recipes %}
             <li class="item">
                 <div class="row">
@@ -19,7 +19,12 @@
                         <h2 class="ms-madi"><a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a></h2>
                         <div>
                             {% include 'recipe/difficulty.twig' %}
-                            <small>{{ recipe.time }}</small>
+                            <small>
+                                {{ recipe.time }}
+                                {% if recipe.rest_time > 0 %}
+                                    (+ {{ recipe.rest_time }} {% trans %}reposo{% endtrans %})
+                                {% endif %}
+                            </small>
                         </div>
                         {% if recipe.description %}
                             {{ recipe.description|raw }}

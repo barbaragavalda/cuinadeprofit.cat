@@ -16,6 +16,7 @@ class Detail extends Controller
             $recipeInfo = $recipe->get($uri);
             if (count($recipeInfo)) {
                 $this->assign('recipe', $recipeInfo);
+                $this->overrideMetadata($recipeInfo);
 
                 $this->assign('menu', 'recipes');
                 $this->template('recipe/detail.twig');

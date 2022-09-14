@@ -29,15 +29,17 @@ class Home extends Model
     {
         $filter = new Filter();
         $tags   = $filter->getTag(null, true);
+
         $notIn  = $this->ids;
         foreach ($tags as &$tag) {
-            $list = new FilteredList(1, 10);
+            $list = new FilteredList(1, 8);
             $list->setFilters(array('tag' => array($tag['id']), 'not_in' => $notIn));
             $list->initAll();
             $recipes        = $list->getItemsPage();
             $notIn          = array_merge($notIn, array_column($recipes, 'id_recipe'));
             $tag['recipes'] = $recipes;
         }
+
         return $tags;
     }
 

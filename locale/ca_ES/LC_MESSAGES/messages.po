@@ -5,11 +5,11 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: Bàrbara Gavaldà <barbaragavalda@gmail.com>\n"
 "Language-Team: \n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca_ES\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.1.1\n"
 
 # routing
 msgid "recetas"
@@ -20,9 +20,6 @@ msgstr "recepta"
 
 msgid "aleatoria"
 msgstr "aleatoria"
-
-msgid "recetas"
-msgstr "receptes"
 
 msgid "contacto"
 msgstr "contacte"
@@ -67,8 +64,8 @@ msgstr "Temps preparació"
 msgid "Tiempo cocinando"
 msgstr "Temps cuinant"
 
-msgid "Tiempo"
-msgstr "Temps"
+msgid "Tiempo reposo"
+msgstr "Temps repòs"
 
 msgid "Comensales"
 msgstr "Comensals"

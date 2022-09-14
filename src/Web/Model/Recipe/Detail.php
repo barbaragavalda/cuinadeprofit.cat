@@ -33,8 +33,9 @@ class Detail extends Model
         }
 
         $sql    = '
-            SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.image, r.link,
+            SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.rest_time, r.image, r.link,
                 rl.name, rl.uri, rl.description,
+                rl.name AS metatag_title, rl.description AS metatag_description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
@@ -48,9 +49,11 @@ class Detail extends Model
             $recipe   = $recipe[0];
             $this->id = $recipe['id_recipe'];
 
-            $recipe['image'] = $this->getFile($recipe['image'], 'thumb');
-            $recipe['tags']  = $this->getTags();
-            $recipe['specs'] = $this->getSpecs($recipe);
+            $imageID                 = $recipe['image'];
+            $recipe['image']         = $this->getFile($imageID, 'thumb');
+            $recipe['metatag_image'] = $this->getFBImage($imageID, 'list');
+            $recipe['tags']          = $this->getTags();
+            $recipe['specs']         = $this->getSpecs($recipe);
 
             $ingredients           = $this->getIngredients();
             $recipe['ingredients'] = $ingredients;
@@ -115,6 +118,10 @@ class Detail extends Model
         if (!empty($recipe['cook_time'])) {
             $time    = self::formatTime($recipe['cook_time']);
             $specs[] = array('name' => _('Tiempo cocinando'), 'value' => $time);
+        }
+        if (!empty($recipe['rest_time'])) {
+            $time    = self::formatTime($recipe['rest_time']);
+            $specs[] = array('name' => _('Tiempo reposo'), 'value' => $time);
         }
 
         if (!empty($recipe['diners'])) {

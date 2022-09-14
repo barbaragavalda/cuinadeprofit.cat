@@ -66,7 +66,8 @@ class FilteredList extends Paginated
         }
 
         $sql     = '
-            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.image, (prep_time + cook_time) AS time, r.created,
+            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created,
+                (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time,
                 rl.name, rl.uri, rl.description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
@@ -87,6 +88,7 @@ class FilteredList extends Paginated
                 $recipeModel->setID($recipe['id_recipe']);
                 $recipe['image'] = $this->getFile($recipe['image'], 'list');
                 $recipe['time']  = Detail::formatTime($recipe['time']);
+                $recipe['rest_time']  = Detail::formatTime($recipe['rest_time']);
                 $recipe['tags']  = $recipeModel->getTags(false);
 
                 $date              = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);

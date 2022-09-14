@@ -25,7 +25,9 @@
 {% block content %}
     {% if recent|length > 0 %}
         <section>
-            <h5 class="title-left main-bg">{% trans %}Últimas recetas{% endtrans %}</h5>
+            <div class="title-left">
+                <h5 class="main-bg">{% trans %}Últimas recetas{% endtrans %}</h5>
+            </div>
             <div class="container-fluid">
                 <div class="mosaic hover-effect row">
                     <div class="col-lg-6 order-lg-2">
@@ -54,7 +56,9 @@
 
     {% if categories|length > 0 %}
         <section>
-            <h5 class="title main-bg">{% trans %}Por categorías{% endtrans %}</h5>
+            <div class="title">
+                <h5 class=" main-bg">{% trans %}Por categorías{% endtrans %}</h5>
+            </div>
 
             <div class="container-fluid">
                 <div class="row">
@@ -72,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="filter-items" class="hover-effect clearfix">
+                <div id="filter-items" class="hover-effect">
                     {% for category in categories %}
                         {% for recipe in category.recipes %}
                             {% set classItem = '' %}
@@ -93,8 +97,8 @@
 
     {% if succeed|length > 0 %}
         <section>
-            <div class="clearfix">
-                <h5 class="title-right main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
+            <div class="title-right">
+                <h5 class="main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
             </div>
             <div class="container-fluid">
                 {% include 'include/list.twig' with { recipes: succeed } %}
