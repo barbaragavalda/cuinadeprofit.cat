@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : VMPHP7
+ Source Server         : optisistem.com
  Source Server Type    : MySQL
- Source Server Version : 100331
- Source Host           : localhost:3306
+ Source Server Version : 100516
+ Source Host           : optisistem.com:3306
  Source Schema         : cuina-de-profit
 
  Target Server Type    : MySQL
- Target Server Version : 100331
+ Target Server Version : 100516
  File Encoding         : 65001
 
- Date: 14/09/2022 09:39:50
+ Date: 14/09/2022 10:55:19
 */
 
 SET NAMES utf8mb4;
@@ -322,7 +322,7 @@ CREATE TABLE `appacman_file` (
   `id_appacman_file` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_file`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of appacman_file
@@ -359,6 +359,7 @@ INSERT INTO `appacman_file` VALUES (28, '28_rollets-primavera.jpeg');
 INSERT INTO `appacman_file` VALUES (29, '29_how-to-roll.jpeg');
 INSERT INTO `appacman_file` VALUES (30, '30_croissant-bikini.jpeg');
 INSERT INTO `appacman_file` VALUES (31, '31_coleslaw.jpg');
+INSERT INTO `appacman_file` VALUES (32, '32_quiche.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -629,7 +630,7 @@ COMMIT;
 DROP TABLE IF EXISTS `difficulty`;
 CREATE TABLE `difficulty` (
   `id_difficulty` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_difficulty`)
+  PRIMARY KEY (`id_difficulty`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -676,7 +677,7 @@ CREATE TABLE `ingredient` (
   `id_ingredient_category` tinyint(3) unsigned DEFAULT NULL,
   `id_recipe` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient
@@ -810,6 +811,9 @@ INSERT INTO `ingredient` VALUES (125, '$appleVinegar', NULL, NULL);
 INSERT INTO `ingredient` VALUES (126, '$sourCream', 16, NULL);
 INSERT INTO `ingredient` VALUES (127, '$focaccia', 17, NULL);
 INSERT INTO `ingredient` VALUES (128, '$apple', 4, NULL);
+INSERT INTO `ingredient` VALUES (129, '$shortcrustPastry', NULL, NULL);
+INSERT INTO `ingredient` VALUES (130, '$cookingCream', 11, NULL);
+INSERT INTO `ingredient` VALUES (131, '$emmental', 8, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -818,7 +822,7 @@ COMMIT;
 DROP TABLE IF EXISTS `ingredient_category`;
 CREATE TABLE `ingredient_category` (
   `id_ingredient_category` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ingredient_category`)
+  PRIMARY KEY (`id_ingredient_category`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -926,7 +930,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -1188,6 +1192,12 @@ INSERT INTO `ingredient_lang` VALUES (253, 127, 1, 'Focaccia', 'focaccia');
 INSERT INTO `ingredient_lang` VALUES (254, 127, 2, 'Focaccia', 'focaccia');
 INSERT INTO `ingredient_lang` VALUES (255, 128, 1, 'Poma', 'poma');
 INSERT INTO `ingredient_lang` VALUES (256, 128, 2, 'Manzana', 'manzana');
+INSERT INTO `ingredient_lang` VALUES (257, 129, 1, 'Pasta brisa (o pasta trencada)', 'pasta-brisa-o-pasta-trencada');
+INSERT INTO `ingredient_lang` VALUES (258, 129, 2, 'Pasta brisa (o masa quebrada)', 'pasta-brisa-o-masa-quebrada');
+INSERT INTO `ingredient_lang` VALUES (259, 130, 1, 'Nata de cuina', 'nata-de-cuina');
+INSERT INTO `ingredient_lang` VALUES (260, 130, 2, 'Nata de cocina', 'nata-de-cocina');
+INSERT INTO `ingredient_lang` VALUES (261, 131, 1, 'Emmental', 'emmental');
+INSERT INTO `ingredient_lang` VALUES (262, 131, 2, 'Emmental', 'emmental');
 COMMIT;
 
 -- ----------------------------
@@ -1206,7 +1216,7 @@ CREATE TABLE `recipe` (
   `link` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_recipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe
@@ -1261,6 +1271,7 @@ INSERT INTO `recipe` VALUES (46, 1, NULL, 10, NULL, NULL, 27, 0, 'https://www.ju
 INSERT INTO `recipe` VALUES (47, 1, 4, 20, 10, NULL, 28, 0, 'https://www.instagram.com/p/CYQ92SFlRn2/', '2022-09-07 13:09:35');
 INSERT INTO `recipe` VALUES (49, 1, 4, 15, NULL, 120, 31, 0, NULL, '2022-09-13 12:50:39');
 INSERT INTO `recipe` VALUES (50, 1, 2, 10, 20, NULL, NULL, 0, 'https://www.instagram.com/p/CeqCpGRoxW8/', '2022-09-13 16:27:55');
+INSERT INTO `recipe` VALUES (51, 1, 4, 20, 25, NULL, 32, 0, NULL, '2022-09-14 10:33:09');
 COMMIT;
 
 -- ----------------------------
@@ -1277,7 +1288,7 @@ CREATE TABLE `recipe_ingredient` (
   `is_optional` tinyint(1) unsigned DEFAULT 0,
   `order_ingredient` tinyint(3) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_ingredient
@@ -1500,6 +1511,15 @@ INSERT INTO `recipe_ingredient` VALUES (214, 49, '2', 114, 2, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (215, 49, NULL, 125, 8, 0, 0, 7);
 INSERT INTO `recipe_ingredient` VALUES (216, 26, '1', 127, NULL, 1, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (217, 49, '0.5', 128, NULL, 0, 1, 3);
+INSERT INTO `recipe_ingredient` VALUES (218, 51, '1', 129, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (219, 51, '2', 28, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (220, 51, '2', 32, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (221, 51, '200', 130, 4, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (222, 51, '100', 99, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (223, 51, '100', 131, 3, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (224, 51, NULL, 47, 8, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (225, 51, NULL, 22, 8, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (226, 51, NULL, 9, 8, 0, 0, 9);
 COMMIT;
 
 -- ----------------------------
@@ -1514,7 +1534,7 @@ CREATE TABLE `recipe_lang` (
   `uri` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   PRIMARY KEY (`id_recipe_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_lang
@@ -1618,6 +1638,8 @@ INSERT INTO `recipe_lang` VALUES (97, 49, 1, 'Coleslaw', 'coleslaw', NULL);
 INSERT INTO `recipe_lang` VALUES (98, 49, 2, 'Coleslaw', 'coleslaw', NULL);
 INSERT INTO `recipe_lang` VALUES (99, 50, 1, 'Fideus amb oli y cebulet', 'fideus-amb-oli-y-cebulet', NULL);
 INSERT INTO `recipe_lang` VALUES (100, 50, 2, 'Fideos con aceite y cebolleta', 'fideos-con-aceite-y-cebolleta', NULL);
+INSERT INTO `recipe_lang` VALUES (101, 51, 1, 'Quiche', 'quiche', NULL);
+INSERT INTO `recipe_lang` VALUES (102, 51, 2, 'Quiche', 'quiche', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1630,7 +1652,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(9) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -1749,6 +1771,13 @@ INSERT INTO `recipe_step` VALUES (110, 29, NULL, 3);
 INSERT INTO `recipe_step` VALUES (111, 49, NULL, 1);
 INSERT INTO `recipe_step` VALUES (112, 49, NULL, 2);
 INSERT INTO `recipe_step` VALUES (113, 49, NULL, 3);
+INSERT INTO `recipe_step` VALUES (114, 51, NULL, 1);
+INSERT INTO `recipe_step` VALUES (115, 51, NULL, 2);
+INSERT INTO `recipe_step` VALUES (116, 51, NULL, 3);
+INSERT INTO `recipe_step` VALUES (117, 51, NULL, 4);
+INSERT INTO `recipe_step` VALUES (118, 51, NULL, 5);
+INSERT INTO `recipe_step` VALUES (119, 51, NULL, 6);
+INSERT INTO `recipe_step` VALUES (120, 51, NULL, 7);
 COMMIT;
 
 -- ----------------------------
@@ -1760,8 +1789,8 @@ CREATE TABLE `recipe_step_lang` (
   `id_recipe_step` mediumint(7) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
-  PRIMARY KEY (`id_recipe_step_lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_recipe_step_lang`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -1993,6 +2022,20 @@ INSERT INTO `recipe_step_lang` VALUES (223, 112, 1, '<p>Per fer la salsa, barreg
 INSERT INTO `recipe_step_lang` VALUES (224, 112, 2, '<p>Para hacer la salsa, mezclamos la $sourCream, la $mayonnaise y la $dijonMustard. Añadimos un buen chorro de $appleVinegar  y lo movemos con unas varillas hasta tener una crema homogénea.</p>');
 INSERT INTO `recipe_step_lang` VALUES (225, 113, 1, '<p>Amanir l\'amanida amb la salsa, remenem bé i la deixem a la nevera un mínim de dues hores abans de servir.</p>');
 INSERT INTO `recipe_step_lang` VALUES (226, 113, 2, '<p>Aliñar la ensalada con la salsa, removemos bien y la dejamos en la nevera un mínimo de dos horas antes de servir.</p>');
+INSERT INTO `recipe_step_lang` VALUES (227, 114, 1, '<p>Preescalfem el forn a 200ºC. Jo ho poso amb l\'opció ventilador i calor per la part inferior.</p>');
+INSERT INTO `recipe_step_lang` VALUES (228, 114, 2, '<p>Precalentamos el horno a 200ºC. Yo lo pongo con la opción ventilador y calor por la parte inferior.</p>');
+INSERT INTO `recipe_step_lang` VALUES (229, 115, 1, '<p>Col·loquem la $shortcrustPastry en un motlle i la punxem amb una forquilla vàries vegades.</p><p>Quan el forn està calent, la fem durant 5 min.</p>');
+INSERT INTO `recipe_step_lang` VALUES (230, 115, 2, '<p>Colocamos la $shortcrustPastry en un molde y la pinchamos con un tenedor varias veces.</p><p>Cuando el horno está caliente, la hacemos durante 5 min.</p>');
+INSERT INTO `recipe_step_lang` VALUES (231, 116, 1, '<p>Potxem el $leek tallat en juliana amb $butter i $salt.</p>');
+INSERT INTO `recipe_step_lang` VALUES (232, 116, 2, '<p>Pochamos el $leek cortado en juliana con $butter y $salto.</p>');
+INSERT INTO `recipe_step_lang` VALUES (233, 117, 1, '<p>Afegim la $mortadella tallada a quadrats i ho cuinem durant un parell de minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (234, 117, 2, '<p>Añadimos la $mortadella cortada a cuadrados y lo cocinamos durante un par de minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (235, 118, 1, '<p>En un bol batem: els $egg, la $cookingCream i la meitat del $emmental(0.5) ratllat.</p><p>Ho salpebrem i afegim també els porros amb la mortadel·la.</p>');
+INSERT INTO `recipe_step_lang` VALUES (236, 118, 2, '<p>En un cuenco batimos: los $egg, la $cookingCream y la mitad del $emmental(0.5) rallado.</p><p>Lo salpimentamos y añadimos también los puerros con la mortadela.</p>');
+INSERT INTO `recipe_step_lang` VALUES (237, 119, 1, '<p>Omplim la massa amb la mescla i ho cobrim amb la resta del formatge $emmental(0.5) ratllat.</p>');
+INSERT INTO `recipe_step_lang` VALUES (238, 119, 2, '<p>Llenamos la masa con la mezcla y cubrimos con el resto del queso $emmental(0.5) rallado.</p>');
+INSERT INTO `recipe_step_lang` VALUES (239, 120, 1, '<p>Al forn durant 20 minuts o fins que estigui gratinat.</p>');
+INSERT INTO `recipe_step_lang` VALUES (240, 120, 2, '<p>En el horno durante 20 minutos o hasta que esté gratinado.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -2002,7 +2045,7 @@ DROP TABLE IF EXISTS `recipe_tag`;
 CREATE TABLE `recipe_tag` (
   `id_recipe` smallint(5) unsigned NOT NULL,
   `id_tag` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY (`id_recipe`,`id_tag`)
+  PRIMARY KEY (`id_recipe`,`id_tag`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2175,8 +2218,12 @@ INSERT INTO `recipe_tag` VALUES (49, 3);
 INSERT INTO `recipe_tag` VALUES (49, 13);
 INSERT INTO `recipe_tag` VALUES (49, 18);
 INSERT INTO `recipe_tag` VALUES (50, 13);
+INSERT INTO `recipe_tag` VALUES (50, 14);
 INSERT INTO `recipe_tag` VALUES (50, 18);
 INSERT INTO `recipe_tag` VALUES (50, 19);
+INSERT INTO `recipe_tag` VALUES (51, 3);
+INSERT INTO `recipe_tag` VALUES (51, 13);
+INSERT INTO `recipe_tag` VALUES (51, 16);
 COMMIT;
 
 -- ----------------------------
@@ -2225,7 +2272,7 @@ CREATE TABLE `tag_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_tag_lang`)
+  PRIMARY KEY (`id_tag_lang`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -2278,7 +2325,7 @@ COMMIT;
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
   `id_unit` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_unit`)
+  PRIMARY KEY (`id_unit`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
