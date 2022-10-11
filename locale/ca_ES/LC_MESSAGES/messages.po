@@ -85,8 +85,11 @@ msgstr "opcional"
 msgid "ver receta"
 msgstr "ver receta"
 
-msgid "ver receta %s"
-msgstr "ver receta %s"
+msgid "ver receta + %s"
+msgstr "ver receta + %s"
+
+msgid "ver receta + %s y %s de reposo"
+msgstr "ver receta + %s y %s de reposo"
 
 msgid "Receta original"
 msgstr "Recepta original"

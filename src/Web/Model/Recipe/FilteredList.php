@@ -92,7 +92,7 @@ class FilteredList extends Paginated
                 $recipe['tags']  = $recipeModel->getTags(false);
 
                 $date              = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
-                $recipe['created'] = utf8_encode(strftime(_('%e %B %G'), $date->getTimestamp()));
+                $recipe['created'] = utf8_encode(date(_('%e %B %G'), $date->getTimestamp()));
             }
             $this->items = $recipes;
         }

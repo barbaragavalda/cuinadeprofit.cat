@@ -16,8 +16,12 @@
     {% set links = [] %}
     {% for recipe in ingredient.recipes %}
         {% set name = 'ver receta'|trans %}
-        {% if recipe.type %}
-            {% set name = 'ver receta %s'|trans|format(recipe.type|lower) %}
+        {% if recipe.time %}
+            {% if recipe.rest_time %}
+                {% set name = 'ver receta + %s y %s de reposo'|trans|format(recipe.time, recipe.rest_time) %}
+            {% else %}
+                {% set name = 'ver receta + %s'|trans|format(recipe.time) %}
+            {% endif %}
         {% endif %}
         {% set links = links|merge(['<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ name ~ '</a>']) %}
     {% endfor %}

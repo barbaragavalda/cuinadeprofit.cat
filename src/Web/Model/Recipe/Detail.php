@@ -58,7 +58,7 @@ class Detail extends Model
             $ingredients           = $this->getIngredients();
             $recipe['ingredients'] = $ingredients;
             $recipe['steps']       = $this->getSteps($ingredients, $recipe['diners']);
-
+            
             return $recipe;
         }
         return array();
@@ -192,9 +192,11 @@ class Detail extends Model
     {
         if (!empty($id)) {
             $sql     = '
-                SELECT rl.uri
-                FROM recipe_lang AS rl
-                WHERE rl.id_recipe = :id AND rl.id_appacman_lang = :lang
+                SELECT rl.uri, r.rest_time,
+                    (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time
+                FROM recipe AS r
+                INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
+                WHERE r.id_recipe = :id
             ';
             $params  = array(
                 'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT),
@@ -203,6 +205,10 @@ class Detail extends Model
             $recipes = $this->mysql->query($sql, $params);
 
             if (count($recipes)) {
+                foreach($recipes as &$recipe){
+                    $recipe['time']  = Detail::formatTime($recipe['time']);
+                    $recipe['rest_time']  = Detail::formatTime($recipe['rest_time']);
+                }
                 return $recipes;
             }
         }
@@ -307,8 +313,13 @@ class Detail extends Model
                 $fraction = $matches[2];
             }
 
-            $unit       = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
-            $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
+            $unit = $unitPlural = '';
+            if($ingredient['unit']){
+                $unit       = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
+            }
+            if($ingredient['unitPlural']){
+                $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
+            }
             $data       = ' data-unit="' . $unit . '" data-plural="' . $unitPlural . '"';
             if ($fraction != 1) {
                 $data .= ' data-fraction="' . $fraction . '"';
