@@ -87,7 +87,8 @@ var Recipes = function(link){
             time = $('input[name="time"]'),
             tag = $('input[name="tag[]"]'),
             category = $('input[name="category[]"]'),
-            ingredient = $('input[name="ingredient[]"]');
+            ingredient = $('input[name="ingredient[]"]'),
+            q = $('input[name="q"]');
 
         form.submit(function(e){
             var url = [],
@@ -95,7 +96,8 @@ var Recipes = function(link){
                 times = addArray(time),
                 tags = addArray(tag),
                 categories = addArray(category),
-                ingredients = addArray(ingredient);
+                ingredients = addArray(ingredient),
+                query = q.val();
 
             if( difficulties !== '' ){
                 url.push(difficulties);
@@ -113,8 +115,8 @@ var Recipes = function(link){
                 url.push(ingredients);
             }
 
-            if( url.length > 0 ){
-                window.location = _link + url.join('/');
+            if( url.length > 0 || query != '' ){
+                window.location = _link + url.join('/') + '?q=' + query;
             }
 
             e.preventDefault();

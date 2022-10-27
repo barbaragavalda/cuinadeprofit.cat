@@ -34,8 +34,8 @@ msgstr "Receptes"
 msgid "Contacto"
 msgstr "Contacte"
 
-msgid "Busca aquí..."
-msgstr "Busca aquí..."
+msgid "Buscar..."
+msgstr "Buscar..."
 
 # 404
 msgid "Parece que nos hemos perdido. Para recuperar el rumbo: te proponemos que pruebes suerte con una %sreceta aleatoria%s."
@@ -121,6 +121,9 @@ msgstr "Eliminar"
 
 msgid "Resultados por"
 msgstr "Resultats per"
+
+msgid "Buscar por parlabra"
+msgstr "Buscar por parlabra"
 
 msgid "Dificultad"
 msgstr "Dificultat"

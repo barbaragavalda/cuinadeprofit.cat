@@ -23,6 +23,10 @@ class FilteredList extends Paginated
             'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
         );
 
+        if (array_key_exists('query', $this->filters)) {
+            $where[] = 'rl.name LIKE :query';
+            $params['query']   = array('value' => '%'.$this->filters['query'].'%', 'type' => \PDO::PARAM_STR);
+        }
         if (array_key_exists('category', $this->filters)) {
             $innerJoin = '
                 INNER JOIN recipe_ingredient AS ri ON r.id_recipe = ri.id_recipe

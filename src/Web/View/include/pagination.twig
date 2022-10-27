@@ -2,7 +2,7 @@
     <div class="text-center">
         <nav class="btn-group">
             {% if pagination.current > 1 %}
-                <a href="{{ domain }}{{ link }}/{{ pagination.current - 1 }}" class="btn main-color grey-border">
+                <a href="{{ domain }}{{ link }}/{{ pagination.current - 1 }}{{ extraLink }}" class="btn main-color grey-border">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">{% trans %}Anterior{% endtrans %}</span>
                 </a>
@@ -14,7 +14,7 @@
                     {% if pagination.current == page %}
                         {% set classBtn = ' main-bg white-color' %}
                     {% endif %}
-                    <a href="{{ domain }}{{ link }}/{{ page }}" class="btn {{ classBtn }}">{{ '%02d'|format(page) }}</a>
+                    <a href="{{ domain }}{{ link }}/{{ page }}{{ extraLink }}" class="btn {{ classBtn }}">{{ '%02d'|format(page) }}</a>
                 {% else %}
                     ...
                 {% endif %}
@@ -22,7 +22,7 @@
 
             {% set lastPage = pagination.pages[ pagination.pages|length - 1 ] %}
             {% if pagination.current < lastPage %}
-                <a href="{{ domain }}{{ link }}/{{ pagination.current + 1 }}" class="btn main-color grey-border">
+                <a href="{{ domain }}{{ link }}/{{ pagination.current + 1 }}{{ extraLink }}" class="btn main-color grey-border">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">{% trans %}Siguente{% endtrans %}</span>
                 </a>

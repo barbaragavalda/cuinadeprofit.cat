@@ -118,6 +118,9 @@ body, html{
 	margin: 0;
 	width: 100%;
 }
+label{
+	margin-bottom: 0;
+}
 input{
 	background: none;
 }
@@ -497,6 +500,9 @@ section h5 {
 	padding: 0 0 0 5px;
 	max-height: 240px;
 	overflow-y: scroll;
+}
+.form-control{
+	border-radius: 0;
 }
 
 /******************************

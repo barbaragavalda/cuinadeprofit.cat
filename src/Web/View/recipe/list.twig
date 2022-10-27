@@ -34,6 +34,12 @@
                 <div>
                     {{ buttons }}
                     <div class="filters">
+                        <div class="filter">
+                            <fieldset>
+                                <label><h6>{% trans %}Buscar por parlabra{% endtrans %}</h6></label>
+                                <input type="text" class="form-control" name="q" placeholder="{% trans %}Buscar...{% endtrans %}" value="{{ filters.query }}" />
+                            </fieldset>
+                        </div>
                         {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
                         {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
                         {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
@@ -44,14 +50,13 @@
                 </div>
             </form>
             <div class="col-lg-10">
+                {% if filters.query %}
+                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>"{{ filters.query|lower }}"</h1></div>
+                {% endif %}
                 {% if items is defined and items|length > 0 %}
-                    {% if filtered %}
-                        <div class="title">{% trans %}Resultados por{% endtrans %} <h1>{{ title|lower }}</h1></div>
-                    {% endif %}
                     {% include 'include/list.twig' with { recipes: items } %}
                     {% include 'include/pagination.twig' %}
                 {% else %}
-                    <h1 class="title">{% trans %}Resultados por{% endtrans %} {{ title|lower }}</h1>
                     {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
                 {% endif %}
             </div>

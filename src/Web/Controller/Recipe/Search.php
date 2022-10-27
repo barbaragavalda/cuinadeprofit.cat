@@ -12,7 +12,7 @@ class Search extends Controller
     /**
      * @var int current page
      */
-    private $page = 1;
+    private int $page = 1;
 
     /**
      * @var array uri filters
@@ -31,11 +31,6 @@ class Search extends Controller
 
     public function run()
     {
-        $filtered = false;
-        if (count($this->filters) > 1) {
-//            $filtered = true;
-        }
-
         $this->filter = new Filter();
         $this->filter();
 
@@ -45,7 +40,7 @@ class Search extends Controller
         $this->assign('items', $this->list->getItemsPage());
         $this->assign('pagination', $this->list->paginate());
         $this->assign('link', _('recetas'));
-        $this->assign('filtered', $filtered);
+        $this->assign('extraLink', $this->getExtraLink());
         $this->assign('filters', $this->filters);
 
         $this->assign('difficulties', $this->filter->getDifficulty());
@@ -75,6 +70,10 @@ class Search extends Controller
                     $this->checkParam($value);
                 }
             }
+        }
+
+        if (isset($_GET['q'])) {
+            $this->filters['query'] = $_REQUEST['q'];
         }
     }
 
@@ -136,6 +135,25 @@ class Search extends Controller
             $this->filters[ $key ] = array();
         }
         $this->filters[ $key ][] = $value;
+    }
+
+    private function getExtraLink(){
+        $params = array();
+        $query = '';
+        foreach ($this->params as $key => $value) {
+            if ($key == 'q'){
+                $query = '?q=' . $value;
+            }else{
+                if (!is_numeric($value)) {
+                    $params[] = $value;
+                }
+            }
+        }
+        $extraLink = implode('/', $params) . $query;
+        if (!empty($extraLink)) {
+            $extraLink = '/' . $extraLink;
+        }
+        return $extraLink;
     }
 
 }
