@@ -95,6 +95,7 @@ input::placeholder {
 }
 .ms-madi{
 	font-family: 'MsMadi', sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 h1.ms-madi {
 	font-size: 3.5rem;
