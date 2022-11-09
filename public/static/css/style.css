@@ -309,8 +309,12 @@ footer{
 	-o-transform: rotate(45deg);;
 	transform: rotate(45deg);;
 }
+#search-model form{
+	padding: 10px;
+}
 #search-model input {
-	width: 500px;
+	max-width: 500px;
+	width: 100%;
 	font-size: 40px;
 	border-top: none;
 	border-left: none;
@@ -693,6 +697,10 @@ section h5 {
 }
 @media only screen and (max-width: 767px) {
 
+	#main-header .search-button {
+		right: 0;
+	}
+
 	.title > *, .title-left > *, .title-right > * {
 		width: 100%;
 		text-align: left;
@@ -707,6 +715,9 @@ section h5 {
 	}
 
 	/* recipe */
+	#recipes li{
+		width: 100%;
+	}
 	#recipe-detail aside{
 		margin-bottom: 20px;
 	}
@@ -725,9 +736,6 @@ section h5 {
 	/* home */
 	#filter-items .item{
 		width: 50%;
-	}
-	#recipes li{
-		width: 100%;
 	}
 
 }
