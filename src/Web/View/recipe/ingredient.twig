@@ -1,8 +1,9 @@
 {% set finalUnit = '' %}
 {% if ingredient.amount == 0 %}
-    {% set finalUnit = ' ' ~ ingredient.unit  %}
+    {% set finalUnit = ' ' ~ ingredient.unit %}
 {% else %}
-    <span class="ingredient-{{ ingredient.uri }}" data-unit="{{ ingredient.unit }}" data-plural="{{ ingredient.unitPlural }}">
+    <span class="ingredient-{{ ingredient.uri }}" data-unit="{{ ingredient.unit }}"
+          data-plural="{{ ingredient.unitPlural }}">
         {{ ingredient.amount }}
         {% if ingredient.amount != 1 and ingredient.unitPlural != '' %}
             {{ ingredient.unitPlural }}
@@ -11,7 +12,8 @@
         {% endif %}
     </span>
 {% endif %}
-<a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ ingredient.uri }}" class="main-color">{{ ingredient.name|lower }}</a>{{ finalUnit }}
+<a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ ingredient.uri }}"
+   class="main-color">{{ ingredient.name|lower }}</a>{{ finalUnit }}
 {% if ingredient.recipes|length > 0 %}
     {% set links = [] %}
     {% for recipe in ingredient.recipes %}

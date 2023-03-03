@@ -16,7 +16,9 @@
                                 {{ tags|join(' | ')|raw }}
                             </div>
                         {% endif %}
-                        <h2 class="ms-madi"><a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a></h2>
+                        <h2 class="ms-madi"><a
+                                    href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a>
+                        </h2>
                         <div>
                             {% include 'recipe/difficulty.twig' %}
                             <small>

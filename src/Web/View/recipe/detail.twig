@@ -7,12 +7,12 @@
     <script src="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.min.js"></script>
     <script src="{{ staticDomain }}js/recipe.js?v={{ staticVersion }}"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             {% set currentAmount = 1 %}
             {% for spec in recipe.specs %}
-                {% if spec.type in ['amount', 'diners'] %}
-                    {% set currentAmount = spec.value %}
-                {% endif %}
+            {% if spec.type in ['amount', 'diners'] %}
+            {% set currentAmount = spec.value %}
+            {% endif %}
             {% endfor %}
 
             var totalSteps = {{ recipe.steps|length }},
@@ -35,7 +35,8 @@
                             <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ tag.uri }}" class="badge badge-light main-color">{{ tag.name }}</a>
+                                <a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ tag.uri }}"
+                                   class="badge badge-light main-color">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                         {% if recipe.specs|length > 0 %}
@@ -46,9 +47,11 @@
                                             <label for="amount" class="pt-2">{{ spec.name }}:</label>
                                             <div class="input-group pt-1 ml-1">
                                                 <div class="input-group-prepend">
-                                                    <button id="subtract" class="btn secondary-bg" type="button">-</button>
+                                                    <button id="subtract" class="btn secondary-bg" type="button">-
+                                                    </button>
                                                 </div>
-                                                <input id="amount" class="{{ spec.type }} form-control" type="text" value="{{ spec.value }}" />
+                                                <input id="amount" class="{{ spec.type }} form-control" type="text"
+                                                       value="{{ spec.value }}"/>
                                                 <div class="input-group-append">
                                                     <button id="add" class="btn secondary-bg" type="button">+</button>
                                                 </div>
@@ -81,7 +84,8 @@
                     </div>
                     {% if recipe.link %}
                         <div class="link tertiary-bg">
-                            <a href="{{ recipe.link }}" target="_blank" class="black-color">{% trans %}Receta original{% endtrans %}</a>
+                            <a href="{{ recipe.link }}" target="_blank"
+                               class="black-color">{% trans %}Receta original{% endtrans %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -94,21 +98,29 @@
                             <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
                         </div>
                         <div id="arrows" class="clearfix">
-                            <button type="button" class="previous btn secondary-bg white-color fa fa-angle-left"></button>
+                            <button type="button"
+                                    class="previous btn secondary-bg white-color fa fa-angle-left"></button>
                             <button type="button" class="next btn secondary-bg white-color fa fa-angle-right"></button>
                         </div>
                     {% endif %}
                     <div class="steps">
                         {% for step in recipe.steps %}
                             <div>
-                                {% set currentStep = 'Paso %s'|trans|format(loop.index)  %}
+                                {% set currentStep = 'Paso %s'|trans|format(loop.index) %}
                                 {% if recipe.steps|length > 1 %}
                                     <span class="main-color">{{ currentStep }}</span>
                                 {% endif %}
                                 {{ step.description|raw }}
                                 {% if step.image %}
                                     <div>
-                                        <img src="{{ step.image }}" name="{{ recipe.name }} - {{ currentStep }}" />
+                                        <img src="{{ step.image }}" name="{{ recipe.name }} - {{ currentStep }}"/>
+                                    </div>
+                                {% endif %}
+                                {% if step.video %}
+                                    <div>
+                                        <video controls>
+                                            <source src="{{ step.video }}" type="video/mp4">
+                                        </video>
                                     </div>
                                 {% endif %}
                             </div>

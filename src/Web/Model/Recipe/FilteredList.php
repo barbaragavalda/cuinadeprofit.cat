@@ -4,6 +4,9 @@ namespace Web\Model\Recipe;
 
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
+use DateTime;
+use IntlDateFormatter;
+use PDO;
 
 class FilteredList extends Paginated
 {
@@ -20,12 +23,12 @@ class FilteredList extends Paginated
         $having    = '';
         $limit     = '';
         $params    = array(
-            'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
+            'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
 
         if (array_key_exists('query', $this->filters)) {
-            $where[] = 'rl.name LIKE :query';
-            $params['query']   = array('value' => '%'.$this->filters['query'].'%', 'type' => \PDO::PARAM_STR);
+            $where[]         = 'rl.name LIKE :query';
+            $params['query'] = array('value' => '%' . $this->filters['query'] . '%', 'type' => PDO::PARAM_STR);
         }
         if (array_key_exists('category', $this->filters)) {
             $innerJoin = '
@@ -37,8 +40,8 @@ class FilteredList extends Paginated
         }
         if (array_key_exists('time', $this->filters)) {
             $having              = 'HAVING time BETWEEN :timeStart AND :timeEnd';
-            $params['timeStart'] = array('value' => $this->filters['time'][0], 'type' => \PDO::PARAM_INT);
-            $params['timeEnd']   = array('value' => $this->filters['time'][1], 'type' => \PDO::PARAM_INT);
+            $params['timeStart'] = array('value' => $this->filters['time'][0], 'type' => PDO::PARAM_INT);
+            $params['timeEnd']   = array('value' => $this->filters['time'][1], 'type' => PDO::PARAM_INT);
         }
         if (array_key_exists('difficulty', $this->filters)) {
             $where[] = 'r.id_difficulty IN(' . implode(', ', $this->filters['difficulty']) . ')';
@@ -62,14 +65,14 @@ class FilteredList extends Paginated
         }
         if (array_key_exists('highlighted', $this->filters)) {
             $where[] = 'r.is_highlighted = 1';
-            $limit   = 'LIMIT ' . $this->itemsPerPage;
+            $limit   = "LIMIT $this->itemsPerPage";
         }
         if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
             $where[] = 'r.id_recipe NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
-            $limit   = 'LIMIT ' . $this->itemsPerPage;
+            $limit   = "LIMIT $this->itemsPerPage";
         }
 
-        $sql     = '
+        $sql     = "
             SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created,
                 (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time,
                 rl.name, rl.uri, rl.description,
@@ -77,12 +80,12 @@ class FilteredList extends Paginated
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
-            ' . $innerJoin . '
-            ' . $this->getWhere($where) . '
-            ' . $having . '
+            $innerJoin
+            " . $this->getWhere($where) . "
+            $having
             ORDER BY r.created DESC, rl.name ASC
-            ' . $limit . '
-        ';
+            $limit
+        ";
         $recipes = $this->mysql->query($sql, $params);
 
         $this->items = array();
@@ -90,13 +93,13 @@ class FilteredList extends Paginated
             foreach ($recipes as &$recipe) {
                 $recipeModel = new Detail();
                 $recipeModel->setID($recipe['id_recipe']);
-                $recipe['image'] = $this->getFile($recipe['image'], 'list');
-                $recipe['time']  = Detail::formatTime($recipe['time']);
-                $recipe['rest_time']  = Detail::formatTime($recipe['rest_time']);
-                $recipe['tags']  = $recipeModel->getTags(false);
+                $recipe['image']     = $this->getFile($recipe['image'], 'list');
+                $recipe['time']      = Detail::formatTime($recipe['time']);
+                $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
+                $recipe['tags']      = $recipeModel->getTags(false);
 
-                $date              = \DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
-                $recipe['created'] = utf8_encode(date(_('%e %B %G'), $date->getTimestamp()));
+                $date              = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
+                $recipe['created'] = IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
             }
             $this->items = $recipes;
         }

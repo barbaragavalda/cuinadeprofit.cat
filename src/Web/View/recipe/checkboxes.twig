@@ -5,7 +5,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
-            <input type="text" class="form-control search" />
+            <input type="text" class="form-control search"/>
             <div class="input-group-append">
                 <span class="input-group-text"><i class="fa fa-close"></i></span>
             </div>
@@ -30,8 +30,10 @@
                 {% if type == 'checkbox' %}
                     {% set multiple = '[]' %}
                 {% endif %}
-                <input type="{{ type }}" class="custom-control-input" name="{{ field }}{{ multiple }}" id="{{ field }}-{{ checkbox.uri }}" value="{{ checkbox.uri }}" {{ checked }} />
-                <label class="custom-control-label" for="{{ field }}-{{ checkbox.uri }}"><small>{{ checkbox.name }}</small></label>
+                <input type="{{ type }}" class="custom-control-input" name="{{ field }}{{ multiple }}"
+                       id="{{ field }}-{{ checkbox.uri }}" value="{{ checkbox.uri }}" {{ checked }} />
+                <label class="custom-control-label"
+                       for="{{ field }}-{{ checkbox.uri }}"><small>{{ checkbox.name }}</small></label>
             </li>
         {% endset %}
 

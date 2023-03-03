@@ -27,78 +27,81 @@
     {% block extraHead %}{% endblock %}
 </head>
 <body>
-    <header id="main-header">
-        <div class="container-xl">
-            <div class="logo">
-                {% block startLogo %}<a href="{{ domain }}">{% endblock %}
-                    <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
+<header id="main-header">
+    <div class="container-xl">
+        <div class="logo">
+            {% block startLogo %}<a href="{{ domain }}">{% endblock %}
+                <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
                 {% block endLogo %}</a>{% endblock %}
-            </div>
-            <ul id="languages">
-                {% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}
-                {% for item in langs %}
-                    {% set class = '' %}
-                    {% if item.uri == lang %}
-                        {% set class = ' class="current"' %}
-                    {% endif %}
-                    <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a></li>
-                {% endfor %}
-            </ul>
-            <div class="menu">
-                <nav class="mobile-menu">
-                    <ul>
-                        {% include 'include/li-menu.twig' with{ name: 'Inicio', link: '', code: '' } %}
-                        {% include 'include/li-menu.twig' with{ name: 'Recetas', link: 'recetas', code: 'recipes' } %}
-                        {#{% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %}#}
-                    </ul>
-                </nav>
-                <div class="search-button secondary-color">
-                    <i class="fa fa-search"></i>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
         </div>
-    </header>
-
-    {% block content %}{% endblock %}
-
-    <footer class="main-bg">
-        <div class="container-xl">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="logo">
-                        <a href="{{ domain }}">
-                            <img src="{{ staticDomain }}img/logo-white.png" alt="{{ webName }}">
-                        </a>
-                    </div>
-                    <p>{% trans %}En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día.{% endtrans %}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copy secondary-color">
-                        Copyright &copy;2021-<script>document.write(new Date().getFullYear());</script> {{ webName }}
-                    </div>
-                </div>
+        <ul id="languages">
+            {% set langs = [{name: 'Català', uri: 'ca'}, {name: 'Castellano', uri: 'es'}] %}
+            {% for item in langs %}
+                {% set class = '' %}
+                {% if item.uri == lang %}
+                    {% set class = ' class="current"' %}
+                {% endif %}
+                <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="menu">
+            <nav class="mobile-menu">
+                <ul>
+                    {% include 'include/li-menu.twig' with{ name: 'Inicio', link: '', code: '' } %}
+                    {% include 'include/li-menu.twig' with{ name: 'Recetas', link: 'recetas', code: 'recipes' } %}
+                    {# {% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %} #}
+                </ul>
+            </nav>
+            <div class="search-button secondary-color">
+                <i class="fa fa-search"></i>
             </div>
         </div>
-    </footer>
-    <div id="search-model" class="main-bg">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="close tertiary-bg">+</div>
-            <form action="{{ domain }}{% trans %}recetas{% endtrans %}" method="GET">
-                <input type="text" name="q" class="secondary-border white-color" placeholder="{% trans %}Buscar...{% endtrans %}">
-            </form>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="main-bg">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="logo">
+                    <a href="{{ domain }}">
+                        <img src="{{ staticDomain }}img/logo-white.png" alt="{{ webName }}">
+                    </a>
+                </div>
+                <p>{% trans %}En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día.{% endtrans %}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copy secondary-color">
+                    Copyright &copy;2021-
+                    <script>document.write(new Date().getFullYear());</script> {{ webName }}
+                </div>
+            </div>
         </div>
     </div>
+</footer>
+<div id="search-model" class="main-bg">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="close tertiary-bg">+</div>
+        <form action="{{ domain }}{% trans %}recetas{% endtrans %}" method="GET">
+            <input type="text" name="q" class="secondary-border white-color"
+                   placeholder="{% trans %}Buscar...{% endtrans %}">
+        </form>
+    </div>
+</div>
 
-    <script src="{{ staticDomain }}js/plugin/jquery-3.3.1.min.js"></script>
-    <script src="{{ staticDomain }}js/plugin/bootstrap.min.js"></script>
-    <script src="{{ staticDomain }}js/lang.js?v={{ staticVersion }}"></script>
-    <script src="{{ staticDomain }}js/main.js?v={{ staticVersion }}"></script>
-    <script>
-        var LANG = new Language('{{ lang }}');
-    </script>
-    {% block extraBody %}{% endblock %}
+<script src="{{ staticDomain }}js/plugin/jquery-3.3.1.min.js"></script>
+<script src="{{ staticDomain }}js/plugin/bootstrap.min.js"></script>
+<script src="{{ staticDomain }}js/lang.js?v={{ staticVersion }}"></script>
+<script src="{{ staticDomain }}js/main.js?v={{ staticVersion }}"></script>
+<script>
+    var LANG = new Language('{{ lang }}');
+</script>
+{% block extraBody %}{% endblock %}
 </body>
 </html>

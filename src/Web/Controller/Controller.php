@@ -23,10 +23,9 @@ abstract class Controller extends \Core\Controller\Controller
         $this->assign('metatagKeywords', '');
         $this->assign('metatagDescription', '');
         $this->assign(
-            'metatagImage',
-            array(
-                'image'  => $this->staticDomain . 'img/fb.jpg',
-                'width'  => 1200,
+            'metatagImage', array(
+                'image' => $this->staticDomain . 'img/fb.jpg',
+                'width' => 1200,
                 'height' => 630
             )
         );

@@ -656,12 +656,17 @@ section h5 {
 .slick-slide{
 	outline: none;
 }
-.steps img{
-	display: inline;
+.steps img, .steps video{
 	max-width: 90%;
 	max-height: 350px;
-	text-align: center;
 	margin: 0 auto;
+}
+.steps img{
+	display: inline;
+	text-align: center;
+}
+.steps video{
+	display: block;
 }
 
 /******************************

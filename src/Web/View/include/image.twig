@@ -1,11 +1,11 @@
 {% if link is defined %}
-    <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ link }}">
-{% endif %}
+<a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ link }}">
+    {% endif %}
     {% set image = staticDomain ~ 'img/dummy.jpg' %}
     {% if url %}
         {% set image = url %}
     {% endif %}
     <div class="img" style="background-image: url('{{ image }}');"></div>
-{% if link is defined %}
-    </a>
+    {% if link is defined %}
+</a>
 {% endif %}

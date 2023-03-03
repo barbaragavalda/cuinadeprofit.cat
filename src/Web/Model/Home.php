@@ -9,9 +9,9 @@ use Web\Model\Recipe\FilteredList;
 class Home extends Model
 {
 
-    private $ids = array();
+    private array $ids = array();
 
-    public function getRecent()
+    public function getRecent(): array
     {
         $list = new FilteredList(1, 5);
         $list->setFilters(array('new' => true));
@@ -25,12 +25,12 @@ class Home extends Model
         return $recent;
     }
 
-    public function getCategories()
+    public function getCategories(): array
     {
         $filter = new Filter();
         $tags   = $filter->getTag(null, true);
 
-        $notIn  = $this->ids;
+        $notIn = $this->ids;
         foreach ($tags as &$tag) {
             $list = new FilteredList(1, 8);
             $list->setFilters(array('tag' => array($tag['id']), 'not_in' => $notIn));
@@ -43,7 +43,7 @@ class Home extends Model
         return $tags;
     }
 
-    public function getRecipesToSucceed()
+    public function getRecipesToSucceed(): array
     {
         $list = new FilteredList(1, 8);
         $list->setFilters(array('highlighted' => true, 'not_in' => $this->ids));

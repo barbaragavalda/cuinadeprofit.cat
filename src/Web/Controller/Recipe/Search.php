@@ -3,31 +3,15 @@
 namespace Web\Controller\Recipe;
 
 use Web\Controller\Controller;
-use Web\Model\Recipe\FilteredList;
 use Web\Model\Recipe\Filter;
+use Web\Model\Recipe\FilteredList;
 
 class Search extends Controller
 {
 
-    /**
-     * @var int current page
-     */
-    private int $page = 1;
-
-    /**
-     * @var array uri filters
-     */
-    private $filters = array();
-
-    /**
-     * @var \Web\Model\Recipe\Filter
-     */
-    private $filter = null;
-
-    /**
-     * @var \Web\Model\Recipe\FilteredList
-     */
-    protected $list = null;
+    private array           $filters = array();
+    private ?Filter         $filter  = null;
+    protected ?FilteredList $list    = null;
 
     public function run()
     {
@@ -53,9 +37,6 @@ class Search extends Controller
         $this->template('recipe/list.twig');
     }
 
-    /**
-     *
-     */
     private function filter()
     {
         $params = $this->checkParams();
@@ -77,7 +58,7 @@ class Search extends Controller
         }
     }
 
-    private function checkParams()
+    private function checkParams(): array
     {
         $params = array();
 
@@ -91,11 +72,6 @@ class Search extends Controller
         return $params;
     }
 
-    /**
-     * load current page or filter from URI
-     *
-     * @param string $value
-     */
     private function checkParam($value)
     {
         // difficulty
@@ -137,13 +113,14 @@ class Search extends Controller
         $this->filters[ $key ][] = $value;
     }
 
-    private function getExtraLink(){
+    private function getExtraLink(): string
+    {
         $params = array();
-        $query = '';
+        $query  = '';
         foreach ($this->params as $key => $value) {
-            if ($key == 'q'){
+            if ($key == 'q') {
                 $query = '?q=' . $value;
-            }else{
+            } else {
                 if (!is_numeric($value)) {
                     $params[] = $value;
                 }

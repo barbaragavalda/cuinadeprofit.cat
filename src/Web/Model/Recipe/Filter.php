@@ -3,7 +3,7 @@
 namespace Web\Model\Recipe;
 
 use Core\Model\Model;
-use Core\Utils\Config;
+use PDO;
 
 class Filter extends Model
 {
@@ -20,7 +20,7 @@ class Filter extends Model
     const BETWEEN_1H_2H   = '1h-2h';
     const MORE_2H         = '>2h';
 
-    public function getTime($uri = null)
+    public function getTime($uri = null): array
     {
         if ($uri == null) {
             return array(
@@ -34,75 +34,70 @@ class Filter extends Model
             switch (urldecode($uri)) {
                 case self::LESS_15M:
                     return array(1, 15);
-                    break;
                 case self::BETWEEN_15M_30M:
                     return array(16, 30);
-                    break;
                 case self::BETWEEN_30M_1H:
                     return array(31, 60);
-                    break;
                 case self::BETWEEN_1H_2H:
                     return array(61, 120);
-                    break;
                 case self::MORE_2H:
                     return array(121, PHP_INT_MAX);
-                    break;
             }
         }
         return array();
     }
 
-    public function getCategory($uri = null)
+    public function getCategory($uri = null): array
     {
         return $this->get(self::CATEGORY, $uri);
     }
 
-    public function getDifficulty($uri = null)
+    public function getDifficulty($uri = null): array
     {
         return $this->get(self::DIFFICULTY, $uri);
     }
 
-    public function getIngredient($uri = null)
+    public function getIngredient($uri = null): array
     {
         return $this->get(self::INGREDIENT, $uri);
     }
 
-    public function getTag($uri = null, $isHighlighted = false)
+    public function getTag($uri = null, $isHighlighted = false): array
     {
         return $this->get(self::TAG, $uri, $isHighlighted);
     }
 
-    private function get($table, $uri = null, $isHighlighted = false)
+    private function get($table, $uri = null, $isHighlighted = false): array
     {
         $where  = '';
         $params = array(
-            'lang' => array('value' => $this->langID, 'type' => \PDO::PARAM_INT)
+            'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
         if ($uri != null) {
             $where         = 'AND tl.uri = :uri';
-            $params['uri'] = array('value' => $uri, 'type' => \PDO::PARAM_STR);
+            $params['uri'] = array('value' => $uri, 'type' => PDO::PARAM_STR);
         }
         if ($isHighlighted) {
             $where = 'AND t.is_highlighted = 1';
         }
 
-        $orderBy = 'tl.name ASC';
+        $orderBy = 'tl.name';
         switch ($table) {
             case self::DIFFICULTY:
-                $orderBy = 't.id_' . $table . ' ASC';
+                $orderBy = "t.id_$table ASC";
                 break;
             case self::TAG:
-                $orderBy = 't.order ASC, tl.name ASC';
+                $orderBy = 't.order, tl.name';
                 break;
         }
 
-        $sql   = '
-            SELECT t.id_' . $table . ' AS id, tl.uri AS uri, tl.name
-            FROM ' . $table . ' AS t
-            INNER JOIN ' . $table . '_lang AS tl ON t.id_' . $table . ' = tl.id_' . $table . ' 
-                AND tl.id_appacman_lang = :lang ' . $where . '
-            ORDER BY ' . $orderBy . '
-        ';
+        $sql   = "
+            SELECT t.id_$table AS id, tl.uri AS uri, tl.name
+            FROM $table AS t
+            INNER JOIN {$table}_lang AS tl ON t.id_$table = tl.id_$table
+                AND tl.id_appacman_lang = :lang $where
+            ORDER BY $orderBy
+        ";
         $items = $this->mysql->query($sql, $params);
 
         if (count($items)) {

@@ -1,16 +1,17 @@
 {% extends 'basic.twig' %}
 
 {% block extraHead %}
-    <link rel="stylesheet" href="{{ staticDomain }}js/plugin/OverlayScrollbars/css/OverlayScrollbars.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ staticDomain }}js/plugin/OverlayScrollbars/css/OverlayScrollbars.min.css"
+          type="text/css">
 {% endblock %}
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/OverlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <script src="{{ staticDomain }}js/recipes.js?v={{ staticVersion }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.filter ul').each(function(){
+        $(document).ready(function () {
+            $('.filter ul').each(function () {
                 OverlayScrollbars($(this), {
-                    className       : 'os-theme-dark'
+                    className: 'os-theme-dark'
                 });
             });
 
@@ -25,8 +26,10 @@
             <form method="POST" class="col">
                 {% set buttons %}
                     <div class="btn-group-sm">
-                        <button type="submit" name="filter" class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
-                        <a href="{{ domain }}{% trans %}recetas{% endtrans %}" type="button" class="btn white-bg grey-border">{% trans %}Limpiar{% endtrans %}</a>
+                        <button type="submit" name="filter"
+                                class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
+                        <a href="{{ domain }}{% trans %}recetas{% endtrans %}" type="button"
+                           class="btn white-bg grey-border">{% trans %}Limpiar{% endtrans %}</a>
                     </div>
                 {% endset %}
 
@@ -36,8 +39,9 @@
                     <div class="filters">
                         <div class="filter">
                             <fieldset>
-                                <label><h6>{% trans %}Buscar por parlabra{% endtrans %}</h6></label>
-                                <input type="text" class="form-control" name="q" placeholder="{% trans %}Buscar...{% endtrans %}" value="{{ filters.query }}" />
+                                <label><h6>{% trans %}Buscar por palabra{% endtrans %}</h6></label>
+                                <input type="text" class="form-control" name="q"
+                                       placeholder="{% trans %}Buscar...{% endtrans %}" value="{{ filters.query }}"/>
                             </fieldset>
                         </div>
                         {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
@@ -51,7 +55,8 @@
             </form>
             <div class="col-lg-10">
                 {% if filters.query %}
-                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>"{{ filters.query|lower }}"</h1></div>
+                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>"{{ filters.query|lower }}"</h1>
+                    </div>
                 {% endif %}
                 {% if items is defined and items|length > 0 %}
                     {% include 'include/list.twig' with { recipes: items } %}

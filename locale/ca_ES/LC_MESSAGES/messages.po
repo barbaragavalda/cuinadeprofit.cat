@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 # routing
 msgid "recetas"
@@ -83,13 +83,13 @@ msgid "opcional"
 msgstr "opcional"
 
 msgid "ver receta"
-msgstr "ver receta"
+msgstr "veure recepta"
 
 msgid "ver receta + %s"
-msgstr "ver receta + %s"
+msgstr "veure recepta + %s"
 
 msgid "ver receta + %s y %s de reposo"
-msgstr "ver receta + %s y %s de reposo"
+msgstr "veure recepta + %s i %s de repòs"
 
 msgid "Receta original"
 msgstr "Recepta original"
@@ -111,7 +111,7 @@ msgstr "minuts"
 
 # search
 msgid "Mostrar filtros"
-msgstr "Mostrar filtros"
+msgstr "Mostrar filtres"
 
 msgid "Filtrar"
 msgstr "Filtrar"
@@ -122,8 +122,8 @@ msgstr "Eliminar"
 msgid "Resultados por"
 msgstr "Resultats per"
 
-msgid "Buscar por parlabra"
-msgstr "Buscar por parlabra"
+msgid "Buscar por palabra"
+msgstr "Buscar per paraula"
 
 msgid "Dificultad"
 msgstr "Dificultat"
