@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="{{ staticDomain }}css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ staticDomain }}css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ staticDomain }}css/style.css?v={{ staticVersion }}" type="text/css">
+    <link rel="stylesheet" href="{{ staticDomain }}css/style{{ min }}.css?v={{ staticVersion }}" type="text/css">
 
     {% block extraHead %}{% endblock %}
 </head>
@@ -97,8 +97,8 @@
 
 <script src="{{ staticDomain }}js/plugin/jquery-3.3.1.min.js"></script>
 <script src="{{ staticDomain }}js/plugin/bootstrap.min.js"></script>
-<script src="{{ staticDomain }}js/lang.js?v={{ staticVersion }}"></script>
-<script src="{{ staticDomain }}js/main.js?v={{ staticVersion }}"></script>
+<script src="{{ staticDomain }}js/lang{{ min }}.js?v={{ staticVersion }}"></script>
+<script src="{{ staticDomain }}js/main{{ min }}.js?v={{ staticVersion }}"></script>
 <script>
     var LANG = new Language('{{ lang }}');
 </script>

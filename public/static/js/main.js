@@ -1,15 +1,25 @@
 'use strict';
 
 (function ($) {
+    if ('loading' in HTMLImageElement.prototype) {
+        $('img.lazyload').each(function () {
+            this.src = this.dataset.src;
+        });
+    } else {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js';
+        document.body.appendChild(script);
+    }
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         var search = $('#search-model');
-        $('.search-button').on('click', function() {
+        $('.search-button').on('click', function () {
             search.fadeIn(400);
         });
 
-        search.find('.close').on('click', function() {
-            search.fadeOut(400,function(){
+        search.find('.close').on('click', function () {
+            search.fadeOut(400, function () {
                 $('#search-input').val('');
             });
         });

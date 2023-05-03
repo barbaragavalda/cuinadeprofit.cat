@@ -146,6 +146,12 @@ section {
 	background-position: center;
 	background-repeat: no-repeat;
 }
+.img img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 
 .hover-effect .item{
 	position: relative;
@@ -375,12 +381,6 @@ section h5 {
 	text-align: center;
 	margin-bottom: 25px;
 }
-.mosaic .img {
-	height: 311px;
-}
-.mosaic .large-item .img {
-	height: 745px;
-}
 .mosaic .text {
 	padding: 5px 10px 0 10px;
 }
@@ -453,9 +453,6 @@ section h5 {
 	padding: 0 10px;
 	margin-bottom: 20px;
 }
-#filter-items .item .img{
-	height: 150px;
-}
 #filter-items .item a{
 	display: block;
 	font-size: 1.6rem;
@@ -476,9 +473,6 @@ section h5 {
 	width: 50%;
 	padding: 10px 0;
 	margin-bottom: 20px;
-}
-#recipes .img{
-	height: 180px;
 }
 .filter{
 	padding: 20px 3px;
@@ -527,7 +521,7 @@ section h5 {
 /******************************
  * RECIPE
  ******************************/
-#recipe-detail{
+.wrapper{
 	max-width: 1500px;
 }
 #recipe-detail .col-lg-7, .ingredients header{
@@ -540,8 +534,7 @@ section h5 {
 .ingredients header .img{
 	position: absolute;
 	top: 0;
-	width: 120px;
-	height: 120px;
+	width: 130px;
 	left: 50%;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -713,9 +706,6 @@ section h5 {
 	}
 
 	/* home */
-	.mosaic .large-item .img{
-		height: 500px;
-	}
 	#filter-items .item{
 		width: 33.33%;
 	}

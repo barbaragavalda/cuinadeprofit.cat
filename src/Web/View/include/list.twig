@@ -4,7 +4,7 @@
             <li class="item">
                 <div class="row">
                     <div class="col-sm-4">
-                        {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri } %}
+                        {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri, aspectRatio: '1/1' } %}
                     </div>
                     <div class="col-sm-8">
                         {% if recipe.tags|length > 0 %}
@@ -23,7 +23,7 @@
                             {% include 'recipe/difficulty.twig' %}
                             <small>
                                 {{ recipe.time }}
-                                {% if recipe.rest_time > 0 %}
+                                {% if recipe.rest_time %}
                                     (+ {{ recipe.rest_time }} {% trans %}reposo{% endtrans %})
                                 {% endif %}
                             </small>

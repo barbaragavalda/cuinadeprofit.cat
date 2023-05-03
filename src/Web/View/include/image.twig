@@ -5,7 +5,9 @@
     {% if url %}
         {% set image = url %}
     {% endif %}
-    <div class="img" style="background-image: url('{{ image }}');"></div>
+    <div class="img" style="aspect-ratio: {{ aspectRatio }}">
+        <img data-src="{{ image }}" class="lazyload img-cover" src=""/>
+    </div>
     {% if link is defined %}
 </a>
 {% endif %}

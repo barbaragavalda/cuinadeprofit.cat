@@ -24,12 +24,12 @@ class Detail extends Model
             if ($uri == _('aleatoria')) {
                 $orderBy = 'ORDER BY RAND()';
             } else {
-                $where         = 'WHERE rl.uri = :uri';
+                $where         = ' AND rl.uri = :uri';
                 $params['uri'] = array('value' => $uri, 'type' => PDO::PARAM_STR);
             }
         }
         if ($this->id > 0) {
-            $where        = 'WHERE r.id_recipe = :id';
+            $where        = ' AND r.id_recipe = :id';
             $params['id'] = array('value' => $this->id, 'type' => PDO::PARAM_INT);
         }
 
@@ -41,7 +41,7 @@ class Detail extends Model
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
-            $where
+            WHERE r.is_visible = 1 $where
             $orderBy
         ";
         $recipe = $this->mysql->query($sql, $params);
@@ -137,7 +137,7 @@ class Detail extends Model
             if ($hours == 1) {
                 $time[] = '1 ' . _('hora');
             } else {
-                $time[] = " $hours" . _('horas');
+                $time[] = "$hours " . _('horas');
             }
         }
         if ($minutes > 0) {
@@ -237,7 +237,7 @@ class Detail extends Model
             // replace ingredients
             foreach ($ingredients as $ingredient) {
                 $uri   = $ingredient['uri'];
-                $url   = $domain . _('recetas') . '/' . $uri;
+                $url   = $domain . _('receta') . '/' . $uri;
                 $class = 'black-color';
                 if (count($ingredient['recipes'])) {
                     $class = 'secondary-color';
@@ -264,7 +264,7 @@ class Detail extends Model
                 $recipeInfo = $recipe->get();
                 if (count($recipeInfo)) {
                     $url         .= $recipeInfo['uri'];
-                    $link        = "<a href=\"$url\" class=\"main-color\"><b>"
+                    $link        = "<a href=\"$url\" class=\"secondary-color\"><b>"
                         . mb_strtolower($recipeInfo['name'])
                         . "</b></a>";
                     $description = str_replace($matches[0][ $i ], $link, $description);

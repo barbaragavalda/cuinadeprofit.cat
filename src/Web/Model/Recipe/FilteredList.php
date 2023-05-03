@@ -18,7 +18,7 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $where     = array();
+        $where     = array('r.is_visible = 1');
         $innerJoin = '';
         $having    = '';
         $limit     = '';

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block extraBody %}
     <script src="{{ staticDomain }}js/plugin/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="{{ staticDomain }}js/recipe.js?v={{ staticVersion }}"></script>
+    <script src="{{ staticDomain }}js/recipe{{ min }}.js?v={{ staticVersion }}"></script>
     <script>
         $(document).ready(function () {
             {% set currentAmount = 1 %}
@@ -23,13 +23,13 @@
 {% endblock %}
 
 {% block content %}
-    <section id="recipe-detail" class="container-fluid">
+    <section id="recipe-detail" class="wrapper container-fluid">
         <div class="row">
             <aside class="col-md-4">
                 <div class="ingredients">
                     <header>
                         {% if recipe.image %}
-                            {% include 'include/image.twig' with { url: recipe.image } %}
+                            {% include 'include/image.twig' with { url: recipe.image, aspectRatio: '1/1' } %}
                         {% endif %}
                         <div class="resume grey-bg">
                             <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
