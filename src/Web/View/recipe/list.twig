@@ -15,7 +15,7 @@
                 });
             });
 
-            new Recipes('{{ domain ~ 'recetas'|trans }}/');
+            new Recipes('{{ domain ~ 'receptes'|trans }}/');
         });
     </script>
 {% endblock %}
@@ -27,42 +27,42 @@
                 {% set buttons %}
                     <div class="btn-group-sm">
                         <button type="submit" name="filter"
-                                class="btn main-bg main-border">{% trans %}Filtrar{% endtrans %}</button>
-                        <a href="{{ domain }}{% trans %}recetas{% endtrans %}" type="button"
-                           class="btn white-bg grey-border">{% trans %}Limpiar{% endtrans %}</a>
+                                class="btn main-bg main-border">{% trans "Filtrar" %}</button>
+                        <a href="{{ domain }}{% trans "receptes" %}" type="button"
+                           class="btn white-bg grey-border">{% trans "Eliminar" %}</a>
                     </div>
                 {% endset %}
 
-                <a href="#" id="show-filters" class="grey-color">{% trans %}Mostrar filtros{% endtrans %}</a>
+                <a href="#" id="show-filters" class="grey-color">{% trans "Mostrar filtres" %}</a>
                 <div>
                     {{ buttons }}
                     <div class="filters">
                         <div class="filter">
                             <fieldset>
-                                <label><h6>{% trans %}Buscar por palabra{% endtrans %}</h6></label>
+                                <label><h6>{% trans "Buscar per paraula" %}</h6></label>
                                 <input type="text" class="form-control" name="q"
-                                       placeholder="{% trans %}Buscar...{% endtrans %}" value="{{ filters.query }}"/>
+                                       placeholder="{% trans "Buscar..." %}" value="{{ filters.query }}"/>
                             </fieldset>
                         </div>
-                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultad'|trans, field: 'difficulty', checkboxes: difficulties } %}
-                        {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Tiempo'|trans, field: 'time', checkboxes: times } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultat'|trans, field: 'difficulty', checkboxes: difficulties } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Temps'|trans, field: 'time', checkboxes: times } %}
                         {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
-                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoría'|trans, field: 'category', checkboxes: categories } %}
-                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingrediente'|trans, field: 'ingredient', checkboxes: ingredients } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoria'|trans, field: 'category', checkboxes: categories } %}
+                        {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingredient'|trans, field: 'ingredient', checkboxes: ingredients } %}
                     </div>
                     {{ buttons }}
                 </div>
             </form>
             <div class="col-lg-10">
                 {% if filters.query %}
-                    <div class="title">{% trans %}Resultados por{% endtrans %} <h1>"{{ filters.query|lower }}"</h1>
+                    <div class="title">{% trans "Resultats per" %} <h1>"{{ filters.query|lower }}"</h1>
                     </div>
                 {% endif %}
                 {% if items is defined and items|length > 0 %}
                     {% include 'include/list.twig' with { recipes: items } %}
                     {% include 'include/pagination.twig' %}
                 {% else %}
-                    {{ 'No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
+                    {{ 'No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s.'|trans|format('<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ 'aleatoria'|trans ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
                 {% endif %}
             </div>
         </div>

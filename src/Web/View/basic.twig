@@ -48,9 +48,9 @@
         <div class="menu">
             <nav class="mobile-menu">
                 <ul>
-                    {% include 'include/li-menu.twig' with{ name: 'Inicio', link: '', code: '' } %}
-                    {% include 'include/li-menu.twig' with{ name: 'Recetas', link: 'recetas', code: 'recipes' } %}
-                    {# {% include 'include/li-menu.twig' with{ name: 'Contacto', link: 'contacto', code: 'contact' } %} #}
+                    {% include 'include/li-menu.twig' with{ name: 'Inici', link: '', code: '' } %}
+                    {% include 'include/li-menu.twig' with{ name: 'Receptes', link: 'receptes', code: 'recipes' } %}
+{#                    {% include 'include/li-menu.twig' with{ name: 'Restaurants', link: 'restaurants', code: 'restaurants' } %}#}
                 </ul>
             </nav>
             <div class="search-button secondary-color">
@@ -72,7 +72,7 @@
                         <img src="{{ staticDomain }}img/logo-white.png" alt="{{ webName }}">
                     </a>
                 </div>
-                <p>{% trans %}En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día.{% endtrans %}</p>
+                <p>{% trans "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia." %}</p>
             </div>
         </div>
         <div class="row">
@@ -84,13 +84,14 @@
             </div>
         </div>
     </div>
+    {% include 'include/cookies.twig' %}
 </footer>
 <div id="search-model" class="main-bg">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="close tertiary-bg">+</div>
-        <form action="{{ domain }}{% trans %}recetas{% endtrans %}" method="GET">
+        <form action="{{ domain }}{% trans "receptes" %}" method="GET">
             <input type="text" name="q" class="secondary-border white-color"
-                   placeholder="{% trans %}Buscar...{% endtrans %}">
+                   placeholder="{% trans "Buscar..." %}">
         </form>
     </div>
 </div>

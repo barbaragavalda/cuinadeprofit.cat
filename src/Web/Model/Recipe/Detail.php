@@ -107,21 +107,21 @@ class Detail extends Model
 
         if (!empty($recipe['prep_time'])) {
             $time    = self::formatTime($recipe['prep_time']);
-            $specs[] = array('name' => _('Tiempo preparación'), 'value' => $time);
+            $specs[] = array('name' => _('Temps preparació'), 'value' => $time);
         }
         if (!empty($recipe['cook_time'])) {
             $time    = self::formatTime($recipe['cook_time']);
-            $specs[] = array('name' => _('Tiempo cocinando'), 'value' => $time);
+            $specs[] = array('name' => _('Temps cuinant'), 'value' => $time);
         }
         if (!empty($recipe['rest_time'])) {
             $time    = self::formatTime($recipe['rest_time']);
-            $specs[] = array('name' => _('Tiempo reposo'), 'value' => $time);
+            $specs[] = array('name' => _('Temps repòs'), 'value' => $time);
         }
 
         if (!empty($recipe['diners'])) {
-            $specs[] = array('name' => _('Comensales'), 'value' => $recipe['diners'], 'type' => 'diners');
+            $specs[] = array('name' => _('Comensals'), 'value' => $recipe['diners'], 'type' => 'diners');
         } else {
-            $specs[] = array('name' => _('Multiplicar por...'), 'value' => 1, 'type' => 'amount');
+            $specs[] = array('name' => _('Multiplicar per...'), 'value' => 1, 'type' => 'amount');
         }
 
         return $specs;
@@ -137,14 +137,14 @@ class Detail extends Model
             if ($hours == 1) {
                 $time[] = '1 ' . _('hora');
             } else {
-                $time[] = "$hours " . _('horas');
+                $time[] = "$hours " . _('hores');
             }
         }
         if ($minutes > 0) {
             if ($minutes == 1) {
-                $time[] = '1 ' . _('minuto');
+                $time[] = '1 ' . _('minut');
             } else {
-                $time[] = "$minutes " . _('minutos');
+                $time[] = "$minutes " . _('minuts');
             }
         }
         return implode(' ', $time);
@@ -230,14 +230,14 @@ class Detail extends Model
                 if (empty($step['image'])) {
                     $step['video'] = $this->getFile($fileID);
                 }
-                $step['description'] = $this->replaceRecipes($step['description'], $domain . _('receta') . '/');
+                $step['description'] = $this->replaceRecipes($step['description'], $domain . _('receptes') . '/');
                 $step['description'] = $this->replaceDiners($step['description'], $diners);
             }
 
             // replace ingredients
             foreach ($ingredients as $ingredient) {
                 $uri   = $ingredient['uri'];
-                $url   = $domain . _('receta') . '/' . $uri;
+                $url   = $domain . _('recepta') . '/' . $uri;
                 $class = 'black-color';
                 if (count($ingredient['recipes'])) {
                     $class = 'secondary-color';

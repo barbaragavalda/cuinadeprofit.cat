@@ -1,0 +1,179 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cuina de profit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Bàrbara Gavaldà <barbaragavalda@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.1\n"
+
+# routing
+msgid "receptes"
+msgstr "recetas"
+
+msgid "recepta"
+msgstr "receta"
+
+msgid "aleatoria"
+msgstr "aleatoria"
+
+msgid "restaurants"
+msgstr "restaurantes"
+
+msgid "mapa"
+msgstr "mapa"
+
+# menu
+msgid "Inici"
+msgstr "Inicio"
+
+msgid "Receptes"
+msgstr "Recetas"
+
+msgid "Restaurants"
+msgstr "Restaurantes"
+
+msgid "Buscar..."
+msgstr "Buscar..."
+
+# 404
+msgid "Sembla que ens hem perdut. Per recuperar el rumb: et proposem que provis sort amb una %srecepta aleatòria%s."
+msgstr "Parece que nos hemos perdido. Para recuperar el rumbo: te proponemos que pruebes suerte con una %sreceta aleatoria%s."
+
+# home
+msgid "Últimes receptes"
+msgstr "Últimas recetas"
+
+msgid "Per categories"
+msgstr "Por categorías"
+
+msgid "Receptes per triomfar"
+msgstr "Recetas para triunfar"
+
+msgid "Totes"
+msgstr "Todas"
+
+msgid "%e %B %G"
+msgstr "%e %B %G"
+
+# recipe
+msgid "Temps preparació"
+msgstr "Tiempo preparación"
+
+msgid "Temps cuinant"
+msgstr "Tiempo cocinando"
+
+msgid "Temps repòs"
+msgstr "Tiempo reposo"
+
+msgid "Comensals"
+msgstr "Comensales"
+
+msgid "Multiplicar per..."
+msgstr "Multiplicar por..."
+
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+msgid "o"
+msgstr "o"
+
+msgid "opcional"
+msgstr "opcional"
+
+msgid "veure recepta"
+msgstr "ver receta"
+
+msgid "veure recepta + %s"
+msgstr "ver receta + %s"
+
+msgid "veure recepta + %s i %s de repòs"
+msgstr "ver receta + %s y %s de reposo"
+
+msgid "repòs"
+msgstr "reposo"
+
+msgid "Recepta original"
+msgstr "Receta original"
+
+msgid "Pas %s"
+msgstr "Paso %s"
+
+msgid "hora"
+msgstr "hora"
+
+msgid "hores"
+msgstr "horas"
+
+msgid "minut"
+msgstr "minuto"
+
+msgid "minuts"
+msgstr "minutos"
+
+# search
+msgid "Mostrar filtres"
+msgstr "Mostrar filtros"
+
+msgid "Filtrar"
+msgstr "Filtrar"
+
+msgid "Eliminar"
+msgstr "Limpiar"
+
+msgid "Resultats per"
+msgstr "Resultados por"
+
+msgid "Buscar per paraula"
+msgstr "Buscar por palabra"
+
+msgid "Dificultat"
+msgstr "Dificultad"
+
+msgid "Categoria"
+msgstr "Categoría"
+
+msgid "Ingredient"
+msgstr "Ingrediente"
+
+msgid "Etiqueta"
+msgstr "Etiqueta"
+
+msgid "Temps"
+msgstr "Tiempo"
+
+msgid "< 15 min"
+msgstr "< 15 min"
+
+msgid "15-30 min"
+msgstr "15-30 min"
+
+msgid "30 min - 1 hora"
+msgstr "30 min - 1 hora"
+
+msgid "1-2 hores"
+msgstr "1-2 horas"
+
+msgid "> 2 hores"
+msgstr "> 2 horas"
+
+msgid "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."
+msgstr "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
+
+msgid "Anterior"
+msgstr "Anterior"
+
+msgid "Següent"
+msgstr "Siguiente"
+
+# restaurant
+msgid "Una recopilació dels nostres restaurants preferits."
+msgstr "Una recopilación de nuestros restaurantes preferidos."
+
+# footer
+msgid "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia."
+msgstr "En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día."

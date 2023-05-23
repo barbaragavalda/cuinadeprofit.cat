@@ -27,8 +27,8 @@ class Filter extends Model
                 array('id' => array(1, 15), 'uri' => self::LESS_15M, 'name' => _('< 15 min')),
                 array('id' => array(16, 30), 'uri' => self::BETWEEN_15M_30M, 'name' => _('15-30 min')),
                 array('id' => array(31, 60), 'uri' => self::BETWEEN_30M_1H, 'name' => _('30 min - 1 hora')),
-                array('id' => array(61, 120), 'uri' => self::BETWEEN_1H_2H, 'name' => _('1-2 horas')),
-                array('id' => array(121, PHP_INT_MAX), 'uri' => self::MORE_2H, 'name' => _('> 2 horas'))
+                array('id' => array(61, 120), 'uri' => self::BETWEEN_1H_2H, 'name' => _('1-2 hores')),
+                array('id' => array(121, PHP_INT_MAX), 'uri' => self::MORE_2H, 'name' => _('> 2 hores'))
             );
         } else {
             switch (urldecode($uri)) {

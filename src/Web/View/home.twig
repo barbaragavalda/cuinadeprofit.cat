@@ -26,7 +26,7 @@
     {% if recent|length > 0 %}
         <section>
             <div class="title-left">
-                <h5 class="main-bg">{% trans %}Últimas recetas{% endtrans %}</h5>
+                <h5 class="main-bg">{% trans "Últimes receptes" %}</h5>
             </div>
             <div class="wrapper container-fluid">
                 <div class="mosaic hover-effect row">
@@ -57,7 +57,7 @@
     {% if categories|length > 0 %}
         <section>
             <div class="title">
-                <h5 class=" main-bg">{% trans %}Por categorías{% endtrans %}</h5>
+                <h5 class=" main-bg">{% trans "Per categories" %}</h5>
             </div>
 
             <div class="wrapper container-fluid">
@@ -85,7 +85,7 @@
                             {% endfor %}
                             <div class="item mix{{ classItem }}">
                                 {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri, aspectRatio: '4/3' } %}
-                                <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}"
+                                <a href="{{ domain }}{% trans "recepta" %}/{{ recipe.uri }}"
                                    class="ms-madi text secondary-color">{{ recipe.name }}</a>
                             </div>
                         {% endfor %}
@@ -98,7 +98,7 @@
     {% if succeed|length > 0 %}
         <section>
             <div class="title-right">
-                <h5 class="main-bg">{% trans %}Recetas para triunfar{% endtrans %}</h5>
+                <h5 class="main-bg">{% trans "Receptes per triomfar" %}</h5>
             </div>
             <div class="wrapper container-fluid">
                 {% include 'include/list.twig' with { recipes: succeed } %}

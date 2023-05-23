@@ -2,7 +2,7 @@
     {% include 'include/image.twig' with { url: item.image, link: item.uri, aspectRatio: '1/1' } %}
     <div class="text white-bg">
         <span class="tertiary-color">{{ item.created }}</span>
-        <a href="{{ domain }}{% trans %}receta{% endtrans %}/{{ item.uri }}"
+        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}"
            class="ms-madi secondary-color">{{ item.name }}</a>
     </div>
 </div>

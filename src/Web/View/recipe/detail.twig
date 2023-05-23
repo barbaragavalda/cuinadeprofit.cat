@@ -35,7 +35,7 @@
                             <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ tag.uri }}"
+                                <a href="{{ domain }}{% trans "Següent" %}/{{ tag.uri }}"
                                    class="badge badge-light main-color">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
@@ -65,7 +65,7 @@
                         {% endif %}
                     </header>
                     <div class="list grey-border">
-                        <h5>{% trans %}Ingredientes{% endtrans %}</h5>
+                        <h5>{% trans "Ingredients" %}</h5>
                         <ul>
                             {% set i = 0 %}
                             {% for ingredient in recipe.ingredients %}
@@ -74,7 +74,7 @@
                                         {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
                                         {% if recipe.ingredients[i+1].is_alternative %}
                                             {% set i = i + 1 %}
-                                            {% trans %}o{% endtrans %} {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
+                                            {% trans "o" %} {% include 'recipe/ingredient.twig' with{ ingredient: recipe.ingredients[i] } %}
                                         {% endif %}
                                         {% set i = i + 1 %}
                                     </li>
@@ -85,7 +85,7 @@
                     {% if recipe.link %}
                         <div class="link tertiary-bg">
                             <a href="{{ recipe.link }}" target="_blank"
-                               class="black-color">{% trans %}Receta original{% endtrans %}</a>
+                               class="black-color">{% trans "Recepta original" %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -106,7 +106,7 @@
                     <div class="steps">
                         {% for step in recipe.steps %}
                             <div>
-                                {% set currentStep = 'Paso %s'|trans|format(loop.index) %}
+                                {% set currentStep = 'Pas %s'|trans|format(loop.index) %}
                                 {% if recipe.steps|length > 1 %}
                                     <span class="main-color">{{ currentStep }}</span>
                                 {% endif %}

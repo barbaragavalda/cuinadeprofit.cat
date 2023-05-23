@@ -12,21 +12,21 @@
         {% endif %}
     </span>
 {% endif %}
-<a href="{{ domain }}{% trans %}recetas{% endtrans %}/{{ ingredient.uri }}"
+<a href="{{ domain }}{% trans "receptes" %}/{{ ingredient.uri }}"
    class="main-color">{{ ingredient.name|lower }}</a>{{ finalUnit }}
 {% if ingredient.recipes|length > 0 %}
     {% set links = [] %}
     {% for recipe in ingredient.recipes %}
-        {% set name = 'ver receta'|trans %}
+        {% set name = 'veure recepta'|trans %}
         {% if recipe.time %}
             {% if recipe.rest_time %}
-                {% set name = 'ver receta + %s y %s de reposo'|trans|format(recipe.time, recipe.rest_time) %}
+                {% set name = 'veure recepta + %s i %s de repòs'|trans|format(recipe.time, recipe.rest_time) %}
             {% else %}
-                {% set name = 'ver receta + %s'|trans|format(recipe.time) %}
+                {% set name = 'veure recepta + %s'|trans|format(recipe.time) %}
             {% endif %}
         {% endif %}
-        {% set links = links|merge(['<a href="' ~ domain ~ 'receta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ name ~ '</a>']) %}
+        {% set links = links|merge(['<a href="' ~ domain ~ 'recepta'|trans ~ '/' ~ recipe.uri ~ '" class="black-color" target="_blank">' ~ name ~ '</a>']) %}
     {% endfor %}
     <small>({{ links|join(' | ')|raw }})</small>
 {% endif %}
-{% if ingredient.is_optional %}({% trans %}opcional{% endtrans %}){% endif %}
+{% if ingredient.is_optional %}({% trans "opcional" %}){% endif %}

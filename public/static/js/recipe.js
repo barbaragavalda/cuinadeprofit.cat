@@ -1,8 +1,8 @@
 'use strict';
 
-var Recipe = function(totalSteps, ingredients, currentAmount){
+var Recipe = function (totalSteps, ingredients, currentAmount) {
 
-    function init(){
+    function init() {
         initSteps();
         initAmounts();
     }
@@ -14,9 +14,9 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
     /**
      * steps slider
      */
-    function initSteps(){
+    function initSteps() {
         $('.steps')
-            .on('init', function(){
+            .on('init', function () {
                 updateStates(1);
             })
             .slick({
@@ -26,8 +26,8 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
                 infinite: false,
                 pauseOnFocus: false
             })
-            .on('afterChange', function(event, slick, currentSlide){
-                updateStates(currentSlide+1);
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+                updateStates(nextSlide + 1);
             });
     }
 
@@ -35,12 +35,12 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
      * update progress bar
      * @param step integer
      */
-    function updateStates(step){
+    function updateStates(step) {
         var steps = LANG.localize('step_x_of_total');
         steps = steps.replace('%x', step);
         steps = steps.replace('%t', _totalSteps);
         _steps.html(steps);
-        _progressBar.css('width', ((100/(_totalSteps-1))*(step-1)) + '%');
+        _progressBar.css('width', ((100 / (_totalSteps - 1)) * (step - 1)) + '%');
     }
 
     var _ingredients = ingredients,
@@ -51,14 +51,14 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
      * change amount
      */
     function initAmounts() {
-        $('#add, #subtract').click(function(e){
+        $('#add, #subtract').click(function (e) {
             var amount = parseFloat(_amount.val());
 
-            if( amount % 1 === 0 ){
-                if( $(this).attr('id') === 'add' ) amount++;
+            if (amount % 1 === 0) {
+                if ($(this).attr('id') === 'add') amount++;
                 else amount--;
-            }else{
-                if( $(this).attr('id') === 'add' ) amount = Math.ceil(amount);
+            } else {
+                if ($(this).attr('id') === 'add') amount = Math.ceil(amount);
                 else amount = Math.floor(amount);
             }
 
@@ -68,7 +68,7 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
             return false;
         });
 
-        _amount.change(function(){
+        _amount.change(function () {
             var amount = parseFloat(_amount.val());
             amountChanged(amount);
         });
@@ -78,25 +78,27 @@ var Recipe = function(totalSteps, ingredients, currentAmount){
      * update amounts
      * @param amount
      */
-    function amountChanged(amount){
-        if( amount <= 0 ) amount = 1;
+    function amountChanged(amount) {
+        if (amount <= 0) amount = 1;
         _amount.val(amount);
 
         $('span.diners').html(amount);
 
-        for(var i in _ingredients){
-            $('span.ingredient-' + _ingredients[i]['uri']).each(function(){
+        for (var i in _ingredients) {
+            $('span.ingredient-' + _ingredients[i]['uri']).each(function () {
                 var unit = $(this).attr('data-unit'),
                     unitPlural = $(this).attr('data-plural'),
                     fraction = parseFloat($(this).attr('data-fraction')),
-                    totalAmount = _ingredients[i]['amount'] / _currentAmount * amount;
+                    totalAmount = (_ingredients[i]['amount'] / _currentAmount * amount);
 
-                if( !isNaN(fraction) ){
+                if (!isNaN(fraction)) {
                     totalAmount = Math.ceil(totalAmount * fraction);
                 }
-                if( totalAmount !== 1 && unitPlural !== '' ){
+                totalAmount = Math.round(totalAmount * 10) / 10;
+
+                if (totalAmount !== 1 && unitPlural !== '') {
                     totalAmount += ' ' + unitPlural;
-                }else if(unit !== '' ){
+                } else if (unit !== '') {
                     totalAmount += ' ' + unit;
                 }
                 $(this).html(totalAmount);

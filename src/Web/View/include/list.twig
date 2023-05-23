@@ -11,20 +11,20 @@
                             <div>
                                 {% set tags = [] %}
                                 {% for tag in recipe.tags %}
-                                    {% set tags = tags|merge(['<a href="' ~ domain ~ 'recetas'|trans ~ '/' ~ tag.uri ~ '" class="main-color">' ~ tag.name ~ '</a>']) %}
+                                    {% set tags = tags|merge(['<a href="' ~ domain ~ 'receptes'|trans ~ '/' ~ tag.uri ~ '" class="main-color">' ~ tag.name ~ '</a>']) %}
                                 {% endfor %}
                                 {{ tags|join(' | ')|raw }}
                             </div>
                         {% endif %}
                         <h2 class="ms-madi"><a
-                                    href="{{ domain }}{% trans %}receta{% endtrans %}/{{ recipe.uri }}">{{ recipe.name }}</a>
+                                    href="{{ domain }}{% trans "recepta" %}/{{ recipe.uri }}">{{ recipe.name }}</a>
                         </h2>
                         <div>
                             {% include 'recipe/difficulty.twig' %}
                             <small>
                                 {{ recipe.time }}
                                 {% if recipe.rest_time %}
-                                    (+ {{ recipe.rest_time }} {% trans %}reposo{% endtrans %})
+                                    (+ {{ recipe.rest_time }} {% trans "repòs" %})
                                 {% endif %}
                             </small>
                         </div>
