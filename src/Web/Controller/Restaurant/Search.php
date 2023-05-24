@@ -8,18 +8,13 @@ use Web\Model\Restaurant\FilteredList;
 class Search extends \Web\Controller\Search
 {
 
-    public function run()
+    function search()
     {
-        parent::run();
-
-        $list = new FilteredList($this->filters['page']);
-        $list->setFilters($this->filters);
-        $list->initAll();
-        $this->assign('restaurants', $list->getItemsPage());
-        $this->assign('pagination', $list->paginate());
+        $this->list = new FilteredList($this->filters['page']);
+        $this->assign('link', _('restaurants'));
 
         $this->assign('menu', 'restaurants');
-        $this->template('restaurant/list.twig');
+        $this->assign('type', 'restaurant');
     }
 
 }

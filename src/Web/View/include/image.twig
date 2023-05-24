@@ -1,5 +1,9 @@
 {% if link is defined %}
-<a href="{{ domain }}{% trans "recepta" %}/{{ link }}">
+{% set target = '' %}
+{% if isOutside %}
+    {% set target = ' target="_blank"' %}
+{% endif %}
+<a href="{{ link }}" {{ target|raw }}>
     {% endif %}
     {% set image = staticDomain ~ 'img/dummy.jpg' %}
     {% if url %}

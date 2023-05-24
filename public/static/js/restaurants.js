@@ -24,7 +24,7 @@ var Restaurants = function (Map) {
 
         const markers = [];
         for (var i = 0; i < restaurants.length; i++) {
-            const position = {lat: restaurants[i].latitude, lng: restaurants[i].longitude};
+            const position = {lat: parseFloat(restaurants[i].latitude) , lng: parseFloat(restaurants[i].longitude)};
             const marker = new google.maps.Marker({position: position, map: map});
             bounds.extend(position);
             markers.push(marker);
@@ -39,8 +39,10 @@ var Restaurants = function (Map) {
                 var html =
                     '<h2 class="ms-madi secondary-color">' + restaurants[id].name + '</h2>' +
                     '<p><b>Adreça:</b> ' + restaurants[id].address + '</p>' +
-                    '<p><b>Última visita:</b> ' + restaurants[id].last_visit + '</p>' +
-                    restaurants[id].text;
+                    '<p><b>Última visita:</b> ' + restaurants[id].last_visit + '</p>';
+                if(restaurants[id].text){
+                    html += restaurants[id].text;
+                }
                 _infoWindow = new google.maps.InfoWindow({
                     content: html,
                     maxWidth: 300,

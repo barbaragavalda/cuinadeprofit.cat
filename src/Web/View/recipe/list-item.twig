@@ -1,0 +1,26 @@
+<div class="col-sm-8">
+    {% if item.tags|length > 0 %}
+        <div>
+            {% set tags = [] %}
+            {% for tag in item.tags %}
+                {% set tags = tags|merge(['<a href="' ~ domain ~ 'receptes'|trans ~ '/' ~ tag.uri ~ '" class="main-color">' ~ tag.name ~ '</a>']) %}
+            {% endfor %}
+            {{ tags|join(' | ')|raw }}
+        </div>
+    {% endif %}
+    <h2 class="ms-madi">
+        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}">{{ item.name }}</a>
+    </h2>
+    <div>
+        {% include 'recipe/difficulty.twig' with { recipe: item } %}
+        <small>
+            {{ item.time }}
+            {% if item.rest_time %}
+                (+ {{ item.rest_time }} {% trans "repòs" %})
+            {% endif %}
+        </small>
+    </div>
+    {% if item.description %}
+        {{ item.description|raw }}
+    {% endif %}
+</div>

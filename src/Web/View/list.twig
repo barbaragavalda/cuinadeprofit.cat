@@ -1,0 +1,36 @@
+{% extends 'basic.twig' %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{{ staticDomain }}js/plugin/OverlayScrollbars/css/OverlayScrollbars.min.css"
+          type="text/css">
+{% endblock %}
+{% block extraBody %}
+    <script src="{{ staticDomain }}js/plugin/OverlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="{{ staticDomain }}js/search{{ min }}.js?v={{ staticVersion }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.filter ul').each(function () {
+                OverlayScrollbars($(this), {
+                    className: 'os-theme-dark'
+                });
+            });
+
+            new Search('{{ domain ~ link }}/');
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="list" class="{{ type }} container-fluid">
+        {% if type == 'restaurant' %}
+            <div class="text-center">
+                <p>{% trans "Una recopilació dels nostres restaurants preferits." %}</p>
+                <a href="{{ domain }}{% trans "restaurants" %}/{% trans "mapa" %}" type="button"
+                   class="btn white-bg grey-border">{% trans "Veure en versió mapa" %}</a>
+            </div>
+        {% endif %}
+        <div class="row">
+            {% include 'include/list.twig' with { type: type, aspectRatio: aspectRatio, noResults: noResults, noResultsLink: noResultsLink } %}
+        </div>
+    </div>
+{% endblock %}

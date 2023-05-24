@@ -6,13 +6,17 @@
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script src="{{ staticDomain }}js/restaurants{{ min }}.js?v={{ staticVersion }}"></script>
     <script>
-        var restaurants = {{ restaurants|json_encode()|raw }};
+        var restaurants = {{ items|json_encode()|raw }};
     </script>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <p>{% trans "Una recopilació dels nostres restaurants preferits." %}</p>
+    <div class="restaurants container-fluid">
+        <div class="text-center">
+            <p>{% trans "Una recopilació dels nostres restaurants preferits." %}</p>
+            <a href="{{ domain }}{% trans "restaurants" %}" type="button"
+               class="btn white-bg grey-border">{% trans "Veure en versió llista" %}</a>
+        </div>
         <div id="map"></div>
     </div>
 {% endblock %}

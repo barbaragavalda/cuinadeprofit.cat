@@ -2,20 +2,40 @@
 
 namespace Web\Controller;
 
+use Core\Model\Paginated;
 use Web\Model\Recipe\Filter;
 use Web\Model\Recipe\FilteredList;
 
 abstract class Search extends Controller
 {
 
-    protected array   $filters = array();
-    protected ?Filter $filter  = null;
+    protected array      $filters = array();
+    protected ?Filter    $filter  = null;
+    protected ?Paginated $list    = null;
+    protected string     $template;
 
     public function run()
     {
         $this->filter = new Filter();
         $this->filter();
+
+        $this->search();
+
+        $this->list->setFilters($this->filters);
+        $this->list->initAll();
+        $this->assign('items', $this->list->getItemsPage());
+        $this->assign('pagination', $this->list->paginate());
+        $this->assign('filters', $this->filters);
+        $this->assign('extraLink', $this->getExtraLink());
+
+        if (empty($this->template)) {
+            $this->template('list.twig');
+        } else {
+            $this->template($this->template);
+        }
     }
+
+    abstract function search();
 
     private function filter()
     {
@@ -91,6 +111,26 @@ abstract class Search extends Controller
             $this->filters[ $key ] = array();
         }
         $this->filters[ $key ][] = $value;
+    }
+
+    private function getExtraLink(): string
+    {
+        $params = array();
+        $query  = '';
+        foreach ($this->params as $key => $value) {
+            if ($key == 'q') {
+                $query = '?q=' . $value;
+            } else {
+                if (!is_numeric($value)) {
+                    $params[] = $value;
+                }
+            }
+        }
+        $extraLink = implode('/', $params) . $query;
+        if (!empty($extraLink)) {
+            $extraLink = '/' . $extraLink;
+        }
+        return $extraLink;
     }
 
 }

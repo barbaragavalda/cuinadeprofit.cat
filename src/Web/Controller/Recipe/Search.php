@@ -7,18 +7,10 @@ use Web\Model\Recipe\FilteredList;
 class Search extends \Web\Controller\Search
 {
 
-    public function run()
+    function search()
     {
-        parent::run();
-
-        $list = new FilteredList($this->filters['page']);
-        $list->setFilters($this->filters);
-        $list->initAll();
-        $this->assign('items', $list->getItemsPage());
-        $this->assign('pagination', $list->paginate());
+        $this->list = new FilteredList($this->filters['page']);
         $this->assign('link', _('receptes'));
-        $this->assign('extraLink', $this->getExtraLink());
-        $this->assign('filters', $this->filters);
 
         $this->assign('difficulties', $this->filter->getDifficulty());
         $this->assign('times', $this->filter->getTime());
@@ -27,27 +19,9 @@ class Search extends \Web\Controller\Search
         $this->assign('ingredients', $this->filter->getIngredient());
 
         $this->assign('menu', 'recipes');
-        $this->template('recipe/list.twig');
+        $this->assign('type', 'recipe');
+        $this->assign('aspectRatio', '1/1');
+        $this->assign('noResults', "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s.");
+        $this->assign('noResultsLink', _('recepta') . '/' . _('aleatoria'));
     }
-
-    private function getExtraLink(): string
-    {
-        $params = array();
-        $query  = '';
-        foreach ($this->params as $key => $value) {
-            if ($key == 'q') {
-                $query = '?q=' . $value;
-            } else {
-                if (!is_numeric($value)) {
-                    $params[] = $value;
-                }
-            }
-        }
-        $extraLink = implode('/', $params) . $query;
-        if (!empty($extraLink)) {
-            $extraLink = '/' . $extraLink;
-        }
-        return $extraLink;
-    }
-
 }

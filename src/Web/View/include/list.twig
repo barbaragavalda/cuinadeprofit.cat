@@ -1,39 +1,30 @@
-<div class="col-lg-12">
-    <ul id="recipes" class="hover-effect">
-        {% for recipe in recipes %}
-            <li class="item">
-                <div class="row">
-                    <div class="col-sm-4">
-                        {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri, aspectRatio: '1/1' } %}
-                    </div>
-                    <div class="col-sm-8">
-                        {% if recipe.tags|length > 0 %}
-                            <div>
-                                {% set tags = [] %}
-                                {% for tag in recipe.tags %}
-                                    {% set tags = tags|merge(['<a href="' ~ domain ~ 'receptes'|trans ~ '/' ~ tag.uri ~ '" class="main-color">' ~ tag.name ~ '</a>']) %}
-                                {% endfor %}
-                                {{ tags|join(' | ')|raw }}
+{% if not hideFilters %}
+    {% include 'include/list-filters.twig' %}
+{% endif %}
+<div class="col-lg-10">
+    {% if filters.query %}
+        <div class="title">{% trans "Resultats per" %} <h1>"{{ filters.query|lower }}"</h1>
+        </div>
+    {% endif %}
+    {% if items is defined and items|length > 0 %}
+        <div class="col-lg-12">
+            <ul id="recipes" class="hover-effect">
+                {% for item in items %}
+                    <li class="item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                {% include 'include/image.twig' with { url: item.image, link: item.link, isOutside: item.isOutside, aspectRatio: aspectRatio } %}
                             </div>
-                        {% endif %}
-                        <h2 class="ms-madi"><a
-                                    href="{{ domain }}{% trans "recepta" %}/{{ recipe.uri }}">{{ recipe.name }}</a>
-                        </h2>
-                        <div>
-                            {% include 'recipe/difficulty.twig' %}
-                            <small>
-                                {{ recipe.time }}
-                                {% if recipe.rest_time %}
-                                    (+ {{ recipe.rest_time }} {% trans "repòs" %})
-                                {% endif %}
-                            </small>
+                            {% include type ~ '/list-item.twig' %}
                         </div>
-                        {% if recipe.description %}
-                            {{ recipe.description|raw }}
-                        {% endif %}
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% include 'include/pagination.twig' %}
+    {% else %}
+        {% if noResultsLink %}
+            {{ noResults|trans|format('<a href="' ~ domain ~ noResultsLink ~ '" class="secondary-color" rel="nofollow">', '</a>')|raw }}
+        {% endif %}
+    {% endif %}
 </div>

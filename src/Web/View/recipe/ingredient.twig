@@ -29,4 +29,4 @@
     {% endfor %}
     <small>({{ links|join(' | ')|raw }})</small>
 {% endif %}
-{% if ingredient.is_optional %}({% trans "opcional" %}){% endif %}
+{% if ingredient.is_optional %}<sup>{% trans "opcional" %}</sup>{% endif %}

@@ -9,7 +9,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # Allow any files or directories that exist to be displayed directly
-RewriteCond %{REQUEST_FILENAME} !^(.+)\.(js|css|gif|png|PNG|jpe?g|JPE?G|swf|ico|txt|html|eot|svg|ttf|woff|pdf|mp4)$
+RewriteCond %{REQUEST_FILENAME} !^(.+)\.(js|css|gif|png|PNG|jpe?g|JPE?G|webp|swf|ico|txt|html|eot|svg|ttf|woff|pdf|mp4|xml)$
 
 # Rewrite all other URLs to index.php
 RewriteRule ^(.*)$ public/index.dev.php [QSA,L]

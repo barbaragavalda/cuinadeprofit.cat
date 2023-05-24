@@ -195,7 +195,6 @@ section {
 .hover-effect .item h2 a {
     display: block;
     line-height: 30px;
-    font-weight: 700;
     font-size: 1.5rem;
     text-decoration: none;
 }
@@ -246,6 +245,7 @@ section {
     opacity: 0.5;
 }
 
+
 /* header */
 #main-header {
     padding: 20px 0;
@@ -276,14 +276,10 @@ section {
 
 #main-header ul li {
     display: inline-block;
-    margin-right: 60px;
     position: relative;
     font-size: 20px;
     font-weight: 700;
-}
-
-#main-header ul li:last-child {
-    margin-right: 0;
+    padding: 0 10px;
 }
 
 #main-header ul li a {
@@ -792,11 +788,29 @@ section h5 {
  ******************************/
 #map {
     aspect-ratio: 2/1;
+    margin-top: 20px;
+}
+
+.restaurant .text-center {
+    margin: 20px 0 30px 0;
 }
 
 /******************************
  * RESPONSIVE
  ******************************/
+/* desktop */
+@media (hover: hover) {
+
+    .hover-effect .item h2 a {
+        font-weight: 700;
+    }
+}
+
+/* device */
+@media (hover: none), (hover: on-demand) {
+
+}
+
 @media only screen and (max-width: 993px) {
 
     /* home */
@@ -887,6 +901,10 @@ section h5 {
 }
 
 @media only screen and (max-width: 400px) {
+
+    #main-header ul li {
+        font-size: 16px;
+    }
 
     /* home */
     #filter-items .item {

@@ -2,18 +2,17 @@
 
 namespace Web\Controller\Restaurant;
 
-use Web\Controller\Controller;
 use Web\Model\Restaurant\FilteredList;
 
-class Map extends Controller
+class Map extends \Web\Controller\Search
 {
 
-    public function run()
+    function search()
     {
-        $model = new FilteredList();
-        $this->assign('restaurants', $model->get());
+        $this->list = new FilteredList(1, PHP_INT_MAX);
+
         $this->assign('menu', 'restaurants');
-        $this->template('restaurant/map.twig');
+        $this->template = 'restaurant/map.twig';
     }
 
 }

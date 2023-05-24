@@ -84,7 +84,7 @@
                                 {% set classItem = classItem ~ ' ' ~ tag.uri %}
                             {% endfor %}
                             <div class="item mix{{ classItem }}">
-                                {% include 'include/image.twig' with { url: recipe.image, link: recipe.uri, aspectRatio: '4/3' } %}
+                                {% include 'include/image.twig' with { url: recipe.image, link: domain ~ 'recepta'|trans ~ '/' ~ recipe.uri, aspectRatio: '4/3' } %}
                                 <a href="{{ domain }}{% trans "recepta" %}/{{ recipe.uri }}"
                                    class="ms-madi text secondary-color">{{ recipe.name }}</a>
                             </div>
@@ -101,7 +101,7 @@
                 <h5 class="main-bg">{% trans "Receptes per triomfar" %}</h5>
             </div>
             <div class="wrapper container-fluid">
-                {% include 'include/list.twig' with { recipes: succeed } %}
+                {% include 'include/list.twig' with { hideFilters: true, type: 'recipe', aspectRatio: '1/1', items: succeed } %}
             </div>
         </section>
     {% endif %}

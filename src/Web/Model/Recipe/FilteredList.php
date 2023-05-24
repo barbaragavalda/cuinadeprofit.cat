@@ -4,6 +4,7 @@ namespace Web\Model\Recipe;
 
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
+use Core\Utils\Config;
 use DateTime;
 use IntlDateFormatter;
 use PDO;
@@ -72,7 +73,7 @@ class FilteredList extends Paginated
             $limit   = "LIMIT $this->itemsPerPage";
         }
 
-        $sql     = "
+        $sql         = "
             SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created,
                 (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time,
                 rl.name, rl.uri, rl.description,
@@ -86,23 +87,29 @@ class FilteredList extends Paginated
             ORDER BY r.created DESC, rl.name ASC
             $limit
         ";
-        $recipes = $this->mysql->query($sql, $params);
+        $this->items = $this->mysql->query($sql, $params);
+    }
 
-        $this->items = array();
-        if (count($recipes)) {
-            foreach ($recipes as &$recipe) {
-                $recipeModel = new Detail();
-                $recipeModel->setID($recipe['id_recipe']);
-                $recipe['image']     = $this->getFile($recipe['image'], 'list');
-                $recipe['time']      = Detail::formatTime($recipe['time']);
-                $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
-                $recipe['tags']      = $recipeModel->getTags(false);
+    public function getItemsPage(): array
+    {
+        $recipes = parent::getItemsPage();
 
-                $date              = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
-                $recipe['created'] = IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
-            }
-            $this->items = $recipes;
+        $config = Config::getInstance();
+        $domain = $config->getDomain();
+        foreach ($recipes as &$recipe) {
+            $recipeModel = new Detail();
+            $recipeModel->setID($recipe['id_recipe']);
+            $recipe['image']     = $this->getFile($recipe['image'], 'list');
+            $recipe['time']      = Detail::formatTime($recipe['time']);
+            $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
+            $recipe['tags']      = $recipeModel->getTags(false);
+
+            $date              = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
+            $recipe['created'] = IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
+
+            $recipe['link'] = $domain . _('recepta') . '/' . $recipe['uri'];
         }
+        return $recipes;
     }
 
 }

@@ -1,0 +1,12 @@
+<div class="col-sm-8">
+    <div>{{ item.address }}</div>
+    <h2 class="ms-madi">
+        <a href="{{ item.link }}" target="_blank">{{ item.name }}</a>
+    </h2>
+    <div>
+        <small>{% trans "Visitat per última vegada" %}: {{ item.last_visit }}</small>
+        {% if item.text %}
+            {{ item.text|raw }}
+        {% endif %}
+    </div>
+</div>

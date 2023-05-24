@@ -2,6 +2,7 @@
 # freimguork cache #
 ####################
 src/cache/*
+public/upload/*
 public/static/import/*
 
 ######################

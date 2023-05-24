@@ -1,6 +1,6 @@
 'use strict';
 
-var Recipes = function(link){
+var Search = function(link){
 
     var _link = link,
         _search = $('.search');

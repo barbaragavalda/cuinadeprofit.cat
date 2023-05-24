@@ -17,8 +17,9 @@ $config = array(
         _('receptes') . '/{param1}/{param2}/{param3}/{param4}/{param5}'          => 'Recipe\\Search',
         _('receptes') . '/{param1}/{param2}/{param3}/{param4}/{param5}/{param6}' => 'Recipe\\Search',
 
+        _('restaurants') . '/' . _('mapa') => 'Restaurant\\Map',
         _('restaurants')                   => 'Restaurant\\Search',
-        _('restaurants') . '/' . _('mapa') => 'Restaurant\\Map'
+        _('restaurants') . '/{param1}'     => 'Restaurant\\Search',
     )
 
 );
