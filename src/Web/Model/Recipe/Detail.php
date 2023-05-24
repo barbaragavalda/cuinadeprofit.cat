@@ -291,7 +291,7 @@ class Detail extends Model
 
         //$variableName = str_replace('$', '', $ingredient['variable']);
         //$pattern = '/\$(['.$variableName.']{'.strlen($variableName).'}\b)/';
-        $pattern = '/\\' . $ingredient['variable'] . '([\(]([^\)]+)[\)])?/';
+        $pattern = '/\\' . $ingredient['variable'] . '\b([\(]([^\)]+)[\)])?/';
         if ($amount > 0) {
             preg_match($pattern, $description, $matches);
             $fraction = 1;

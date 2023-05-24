@@ -462,10 +462,16 @@ section h5 {
     z-index: 999;
     position: relative;
 }
+.mosaic.hover-effect .item.large-item .ms-madi{
+    font-size: 34px;
+}
+.mosaic.hover-effect .item.large-item .ms-madi:hover{
+    text-decoration: none;
+}
 
-.mosaic .large-item .text span {
+.mosaic .large-item .text small {
     display: inline-block;
-    font-size: 14px;
+    font-size: 14px !important;
     margin-bottom: 5px;
 }
 
