@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>
+    {% if not isDev %}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZG8BKL1PN"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-SZG8BKL1PN');
+        </script>
+    {% endif %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
