@@ -61,6 +61,9 @@ msgid "%e %B %G"
 msgstr "%e %B %G"
 
 # recipe
+msgid "Enrere"
+msgstr "Atrás"
+
 msgid "Temps preparació"
 msgstr "Tiempo preparación"
 
@@ -100,6 +103,12 @@ msgstr "reposo"
 msgid "Recepta original"
 msgstr "Receta original"
 
+msgid "Les quantitats que s'especifiquen en cada pas ja estan calculades pel nombre de comensals que hagis indicat i és la quantitat que necessites utilitzar en aquest pas."
+msgstr "Las cantidades que se especifican en cada paso ya están calculadas para el número de comensales que hayas indicado y es la cantidad que necesita utilizar en este paso."
+
+msgid "Moltes de les nostres receptes estan inspirades en altres. En aquest cas: us deixem el link a la recepta original, tot i que normalment nosaltres hem fet alguna modificació."
+msgstr "Muchas de nuestras recetas están inspiradas en otras. En este caso: os dejamos el link a la receta original, aunque normalmente nosotros hemos hecho alguna modificación."
+
 msgid "Pas %s"
 msgstr "Paso %s"
 
@@ -130,6 +139,9 @@ msgstr "Resultados por"
 
 msgid "Buscar per paraula"
 msgstr "Buscar por palabra"
+
+msgid "Autora / autor"
+msgstr "Autora / autor"
 
 msgid "Dificultat"
 msgstr "Dificultad"

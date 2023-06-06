@@ -33,6 +33,7 @@
                         {% endif %}
                         <div class="resume grey-bg">
                             <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
+                            <small class="author main-color">{% trans "Autora / autor" %}: {{ recipe.author }}</small>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
                                 <a href="{{ domain }}{% trans "Següent" %}/{{ tag.uri }}"
@@ -88,9 +89,19 @@
                                class="black-color">{% trans "Recepta original" %}</a>
                         </div>
                     {% endif %}
+                    <small class="clarification grey-color">
+                        {% trans "Les quantitats que s'especifiquen en cada pas ja estan calculades pel nombre de comensals que hagis indicat i és la quantitat que necessites utilitzar en aquest pas." %}
+                        <br/>
+                        {% trans "Moltes de les nostres receptes estan inspirades en altres. En aquest cas: us deixem el link a la recepta original, tot i que normalment nosaltres hem fet alguna modificació." %}
+                    </small>
                 </div>
             </aside>
             <div class="col-md-8">
+                <div class="breadcrumb">
+                    <a href="javascript:history.go(-1)" class="main-color">&lt; {% trans "Enrere" %}</a>
+                    &sol;
+                    <span class="grey-color">{{ recipe.name }}</span>
+                </div>
                 {% if recipe.steps|length > 0 %}
                     {% if recipe.steps|length > 1 %}
                         <h3></h3>

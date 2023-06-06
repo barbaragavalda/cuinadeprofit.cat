@@ -2,6 +2,7 @@
 
 namespace Web\Model\Recipe;
 
+use Core\Model\Encryptor\TwoWay;
 use Core\Model\Model;
 use Core\Utils\Config;
 use PDO;
@@ -37,10 +38,12 @@ class Detail extends Model
             SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.rest_time, r.image, r.link,
                 rl.name, rl.uri, rl.description,
                 rl.name AS metatag_title, rl.description AS metatag_description,
-                dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
+                dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI,
+                u.id_appacman_user, u.created, u.name AS author
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
+            INNER JOIN appacman_user AS u USING(id_appacman_user)
             WHERE r.is_visible = 1 $where
             $orderBy
         ";
@@ -59,6 +62,9 @@ class Detail extends Model
             $ingredients           = $this->getIngredients();
             $recipe['ingredients'] = $ingredients;
             $recipe['steps']       = $this->getSteps($ingredients, $recipe['diners']);
+
+            $key              = $recipe['id_appacman_user'] . '_' . $recipe['created'] . '_';
+            $recipe['author'] = TwoWay::decrypt($recipe['author'], $key . 'name');
 
             return $recipe;
         }
@@ -237,7 +243,7 @@ class Detail extends Model
             // replace ingredients
             foreach ($ingredients as $ingredient) {
                 $uri   = $ingredient['uri'];
-                $url   = $domain . _('recepta') . '/' . $uri;
+                $url   = $domain . _('receptes') . '/' . $uri;
                 $class = 'black-color';
                 if (count($ingredient['recipes'])) {
                     $class = 'secondary-color';
@@ -289,8 +295,6 @@ class Detail extends Model
         $span   = '';
         $amount = $ingredient['amount'];
 
-        //$variableName = str_replace('$', '', $ingredient['variable']);
-        //$pattern = '/\$(['.$variableName.']{'.strlen($variableName).'}\b)/';
         $pattern = '/\\' . $ingredient['variable'] . '\b([\(]([^\)]+)[\)])?/';
         if ($amount > 0) {
             preg_match($pattern, $description, $matches);

@@ -1,11 +1,11 @@
 'use strict';
 
-var Search = function(link){
+var Search = function (link) {
 
     var _link = link,
         _search = $('.search');
 
-    function init(){
+    function init() {
         search();
         filter();
     }
@@ -13,19 +13,19 @@ var Search = function(link){
     /**
      * search events
      */
-    function search(){
-        $('.input-group-append').click(function(){
+    function search() {
+        $('.input-group-append').click(function () {
             var input = $(this).parent().find('input');
             input.val('');
             close(input);
         });
 
-        _search.keyup(function(){
+        _search.keyup(function () {
             var query = $(this).val();
 
-            if( query === '' ){
+            if (query === '') {
                 close($(this));
-            }else{
+            } else {
                 open($(this), normalize(query));
             }
         });
@@ -36,7 +36,7 @@ var Search = function(link){
      * @param obj
      * @param query
      */
-    function open(obj, query){
+    function open(obj, query) {
         var search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
             append = search.find('.input-group-append');
@@ -45,15 +45,15 @@ var Search = function(link){
         prepend.hide();
 
         var lis = search.parent().find('ul li');
-        lis.each(function(){
+        lis.each(function () {
             var text = normalize($(this).text());
-            if( text.indexOf(query) === -1 ){
+            if (text.indexOf(query) === -1) {
                 $(this).hide();
             }
         });
     }
 
-    function normalize(value){
+    function normalize(value) {
         return value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
@@ -61,7 +61,7 @@ var Search = function(link){
      * end search
      * @param obj
      */
-    function close(obj){
+    function close(obj) {
         var search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
             append = search.find('.input-group-append');
@@ -73,10 +73,10 @@ var Search = function(link){
         lis.show();
     }
 
-    function filter(){
+    function filter() {
         var form = $('#list form');
 
-        $('#show-filters').click(function(e){
+        $('#show-filters').click(function (e) {
             form.find('> div').fadeToggle();
 
             e.preventDefault();
@@ -90,7 +90,7 @@ var Search = function(link){
             ingredient = $('input[name="ingredient[]"]'),
             q = $('input[name="q"]');
 
-        form.submit(function(e){
+        form.submit(function (e) {
             var url = [],
                 difficulties = addArray(difficulty),
                 times = addArray(time),
@@ -99,24 +99,28 @@ var Search = function(link){
                 ingredients = addArray(ingredient),
                 query = q.val();
 
-            if( difficulties !== '' ){
+            if (difficulties !== '') {
                 url.push(difficulties);
             }
-            if( times !== '' ){
+            if (times !== '') {
                 url.push(times);
             }
-            if( tags !== '' ){
+            if (tags !== '') {
                 url.push(tags);
             }
-            if( categories !== '' ){
+            if (categories !== '') {
                 url.push(categories);
             }
-            if( ingredients !== '' ){
+            if (ingredients !== '') {
                 url.push(ingredients);
             }
 
-            if( url.length > 0 || query != '' ){
-                window.location = _link + url.join('/') + '?q=' + query;
+            if (url.length > 0 || query != '') {
+                var location = _link + url.join('/');
+                if (query != '') {
+                    location += '?q=' + query;
+                }
+                window.location = location;
             }
 
             e.preventDefault();
@@ -124,15 +128,15 @@ var Search = function(link){
         });
     }
 
-    function addArray(object){
-        var values = object.map(function(idx, elem) {
-            if( $(this).is(':checked') ){
+    function addArray(object) {
+        var values = object.map(function (idx, elem) {
+            if ($(this).is(':checked')) {
                 return $(elem).val();
             }
         }).get();
 
         var url = '';
-        if( values.length > 0 ){
+        if (values.length > 0) {
             url = values.join('&');
         }
         return url;

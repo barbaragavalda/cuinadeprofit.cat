@@ -32,7 +32,7 @@ class FilteredList extends Paginated
             $params['query'] = array('value' => '%' . $this->filters['query'] . '%', 'type' => PDO::PARAM_STR);
         }
         if (array_key_exists('category', $this->filters)) {
-            $innerJoin = '
+            $innerJoin .= '
                 INNER JOIN recipe_ingredient AS ri ON r.id_recipe = ri.id_recipe
                 INNER JOIN ingredient AS i ON i.id_ingredient = ri.id_ingredient
                 INNER JOIN ingredient_category AS ic ON i.id_ingredient_category = ic.id_ingredient_category 
@@ -48,14 +48,14 @@ class FilteredList extends Paginated
             $where[] = 'r.id_difficulty IN(' . implode(', ', $this->filters['difficulty']) . ')';
         }
         if (array_key_exists('ingredient', $this->filters)) {
-            $innerJoin = '
+            $innerJoin .= '
                 INNER JOIN recipe_ingredient AS ri ON r.id_recipe = ri.id_recipe
                 INNER JOIN ingredient AS i ON i.id_ingredient = ri.id_ingredient 
                     AND i.id_ingredient IN(' . implode(', ', $this->filters['ingredient']) . ')
             ';
         }
         if (array_key_exists('tag', $this->filters)) {
-            $innerJoin = '
+            $innerJoin .= '
                 INNER JOIN recipe_tag AS rt ON r.id_recipe = rt.id_recipe
                 INNER JOIN tag AS t ON t.id_tag = rt.id_tag 
                     AND t.id_tag IN(' . implode(', ', $this->filters['tag']) . ')
