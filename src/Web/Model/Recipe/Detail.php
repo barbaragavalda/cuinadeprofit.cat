@@ -236,19 +236,24 @@ class Detail extends Model
                 if (empty($step['image'])) {
                     $step['video'] = $this->getFile($fileID);
                 }
-                $step['description'] = $this->replaceRecipes($step['description'], $domain . _('receptes') . '/');
+                $step['description'] = $this->replaceRecipes($step['description'], $domain . _('recepta') . '/');
                 $step['description'] = $this->replaceDiners($step['description'], $diners);
             }
 
             // replace ingredients
             foreach ($ingredients as $ingredient) {
-                $uri   = $ingredient['uri'];
-                $url   = $domain . _('receptes') . '/' . $uri;
-                $class = 'black-color';
+                $uri    = $ingredient['uri'];
+                $url    = $domain . _('receptes') . '/' . $uri;
+                $target = '';
+                $class  = 'black-color';
                 if (count($ingredient['recipes'])) {
-                    $class = 'secondary-color';
+                    $class  = 'secondary-color';
+                    $url    = $domain . _('recepta') . '/' . $uri;
+                    $target = ' target=\"_blank\"';
                 }
-                $link = "<a href=\"$url\" class=\"$class\"><b>" . mb_strtolower($ingredient['name']) . "</b></a>";
+                $link = "<a href=\"$url\" class=\"$class\" $target><b>"
+                    . mb_strtolower($ingredient['name'])
+                    . "</b></a>";
 
                 foreach ($steps as &$step) {
                     $step['description'] = $this->getSpanAmount($step['description'], $uri, $ingredient, $link);
@@ -270,9 +275,9 @@ class Detail extends Model
                 $recipeInfo = $recipe->get();
                 if (count($recipeInfo)) {
                     $url         .= $recipeInfo['uri'];
-                    $link        = "<a href=\"$url\" class=\"secondary-color\"><b>"
-                        . mb_strtolower($recipeInfo['name'])
-                        . "</b></a>";
+                    $link        = "<a href=\"$url\" class=\"secondary-color\" target=\"_blank\"><b>" . mb_strtolower(
+                            $recipeInfo['name']
+                        ) . "</b></a>";
                     $description = str_replace($matches[0][ $i ], $link, $description);
                 }
             }

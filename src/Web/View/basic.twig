@@ -23,14 +23,14 @@
 
     <title>{{ metatagTitle }}</title>
     <meta name="keywords" content="{{ metatagKeywords }}">
-    <meta name="description" content="{{ metatagDescription }}">
+    <meta name="description" content="{{ metatagDescription|striptags }}">
 
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ webName }}">
     <meta property="og:url" content="{{ canonical }}">
     <meta property="og:title" content="{{ metatagTitle }}">
-    <meta property="og:description" content="{{ metatagDescription }}">
+    <meta property="og:description" content="{{ metatagDescription|striptags }}">
     <meta property="og:image" content="{{ metatagImage['image'] }}">
     <meta property="og:image:width" content="{{ metatagImage['width'] }}">
     <meta property="og:image:height" content="{{ metatagImage['height'] }}">

@@ -23,7 +23,8 @@
     "appaqui/freimguork-appacman": "dev-master",
     "ext-pdo": "*",
     "ext-gettext": "*",
-    "ext-intl": "*"
+    "ext-intl": "*",
+    "ext-simplexml": "*"
   },
   "autoload": {
     "psr-4": {
