@@ -38,12 +38,10 @@ class Detail extends Model
             SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.rest_time, r.image, r.link,
                 rl.name, rl.uri, rl.description,
                 rl.name AS metatag_title, rl.description AS metatag_description,
-                dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI,
-                u.id_appacman_user, u.created, u.name AS author
+                dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
-            INNER JOIN appacman_user AS u USING(id_appacman_user)
             WHERE r.is_visible = 1 $where
             $orderBy
         ";
@@ -63,8 +61,7 @@ class Detail extends Model
             $recipe['ingredients'] = $ingredients;
             $recipe['steps']       = $this->getSteps($ingredients, $recipe['diners']);
 
-            $key              = $recipe['id_appacman_user'] . '_' . $recipe['created'] . '_';
-            $recipe['author'] = TwoWay::decrypt($recipe['author'], $key . 'name');
+            $recipe['author'] = $this->getAuthors();
 
             return $recipe;
         }
@@ -349,6 +346,26 @@ class Detail extends Model
         }
 
         return preg_replace($pattern, $link . $span, $description);
+    }
+
+    private function getAuthors(): string
+    {
+        $sql    = '
+            SELECT u.id_appacman_user, u.name, u.created
+            FROM appacman_user AS u
+            INNER JOIN recipe_appacman_user AS ru ON ru.id_appacman_user = u.id_appacman_user AND ru.id_recipe = :id
+        ';
+        $params = array(
+            'id' => array('value' => $this->id, 'type' => PDO::PARAM_INT)
+        );
+        $users  = $this->mysql->query($sql, $params);
+
+        $finalUsers = array();
+        foreach ($users as $user) {
+            $key          = $user['id_appacman_user'] . '_' . $user['created'] . '_';
+            $finalUsers[] = TwoWay::decrypt($user['name'], $key . 'name');
+        }
+        return implode(' | ', $finalUsers);
     }
 
 }

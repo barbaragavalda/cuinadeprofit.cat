@@ -84,7 +84,7 @@ class Filter extends Model
         $orderBy = 'tl.name';
         switch ($table) {
             case self::DIFFICULTY:
-                $orderBy = "t.id_$table ASC";
+                $orderBy = 't.order';
                 break;
             case self::TAG:
                 $orderBy = 't.order, tl.name';
