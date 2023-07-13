@@ -20,6 +20,13 @@ class Filter extends Model
     const BETWEEN_1H_2H   = '1h-2h';
     const MORE_2H         = '>2h';
 
+    private $filters = array();
+
+    public function setFilters($filters)
+    {
+        $this->filters = $filters;
+    }
+
     public function getTime($uri = null): array
     {
         if ($uri == null) {
@@ -49,22 +56,26 @@ class Filter extends Model
 
     public function getCategory($uri = null): array
     {
-        return $this->get(self::CATEGORY, $uri);
+        $categories = $this->get(self::CATEGORY, $uri);
+        return $this->compare(self::CATEGORY, $categories);
     }
 
     public function getDifficulty($uri = null): array
     {
-        return $this->get(self::DIFFICULTY, $uri);
+        $difficulties = $this->get(self::DIFFICULTY, $uri);
+        return $this->compare(self::DIFFICULTY, $difficulties);
     }
 
     public function getIngredient($uri = null): array
     {
-        return $this->get(self::INGREDIENT, $uri);
+        $ingredients = $this->get(self::INGREDIENT, $uri);
+        return $this->compare(self::INGREDIENT, $ingredients);
     }
 
     public function getTag($uri = null, $isHighlighted = false): array
     {
-        return $this->get(self::TAG, $uri, $isHighlighted);
+        $tags = $this->get(self::TAG, $uri, $isHighlighted);
+        return $this->compare(self::TAG, $tags);
     }
 
     private function get($table, $uri = null, $isHighlighted = false): array
@@ -107,6 +118,24 @@ class Filter extends Model
             return $items;
         }
         return array();
+    }
+
+    private function compare($key, $items): array
+    {
+        // TODO no funciona amb els ingredients
+        if (array_key_exists($key, $this->filters)) {
+            $selected = $this->filters[ $key ];
+            usort($items, function ($a, $b) use ($selected) {
+                if (in_array($a['id'], $selected)) {
+                    return 0;
+                }
+                if (in_array($b['id'], $selected)) {
+                    return 1;
+                }
+                return strcmp($a['name'], $b['name']);
+            });
+        }
+        return $items;
     }
 
 }

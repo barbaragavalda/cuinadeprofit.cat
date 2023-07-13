@@ -12,6 +12,7 @@ class Search extends \Web\Controller\Search
         $this->list = new FilteredList($this->filters['page']);
         $this->assign('link', _('receptes'));
 
+        $this->filter->setFilters($this->filters);
         $this->assign('difficulties', $this->filter->getDifficulty());
         $this->assign('times', $this->filter->getTime());
         $this->assign('categories', $this->filter->getCategory());

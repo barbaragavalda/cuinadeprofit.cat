@@ -36,7 +36,7 @@
                             <small class="author main-color">{% trans "Autora / autor" %}: {{ recipe.author }}</small>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{% trans "Següent" %}/{{ tag.uri }}"
+                                <a href="{{ domain }}{% trans "receptes" %}/{{ tag.uri }}"
                                    class="badge badge-light main-color">{{ tag.name }}</a>
                             {% endfor %}
                         </div>

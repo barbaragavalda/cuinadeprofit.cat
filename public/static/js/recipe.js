@@ -96,10 +96,14 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
                 }
                 totalAmount = Math.round(totalAmount * 10) / 10;
 
-                if (totalAmount !== 1 && unitPlural !== '') {
-                    totalAmount += ' ' + unitPlural;
-                } else if (unit !== '') {
-                    totalAmount += ' ' + unit;
+                if (unit === '' && unitPlural === '') {
+                    totalAmount = Math.round(totalAmount);
+                } else {
+                    if (totalAmount !== 1) {
+                        totalAmount += ' ' + unitPlural;
+                    } else {
+                        totalAmount += ' ' + unit;
+                    }
                 }
                 $(this).html(totalAmount);
             });

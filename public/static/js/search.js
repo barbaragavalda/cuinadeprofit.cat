@@ -86,7 +86,7 @@ var Search = function (link) {
         var difficulty = $('input[name="difficulty[]"]'),
             time = $('input[name="time"]'),
             tag = $('input[name="tag[]"]'),
-            category = $('input[name="category[]"]'),
+            category = $('input[name="ingredient_category[]"]'),
             ingredient = $('input[name="ingredient[]"]'),
             q = $('input[name="q"]');
 
