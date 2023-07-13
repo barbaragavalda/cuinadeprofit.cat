@@ -12,7 +12,13 @@ class Map extends \Web\Controller\Search
         $this->list = new FilteredList(1, PHP_INT_MAX);
 
         $this->assign('menu', 'restaurants');
+        $this->assign('translations', $this->translate());
         $this->template = 'restaurant/map.twig';
+    }
+
+    protected function translate(): array
+    {
+        return $this->translate->translate(array('restaurants', 'mapa'));
     }
 
 }

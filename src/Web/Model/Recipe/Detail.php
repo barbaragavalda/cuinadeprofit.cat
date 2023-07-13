@@ -368,4 +368,8 @@ class Detail extends Model
         return implode(' | ', $finalUsers);
     }
 
+    public function getTranslation(): array{
+        return array();
+    }
+
 }

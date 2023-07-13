@@ -15,4 +15,8 @@ class Home extends Controller
         $this->template('home.twig');
     }
 
+    protected function translate(): array{
+        return array();
+    }
+
 }

@@ -17,4 +17,9 @@ class Search extends \Web\Controller\Search
         $this->assign('type', 'restaurant');
     }
 
+    protected function translate(): array
+    {
+        return $this->translate->translate(array('restaurants'));
+    }
+
 }

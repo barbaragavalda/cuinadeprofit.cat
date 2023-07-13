@@ -25,4 +25,9 @@ class Search extends \Web\Controller\Search
         $this->assign('noResults', "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s.");
         $this->assign('noResultsLink', _('recepta') . '/' . _('aleatoria'));
     }
+
+    protected function translate(): array{
+        return $this->translate->translate(array('receptes'));
+    }
+
 }

@@ -4,7 +4,6 @@ namespace Web\Controller;
 
 use Core\Model\Paginated;
 use Web\Model\Recipe\Filter;
-use Web\Model\Recipe\FilteredList;
 
 abstract class Search extends Controller
 {
@@ -29,6 +28,7 @@ abstract class Search extends Controller
         $this->assign('extraLink', $this->getExtraLink());
 
         if (empty($this->template)) {
+            $this->assign('translations', $this->translate());
             $this->template('list.twig');
         } else {
             $this->template($this->template);

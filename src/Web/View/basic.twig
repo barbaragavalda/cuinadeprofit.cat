@@ -56,7 +56,8 @@
                 {% if item.uri == lang %}
                     {% set class = ' class="current"' %}
                 {% endif %}
-                <li><a href="{{ rootDomain }}{{ item.uri }}" {{ class|raw }} title="{{ item.name }}">{{ item.uri }}</a>
+                <li><a href="{{ rootDomain }}{{ item.uri }}/{{ translations[item.uri] }}" {{ class|raw }}
+                       title="{{ item.name }}">{{ item.uri }}</a>
                 </li>
             {% endfor %}
         </ul>

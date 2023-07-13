@@ -2,16 +2,29 @@
 
 namespace Web\Controller;
 
+use Web\Model\Translate;
+
 abstract class Controller extends \Core\Controller\Controller
 {
 
+    protected Translate $translate;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->translate = new Translate();
+    }
+
     abstract public function run();
+
+    abstract protected function translate(): array;
 
     public function build()
     {
         $this->defaultMetatags();
 
         $this->assign('staticVersion', 17);
+
         $this->run();
     }
 
