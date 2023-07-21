@@ -10,6 +10,12 @@ $config = array(
         'languages' => array('ca')
     ),
 
+    'import' => array(
+        'app'       => 'Import',
+        'folders'   => array('import'),
+        'languages' => array('ca')
+    ),
+
     '{lang}' => array(
         'app'       => 'Web',
         'folders'   => array('web'),

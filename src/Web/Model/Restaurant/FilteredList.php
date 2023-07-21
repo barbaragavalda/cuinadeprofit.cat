@@ -4,14 +4,20 @@ namespace Web\Model\Restaurant;
 
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
+use Core\Utils\Config;
 use PDO;
 
 class FilteredList extends Paginated
 {
 
+    private string $apiKey = '';
+
     public function __construct($page, $itemsPerPage = 12)
     {
         parent::__construct($page, $itemsPerPage, false);
+
+        $config       = Config::getInstance();
+        $this->apiKey = $config->get('maps-key');
     }
 
     public function initAll()
@@ -48,7 +54,7 @@ class FilteredList extends Paginated
             $restaurant['image'] = $this->getFile($restaurant['image'], 'list');
             if (empty($restaurant['image'])) {
                 $location            = $restaurant['latitude'] . ',' . $restaurant['longitude'];
-                $restaurant['image'] = "https://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=17&size=400x400&maptype=roadmap&markers=color:red%7C$location&key=REDACTED_MAPS_KEY";
+                $restaurant['image'] = "https://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=17&size=400x400&maptype=roadmap&markers=color:red%7C$location&key=$this->apiKey";
             }
         }
         return $items;
