@@ -157,12 +157,13 @@ class Detail extends Model
     {
         $sql         = '
             SELECT ri.id_ingredient, ri.amount, ri.is_alternative, ri.is_optional,
-                ul.name AS unit, ul.plural AS unitPlural, 
+                u.is_unitary ,ul.name AS unit, ul.plural AS unitPlural, 
                 i.id_recipe, il.name, i.variable, il.uri
             FROM recipe_ingredient AS ri
             INNER JOIN ingredient AS i ON ri.id_ingredient = i.id_ingredient
             INNER JOIN ingredient_lang AS il ON i.id_ingredient = il.id_ingredient AND il.id_appacman_lang = :lang
-            LEFT JOIN unit_lang AS ul ON ri.id_unit = ul.id_unit AND ul.id_appacman_lang = :lang
+            LEFT JOIN unit AS u ON ri.id_unit = u.id_unit
+            LEFT JOIN unit_lang AS ul ON u.id_unit = ul.id_unit AND ul.id_appacman_lang = :lang
             WHERE ri.id_recipe = :id
             ORDER BY ri.order_ingredient, ri.is_alternative
         ';
@@ -312,7 +313,8 @@ class Detail extends Model
             if ($ingredient['unitPlural']) {
                 $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
             }
-            $data = " data-unit=\"$unit\" data-plural=\"$unitPlural\"";
+            $unitary = $ingredient['is_unitary'] ? 1 : 0;
+            $data    = " data-unit=\"$unit\" data-unitary=\"$unitary\" data-plural=\"$unitPlural\"";
             if ($fraction != 1) {
                 $data .= " data-fraction=\"$fraction\"";
             }
@@ -368,7 +370,8 @@ class Detail extends Model
         return implode(' | ', $finalUsers);
     }
 
-    public function getTranslation(): array{
+    public function getTranslation(): array
+    {
         return array();
     }
 

@@ -88,6 +88,7 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
             $('span.ingredient-' + _ingredients[i]['uri']).each(function () {
                 var unit = $(this).attr('data-unit'),
                     unitPlural = $(this).attr('data-plural'),
+                    unitary = $(this).attr('data-unitary') === '1',
                     fraction = parseFloat($(this).attr('data-fraction')),
                     totalAmount = (_ingredients[i]['amount'] / _currentAmount * amount);
 
@@ -96,14 +97,14 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
                 }
                 totalAmount = Math.round(totalAmount * 10) / 10;
 
-                if (unit === '' && unitPlural === '') {
+                if (unitary) {
                     totalAmount = Math.round(totalAmount);
+                }
+                console.log(totalAmount);
+                if (totalAmount !== 1) {
+                    totalAmount += ' ' + unitPlural;
                 } else {
-                    if (totalAmount !== 1) {
-                        totalAmount += ' ' + unitPlural;
-                    } else {
-                        totalAmount += ' ' + unit;
-                    }
+                    totalAmount += ' ' + unit;
                 }
                 $(this).html(totalAmount);
             });
