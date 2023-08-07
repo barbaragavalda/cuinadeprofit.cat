@@ -12,7 +12,7 @@ class Detail extends Model
 
     const PATTERN_RECIPE      = '/\[(\d*)]/';
     const PATTERN_DINERS      = '$diners';
-    const PATTERN_PARENTHESIS = '/ ([(]([^)]+)[)])?/';
+    const PATTERN_PARENTHESIS = '/([(]([^)]+)[)])?/';
 
     public function get($uri = null): array
     {
@@ -308,10 +308,10 @@ class Detail extends Model
 
             $unit = $unitPlural = '';
             if ($ingredient['unit']) {
-                $unit = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']);
+                $unit = trim(preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unit']));
             }
             if ($ingredient['unitPlural']) {
-                $unitPlural = preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']);
+                $unitPlural = trim(preg_replace(self::PATTERN_PARENTHESIS, '', $ingredient['unitPlural']));
             }
             $unitary = $ingredient['is_unitary'] ? 1 : 0;
             $data    = " data-unit=\"$unit\" data-unitary=\"$unitary\" data-plural=\"$unitPlural\"";

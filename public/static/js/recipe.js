@@ -100,7 +100,6 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
                 if (unitary) {
                     totalAmount = Math.round(totalAmount);
                 }
-                console.log(totalAmount);
                 if (totalAmount !== 1) {
                     totalAmount += ' ' + unitPlural;
                 } else {

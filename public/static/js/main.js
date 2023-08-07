@@ -13,9 +13,11 @@
     }
 
     $(document).ready(function () {
-        var search = $('#search-model');
+        var search = $('#search-model'),
+            input = $('input[name="q"]');
         $('.search-button').on('click', function () {
             search.fadeIn(400);
+            input.focus();
         });
 
         search.find('.close').on('click', function () {

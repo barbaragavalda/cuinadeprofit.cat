@@ -118,9 +118,6 @@
                         {% for step in recipe.steps %}
                             <div>
                                 {% set currentStep = 'Pas %s'|trans|format(loop.index) %}
-                                {% if recipe.steps|length > 1 %}
-                                    <span class="main-color">{{ currentStep }}</span>
-                                {% endif %}
                                 {{ step.description|raw }}
                                 {% if step.image %}
                                     <div>
