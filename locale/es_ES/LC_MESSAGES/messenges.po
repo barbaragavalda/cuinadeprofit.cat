@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 # routing
 msgid "receptes"
@@ -20,6 +20,9 @@ msgstr "receta"
 
 msgid "aleatoria"
 msgstr "aleatoria"
+
+msgid "braves"
+msgstr "bravas"
 
 msgid "restaurants"
 msgstr "restaurantes"
@@ -33,6 +36,9 @@ msgstr "Inicio"
 
 msgid "Receptes"
 msgstr "Recetas"
+
+msgid "Braves"
+msgstr "Bravas"
 
 msgid "Restaurants"
 msgstr "Restaurantes"
@@ -191,6 +197,16 @@ msgstr "Ver en versión mapa"
 
 msgid "Veure en versió llista"
 msgstr "Ver en versión llista"
+
+# brava
+msgid "En total"
+msgstr "En total"
+
+msgid "Nota mitjana"
+msgstr "Nota media"
+
+msgid "Mentrestant: la nostra recepta"
+msgstr "Mientras tanto: nuestra receta"
 
 # footer
 msgid "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia."

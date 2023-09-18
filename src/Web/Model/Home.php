@@ -32,7 +32,7 @@ class Home extends Model
 
         $notIn = $this->ids;
         foreach ($tags as &$tag) {
-            $list = new FilteredList(1, 8);
+            $list = new FilteredList(1, 6);
             $list->setFilters(array('tag' => array($tag['id']), 'not_in' => $notIn));
             $list->initAll();
             $recipes        = $list->getItemsPage();

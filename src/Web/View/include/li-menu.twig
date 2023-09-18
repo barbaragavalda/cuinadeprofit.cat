@@ -3,4 +3,7 @@
 {% if menu == code %}
     {% set class = ' class="current"' %}
 {% endif %}
-<li><a href="{{ domain }}{{ link|trans }}" title="{{ name }}"{{ class|raw }}>{{ name }}</a></li>
+{% if link != '' %}
+    {% set link = link|trans %}
+{% endif %}
+<li><a href="{{ domain }}{{ link }}" title="{{ name }}"{{ class|raw }}>{{ name }}</a></li>
