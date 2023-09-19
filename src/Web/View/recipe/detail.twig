@@ -33,7 +33,11 @@
                         {% endif %}
                         <div class="resume grey-bg">
                             <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
-                            <small class="author main-color">{% trans "Autora / autor" %}: {{ recipe.author }}</small>
+                            <small class="main-color">
+                                {% trans "Autora / autor" %}: {{ recipe.author }}
+                                <br/>
+                                {% trans "Data" %}: {{ recipe.created }}
+                            </small>
                             {% include 'recipe/difficulty.twig' %}
                             {% for tag in recipe.tags %}
                                 <a href="{{ domain }}{% trans "receptes" %}/{{ tag.uri }}"

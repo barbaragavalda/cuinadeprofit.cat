@@ -149,6 +149,9 @@ msgstr "Buscar por palabra"
 msgid "Autora / autor"
 msgstr "Autora / autor"
 
+msgid "Data"
+msgstr "Fecha"
+
 msgid "Dificultat"
 msgstr "Dificultad"
 

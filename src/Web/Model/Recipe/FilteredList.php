@@ -103,13 +103,17 @@ class FilteredList extends Paginated
             $recipe['time']      = Detail::formatTime($recipe['time']);
             $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
             $recipe['tags']      = $recipeModel->getTags(false);
-
-            $date              = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
-            $recipe['created'] = IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
+            $recipe['created']   = self::formatDate($recipe['created']);
 
             $recipe['link'] = $domain . _('recepta') . '/' . $recipe['uri'];
         }
         return $recipes;
+    }
+
+    public static function formatDate($created): string
+    {
+        $date = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $created);
+        return IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
     }
 
 }

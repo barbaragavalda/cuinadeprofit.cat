@@ -30,11 +30,11 @@ body, #main-header a, .hover-effect .item h2 a {
 }
 
 ::selection {
-    background: rgb(223, 237, 235);
+    background-color: rgba(150, 197, 189, 0.3);
 }
 
 ::-moz-selection {
-    background: rgb(223, 237, 235);
+    background-color: rgba(150, 197, 189, 0.3);
 }
 
 .main-color,
@@ -158,6 +158,8 @@ input {
 
 input:focus, select:focus, button:focus, textarea:focus {
     outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
 }
 
 .logo {
@@ -263,9 +265,16 @@ section {
 
 #main-header .menu {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+    flex-wrap: wrap;
 }
 
 #main-header nav {
+    flex: 1;
     text-align: center;
 }
 
@@ -283,6 +292,7 @@ section {
 }
 
 #main-header ul li a {
+    display: block;
     padding: 5px;
     position: relative;
 }
@@ -338,11 +348,7 @@ footer {
 
 /* search */
 #main-header .search-button {
-    position: absolute;
-    right: 150px;
-    top: -2px;
-    font-size: 21px;
-    cursor: pointer;
+    justify-self: end;
 }
 
 #search-model {
@@ -609,6 +615,7 @@ section h5 {
 
 #list .title {
     font-size: 2.5rem;
+    line-height: 2rem;
     font-weight: 500;
 }
 
@@ -679,7 +686,7 @@ section h5 {
     margin-bottom: 4px;
 }
 
-.ingredients header .author {
+.ingredients header small {
     display: block;
     margin-bottom: 10px;
 }
@@ -923,8 +930,12 @@ section h5 {
 
 @media only screen and (max-width: 767px) {
 
-    #main-header .search-button {
-        right: 0;
+    #main-header ul li {
+        padding: 5px 0;
+    }
+
+    #main-header ul li a {
+        padding: 0 5px;
     }
 
     .title > *, .title-left > *, .title-right > * {

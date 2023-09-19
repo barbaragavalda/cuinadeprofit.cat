@@ -35,7 +35,7 @@ class Detail extends Model
         }
 
         $sql    = "
-            SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.rest_time, r.image, r.link,
+            SELECT r.id_recipe, r.diners, r.prep_time, r.cook_time, r.rest_time, r.image, r.link, r.created,
                 rl.name, rl.uri, rl.description,
                 rl.name AS metatag_title, rl.description AS metatag_description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
@@ -50,6 +50,8 @@ class Detail extends Model
         if (count($recipe)) {
             $recipe   = $recipe[0];
             $this->id = $recipe['id_recipe'];
+
+            $recipe['created'] = FilteredList::formatDate($recipe['created']);
 
             $imageID                 = $recipe['image'];
             $recipe['image']         = $this->getFile($imageID, 'thumb');
