@@ -19,11 +19,11 @@
                            placeholder="{% trans "Buscar..." %}" value="{{ filters.query }}"/>
                 </fieldset>
             </div>
-            {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultat'|trans, field: 'difficulty', checkboxes: difficulties } %}
-            {% include 'recipe/checkboxes.twig' with{ type: 'radio', title: 'Temps'|trans, field: 'time', checkboxes: times } %}
-            {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
-            {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Categoria'|trans, field: 'ingredient_category', checkboxes: categories } %}
-            {% include 'recipe/checkboxes.twig' with{ type: 'checkbox', title: 'Ingredient'|trans, field: 'ingredient', checkboxes: ingredients } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Dificultat'|trans, field: 'difficulty', checkboxes: difficulties } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'radio', title: 'Temps'|trans, field: 'time', checkboxes: times } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Categoria'|trans, field: 'ingredient_category', checkboxes: categories } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Ingredient'|trans, field: 'ingredient', checkboxes: ingredients } %}
         </div>
         {{ buttons }}
     </div>

@@ -101,7 +101,7 @@
                 <h5 class="main-bg">{% trans "Receptes per triomfar" %}</h5>
             </div>
             <div class="wrapper container-fluid">
-                {% include 'include/list.twig' with { hideFilters: true, type: 'recipe', aspectRatio: '1/1', items: succeed } %}
+                {% include 'include/list.twig' with { hideFilters: true, menu: 'recipes', aspectRatio: '1/1', items: succeed } %}
             </div>
         </section>
     {% endif %}

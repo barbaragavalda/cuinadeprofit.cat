@@ -623,6 +623,10 @@ section h5 {
     display: inline;
 }
 
+#list .text-center {
+    margin-bottom: 20px;
+}
+
 /******************************
  * RECIPE
  ******************************/
@@ -821,10 +825,51 @@ section h5 {
  ******************************/
 #map {
     aspect-ratio: 2/1;
-    margin-top: 20px;
 }
 
-.restaurant .text-center {
+.map-info p {
+    margin-bottom: 8px;
+}
+
+.map-info img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    object-position: left;
+    margin-bottom: 16px;
+}
+
+.map-info .reviews {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reviews li {
+    padding-top: 8px;
+}
+
+.reviews .badge {
+    font-size: 100%;
+}
+
+.map-info .closed {
+    font-size: 130%;
+    margin-bottom: 8px;
+}
+
+.reviews table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reviews th, .reviews td {
+    padding: 2px 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.restaurants .text-center {
     margin: 20px 0 30px 0;
 }
 

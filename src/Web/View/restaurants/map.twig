@@ -1,0 +1,15 @@
+{% extends 'list/map.twig' %}
+
+{% block header %}
+    <div class="text-center">
+        <p>{% trans "Una recopilació dels nostres restaurants preferits." %}</p>
+        <a href="{{ domain }}{% trans "restaurants" %}" type="button"
+           class="btn white-bg grey-border">{% trans "Veure en versió llista" %}</a>
+    </div>
+{% endblock %}
+
+{% block filteredView %}
+    <div class="restaurants">
+        <div id="map"></div>
+    </div>
+{% endblock %}

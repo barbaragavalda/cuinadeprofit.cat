@@ -1,0 +1,5 @@
+{% extends 'list/filtered-view.twig' %}
+
+{% block filteredView %}
+    {% include 'include/list.twig' with { type: type, aspectRatio: aspectRatio, noResults: noResults, noResultsLink: noResultsLink } %}
+{% endblock %}

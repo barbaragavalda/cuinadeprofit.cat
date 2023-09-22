@@ -29,7 +29,7 @@ abstract class Search extends Controller
 
         if (empty($this->template)) {
             $this->assign('translations', $this->translate());
-            $this->template('list.twig');
+            $this->template('list/grid.twig');
         } else {
             $this->template($this->template);
         }
@@ -37,7 +37,7 @@ abstract class Search extends Controller
 
     abstract function search();
 
-    private function filter()
+    protected function filter()
     {
         $params = $this->checkParams();
 

@@ -3,22 +3,23 @@
 namespace Web\Controller\Restaurant;
 
 use Core\Utils\Config;
-use Web\Controller\Search;
 use Web\Model\Restaurant\FilteredList;
 
-class Map extends Search
+class Map extends Restaurant
 {
 
     function search()
     {
-        $this->list = new FilteredList(1, PHP_INT_MAX);
+        parent::search();
+
+        $this->list = new FilteredList(null, 1, PHP_INT_MAX);
 
         $config = Config::getInstance();
         $this->assign('key', $config->get('maps-key'));
 
-        $this->assign('menu', 'restaurants');
         $this->assign('translations', $this->translate());
-        $this->template = 'restaurant/map.twig';
+        $this->assign('link', _('restaurants') . '/' . _('mapa'));
+        $this->template = 'restaurants/map.twig';
     }
 
     protected function translate(): array

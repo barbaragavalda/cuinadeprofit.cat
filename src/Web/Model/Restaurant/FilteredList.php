@@ -4,20 +4,18 @@ namespace Web\Model\Restaurant;
 
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
-use Core\Utils\Config;
 use PDO;
 
 class FilteredList extends Paginated
 {
 
-    private string $apiKey = '';
+    private ?string $apiKey;
 
-    public function __construct($page, $itemsPerPage = 12)
+    public function __construct($apiKey, $page, $itemsPerPage = 12)
     {
         parent::__construct($page, $itemsPerPage, false);
 
-        $config       = Config::getInstance();
-        $this->apiKey = $config->get('maps-key');
+        $this->apiKey = $apiKey;
     }
 
     public function initAll()
@@ -47,17 +45,27 @@ class FilteredList extends Paginated
         $items = parent::getItemsPage();
         foreach ($items as &$restaurant) {
             $restaurant['last_visit'] = DateUtils::userDate($restaurant['last_visit']);
-            $restaurant['link']       = 'https://www.google.com/maps/search/?api=1';
-            $restaurant['link']       .= '&query=' . urlencode($restaurant['name'] . ' ' . $restaurant['address']);
+            $restaurant['link']       = self::getLinkMaps($restaurant);
             $restaurant['isOutside']  = true;
 
             $restaurant['image'] = $this->getFile($restaurant['image'], 'list');
             if (empty($restaurant['image'])) {
-                $location            = $restaurant['latitude'] . ',' . $restaurant['longitude'];
-                $restaurant['image'] = "https://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=17&size=400x400&maptype=roadmap&markers=color:red%7C$location&key=$this->apiKey";
+                if ($this->apiKey) {
+                    $location            = $restaurant['latitude'] . ',' . $restaurant['longitude'];
+                    $restaurant['image'] = "https://maps.googleapis.com/maps/api/staticmap?center=$location&zoom=17&size=400x400&maptype=roadmap&markers=color:red%7C$location&key=$this->apiKey";
+                } else {
+                    $restaurant['image'] = '';
+                }
             }
         }
         return $items;
+    }
+
+    static function getLinkMaps($item): string
+    {
+        $link = 'https://www.google.com/maps/search/?api=1';
+        $link .= '&query=' . urlencode($item['name'] . ' ' . $item['address']);
+        return $link;
     }
 
 }

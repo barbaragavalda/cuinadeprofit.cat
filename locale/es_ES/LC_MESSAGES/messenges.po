@@ -211,6 +211,24 @@ msgstr "Nota media"
 msgid "Mentrestant: la nostra recepta"
 msgstr "Mientras tanto: nuestra receta"
 
+msgid "Preu"
+msgstr "Precio"
+
+msgid "Quantitat"
+msgstr "Cantidad"
+
+msgid "Patates"
+msgstr "Patatas"
+
+msgid "Salsa"
+msgstr "Salsa"
+
+msgid "Nota"
+msgstr "Nota"
+
+msgid "Visitat el"
+msgstr "Visitado el"
+
 # footer
 msgid "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia."
 msgstr "En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día."

@@ -1,0 +1,47 @@
+{% extends 'list/map.twig' %}
+
+{% block header %}
+    {% if not isPro and stats|length > 0 %}
+        <div class="stats">
+            {% set color = 'secondary-bg' %}
+            {% for stat in stats %}
+                <style>
+                    #stat-{{ loop.index }} .mask.full,
+                    #stat-{{ loop.index }} .fill {
+                        animation: fill{{ loop.index }} ease-in-out 2s;
+                        transform: rotate({{ stat.degrees }}deg);
+                    }
+
+                    @keyframes fill{{ loop.index }} {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate({{ stat.degrees }}deg);
+                        }
+                    }
+                </style>
+                <div>
+                    <div id="stat-{{ loop.index }}" class="stat grey-bg">
+                        <div class="mask full">
+                            <div class="fill {{ color }}"></div>
+                        </div>
+                        <div class="mask half">
+                            <div class="fill {{ color }}"></div>
+                        </div>
+                        <p class="black-color white-bg">{{ stat.value }}</p>
+                    </div>
+                    {{ stat.name }}
+                </div>
+                {% set color = 'main-bg' %}
+                {% if loop.index == (stats|length - 1) %}
+                    {% set color = 'tertiary-bg' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block filteredView %}
+    <div id="map"></div>
+{% endblock %}

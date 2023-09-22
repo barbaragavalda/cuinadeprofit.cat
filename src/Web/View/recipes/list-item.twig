@@ -12,7 +12,7 @@
         <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}">{{ item.name }}</a>
     </h2>
     <div>
-        {% include 'recipe/difficulty.twig' with { recipe: item } %}
+        {% include 'recipes/difficulty.twig' with { recipe: item } %}
         <small>
             {{ item.time }}
             {% if item.rest_time %}

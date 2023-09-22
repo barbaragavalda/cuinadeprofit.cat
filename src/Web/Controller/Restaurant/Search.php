@@ -2,19 +2,21 @@
 
 namespace Web\Controller\Restaurant;
 
-use Web\Controller\Controller;
+use Core\Utils\Config;
 use Web\Model\Restaurant\FilteredList;
 
-class Search extends \Web\Controller\Search
+class Search extends Restaurant
 {
 
     function search()
     {
-        $this->list = new FilteredList($this->filters['page']);
-        $this->assign('link', _('restaurants'));
+        parent::search();
 
-        $this->assign('menu', 'restaurants');
-        $this->assign('type', 'restaurant');
+        $config = Config::getInstance();
+        $apiKey = $config->get('maps-key');
+
+        $this->list     = new FilteredList($apiKey, $this->filters['page']);
+        $this->template = 'restaurants/list.twig';
     }
 
     protected function translate(): array
