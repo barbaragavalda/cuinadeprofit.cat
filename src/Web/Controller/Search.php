@@ -103,6 +103,12 @@ abstract class Search extends Controller
         if (count($tag)) {
             $this->addFilter(Filter::TAG, $tag['id']);
         }
+
+        // type
+        $type = $this->filter->getPotatoTypes($value);
+        if (count($type)) {
+            $this->addFilter(Filter::POTATO_TYPES, $type['id']);
+        }
     }
 
     private function addFilter($key, $value)

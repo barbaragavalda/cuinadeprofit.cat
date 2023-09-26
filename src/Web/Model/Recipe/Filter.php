@@ -8,11 +8,12 @@ use PDO;
 class Filter extends Model
 {
 
-    const CATEGORY   = 'ingredient_category';
-    const DIFFICULTY = 'difficulty';
-    const INGREDIENT = 'ingredient';
-    const TAG        = 'tag';
-    const TIME       = 'time';
+    const CATEGORY     = 'ingredient_category';
+    const DIFFICULTY   = 'difficulty';
+    const INGREDIENT   = 'ingredient';
+    const POTATO_TYPES = 'brava_type';
+    const TAG          = 'tag';
+    const TIME         = 'time';
 
     const LESS_15M        = '<15min';
     const BETWEEN_15M_30M = '15min-30min';
@@ -78,6 +79,12 @@ class Filter extends Model
         return $this->compare(self::TAG, $tags);
     }
 
+    public function getPotatoTypes($uri = null): array
+    {
+        $types = $this->get(self::POTATO_TYPES, $uri);
+        return $this->compare(self::POTATO_TYPES, $types);
+    }
+
     private function get($table, $uri = null, $isHighlighted = false): array
     {
         $where  = '';
@@ -99,6 +106,9 @@ class Filter extends Model
                 break;
             case self::TAG:
                 $orderBy = 't.order, tl.name';
+                break;
+            case self::POTATO_TYPES:
+                $orderBy = 'id ASC';
                 break;
         }
 

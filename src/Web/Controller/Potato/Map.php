@@ -23,6 +23,7 @@ class Map extends Search
         if (in_array('pro', $this->parts)) {
             $this->assign('isPro', true);
             $link .= '/pro';
+            $this->assign('brava_type', $this->filter->getPotatoTypes());
         }
         $this->assign('link', $link);
 

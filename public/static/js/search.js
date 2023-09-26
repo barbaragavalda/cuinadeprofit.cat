@@ -88,6 +88,7 @@ var Search = function (link) {
             tag = $('input[name="tag[]"]'),
             category = $('input[name="ingredient_category[]"]'),
             ingredient = $('input[name="ingredient[]"]'),
+            type = $('input[name="brava_type[]"]'),
             q = $('input[name="q"]');
 
         form.submit(function (e) {
@@ -97,6 +98,7 @@ var Search = function (link) {
                 tags = addArray(tag),
                 categories = addArray(category),
                 ingredients = addArray(ingredient),
+                types = addArray(type),
                 query = q.val();
 
             if (difficulties !== '') {
@@ -113,6 +115,9 @@ var Search = function (link) {
             }
             if (ingredients !== '') {
                 url.push(ingredients);
+            }
+            if (types !== '') {
+                url.push(types);
             }
 
             if (url.length > 0 || query != '') {

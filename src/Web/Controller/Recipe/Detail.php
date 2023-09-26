@@ -22,7 +22,7 @@ class Detail extends Controller
 
                 $this->assign('menu', 'recipes');
                 $this->assign('translations', $this->translate());
-                $this->template('recipe/detail.twig');
+                $this->template('recipes/detail.twig');
                 return;
             }
         }

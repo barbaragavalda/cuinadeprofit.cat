@@ -216,18 +216,18 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                     '   <h2 class="ms-madi">' + items[id].name + '</h2>' +
                     '</a>';
                 if (items[id]['is_closed'] == 1) {
-                    html += '<small class="badge closed secondary-bg white-color">TANCAT</small>';
+                    html += '<small class="badge closed secondary-bg white-color">' + dictionary['closed'].toUpperCase() + '</small>';
                 }
-                if (typeof (items[id].image) != 'undefined' && items[id].image !== '') {
+                if (isNotEmpty(items[id].image)) {
                     html += '<img src="' + items[id].image + '" />';
                 }
-                if (typeof (items[id].address) != 'undefined' && items[id].address !== '') {
+                if (isNotEmpty(items[id].address)) {
                     html += '<p><b>Adreça:</b> ' + items[id].address + '</p>';
                 }
-                if (typeof (items[id].last_visit) != 'undefined' && items[id].last_visit !== '') {
+                if (isNotEmpty(items[id].last_visit)) {
                     html += '<p><b>Última visita:</b> ' + items[id].last_visit + '</p>';
                 }
-                if (typeof (items[id].text) != 'undefined' && items[id].text) {
+                if (isNotEmpty(items[id].text)) {
                     html += items[id].text;
                 }
                 if (typeof (items[id].reviews) != 'undefined' && items[id].reviews.length > 0) {
@@ -244,10 +244,12 @@ var CustomMap = function (staticDomain, dictionary, Map) {
 
                         html += '<li>';
                         html += '<p>' +
-                            '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ' +
-                            '<b>' + dictionary.last_visit + ':</b> ' + reviews[j].last_visit +
-                            '</p>';
-                        if (typeof (reviews[j].image) != 'undefined' && reviews[j].image !== '') {
+                            '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
+                        if (isNotEmpty(dictionary.last_visit)) {
+                            html += '<b>' + dictionary.last_visit + ':</b> ' + reviews[j].last_visit;
+                        }
+                        html += '</p>';
+                        if (isNotEmpty(reviews[j].image)) {
                             html += '<img src="' + reviews[j].image + '" />';
                         }
                         html += '<table>' +
@@ -264,7 +266,7 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                             '   <td class="grey-border">' + reviews[j].sauce + '</td>' +
                             '</tr>' +
                             '</table>';
-                        if (typeof (reviews[j].review) != 'undefined' && reviews[j].review !== '') {
+                        if (isNotEmpty(reviews[j].review)) {
                             html += '<p>' + reviews[j].review + '</p>';
                         }
                         html += '</li>';
@@ -281,33 +283,39 @@ var CustomMap = function (staticDomain, dictionary, Map) {
             });
         }
 
-        var clusterStyles = [
-            {
-                textColor: 'white',
-                url: staticDomain + 'marker-bar-done.png',
-                height: 50,
-                width: 50
-            },
-            {
-                textColor: 'white',
-                url: staticDomain + 'marker-restaurant-done.png',
-                height: 50,
-                width: 50
-            },
-            {
-                textColor: 'white',
-                url: staticDomain + 'marker-closed.png',
-                height: 50,
-                width: 50
-            }
-        ];
-        var mcOptions = {
-            gridSize: 50,
-            styles: clusterStyles,
-            maxZoom: 15
+        let renderer = {
+            render: ({count, position}) =>
+                new google.maps.Marker({
+                    label: {
+                        text: String(count),
+                        color: '#96C5BD',
+                        fontSize: '13px',
+                        className: 'marker-position'
+                    },
+                    position,
+                    icon: {
+                        scaledSize: new google.maps.Size(57, 65),
+                        url: staticDomain + 'marker-bar-done.png',
+                    },
+                    // adjust zIndex to be above other markers
+                    zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
+                }),
         };
-        new markerClusterer.MarkerClusterer({markers, map, mcOptions});
+
+
+        new markerClusterer.MarkerClusterer({
+            map: map,
+            markers: markers,
+            renderer: renderer
+        });
         map.fitBounds(bounds);
+    }
+
+    function isNotEmpty(string) {
+        if (typeof (string) != 'undefined' && string !== '') {
+            return true;
+        }
+        return false;
     }
 
     function getType(item) {

@@ -5,11 +5,8 @@ namespace Web\Model\Potato;
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
 use Core\Model\Utils\StringUtils;
-use Core\Utils\Config;
 use DateTime;
-use IntlDateFormatter;
 use PDO;
-use Web\Model\Recipe\Detail;
 
 class FilteredList extends Paginated
 {
@@ -30,15 +27,20 @@ class FilteredList extends Paginated
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
         if (array_key_exists('query', $this->filters)) {
-            $where           = ' AND (b.name LIKE :query OR b.address LIKE :query OR bl.text LIKE :query)';
+            $where           .= ' AND (b.name LIKE :query OR b.address LIKE :query OR bl.text LIKE :query)';
             $params['query'] = array('value' => '%' . $this->filters['query'] . '%', 'type' => PDO::PARAM_STR);
         }
 
         $types = array(self::DONE);
         if ($this->filters['pro']) {
-            $types[] = self::TO_DO_BAR;
-            $types[] = self::TO_DO_RESTAURANT;
+            if (array_key_exists('brava_type', $this->filters) && count($this->filters['brava_type'])) {
+                $types = $this->filters['brava_type'];
+            } else {
+                $types[] = self::TO_DO_BAR;
+                $types[] = self::TO_DO_RESTAURANT;
+            }
         }
+
         $sql         = "
             SELECT b.id_brava AS id, b.id_brava_type, b.name, b.is_restaurant, b.is_closed,
                    b.address, b.latitude, b.longitude,

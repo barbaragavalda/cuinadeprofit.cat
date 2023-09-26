@@ -827,6 +827,10 @@ section h5 {
     aspect-ratio: 2/1;
 }
 
+.marker-position{
+    font-weight: bold;
+    padding-bottom: 14px;
+}
 .map-info p {
     margin-bottom: 8px;
 }
@@ -952,6 +956,12 @@ section h5 {
         text-decoration: underline;
     }
 
+    #list.potatoes{
+        padding: 0;
+    }
+    #list form {
+        padding: 8px 32px;
+    }
     #list form > div {
         display: none;
     }

@@ -24,6 +24,7 @@
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Categoria'|trans, field: 'ingredient_category', checkboxes: categories } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Ingredient'|trans, field: 'ingredient', checkboxes: ingredients } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Tipus'|trans, field: 'brava_type', checkboxes: brava_type } %}
         </div>
         {{ buttons }}
     </div>
