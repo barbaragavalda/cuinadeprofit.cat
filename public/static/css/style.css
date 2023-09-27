@@ -611,6 +611,7 @@ section h5 {
  ******************************/
 #show-filters {
     display: none;
+    margin-bottom: 8px;
 }
 
 #list .title {
@@ -827,10 +828,11 @@ section h5 {
     aspect-ratio: 2/1;
 }
 
-.marker-position{
+.marker-position {
     font-weight: bold;
     padding-bottom: 14px;
 }
+
 .map-info p {
     margin-bottom: 8px;
 }
@@ -945,9 +947,18 @@ section h5 {
 
 @media only screen and (max-width: 993px) {
 
+    section .col-lg-12 {
+        padding: 0;
+    }
+
     /* home */
     #filter-items .item {
         width: 25%;
+        padding: 0;
+    }
+
+    #filter-items .item a {
+        padding: 0;
     }
 
     /* list */
@@ -956,12 +967,14 @@ section h5 {
         text-decoration: underline;
     }
 
-    #list.potatoes{
+    #list .col-lg-10 {
         padding: 0;
     }
+
     #list form {
-        padding: 8px 32px;
+        padding: 8px 16px;
     }
+
     #list form > div {
         display: none;
     }

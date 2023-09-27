@@ -17,8 +17,10 @@ var CustomMap = function (staticDomain, dictionary, Map) {
     const icons = {
         'bar-done': staticDomain + 'marker-bar-done.png',
         'bar-to-do': staticDomain + 'marker-bar-to-do.png',
+        'bar-top': staticDomain + 'marker-bar-top.png',
         'restaurant-done': staticDomain + 'marker-restaurant-done.png',
         'restaurant-to-do': staticDomain + 'marker-restaurant-to-do.png',
+        'restaurant-top': staticDomain + 'marker-restaurant-top.png',
         'closed': staticDomain + 'marker-closed.png'
     };
 
@@ -330,6 +332,11 @@ var CustomMap = function (staticDomain, dictionary, Map) {
         var status = 'to-do';
         if (typeof (item['id_brava_type']) === 'undefined' || item['id_brava_type'] == 3) {
             status = 'done';
+        }
+        if (typeof (item.reviews) != 'undefined' && item.reviews.length > 0) {
+            if (typeof (item.reviews[0]['score']) !== 'undefined' && item.reviews[0]['score'] >= 9) {
+                status = 'top';
+            }
         }
         return type + '-' + status;
     }
