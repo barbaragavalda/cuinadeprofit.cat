@@ -235,6 +235,9 @@ msgstr "Cerrado"
 msgid "Tipus"
 msgstr "Tipo"
 
+msgid "Any"
+msgstr "Año"
+
 # footer
 msgid "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia."
 msgstr "En esta web encontrarás algunas de nuestras recetas preferidas que sabemos que os encantan, pero también recetas fáciles para poder hacer en el día a día."

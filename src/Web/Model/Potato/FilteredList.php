@@ -22,13 +22,24 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $where  = '';
+        $where  = $innerJoin = '';
         $params = array(
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
         if (array_key_exists('query', $this->filters)) {
             $where           .= ' AND (b.name LIKE :query OR b.address LIKE :query OR bl.text LIKE :query)';
             $params['query'] = array('value' => '%' . $this->filters['query'] . '%', 'type' => PDO::PARAM_STR);
+        }
+        if (array_key_exists('year', $this->filters)) {
+            $whereOr = array();
+            foreach ($this->filters['year'] as $i => $year) {
+                $whereOr[]        = "br.last_visit LIKE :year$i";
+                $params["year$i"] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
+            }
+            if (count($whereOr)) {
+                $innerJoin = 'INNER JOIN brava_review AS br ON br.id_brava = b.id_brava';
+                $innerJoin .= ' AND (' . implode(' OR ', $whereOr) . ')';
+            }
         }
 
         $types = array(self::DONE);
@@ -43,10 +54,10 @@ class FilteredList extends Paginated
 
         $sql         = "
             SELECT b.id_brava AS id, b.id_brava_type, b.name, b.is_restaurant, b.is_closed,
-                   b.address, b.latitude, b.longitude,
-                   bl.text
+                   b.address, b.latitude, b.longitude, IFNULL(bl.text, '') AS text
             FROM brava AS b
             INNER JOIN brava_lang AS bl ON b.id_brava = bl.id_brava AND bl.id_appacman_lang = :lang
+            $innerJoin
             WHERE b.id_brava_type IN (" . implode(', ', $types) . ") $where
         ";
         $this->items = $this->mysql->query($sql, $params);
@@ -65,7 +76,9 @@ class FilteredList extends Paginated
     private function getReviews($id): array
     {
         $sql     = '
-            SELECT r.image, r.price, r.amount, r.potatoes, r.sauce, r.score, r.last_visit, rl.review
+            SELECT r.image, IFNULL(r.last_visit, "") AS last_visit, IFNULL(rl.review, "") AS review, 
+                   IFNULL(r.price, "") AS price, IFNULL(r.amount, "") AS amount, IFNULL(r.potatoes, "") AS potatoes, 
+                   IFNULL(r.sauce, "") AS sauce, IFNULL(r.score, "") AS score
             FROM brava_review AS r
             INNER JOIN brava_review_lang AS rl ON r.id_brava_review = rl.id_brava_review AND rl.id_appacman_lang = :lang
             WHERE r.id_brava = :id

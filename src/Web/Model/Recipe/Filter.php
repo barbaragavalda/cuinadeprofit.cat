@@ -14,6 +14,7 @@ class Filter extends Model
     const POTATO_TYPES = 'brava_type';
     const TAG          = 'tag';
     const TIME         = 'time';
+    const YEAR         = 'year';
 
     const LESS_15M        = '<15min';
     const BETWEEN_15M_30M = '15min-30min';
@@ -83,6 +84,24 @@ class Filter extends Model
     {
         $types = $this->get(self::POTATO_TYPES, $uri);
         return $this->compare(self::POTATO_TYPES, $types);
+    }
+
+    public function getPotatoYears(): array
+    {
+        $sql   = '
+            SELECT DISTINCT(YEAR(last_visit)) AS id
+            FROM brava_review
+            WHERE last_visit IS NOT NULL
+            ORDER BY id DESC
+        ';
+        $years = $this->mysql->query($sql);
+        if (count($years)) {
+            foreach ($years as &$year) {
+                $year['name'] = $year['id'];
+                $year['uri']  = $year['id'];
+            }
+        }
+        return $this->compare(self::YEAR, $years);
     }
 
     private function get($table, $uri = null, $isHighlighted = false): array

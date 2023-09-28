@@ -44,7 +44,11 @@ abstract class Search extends Controller
         $this->filters = array('page' => 1);
         foreach ($params as $param) {
             if (is_numeric($param)) {
-                $this->filters['page'] = $param;
+                if ($param < 2000) {
+                    $this->filters['page'] = $param;
+                } else {
+                    $this->checkParam($param);
+                }
             } else {
                 $explode = explode('&', $param);
                 foreach ($explode as $value) {
@@ -74,6 +78,11 @@ abstract class Search extends Controller
 
     private function checkParam($value)
     {
+        // year
+        if (is_numeric($value)) {
+            $this->addFilter(Filter::YEAR, $value);
+        }
+
         // difficulty
         $difficulty = $this->filter->getDifficulty($value);
         if (count($difficulty)) {

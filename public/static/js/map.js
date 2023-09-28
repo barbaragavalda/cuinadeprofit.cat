@@ -236,38 +236,41 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                     var reviews = items[id].reviews;
                     html += '<ul class="reviews">';
                     for (var j = 0; j < reviews.length; j++) {
-                        var classBadge = 'main-bg white-color';
-                        if (reviews[j].score < 5) {
-                            classBadge = 'secondary-bg black-color';
-                        }
-                        if (reviews[j].score >= 8) {
-                            classBadge = 'tertiary-bg black-color';
-                        }
-
                         html += '<li>';
-                        html += '<p>' +
-                            '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
-                        if (isNotEmpty(dictionary.last_visit)) {
+                        html += '<p>';
+                        var scoreTable = '';
+                        if (isNotEmpty(reviews[j].price) || isNotEmpty(reviews[j].amount) || isNotEmpty(reviews[j].potatoes) || isNotEmpty(reviews[j].sauce)) {
+                            var classBadge = 'main-bg white-color';
+                            if (reviews[j].score < 5) {
+                                classBadge = 'secondary-bg black-color';
+                            }
+                            if (reviews[j].score >= 8) {
+                                classBadge = 'tertiary-bg black-color';
+                            }
+                            html += '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
+                            scoreTable = '<table>' +
+                                '<tr>' +
+                                '   <th class="grey-border ' + classBadge + '">' + dictionary.price + '</th>' +
+                                '   <th class="grey-border ' + classBadge + '">' + dictionary.amount + '</th>' +
+                                '   <th class="grey-border ' + classBadge + '">' + dictionary.potatoes + '</th>' +
+                                '   <th class="grey-border ' + classBadge + '">' + dictionary.sauce + '</th>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '   <td class="grey-border">' + reviews[j].price + '</td>' +
+                                '   <td class="grey-border">' + reviews[j].amount + '</td>' +
+                                '   <td class="grey-border">' + reviews[j].potatoes + '</td>' +
+                                '   <td class="grey-border">' + reviews[j].sauce + '</td>' +
+                                '</tr>' +
+                                '</table>';
+                        }
+                        if (isNotEmpty(reviews[j].last_visit)) {
                             html += '<b>' + dictionary.last_visit + ':</b> ' + reviews[j].last_visit;
                         }
                         html += '</p>';
                         if (isNotEmpty(reviews[j].image)) {
                             html += '<img src="' + reviews[j].image + '" />';
                         }
-                        html += '<table>' +
-                            '<tr>' +
-                            '   <th class="grey-border ' + classBadge + '">' + dictionary.price + '</th>' +
-                            '   <th class="grey-border ' + classBadge + '">' + dictionary.amount + '</th>' +
-                            '   <th class="grey-border ' + classBadge + '">' + dictionary.potatoes + '</th>' +
-                            '   <th class="grey-border ' + classBadge + '">' + dictionary.sauce + '</th>' +
-                            '</tr>' +
-                            '<tr>' +
-                            '   <td class="grey-border">' + reviews[j].price + '</td>' +
-                            '   <td class="grey-border">' + reviews[j].amount + '</td>' +
-                            '   <td class="grey-border">' + reviews[j].potatoes + '</td>' +
-                            '   <td class="grey-border">' + reviews[j].sauce + '</td>' +
-                            '</tr>' +
-                            '</table>';
+                        html += scoreTable;
                         if (isNotEmpty(reviews[j].review)) {
                             html += '<p>' + reviews[j].review + '</p>';
                         }
@@ -304,17 +307,20 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                 }),
         };
 
-
         new markerClusterer.MarkerClusterer({
             map: map,
             markers: markers,
-            renderer: renderer
+            renderer: renderer,
+            algorithmOptions: {
+                maxZoom: 14
+            }
         });
         map.fitBounds(bounds);
     }
 
     function isNotEmpty(string) {
-        if (typeof (string) != 'undefined' && string !== '') {
+        console.log(string, !['undefined', 'object'].includes(typeof (string)), string !== '', string !== 'null');
+        if (!['undefined', 'object'].includes(typeof (string)) && string !== '' && string !== 'null') {
             return true;
         }
         return false;

@@ -17,16 +17,16 @@ class Map extends Search
         $config = Config::getInstance();
         $this->assign('key', $config->get('maps-key'));
 
-        $this->assign('menu', 'potatoes');
-
         $link = _('braves');
         if (in_array('pro', $this->parts)) {
             $this->assign('isPro', true);
             $link .= '/pro';
             $this->assign('brava_type', $this->filter->getPotatoTypes());
         }
+        $this->assign('years', $this->filter->getPotatoYears());
         $this->assign('link', $link);
 
+        $this->assign('menu', 'potatoes');
         $this->assign('translations', $this->translate());
         $this->template = 'potatoes/map.twig';
     }
