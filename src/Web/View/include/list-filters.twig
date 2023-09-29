@@ -8,7 +8,11 @@
         </div>
     {% endset %}
 
-    <a href="#" id="show-filters" class="grey-color">{% trans "Mostrar filtres" %}</a>
+    <a href="#" id="show-filters" class="grey-color">{% trans "Mostrar filtres" %}
+        {% if filtersCounter > 0 %}
+            <span class="badge secondary-bg white-color">{{ filtersCounter }}</span>
+        {% endif %}
+    </a>
     <div>
         {{ buttons }}
         <div class="filters">

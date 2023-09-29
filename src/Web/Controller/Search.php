@@ -8,9 +8,10 @@ use Web\Model\Recipe\Filter;
 abstract class Search extends Controller
 {
 
-    protected array      $filters = array();
-    protected ?Filter    $filter  = null;
-    protected ?Paginated $list    = null;
+    protected array      $filters        = array();
+    protected int        $filtersCounter = 0;
+    protected ?Filter    $filter         = null;
+    protected ?Paginated $list           = null;
     protected string     $template;
 
     public function run()
@@ -25,6 +26,7 @@ abstract class Search extends Controller
         $this->assign('items', $this->list->getItemsPage());
         $this->assign('pagination', $this->list->paginate());
         $this->assign('filters', $this->filters);
+        $this->assign('filtersCounter', $this->filtersCounter);
         $this->assign('extraLink', $this->getExtraLink());
 
         if (empty($this->template)) {
@@ -59,6 +61,7 @@ abstract class Search extends Controller
 
         if (isset($_GET['q'])) {
             $this->filters['query'] = $_REQUEST['q'];
+            $this->filtersCounter++;
         }
     }
 
@@ -126,6 +129,7 @@ abstract class Search extends Controller
             $this->filters[ $key ] = array();
         }
         $this->filters[ $key ][] = $value;
+        $this->filtersCounter++;
     }
 
     private function getExtraLink(): string
