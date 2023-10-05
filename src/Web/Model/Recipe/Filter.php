@@ -86,14 +86,15 @@ class Filter extends Model
         return $this->compare(self::POTATO_TYPES, $types);
     }
 
-    public function getPotatoYears(): array
+    public function getPotatoYears($limit = PHP_INT_MAX): array
     {
-        $sql   = '
+        $sql   = "
             SELECT DISTINCT(YEAR(last_visit)) AS id
             FROM brava_review
             WHERE last_visit IS NOT NULL
             ORDER BY id DESC
-        ';
+            LIMIT $limit
+        ";
         $years = $this->mysql->query($sql);
         if (count($years)) {
             foreach ($years as &$year) {

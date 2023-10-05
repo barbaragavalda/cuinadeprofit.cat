@@ -22,7 +22,7 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $where  = $innerJoin = '';
+        $fields = $where  = $innerJoin = $limit = '';
         $params = array(
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
@@ -41,9 +41,17 @@ class FilteredList extends Paginated
                 $innerJoin .= ' AND (' . implode(' OR ', $whereOr) . ')';
             }
         }
+        if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
+            $fields = ', (SELECT score FROM brava_review WHERE id_brava = b.id_brava ORDER BY last_visit DESC LIMIT 1) AS score';
+            $where .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
+            $limit = "
+                ORDER BY score DESC
+                LIMIT $this->itemsPerPage
+            ";
+        }
 
         $types = array(self::DONE);
-        if ($this->filters['pro']) {
+        if (array_key_exists('pro', $this->filters) && $this->filters['pro']) {
             if (array_key_exists('brava_type', $this->filters) && count($this->filters['brava_type'])) {
                 $types = $this->filters['brava_type'];
             } else {
@@ -53,18 +61,24 @@ class FilteredList extends Paginated
         }
 
         $sql         = "
-            SELECT b.id_brava AS id, b.id_brava_type, b.name, b.is_restaurant, b.is_closed,
-                   b.address, b.latitude, b.longitude, IFNULL(bl.text, '') AS text
+            SELECT DISTINCT b.id_brava AS id, b.id_brava_type, b.name, b.is_restaurant, b.is_closed,
+                   b.address, b.latitude, b.longitude, IFNULL(bl.text, '') AS text $fields
             FROM brava AS b
             INNER JOIN brava_lang AS bl ON b.id_brava = bl.id_brava AND bl.id_appacman_lang = :lang
             $innerJoin
             WHERE b.id_brava_type IN (" . implode(', ', $types) . ") $where
+            $limit
         ";
         $this->items = $this->mysql->query($sql, $params);
+    }
 
-        foreach ($this->items as &$item) {
+    public function getItemsPage(): array
+    {
+        $items = parent::getItemsPage();
+        foreach ($items as &$item) {
             $this->prepare($item);
         }
+        return $items;
     }
 
     private function prepare(&$item)

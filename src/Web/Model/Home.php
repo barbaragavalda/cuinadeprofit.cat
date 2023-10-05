@@ -25,22 +25,21 @@ class Home extends Model
         return $recent;
     }
 
-    public function getCategories(): array
+    public function getBraves(): array
     {
         $filter = new Filter();
-        $tags   = $filter->getTag(null, true);
+        $years  = $filter->getPotatoYears(5);
 
-        $notIn = $this->ids;
-        foreach ($tags as &$tag) {
-            $list = new FilteredList(1, 6);
-            $list->setFilters(array('tag' => array($tag['id']), 'not_in' => $notIn));
+        $notIn = array();
+        foreach ($years as &$year) {
+            $list = new Potato\FilteredList(1, 10);
+            $list->setFilters(array('year' => array($year['id']), 'not_in' => $notIn));
             $list->initAll();
-            $recipes        = $list->getItemsPage();
-            $notIn          = array_merge($notIn, array_column($recipes, 'id_recipe'));
-            $tag['recipes'] = $recipes;
+            $potatoes      = $list->getItemsPage();
+            $notIn         = array_merge($notIn, array_column($potatoes, 'id'));
+            $year['items'] = $potatoes;
         }
-
-        return $tags;
+        return $years;
     }
 
     public function getRecipesToSucceed(): array

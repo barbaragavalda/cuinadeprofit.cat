@@ -54,10 +54,10 @@
         </section>
     {% endif %}
 
-    {% if categories|length > 0 %}
+    {% if potatoes|length > 0 %}
         <section>
             <div class="title">
-                <h5 class=" main-bg">{% trans "Per categories" %}</h5>
+                <h5 class=" main-bg">{% trans "Top Braves" %}</h5>
             </div>
 
             <div class="wrapper container-fluid">
@@ -65,28 +65,24 @@
                     <div class="col-lg-12">
                         <div class="categories">
                             <ul>
-                                {% for category in categories %}
+                                {% for category in potatoes %}
                                     {% set isActive = ' class="active"' %}
                                     {% if loop.index != 1 %}
                                         {% set isActive = '' %}
                                     {% endif %}
-                                    <li data-filter=".{{ category.uri }}"{{ isActive|raw }}>{{ category.name }}</li>
+                                    <li data-filter=".year-{{ category.uri }}"{{ isActive|raw }}>{{ category.name }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div id="filter-items" class="hover-effect">
-                    {% for category in categories %}
-                        {% for recipe in category.recipes %}
-                            {% set classItem = '' %}
-                            {% for tag in recipe.tags %}
-                                {% set classItem = classItem ~ ' ' ~ tag.uri %}
-                            {% endfor %}
-                            <div class="item mix{{ classItem }}">
-                                {% include 'include/image.twig' with { url: recipe.image, link: domain ~ 'recepta'|trans ~ '/' ~ recipe.uri, aspectRatio: '4/3' } %}
-                                <a href="{{ domain }}{% trans "recepta" %}/{{ recipe.uri }}"
-                                   class="ms-madi text secondary-color">{{ recipe.name }}</a>
+                    {% for category in potatoes %}
+                        {% for item in category.items %}
+                            <div class="item mix year-{{ category.uri }}">
+                                {% set link = domain ~ 'braves'|trans ~ '/?q=' ~ item.name|url_encode %}
+                                {% include 'include/image.twig' with { url: item.reviews[0].image, link: link, aspectRatio: '4/3' } %}
+                                <a href="{{ link }}" class="ms-madi text secondary-color">{{ item.name }}</a>
                             </div>
                         {% endfor %}
                     {% endfor %}

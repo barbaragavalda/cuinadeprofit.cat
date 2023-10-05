@@ -54,8 +54,8 @@ msgstr "Parece que nos hemos perdido. Para recuperar el rumbo: te proponemos que
 msgid "Últimes receptes"
 msgstr "Últimas recetas"
 
-msgid "Per categories"
-msgstr "Por categorías"
+msgid "Top Braves"
+msgstr "Top Braves"
 
 msgid "Receptes per triomfar"
 msgstr "Recetas para triunfar"
