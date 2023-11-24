@@ -18,7 +18,7 @@
             {% set li %}
                 <li class="custom-control custom-{{ type }}">
                     {% set checked = '' %}
-                    {% if field == 'time' or field == 'rate' %} 
+                    {% if field == 'time' or field == 'rate' %}
                         {% if filters[field][0] != "" and filters[field][0] == checkbox.id[0] %}
                             {% set checked = 'checked' %}
                         {% endif %}
