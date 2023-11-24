@@ -319,7 +319,6 @@ var CustomMap = function (staticDomain, dictionary, Map) {
     }
 
     function isNotEmpty(string) {
-        console.log(string, !['undefined', 'object'].includes(typeof (string)), string !== '', string !== 'null');
         if (!['undefined', 'object'].includes(typeof (string)) && string !== '' && string !== 'null') {
             return true;
         }

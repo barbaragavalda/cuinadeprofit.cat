@@ -12,6 +12,7 @@ class Filter extends Model
     const DIFFICULTY   = 'difficulty';
     const INGREDIENT   = 'ingredient';
     const POTATO_TYPES = 'brava_type';
+    const RATE         = 'rate';
     const TAG          = 'tag';
     const TIME         = 'time';
     const YEAR         = 'year';
@@ -21,6 +22,11 @@ class Filter extends Model
     const BETWEEN_30M_1H  = '30min-1h';
     const BETWEEN_1H_2H   = '1h-2h';
     const MORE_2H         = '>2h';
+
+    const LESS_5      = '0-4.9';
+    const BETWEEN_5_7 = '5-6.9';
+    const BETWEEN_7_9 = '7-8.9';
+    const MORE_9      = '9-10';
 
     private $filters = array();
 
@@ -84,6 +90,30 @@ class Filter extends Model
     {
         $types = $this->get(self::POTATO_TYPES, $uri);
         return $this->compare(self::POTATO_TYPES, $types);
+    }
+
+    public function getRates($uri = null): array
+    {
+        if ($uri == null) {
+            return array(
+                array('id' => array(0, 4.9), 'uri' => self::LESS_5, 'name' => '0 - 4.9'),
+                array('id' => array(5, 6.9), 'uri' => self::BETWEEN_5_7, 'name' => '5 - 6.9'),
+                array('id' => array(7, 8.9), 'uri' => self::BETWEEN_7_9, 'name' => ' 7 - 8.9'),
+                array('id' => array(9, 10), 'uri' => self::MORE_9, 'name' => '9 - 10')
+            );
+        } else {
+            switch (urldecode($uri)) {
+                case self::LESS_5:
+                    return array(0, 4.9);
+                case self::BETWEEN_5_7:
+                    return array(5, 6.9);
+                case self::BETWEEN_7_9:
+                    return array(7, 8.9);
+                case self::MORE_9:
+                    return array(9, 10);
+            }
+        }
+        return array();
     }
 
     public function getPotatoYears($limit = PHP_INT_MAX): array

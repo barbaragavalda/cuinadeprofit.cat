@@ -121,6 +121,12 @@ abstract class Search extends Controller
         if (count($type)) {
             $this->addFilter(Filter::POTATO_TYPES, $type['id']);
         }
+
+        // rate
+        $rate = $this->filter->getRates($value);
+        if (count($rate)) {
+            $this->filters[ Filter::RATE ] = $rate;
+        }
     }
 
     private function addFilter($key, $value)

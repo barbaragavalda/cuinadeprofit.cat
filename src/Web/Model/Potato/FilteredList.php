@@ -22,13 +22,20 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $fields = $where  = $innerJoin = $limit = '';
-        $params = array(
+        $needsScore = false;
+        $where      = $innerJoin = $limit = $having = '';
+        $params     = array(
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
         );
         if (array_key_exists('query', $this->filters)) {
             $where           .= ' AND (b.name LIKE :query OR b.address LIKE :query OR bl.text LIKE :query)';
             $params['query'] = array('value' => '%' . $this->filters['query'] . '%', 'type' => PDO::PARAM_STR);
+        }
+        if (array_key_exists('rate', $this->filters)) {
+            $needsScore      = true;
+            $having          = 'HAVING score BETWEEN :start AND :end';
+            $params['start'] = array('value' => $this->filters['rate'][0], 'type' => PDO::PARAM_STR);
+            $params['end']   = array('value' => $this->filters['rate'][1], 'type' => PDO::PARAM_STR);
         }
         if (array_key_exists('year', $this->filters)) {
             $whereOr = array();
@@ -42,9 +49,10 @@ class FilteredList extends Paginated
             }
         }
         if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
-            $fields = ', (SELECT score FROM brava_review WHERE id_brava = b.id_brava ORDER BY last_visit DESC LIMIT 1) AS score';
-            $where .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
-            $limit = "
+            $needsScore = true;
+            $where      .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
+            $where      .= ' AND b.is_closed <> 1';
+            $limit      = "
                 ORDER BY score DESC
                 LIMIT $this->itemsPerPage
             ";
@@ -60,6 +68,11 @@ class FilteredList extends Paginated
             }
         }
 
+        $fields = '';
+        if ($needsScore) {
+            $fields = ', (SELECT score FROM brava_review WHERE id_brava = b.id_brava ORDER BY last_visit DESC LIMIT 1) AS score';
+        }
+
         $sql         = "
             SELECT DISTINCT b.id_brava AS id, b.id_brava_type, b.name, b.is_restaurant, b.is_closed,
                    b.address, b.latitude, b.longitude, IFNULL(bl.text, '') AS text $fields
@@ -67,6 +80,7 @@ class FilteredList extends Paginated
             INNER JOIN brava_lang AS bl ON b.id_brava = bl.id_brava AND bl.id_appacman_lang = :lang
             $innerJoin
             WHERE b.id_brava_type IN (" . implode(', ', $types) . ") $where
+            $having
             $limit
         ";
         $this->items = $this->mysql->query($sql, $params);
@@ -162,14 +176,14 @@ class FilteredList extends Paginated
             'type' => array('value' => self::DONE, 'type' => PDO::PARAM_INT)
         );
         if ($year != null) {
-            $innerJoin      = PHP_EOL
-                . ' INNER JOIN brava_review AS br ON br.id_brava = b.id_brava AND last_visit LIKE :year';
+            $innerJoin      = ' AND last_visit LIKE :year';
             $params['year'] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
         }
+
         $sql    = "
-            SELECT COUNT(DISTINCT b.id_brava) AS count
+            SELECT COUNT(br.id_brava_review) AS count
             FROM brava AS b
-            $innerJoin
+            INNER JOIN brava_review AS br ON br.id_brava = b.id_brava $innerJoin
             WHERE b.id_brava_type = :type
         ";
         $result = $this->mysql->query($sql, $params);
