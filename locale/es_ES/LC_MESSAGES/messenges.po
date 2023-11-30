@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 # routing
 msgid "receptes"
@@ -208,8 +208,11 @@ msgstr "En total"
 msgid "Nota mitjana"
 msgstr "Nota media"
 
-msgid "Mentrestant: la nostra recepta"
-msgstr "Mientras tanto: nuestra receta"
+msgid "T'animes a cuinar-les? Aquí tens la nostra recepta."
+msgstr "¿Te animas a cocinarlas? Aquí tienes nuestra receta."
+
+msgid "patates-braves"
+msgstr "patatas-bravas"
 
 msgid "Preu"
 msgstr "Precio"

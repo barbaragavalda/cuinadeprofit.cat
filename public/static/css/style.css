@@ -887,7 +887,7 @@ section h5 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     gap: 50px;
     text-align: center;
 }
@@ -927,6 +927,12 @@ section h5 {
     margin-left: 10px;
     position: absolute;
     z-index: 100;
+}
+
+.our-recipe {
+    text-align: center;
+    font-size: 0.8em;
+    padding-bottom: 20px;
 }
 
 /******************************

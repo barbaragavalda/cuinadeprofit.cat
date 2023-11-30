@@ -23,6 +23,7 @@ $config = array(
         _('braves') . '/pro/{param1}/{param2}'          => 'Potato\\Map',
         _('braves') . '/pro/{param1}/{param2}/{param3}' => 'Potato\\Map',
         _('braves') . '/{param1}'                       => 'Potato\\Map',
+        _('braves') . '/{param1}/{param2}'              => 'Potato\\Map',
 
         _('restaurants') . '/' . _('mapa') => 'Restaurant\\Map',
         _('restaurants')                   => 'Restaurant\\Search',
