@@ -116,12 +116,17 @@ class Filter extends Model
         return array();
     }
 
-    public function getPotatoYears($limit = PHP_INT_MAX): array
+    public function getPotatoYears($limit = PHP_INT_MAX, $preventCurrent = false): array
     {
+        $having = '';
+        if ($preventCurrent) {
+            $having = 'HAVING year <> YEAR(CURDATE())';
+        }
         $sql   = "
             SELECT DISTINCT(YEAR(last_visit)) AS id
             FROM brava_review
             WHERE last_visit IS NOT NULL
+            $having
             ORDER BY id DESC
             LIMIT $limit
         ";

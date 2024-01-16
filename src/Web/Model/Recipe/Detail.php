@@ -324,7 +324,7 @@ class Detail extends Model
             $amount = $amount * $fraction;
             if (is_float($amount)) {
                 if ($amount < 1) {
-                    $amount = number_format($amount, 1);
+                    $amount = number_format($amount, 2);
                 } else {
                     $amount = number_format($amount);
                 }
