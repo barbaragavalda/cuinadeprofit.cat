@@ -14,6 +14,7 @@ class FilteredList extends Paginated
     const TO_DO_BAR        = 1;
     const TO_DO_RESTAURANT = 2;
     const DONE             = 3;
+    const DONE_OTHER       = 4;
 
     public function __construct($page, $itemsPerPage = 12)
     {
@@ -58,7 +59,7 @@ class FilteredList extends Paginated
             ";
         }
 
-        $types = array(self::DONE);
+        $types = array(self::DONE, self::DONE_OTHER);
         if (array_key_exists('pro', $this->filters) && $this->filters['pro']) {
             if (array_key_exists('brava_type', $this->filters) && count($this->filters['brava_type'])) {
                 $types = $this->filters['brava_type'];
@@ -142,8 +143,8 @@ class FilteredList extends Paginated
         $degrees = round(180 * $average / 10);
         $stats[] = array('name' => _('Nota mitjana'), 'value' => $average, 'degrees' => $degrees);
 
-        $now   = new DateTime();
-        $year  = intval($now->format('Y'));
+        $now  = new DateTime();
+        $year = intval($now->format('Y'));
         for ($i = $year; $i > $year - 4; $i--) {
             $value   = $this->getDone($i);
             $degrees = round(180 * $value / $total);
