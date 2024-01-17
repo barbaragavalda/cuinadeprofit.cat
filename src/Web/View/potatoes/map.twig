@@ -34,7 +34,7 @@
                     {{ stat.name }}
                 </div>
                 {% set color = 'main-bg' %}
-                {% if loop.index == (stats|length - 1) %}
+                {% if loop.index == 1 %}
                     {% set color = 'tertiary-bg' %}
                 {% endif %}
             {% endfor %}

@@ -120,7 +120,7 @@ class Filter extends Model
     {
         $having = '';
         if ($preventCurrent) {
-            $having = 'HAVING year <> YEAR(CURDATE())';
+            $having = 'HAVING id <> YEAR(CURDATE())';
         }
         $sql   = "
             SELECT DISTINCT(YEAR(last_visit)) AS id

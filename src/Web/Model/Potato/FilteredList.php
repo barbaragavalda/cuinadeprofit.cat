@@ -137,17 +137,18 @@ class FilteredList extends Paginated
         $stats = array(
             array('name' => _('En total'), 'value' => $total, 'degrees' => 180)
         );
-        $now   = new DateTime();
-        $year  = intval($now->format('Y'));
-        for ($i = $year; $i > $year - 3; $i--) {
-            $value   = $this->getDone($i);
-            $degrees = round(180 * $value / $total);
-            $stats[] = array('name' => $i, 'value' => $value, 'degrees' => $degrees);
-        }
 
         $average = $this->getAverage();
         $degrees = round(180 * $average / 10);
         $stats[] = array('name' => _('Nota mitjana'), 'value' => $average, 'degrees' => $degrees);
+
+        $now   = new DateTime();
+        $year  = intval($now->format('Y'));
+        for ($i = $year; $i > $year - 4; $i--) {
+            $value   = $this->getDone($i);
+            $degrees = round(180 * $value / $total);
+            $stats[] = array('name' => $i, 'value' => $value, 'degrees' => $degrees);
+        }
         return $stats;
     }
 
