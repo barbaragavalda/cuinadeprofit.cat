@@ -5,6 +5,7 @@ namespace Web\Model\Recipe;
 use Core\Model\Encryptor\TwoWay;
 use Core\Model\Model;
 use Core\Utils\Config;
+use Core\Utils\Session;
 use PDO;
 
 class Detail extends Model
@@ -16,7 +17,7 @@ class Detail extends Model
 
     public function get($uri = null): array
     {
-        $where   = '';
+        $where   = array();
         $orderBy = '';
         $params  = array(
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT)
@@ -25,13 +26,18 @@ class Detail extends Model
             if ($uri == _('aleatoria')) {
                 $orderBy = 'ORDER BY RAND()';
             } else {
-                $where         = ' AND rl.uri = :uri';
+                $where[]       = 'rl.uri = :uri';
                 $params['uri'] = array('value' => $uri, 'type' => PDO::PARAM_STR);
             }
         }
         if ($this->id > 0) {
-            $where        = ' AND r.id_recipe = :id';
+            $where[]      = 'r.id_recipe = :id';
             $params['id'] = array('value' => $this->id, 'type' => PDO::PARAM_INT);
+        }
+
+        $session = Session::getInstance();
+        if ($session->get('user_id') == null) {
+            $where[] = 'r.is_visible = 1';
         }
 
         $sql    = "
@@ -42,7 +48,7 @@ class Detail extends Model
             FROM recipe AS r
             INNER JOIN recipe_lang AS rl ON r.id_recipe = rl.id_recipe AND rl.id_appacman_lang = :lang
             INNER JOIN difficulty_lang AS dl ON r.id_difficulty = dl.id_difficulty AND dl.id_appacman_lang = :lang
-            WHERE r.is_visible = 1 $where
+            " . $this->getWhere($where) . "
             $orderBy
         ";
         $recipe = $this->mysql->query($sql, $params);

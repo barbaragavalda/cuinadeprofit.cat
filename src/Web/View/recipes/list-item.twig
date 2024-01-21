@@ -9,7 +9,12 @@
         </div>
     {% endif %}
     <h2 class="ms-madi">
-        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}">{{ item.name }}</a>
+        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}">
+            {{ item.name }}
+            {% if not item.is_visible %}
+                <small class="badge badge secondary-bg black-color">borrador</small>
+            {% endif %}
+        </a>
     </h2>
     <div>
         {% include 'recipes/difficulty.twig' with { recipe: item } %}

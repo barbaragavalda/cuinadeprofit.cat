@@ -5,6 +5,7 @@ namespace Web\Model\Recipe;
 use Core\Model\Paginated;
 use Core\Model\Utils\DateUtils;
 use Core\Utils\Config;
+use Core\Utils\Session;
 use DateTime;
 use IntlDateFormatter;
 use PDO;
@@ -19,7 +20,7 @@ class FilteredList extends Paginated
 
     public function initAll()
     {
-        $where     = array('r.is_visible = 1');
+        $where     = array();
         $innerJoin = '';
         $having    = '';
         $limit     = '';
@@ -73,8 +74,13 @@ class FilteredList extends Paginated
             $limit   = "LIMIT $this->itemsPerPage";
         }
 
+        $session = Session::getInstance();
+        if ($session->get('user_id') == null) {
+            $where[] = 'r.is_visible = 1';
+        }
+
         $sql         = "
-            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created,
+            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created, r.is_visible,
                 (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time,
                 rl.name, rl.uri, rl.description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
