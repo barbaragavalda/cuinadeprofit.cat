@@ -28,7 +28,7 @@ class Home extends Model
     public function getBraves(): array
     {
         $filter = new Filter();
-        $years  = $filter->getPotatoYears(5, true);
+        $years  = $filter->getPotatoYears(6, true);
 
         $notIn = array();
         foreach ($years as &$year) {

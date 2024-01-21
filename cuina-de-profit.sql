@@ -3,15 +3,15 @@
 
  Source Server         : optisistem.com
  Source Server Type    : MySQL
- Source Server Version : 100517
+ Source Server Version : 100521
  Source Host           : optisistem.com:3306
  Source Schema         : cuina-de-profit
 
  Target Server Type    : MySQL
- Target Server Version : 100517
+ Target Server Version : 100521
  File Encoding         : 65001
 
- Date: 25/07/2023 16:56:05
+ Date: 21/01/2024 21:32:59
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `appacman_block` (
   `id_appacman_block` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `order` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id_appacman_block`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_block
@@ -46,7 +46,7 @@ CREATE TABLE `appacman_block_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_block_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_block_lang
@@ -66,7 +66,7 @@ CREATE TABLE `appacman_config` (
   `name` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_config`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_config
@@ -91,7 +91,7 @@ CREATE TABLE `appacman_content` (
   `order_by` varchar(255) DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_content`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_content
@@ -121,7 +121,7 @@ CREATE TABLE `appacman_content_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_content_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_content_lang
@@ -154,7 +154,7 @@ CREATE TABLE `appacman_field` (
   `show_on_list` tinyint(1) unsigned DEFAULT NULL,
   `show_on_breadcrumb` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_field
@@ -179,7 +179,7 @@ INSERT INTO `appacman_field` VALUES (16, 3, 'description', NULL, 12, NULL, NULL)
 INSERT INTO `appacman_field` VALUES (17, 3, 'recipe_tag', 6, 13, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (18, 3, 'recipe_ingredient', 21, 14, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (19, 3, 'recipe_step', 21, 15, NULL, NULL);
-INSERT INTO `appacman_field` VALUES (20, 3, 'created', NULL, 17, 1, NULL);
+INSERT INTO `appacman_field` VALUES (20, 3, 'created', 16, 17, 1, NULL);
 INSERT INTO `appacman_field` VALUES (21, 4, 'id_recipe', 22, NULL, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (22, 4, 'amount', 13, 1, NULL, NULL);
 INSERT INTO `appacman_field` VALUES (23, 4, 'id_ingredient', 2, 3, NULL, NULL);
@@ -253,7 +253,7 @@ CREATE TABLE `appacman_field_lang` (
   `name` varchar(255) DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_appacman_field_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_field_lang
@@ -349,7 +349,7 @@ CREATE TABLE `appacman_field_type` (
   `id_appacman_field_type` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_field_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_field_type
@@ -393,7 +393,7 @@ CREATE TABLE `appacman_file` (
   `id_appacman_file` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_file`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=355 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_file
@@ -403,7 +403,6 @@ INSERT INTO `appacman_file` VALUES (1, 'logo.png');
 INSERT INTO `appacman_file` VALUES (2, '2_gohan.png');
 INSERT INTO `appacman_file` VALUES (3, '3_oyako-don.jpg');
 INSERT INTO `appacman_file` VALUES (4, '4_doritos.jpeg');
-INSERT INTO `appacman_file` VALUES (6, '6_doritos-2.jpeg');
 INSERT INTO `appacman_file` VALUES (11, '11_artur-rutkowski-2leopvy3oj0-unsplash.jpg');
 INSERT INTO `appacman_file` VALUES (12, '12_caldo-dashi-1.jpeg');
 INSERT INTO `appacman_file` VALUES (19, '19_tiramisu.jpg');
@@ -413,7 +412,6 @@ INSERT INTO `appacman_file` VALUES (27, '27_japanese-mayo.jpg');
 INSERT INTO `appacman_file` VALUES (29, '29_how-to-roll.jpeg');
 INSERT INTO `appacman_file` VALUES (31, '31_coleslaw.jpg');
 INSERT INTO `appacman_file` VALUES (34, '34_cafe-dalgona.jpeg');
-INSERT INTO `appacman_file` VALUES (35, '35_celestiale.jpg');
 INSERT INTO `appacman_file` VALUES (36, '36_entrepa-de-pollastre.jpg');
 INSERT INTO `appacman_file` VALUES (37, '37_poke.jpg');
 INSERT INTO `appacman_file` VALUES (38, '38_hummus.jpeg');
@@ -452,7 +450,6 @@ INSERT INTO `appacman_file` VALUES (70, '70_img_6159.webp');
 INSERT INTO `appacman_file` VALUES (71, '71_2021-09-17---1211.webp');
 INSERT INTO `appacman_file` VALUES (72, '72_img_4520.webp');
 INSERT INTO `appacman_file` VALUES (73, '73_img_6094.webp');
-INSERT INTO `appacman_file` VALUES (74, '74_img_1279.webp');
 INSERT INTO `appacman_file` VALUES (75, '75_img_6318.webp');
 INSERT INTO `appacman_file` VALUES (76, '76_img_1880.webp');
 INSERT INTO `appacman_file` VALUES (77, '77_img_1049.webp');
@@ -728,6 +725,44 @@ INSERT INTO `appacman_file` VALUES (351, '351_img_9641.webp');
 INSERT INTO `appacman_file` VALUES (352, '352_inka.webp');
 INSERT INTO `appacman_file` VALUES (353, '353_img_6702.webp');
 INSERT INTO `appacman_file` VALUES (354, '354_img_7003.webp');
+INSERT INTO `appacman_file` VALUES (356, '356_img_8159.webp');
+INSERT INTO `appacman_file` VALUES (357, '357_img_7912.webp');
+INSERT INTO `appacman_file` VALUES (358, '358_img_8144.webp');
+INSERT INTO `appacman_file` VALUES (359, '359_img_8235.webp');
+INSERT INTO `appacman_file` VALUES (361, '361_img_1882.webp');
+INSERT INTO `appacman_file` VALUES (362, '362_img_8280.webp');
+INSERT INTO `appacman_file` VALUES (363, '363_630fe213-4312-4820-bdaa-b9ffd472f0f9_1_102_o.webp');
+INSERT INTO `appacman_file` VALUES (364, '364_99397f3c-1a0d-4277-a8b4-f663222f54e7_1_102_o.webp');
+INSERT INTO `appacman_file` VALUES (365, '365_69c0f746-4793-4f66-8b99-fe2c2b7381c2_1_102_o.webp');
+INSERT INTO `appacman_file` VALUES (366, '366_367423714_18379904518028722_3066028794738551526_n.webp');
+INSERT INTO `appacman_file` VALUES (367, '367_img_8239.webp');
+INSERT INTO `appacman_file` VALUES (368, '368_img_8160.webp');
+INSERT INTO `appacman_file` VALUES (369, '369_img_8237.webp');
+INSERT INTO `appacman_file` VALUES (370, '370_img_8417.webp');
+INSERT INTO `appacman_file` VALUES (371, '371_img_8611.webp');
+INSERT INTO `appacman_file` VALUES (372, '372_img_8619.webp');
+INSERT INTO `appacman_file` VALUES (373, '373_img_8683.webp');
+INSERT INTO `appacman_file` VALUES (374, '374_384802776_833167691845970_8651813351502747712_n.webp');
+INSERT INTO `appacman_file` VALUES (375, '375_img_8740.webp');
+INSERT INTO `appacman_file` VALUES (376, '376_josephine.webp');
+INSERT INTO `appacman_file` VALUES (377, '377_img_8803.webp');
+INSERT INTO `appacman_file` VALUES (378, '378_img_8835.webp');
+INSERT INTO `appacman_file` VALUES (379, '379_whatsapp-image-2023-10-06-at-19.32.03.webp');
+INSERT INTO `appacman_file` VALUES (380, '380_img_8885.webp');
+INSERT INTO `appacman_file` VALUES (381, '381_img_9097.webp');
+INSERT INTO `appacman_file` VALUES (382, '382_img_0073.webp');
+INSERT INTO `appacman_file` VALUES (383, '383_img_0334.webp');
+INSERT INTO `appacman_file` VALUES (384, '384_img_0928.webp');
+INSERT INTO `appacman_file` VALUES (385, '385_img_1182.webp');
+INSERT INTO `appacman_file` VALUES (386, '386_img_1189.webp');
+INSERT INTO `appacman_file` VALUES (387, '387_food-photographer-jennifer-pallian-ofddiqx8cz8-unsplash.webp');
+INSERT INTO `appacman_file` VALUES (388, '388_img_0527.webp');
+INSERT INTO `appacman_file` VALUES (389, '389_sukiyaki.webp');
+INSERT INTO `appacman_file` VALUES (390, '390_img_7528.webp');
+INSERT INTO `appacman_file` VALUES (391, '391_img_1206.webp');
+INSERT INTO `appacman_file` VALUES (392, '392_img_1206.webp');
+INSERT INTO `appacman_file` VALUES (393, '393_img_1196.webp');
+INSERT INTO `appacman_file` VALUES (394, '394_img_1274.webp');
 COMMIT;
 
 -- ----------------------------
@@ -741,7 +776,7 @@ CREATE TABLE `appacman_file_resize` (
   `height` smallint(5) unsigned NOT NULL,
   `suffix` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_file_resize`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_file_resize
@@ -766,7 +801,7 @@ CREATE TABLE `appacman_lang` (
   `culture` varchar(10) NOT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_lang
@@ -784,7 +819,7 @@ CREATE TABLE `appacman_legal` (
   `id_appacman_legal` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_appacman_legal`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_legal
@@ -806,7 +841,7 @@ CREATE TABLE `appacman_legal_lang` (
   `uri` varchar(255) NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id_appacman_legal_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_legal_lang
@@ -824,7 +859,7 @@ CREATE TABLE `appacman_list_type` (
   `id_appacman_list_type` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_list_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_list_type
@@ -847,13 +882,13 @@ CREATE TABLE `appacman_user` (
   `changing_password` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_appacman_user`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `appacman_user` VALUES (1, '44b838da3ebc52a5addcb4f1d154b80fcd7RU3ynPJ3gD0gzciwBkA==', 'cdb10be1355fd3605eb7b38181e0e959c+P9lHy51g59wEGzKYISOYNd', '$6$rounds=5000$1bfe542fb14f15e0$95oCA3LX3.TSZwrhMqmc04GZdFofijh1/y9u8lO1KoaUT/ean1DUXKLEurSJg4NcXgN7YuoW4ZmS677w1Bmo6.', 1, NULL, '2017-11-17 12:44:18');
+INSERT INTO `appacman_user` VALUES (1, '285f080dddc77ab9e512d5f2a065d787eGpEz8yCWPPFTo99Kzfqt2Y=', '69ee8d56c316607d81d70de31ca22a9bY7QbDkwYN+xk4HZlv2OVXenv', '$6$rounds=5000$1bfe542fb14f15e0$95oCA3LX3.TSZwrhMqmc04GZdFofijh1/y9u8lO1KoaUT/ean1DUXKLEurSJg4NcXgN7YuoW4ZmS677w1Bmo6.', 1, NULL, '2017-11-17 12:44:18');
 INSERT INTO `appacman_user` VALUES (2, 'fca321bab07418bf90dda3f1a83cc75aNlHV0A+52OmY3dE2A2s=', 'f9ccf6aa58d07be4030621c8cb51bcba8vuvpc5PyYmf05SK/xJLlPVBE7Q=', '$6$rounds=5000$92fbeb6e8980c0ee$huRZk3uu.phE/voCr5U10qr.QAThActYAACd4XVzOrjXYx/5j6eeNv6hjOFBJbxNu1Dye/RjBhcY4IG6lTaEY1', 1, NULL, '2023-05-24 19:09:09');
 COMMIT;
 
@@ -865,7 +900,7 @@ CREATE TABLE `appacman_user_permission` (
   `id_appacman_user_permission` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_user_permission`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user_permission
@@ -893,7 +928,7 @@ CREATE TABLE `appacman_user_permission_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_user_permission_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user_permission_lang
@@ -928,7 +963,7 @@ DROP TABLE IF EXISTS `appacman_user_profile`;
 CREATE TABLE `appacman_user_profile` (
   `id_appacman_user_profile` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_appacman_user_profile`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user_profile
@@ -948,7 +983,7 @@ CREATE TABLE `appacman_user_profile_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_appacman_user_profile_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user_profile_lang
@@ -969,7 +1004,7 @@ CREATE TABLE `appacman_user_profile_permission` (
   `id_appacman_content` tinyint(3) unsigned NOT NULL,
   `id_appacman_user_permission` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id_appacman_user_profile`,`id_appacman_content`,`id_appacman_user_permission`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of appacman_user_profile_permission
@@ -1019,303 +1054,290 @@ CREATE TABLE `brava` (
   `longitude` double(9,6) NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_brava`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=556 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of brava
 -- ----------------------------
 BEGIN;
-INSERT INTO `brava` VALUES (1, 2, 'Pan & Oli. T DL I DG TARDA', 0, 0, 0, '', 41.377197, 2.135499, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (2, 2, 'La Taverna del Clínic. T DG', 0, 0, 0, '', 41.388867, 2.151254, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (3, 2, 'La Mundana. T DL I DG TARDA', 0, 0, 0, '', 41.381126, 2.135820, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (4, 2, 'CAN ROS. T DX', 0, 0, 0, '', 41.377311, 2.189369, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (5, 2, 'el xiringo. T DL DM DX', 0, 0, 0, '', 41.379506, 2.190774, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (6, 2, 'La cholita. T DL I DM I DX MATI', 0, 0, 0, '', 41.422234, 2.184530, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (7, 2, 'Bardeni. TDL I DG', 0, 0, 0, '', 41.402927, 2.177208, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (8, 2, 'El Racó de l\'Agüir. T DG I DL,DM,DS TARDA', 0, 0, 0, '', 41.376529, 2.157950, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (9, 2, 'Teòric Taverna Gastronòmica. T DG I DL', 0, 0, 0, '', 41.397783, 2.169286, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (10, 2, 'Restaurant Semproniana', 0, 0, 0, '', 41.391056, 2.154528, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (11, 2, 'Santa Gula', 0, 0, 0, '', 41.397254, 2.155472, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (12, 2, 'Maians. T DLL I DM', 0, 0, 0, '', 41.379349, 2.190455, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (13, 2, 'La Platilleria. T DM I DV DINAR', 0, 0, 0, '', 41.371562, 2.165382, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (14, 2, 'Més De vi. T DG', 0, 0, 0, '', 41.400121, 2.205084, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (15, 2, 'Bambarol. T DLL I DG', 0, 0, 0, '', 41.395072, 2.146293, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (16, 2, 'Restaurant Setze. T DLL I DG', 0, 0, 0, '', 41.385514, 2.131544, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (17, 2, 'Restaurante Informal', 0, 0, 0, '', 41.380206, 2.180722, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (18, 2, 'Maria Parrilla', 0, 0, 0, '', 41.389502, 2.124360, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (19, 2, 'b Restaurant. T DG NIT', 0, 0, 0, '', 41.384448, 2.145906, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (20, 2, 'Blau BCN. T DG', 0, 0, 0, '', 41.393012, 2.149954, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (21, 2, 'Las delicias. T DL I DG TARDA', 0, 0, 0, '', 41.418248, 2.157572, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (22, 2, 'Acero Street Flavors. T DLL', 0, 0, 0, '', 41.383287, 2.182345, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (23, 2, 'Restaurant La Pepita', 0, 0, 0, '', 41.397985, 2.161068, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (24, 2, 'Abasolo Etxea. T DG SOPAR', 0, 0, 0, '', 41.394889, 2.143836, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (25, 2, 'Monvínic Store. T DG, DLL I DSS MIGDIA', 0, 0, 0, '', 41.389183, 2.165283, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (26, 2, 'Bar Omar. TDLL I DG TARDA', 0, 0, 0, '', 41.395104, 2.145005, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (27, 2, 'Parking Pizza - Parking Pita', 0, 0, 0, '', 41.396311, 2.174106, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (28, 2, 'Restaurant Sant Martí. T DM i ALGUNES NITS', 0, 0, 0, '', 41.421847, 2.197364, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (29, 2, 'Bodega Amposta. T DLL I DM I DG TARDA', 0, 0, 0, '', 41.371869, 2.147491, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (30, 2, 'La Pimpa. T DG', 0, 0, 0, '', 41.387069, 2.130307, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (31, 2, 'Restaurant Nectari. T DG', 0, 0, 0, '', 41.379961, 2.146589, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (32, 2, 'AGRESTE de FABIO & ROSER. T DLL I DM', 0, 0, 0, '', 41.419986, 2.148727, '2023-05-25 16:04:14');
-INSERT INTO `brava` VALUES (33, 2, 'Jardinet d\'Aribau. T DG-SM', 0, 0, 0, '', 41.391903, 2.154541, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (34, 2, 'ORAC. T DG, DLL-DM NIT', 0, 0, 0, '', 41.389526, 2.158062, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (35, 2, 'Negronix Cocktails Bar. T Dll', 0, 0, 0, '', 41.417603, 2.181368, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (36, 2, 'Cal Trapella. T DLL I DG NIT', 0, 0, 0, '', 41.399096, 2.159235, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (38, 2, 'La Porca v2 (DIMARTS OFERTA)', 0, 0, 0, '', 41.373009, 2.170651, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (39, 2, 'AÜRT Restaurant. T DLL I DG I DM DINAR', 0, 0, 0, '', 41.408452, 2.217902, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (40, 2, 'La Real Hamburguesería (repe)', 0, 0, 0, '', 41.398565, 2.203615, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (41, 2, '216 Grammi Barcelona', 0, 0, 0, '', 41.391051, 2.194310, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (42, 2, 'BOCCONI. T DLL I DG NIT', 0, 0, 0, '', 41.399436, 2.121744, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (43, 2, 'Lúcuma y Camote', 0, 0, 0, '', 41.389472, 2.195313, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (44, 2, 'Ajoblanco T DG', 0, 0, 0, '', 41.395995, 2.152072, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (45, 2, 'Verne. T DM', 0, 0, 0, '', 41.392073, 2.154645, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (46, 2, 'THE YARD - Gallito a la brasa. T DLL', 0, 0, 0, '', 41.391961, 2.172839, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (47, 2, 'Sants Es Crema. T DLL I DG', 0, 0, 0, '', 41.381437, 2.136814, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (48, 2, 'Bonica Bruncherie. T DLL I DG', 0, 0, 0, '', 41.398140, 2.173087, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (49, 2, 'Cal Màrius. T DG NIT', 0, 0, 0, '', 41.405885, 2.178370, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (50, 2, 'Foodlona by Miquel Antoja', 0, 0, 0, '', 41.455536, 2.257550, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (51, 1, 'Casa maians. T DLL I DM', 0, 0, 0, '', 41.379351, 2.190433, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (52, 1, 'Vermut i a la Gàbia', 0, 0, 0, '', 41.375883, 2.138582, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (53, 1, 'Vinus Brindis. T DG I DLL MIGDIA', 0, 0, 0, '', 41.396400, 2.142613, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (54, 1, 'Fàbrica Moritz', 0, 0, 0, '', 41.382483, 2.163591, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (55, 1, 'MonDoré. T DLL I DG', 0, 0, 0, '', 41.375569, 2.154456, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (1, 2, 'Pan & Oli', 1, 0, 0, '-', 41.377197, 2.135499, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (2, 2, 'La Taverna del Clínic', 1, 0, 0, '-', 41.388867, 2.151254, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (3, 2, 'La Mundana', 1, 0, 0, '-', 41.381126, 2.135820, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (4, 2, 'CAN ROS', 1, 0, 0, '-', 41.377311, 2.189369, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (5, 2, 'el xiringo', 1, 0, 0, '-', 41.379506, 2.190774, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (6, 2, 'La cholita', 1, 0, 0, '-', 41.422234, 2.184530, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (7, 2, 'Bardeni', 1, 0, 0, '-', 41.402927, 2.177208, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (8, 2, 'El Racó de l\'Agüir', 1, 0, 0, '-', 41.376529, 2.157950, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (9, 2, 'Teòric Taverna Gastronòmica', 1, 0, 0, '-', 41.397783, 2.169286, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (10, 2, 'Restaurant Semproniana', 1, 0, 0, '-', 41.391056, 2.154528, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (11, 2, 'Santa Gula', 1, 0, 0, '-', 41.397254, 2.155472, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (12, 2, 'Maians', 1, 0, 0, '-', 41.379349, 2.190455, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (13, 2, 'La Platilleria', 1, 0, 0, '-', 41.371562, 2.165382, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (14, 2, 'Més De vi', 1, 0, 0, '-', 41.400121, 2.205084, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (15, 2, 'Bambarol', 1, 0, 0, '-', 41.395072, 2.146293, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (16, 2, 'Restaurant Setze', 1, 0, 0, '-', 41.385514, 2.131544, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (17, 2, 'Restaurante Informal', 1, 0, 0, '-', 41.380206, 2.180722, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (20, 2, 'Blau BCN', 1, 0, 0, '-', 41.393012, 2.149954, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (21, 2, 'Las delicias', 1, 0, 0, '-', 41.418248, 2.157572, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (22, 2, 'Acero Street Flavors', 1, 0, 0, 'Dues ubicacions', 41.383287, 2.182345, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (23, 2, 'Restaurant La Pepita', 1, 0, 0, '-', 41.397985, 2.161068, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (25, 2, 'Monvínic Store', 1, 0, 0, '-', 41.389183, 2.165283, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (26, 2, 'Bar Omar', 1, 0, 0, '-', 41.395104, 2.145005, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (27, 2, 'Parking Pizza - Parking Pita', 1, 0, 0, '-', 41.396311, 2.174106, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (28, 2, 'Restaurant Sant Martí', 1, 0, 0, '-', 41.421847, 2.197364, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (29, 2, 'Bodega Amposta', 1, 0, 0, '-', 41.371869, 2.147491, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (30, 2, 'La Pimpa', 1, 0, 0, '-', 41.387069, 2.130307, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (31, 2, 'Restaurant Nectari', 1, 0, 0, '-', 41.379961, 2.146589, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (32, 2, 'AGRESTE de FABIO & ROSER', 1, 0, 0, 'C/ de Funoses-Llussà 2, 08023 Barcelona', 41.419986, 2.148727, '2023-05-25 16:04:14');
+INSERT INTO `brava` VALUES (33, 2, 'Jardinet d\'Aribau', 1, 0, 0, '-', 41.391903, 2.154541, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (34, 2, 'ORAC', 1, 0, 0, '-', 41.389526, 2.158062, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (35, 2, 'Negronix Cocktails Bar', 1, 0, 0, '-', 41.417603, 2.181368, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (36, 2, 'Cal Trapella', 1, 0, 0, '-', 41.399096, 2.159235, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (38, 2, 'La Porca', 1, 0, 0, '-', 41.373009, 2.170651, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (39, 2, 'AÜRT Restaurant', 1, 0, 0, 'Pg/ Taulat 262, 08019 Barcelona', 41.408452, 2.217902, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (40, 2, 'La Real Hamburguesería (repe)', 1, 0, 0, '-', 41.398565, 2.203615, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (41, 2, '216 Grammi Barcelona', 1, 0, 0, '-', 41.391051, 2.194310, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (42, 2, 'BOCCONI', 1, 0, 0, '-', 41.399436, 2.121744, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (43, 2, 'Lúcuma y Camote', 1, 0, 0, '-', 41.389472, 2.195313, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (44, 2, 'Ajoblanco', 1, 0, 0, 'C/ Tuset 20, 08006 Barcelona', 41.395995, 2.152072, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (45, 2, 'Verne', 1, 0, 0, '-', 41.392073, 2.154645, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (46, 2, 'THE YARD - Gallito a la brasa', 1, 0, 0, '-', 41.391961, 2.172839, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (47, 2, 'Sants Es Crema', 1, 0, 0, '-', 41.381437, 2.136814, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (49, 2, 'Cal Màrius', 1, 0, 0, '-', 41.405885, 2.178370, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (50, 2, 'Foodlona by Miquel Antoja', 1, 0, 0, '-', 41.455536, 2.257550, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (51, 1, 'Casa maians', 0, 0, 0, '-', 41.379351, 2.190433, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (52, 1, 'Vermut i a la Gàbia', 0, 0, 0, '-', 41.375883, 2.138582, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (53, 1, 'Vinus Brindis', 0, 0, 0, '-', 41.396400, 2.142613, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (54, 1, 'Fàbrica Moritz', 0, 0, 0, '-', 41.382483, 2.163591, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (55, 1, 'MonDoré', 0, 0, 0, '-', 41.375569, 2.154456, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (56, 1, 'D9', 0, 0, 0, 'C/ Pallars 122, 08016 Barcelona', 41.396785, 2.192138, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (57, 1, 'medina BAR & RESTAURANT', 0, 0, 0, '', 41.448772, 2.190114, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (59, 1, 'Pebre Negre Restaurant. ANAR EL FINDE COM A BAR?', 0, 0, 0, '', 41.387100, 2.130566, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (60, 1, 'MANA75', 0, 0, 0, '', 41.368828, 2.188036, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (61, 1, 'Louise Se Va', 0, 0, 0, '', 41.430829, 2.160657, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (62, 1, 'Casa de Tapes Cañota. T DL I DG TARDA', 0, 0, 0, '', 41.374302, 2.154541, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (63, 1, 'Bar Marín', 0, 0, 0, '', 41.437107, 2.191174, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (64, 1, 'Cervecería la Tasca. T DLL', 0, 0, 0, '', 41.425901, 2.157497, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (65, 1, 'Bar la Gamba. T DM', 0, 0, 0, '', 41.420735, 2.180819, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (67, 1, 'Bodega Montferry. T DL I DG TARDA', 0, 0, 0, '', 41.379418, 2.131888, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (68, 1, 'Bar Kasparo. T DL I DG', 0, 0, 0, '', 41.384469, 2.168990, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (69, 1, 'Fragments Café. T DL', 0, 0, 0, '', 41.386587, 2.132516, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (71, 1, 'El quimet d\'horta. T DX', 0, 0, 0, '', 41.430709, 2.160733, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (72, 1, 'Central Park', 0, 0, 0, '', 41.390009, 2.122310, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (73, 1, 'Mitjagalta. T DL I DG', 0, 0, 0, '', 41.368317, 2.131854, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (74, 1, 'Wow', 0, 0, 0, '', 41.391273, 2.157597, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (75, 1, 'Vaso de oro', 0, 0, 0, '', 41.381889, 2.187254, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (76, 1, 'La mestressa. T MATINS', 0, 0, 0, '', 41.375883, 2.138582, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (77, 1, 'Bar Joanet. T DJ', 0, 0, 0, '', 41.387982, 2.180449, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (78, 1, 'Tast Gastro Bar \n', 0, 0, 0, '', 41.374793, 2.159657, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (79, 1, 'Restaurante Sagàs', 0, 0, 0, '', 41.383345, 2.183366, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (80, 1, 'PURA BRASA Arenas de Barcelona', 0, 0, 0, '', 41.376275, 2.150125, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (81, 1, 'Tío Carlos', 0, 0, 0, '', 41.376787, 2.174875, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (82, 1, 'Moix Wine & Gastrobar. T DG', 0, 0, 0, '', 41.377763, 2.173094, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (84, 1, 'Bar Mendizábal', 0, 0, 0, '', 41.380492, 2.170802, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (85, 1, 'Cerveseria El Tap. T DLL', 0, 0, 0, '', 41.388037, 2.136123, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (86, 1, 'Gatsby Barcelona. T DL-DM-DG', 0, 0, 0, '', 41.396196, 2.151404, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (87, 1, 'The Bagel Hood. T DL-DX TARDA', 0, 0, 0, '', 41.381655, 2.164606, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (88, 1, 'Bar La Garchetta. T DLL I DG TARDA', 0, 0, 0, '', 41.413129, 2.215756, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (89, 1, 'Dora tapas bar. T DG', 0, 0, 0, '', 41.395830, 2.162655, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (90, 1, 'Yours. T DL I DG', 0, 0, 0, '', 41.392084, 2.148449, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (91, 1, 'L\'Anxoveta de Sants. T DLL', 0, 0, 0, '', 41.377629, 2.135154, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (92, 1, 'Casa Tejada', 0, 0, 0, '', 41.395083, 2.142133, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (93, 1, 'Bormuth', 0, 0, 0, '', 41.385810, 2.182485, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (94, 1, 'Bar Nino', 0, 0, 0, '', 41.413502, 2.215864, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (95, 1, 'Pla De La Garsa. T MATINS I DLL', 0, 0, 0, '', 41.386007, 2.180555, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (96, 1, 'Bar Lafuente. T DLL', 0, 0, 0, '', 41.422083, 2.210685, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (97, 1, 'Bar Nostalgic BCN', 0, 0, 0, '', 41.376734, 2.161376, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (98, 1, 'Telefèric Restaurant. T DG MATI', 0, 0, 0, '', 41.389531, 2.160825, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (100, 1, 'Toca teca. T DL I DG TARDA', 0, 0, 0, '', 41.423583, 2.180945, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (101, 1, 'Pastís i sucre. NOMES FINDE', 0, 0, 0, '', 41.406277, 2.137528, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (102, 1, 'Time\'s Café & Co. T DLL', 0, 0, 0, '', 41.362374, 2.121996, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (103, 1, 'L\'Ow Boqueria. T DM TARDA I DG', 0, 0, 0, '', 41.381902, 2.170744, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (104, 1, 'El Manolo T DG', 0, 0, 0, '', 41.414861, 2.194730, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (105, 1, 'El Pacífico', 0, 0, 0, '', 41.378138, 2.191168, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (106, 1, 'Restaurant CentOnze', 0, 0, 0, '', 41.383556, 2.170526, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (107, 1, 'Caramba Tapas. T DLL', 0, 0, 0, '', 41.377677, 2.164884, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (108, 1, 'Bar El Velódromo', 0, 0, 0, '', 41.393490, 2.150155, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (109, 1, 'El Celler del Nou Priorat. T MATINS ENTRE SET, I DG TARDA', 0, 0, 0, '', 41.378445, 2.137625, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (110, 1, 'Barraca', 0, 0, 0, '', 41.379072, 2.191950, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (111, 1, 'Orvay. T DLL', 0, 0, 0, '', 41.384065, 2.182576, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (112, 1, 'Bodega Bartolí. T DG I DSS TARDA', 0, 0, 0, '', 41.379325, 2.137032, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (113, 1, 'TONI BIGOTI. T DG', 0, 0, 0, '', 41.389818, 2.138698, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (114, 1, 'Inblue', 0, 0, 0, '', 41.387693, 2.136832, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (115, 1, 'Bodega Pujós. T DG TARDA', 0, 0, 0, '', 41.373684, 2.119123, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (116, 1, 'Ten\'s Tapas Restaurant Barcelona', 0, 0, 0, '', 41.384322, 2.184163, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (117, 1, 'Bodega del Cabo', 0, 0, 0, '', 41.399613, 2.179970, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (118, 1, 'BOCALOCA. T DLL I DG TARDA', 0, 0, 0, '', 41.418935, 2.203733, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (119, 1, 'Antunez v2. T DG BRENAR', 0, 0, 0, '', 41.397891, 2.154693, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (120, 1, 'Santagustina', 0, 0, 0, '', 41.388218, 2.180559, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (121, 1, 'La Bodegueta Provença', 0, 0, 0, '', 41.393318, 2.159417, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (122, 1, 'Arroz Hofmann. T DLL I DG TARDA', 0, 0, 0, '', 41.393500, 2.177822, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (123, 1, 'Cal Robert', 0, 0, 0, '', 41.379697, 2.163807, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (124, 1, 'Las Fritas del Born - Bar', 0, 0, 0, '', 41.383522, 2.181216, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (125, 1, 'Els Sortidors del Parlament', 0, 0, 0, '', 41.377581, 2.163831, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (126, 1, 'Restaurante Bivio', 0, 0, 0, '', 41.376584, 2.188978, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (127, 1, 'La terrasa del DO', 0, 0, 0, '', 41.379993, 2.174932, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (128, 1, 'O\'Chispa Taberna galega. T DG TARDA I DLL', 0, 0, 0, '', 41.368161, 2.112205, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (129, 1, 'Almalibre Açaí Bar. T DLL I DG TARDA', 0, 0, 0, '', 41.397104, 2.168287, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (130, 1, 'La Esquinita de Blai', 0, 0, 0, '', 41.373392, 2.165232, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (131, 1, 'Casa de Comidas Nogal', 0, 0, 0, '', 41.399005, 2.178707, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (132, 1, 'Jonny Aldana Bar. T DLL', 0, 0, 0, '', 41.375823, 2.166101, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (133, 1, 'RAO Restaurant & Bar. T DG', 0, 0, 0, '', 41.384290, 2.169572, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (134, 1, 'Restaurant CentOnze', 0, 0, 0, '', 41.383556, 2.170526, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (135, 1, 'LUTE Bar & Bowls. T DX', 0, 0, 0, '', 41.374348, 2.133232, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (136, 1, 'L\'Olivera. T DLL', 0, 0, 0, '', 41.405899, 2.189411, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (137, 1, 'Reñé', 0, 0, 0, '', 41.394400, 2.170243, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (138, 1, 'RENOI Tapes i Vins. T DLL i DG TARDA', 0, 0, 0, '', 41.405611, 2.180347, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (140, 1, 'La Tiza BCN', 0, 0, 0, '', 41.373692, 2.164360, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (141, 1, 'Tapeo Gracia (= tapeo born). T DLL', 0, 0, 0, '', 41.404562, 2.155454, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (144, 1, 'Bambú Beach Bar', 0, 0, 0, '', 41.405040, 2.218824, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (145, 1, 'El Bitxo', 0, 0, 0, '', 41.387235, 2.175698, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (146, 1, 'Pisamorena', 0, 0, 0, '', 41.382554, 2.182283, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (147, 1, 'La terraza Miró', 0, 0, 0, '', 41.377440, 2.146075, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (148, 1, 'La Ramona. T DG I \"TARDES\"', 0, 0, 0, '', 41.402474, 2.168007, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (149, 1, 'Ocho Patas. T DG TARDA', 0, 0, 0, '', 41.381847, 2.142089, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (150, 1, 'Meraklís. T MATING I DG', 0, 0, 0, '', 41.407678, 2.184411, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (151, 1, 'El Quim de la Boquería. T TARDES I DG', 0, 0, 0, '', 41.381648, 2.171950, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (152, 1, 'Bar Makinavaja. T DG', 0, 0, 0, '', 41.377102, 2.168042, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (153, 1, 'Colmado Barcelona', 0, 0, 0, '', 41.391704, 2.157666, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (154, 1, 'TRIKI-TRAC. T DG', 0, 0, 0, '', 41.381266, 2.141563, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (155, 1, 'Abirradero', 0, 0, 0, '', 41.374167, 2.168578, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (156, 1, 'Tres Torres Atiram', 0, 0, 0, '', 41.399919, 2.130009, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (157, 1, 'Hotel El Palace - Winter Garden', 0, 0, 0, '', 41.391396, 2.171474, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (158, 1, 'a restaurant', 0, 0, 0, '', 41.383307, 2.175193, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (159, 1, 'Grill Room Bar Thonet', 0, 0, 0, '', 41.379278, 2.176096, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (160, 1, 'La Rubia', 0, 0, 0, '', 41.382425, 2.166411, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (161, 1, 'Casa Rafols', 0, 0, 0, '', 41.391230, 2.179247, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (163, 1, 'CASA DORITA. T DLL', 0, 0, 0, '', 41.377898, 2.160166, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (164, 1, 'Entre Catas. T DLL I DG TARDA', 0, 0, 0, '', 41.416869, 2.195318, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (165, 1, 'La Comparsita. T DLL', 0, 0, 0, '', 41.410519, 2.179941, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (166, 1, 'PIMIENTO BAR. T DSS I DG', 0, 0, 0, '', 41.377147, 2.175130, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (167, 1, 'Sucursal Aceitera. T DG TARDA', 0, 0, 0, '', 41.377138, 2.163178, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (168, 1, 'Vermuteria La Guapa', 0, 0, 0, '', 41.385604, 2.154253, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (169, 1, 'Restaurant Amaya', 0, 0, 0, '', 41.378024, 2.176261, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (170, 1, 'PORK boig per tu!', 0, 0, 0, '', 41.382128, 2.181900, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (171, 1, 'Restaurant Dispensa', 0, 0, 0, '', 41.421636, 2.181117, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (172, 1, 'Bar Bodega Carol. T DLL', 0, 0, 0, '', 41.406962, 2.184842, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (173, 1, 'Catacroquet. T DG I DLL TARDA', 0, 0, 0, '', 41.401818, 2.196100, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (174, 1, 'Plaça d\'Osca, 6', 0, 0, 0, '', 41.376198, 2.138751, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (175, 1, 'Marcelino 1968', 0, 0, 0, '', 41.401403, 2.156800, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (176, 1, 'La Bodegueta De Sants', 0, 0, 0, '', 41.371062, 2.134448, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (178, 1, 'El Canalla', 0, 0, 0, '', 41.399590, 2.121668, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (180, 1, 'Grupo Abrassame', 0, 0, 0, '', 41.376391, 2.148920, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (181, 1, 'Mirablau', 0, 0, 0, '', 41.416043, 2.131883, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (182, 1, 'OBE restaurant. T DLL I DG TARDA', 0, 0, 0, '', 41.385413, 2.178781, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (183, 1, 'Purobeach Barcelona', 0, 0, 0, '', 41.408535, 2.217434, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (185, 1, 'Calabrasa', 0, 0, 0, '', 41.385379, 2.183005, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (186, 1, 'Bar Torrente. T DLL I DG TARDA', 0, 0, 0, '', 41.432998, 2.193468, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (187, 1, 'Ale&Hop', 0, 0, 0, '', 41.388637, 2.180060, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (188, 1, 'Espai Mireia', 0, 0, 0, '', 41.393237, 2.093776, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (189, 1, 'Taberna Volapie', 0, 0, 0, '', 41.391346, 2.157501, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (190, 1, 'Xampu Barcelona', 0, 0, 0, '', 41.393726, 2.174447, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (191, 1, 'Equilibribcn, T DM', 0, 0, 0, '', 41.407216, 2.168466, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (192, 1, 'Bubó', 0, 0, 0, '', 41.383140, 2.181833, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (193, 1, 'Atabalats Gastrobar v2. T DLL I DG TARDA', 0, 0, 0, '', 41.408768, 2.160520, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (194, 1, 'Bar Bero', 0, 0, 0, '', 41.403395, 2.133436, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (195, 1, 'Bar Restaurant Jordi. T DG TARDA', 0, 0, 0, '', 41.424973, 2.176822, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (196, 1, 'Restaurant Centric Raval', 0, 0, 0, '', 41.384768, 2.168091, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (197, 1, 'El Disbarat', 0, 0, 0, '', 41.401721, 2.154579, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (198, 1, 'Zarautz. T DG TARDA', 0, 0, 0, '', 41.378065, 2.143281, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (199, 1, 'Superclàssic', 0, 0, 0, '', 41.381935, 2.169829, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (200, 1, 'Jumilla. T DG', 0, 0, 0, '', 41.403194, 2.134816, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (201, 1, 'Mirch Barcelona. T DLL', 0, 0, 0, '', 41.382345, 2.168298, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (202, 1, 'Tipo Tapa. T DLL', 0, 0, 0, '', 41.409097, 2.184872, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (203, 1, 'Fat Cat. T DLL-DX I DG TARDA', 0, 0, 0, '', 41.379070, 2.170716, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (204, 1, 'Bar Ri Sarrià', 0, 0, 0, '', 41.396578, 2.128056, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (205, 1, 'Tapazia. T DLL', 0, 0, 0, '', 41.404892, 2.155033, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (206, 1, 'Gent Del Barri', 0, 0, 0, '', 41.409172, 2.184632, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (207, 1, 'Red Fish Barcelona. T DLL I DM', 0, 0, 0, '', 41.384934, 2.199312, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (208, 1, 'Bar El Raconet Charrua. T DLL I DM', 0, 0, 0, '', 41.419322, 2.172355, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (209, 1, 'Café Turó', 0, 0, 0, '', 41.394891, 2.141966, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (210, 1, 'Paella Bar Boqueria. T DG I ENTRESETMANA TARDA', 0, 0, 0, '', 41.381416, 2.171966, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (211, 1, 'La Lolita Barcelona', 0, 0, 0, '', 41.389105, 2.165929, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (212, 1, 'Le Bouchon (nova versió)', 0, 0, 0, '', 41.382588, 2.178943, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (213, 1, 'My Fucking Restaurant. T DM I DX', 0, 0, 0, '', 41.377784, 2.173146, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (214, 1, 'Bar Fidel. T DG TARDA', 0, 0, 0, '', 41.381929, 2.165431, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (215, 1, 'bohl. T TARDA', 0, 0, 0, '', 41.390597, 2.178239, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (216, 1, 'Bar jai-ca', 0, 0, 0, '', 41.381622, 2.188111, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (217, 1, 'La Esquina. T TARDA', 0, 0, 0, '', 41.385898, 2.168038, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (218, 1, 'Kook', 0, 0, 0, '', 41.397984, 2.171015, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (219, 1, 'Gandul', 0, 0, 0, '', 41.392384, 2.149062, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (221, 1, 'Pintxito. T DG', 0, 0, 0, '', 41.411451, 2.176052, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (222, 1, 'Hotel Calasanz', 0, 0, 0, '', 41.409127, 2.020292, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (223, 1, 'Las Bravas', 0, 0, 0, '', 40.416179, -3.701906, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (224, 1, 'La Fina', 0, 0, 0, '', 41.482350, 2.318543, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (225, 1, 'Follia', 0, 0, 0, '', 41.371669, 2.055602, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (226, 1, 'El Clandestí. T DLL i DM MIGDIA', 0, 0, 0, '', 41.381562, 2.044173, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (227, 1, 'Debut. T DG', 0, 0, 0, '', 41.362586, 2.101877, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (228, 1, 'Restaurant La Pubilla. T DLL I DG TARDA', 0, 0, 0, '', 41.372048, 2.098463, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (229, 1, 'Mug. T DG I DL', 0, 0, 0, '', 41.358967, 2.100339, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (230, 1, 'Restaurante Peperonata. T DLL I DG', 0, 0, 0, '', 41.323093, 2.100734, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (231, 1, 'El Parlament de sant feliu. T DL', 0, 0, 0, '', 41.381519, 2.045166, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (232, 1, 'La Santa Burger', 0, 0, 0, '', 41.327482, 2.094985, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (233, 1, 'Restaurant El Regust. T DLL I DM', 0, 0, 0, '', 41.325111, 2.095438, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (234, 1, 'Bocca Restaurant & Club. T DG', 0, 0, 0, '', 41.475914, 2.097442, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (235, 1, 'Plats. T DL I DG', 0, 0, 0, '', 41.359387, 2.073356, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (236, 1, 'La Bonaigua', 0, 0, 0, '', 41.378695, 2.077365, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (237, 1, 'La Cantineta de l\'Alba. T DLL', 0, 0, 0, '', 41.278577, 1.972865, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (238, 1, 'Sucapa. T DLL', 0, 0, 0, '', 41.360190, 2.101273, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (239, 1, 'Bar Verat. T DLL I DG', 0, 0, 0, '', 41.455395, 2.206415, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (240, 1, 'Giraldillo', 0, 0, 0, '', 41.221550, 1.720820, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (241, 1, 'Albayzin. T DL I DG', 0, 0, 0, '', 41.353680, 2.087570, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (242, 1, 'Restaurante Casa Narváez. T DG', 0, 0, 0, '', 41.350067, 2.072921, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (243, 1, 'Bar La Patata', 0, 0, 0, '', 41.361368, 2.077606, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (244, 1, 'Vins i Tapes Galileu', 0, 0, 0, '', 41.559320, 2.005303, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (245, 1, 'La Taberna del Terra Gourmet', 0, 0, 0, '', 41.353599, 2.087061, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (246, 1, 'El Cortijo', 0, 0, 0, '', 41.321737, 2.090663, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (247, 1, '2 de Vins. T DL', 0, 0, 0, '', 41.322379, 2.098003, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (248, 1, 'Casa Meli. T TARDES ENTRE SETMANA', 0, 0, 0, '', 41.325950, 2.097327, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (249, 1, 'La Castellana. T TARDES I DG', 0, 0, 0, '', 41.328589, 2.097673, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (250, 1, 'Traska Truska', 0, 0, 0, '', 41.416482, 2.012283, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (251, 1, 'L\'Escopinya. T DJ I DSS-DG TARDA', 0, 0, 0, '', 41.547381, 2.106047, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (252, 1, 'CÈNTRIC Gastrobar', 0, 0, 0, '', 41.321810, 2.093769, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (253, 1, 'El teleferic', 0, 0, 0, '', 41.472057, 2.089873, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (254, 1, 'La Calèche', 0, 0, 0, '', 42.464710, 1.982360, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (255, 1, 'L\'Horta de Can Patxei. T DLL', 0, 0, 0, '', 42.034096, 3.099818, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (256, 1, 'Ca la Pilar Dumingu', 0, 0, 0, '', 41.959566, 3.038497, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (257, 1, 'Can Carlitos', 0, 0, 0, '', 38.733012, 1.414133, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (258, 1, 'La Marineta. T DLL I DG', 0, 0, 0, '', 41.536611, 2.441283, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (259, 1, 'Restaurante Gamberro. T DLL I DM', 0, 0, 0, '', 41.653614, -0.880939, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (260, 1, 'Meli Del Tubo', 0, 0, 0, '', 41.653368, -0.880254, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (261, 1, 'Rausell. T DLL, DM I DG TARDA', 0, 0, 0, '', 39.469289, -0.389797, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (262, 1, 'Restaurant La Plaça d\'Alella. T DLL', 0, 0, 0, '', 41.493878, 2.294574, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (263, 1, 'Espinaler. T DG TARDA', 0, 0, 0, '', 41.513669, 2.384685, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (264, 1, 'Restaurant Sibaris. T DLL', 0, 0, 0, '', 41.675864, 2.800398, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (265, 1, 'Toc al Mar', 0, 0, 0, '', 41.933723, 3.216322, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (266, 1, 'Gargonich', 0, 0, 0, '', 42.465532, -2.448534, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (267, 1, 'Sunset Burger. T DLL DINAR I DG DINAR', 0, 0, 0, '', 41.305570, 2.007620, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (268, 1, 'La Abadía Cervecería Artesana', 0, 0, 0, '', 39.859971, -4.022830, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (269, 1, 'La Sucursal', 0, 0, 0, '', 40.430109, -3.703368, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (270, 1, 'El Cable. T MATINS ENTRE SETMANA', 0, 0, 0, '', 41.236186, 1.811942, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (271, 1, 'Restaurant La Santa. T DM', 0, 0, 0, '', 41.476482, 2.310084, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (272, 1, 'El Cortijo. T DLL', 0, 0, 0, '', 41.321737, 2.090663, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (273, 1, 'Can Llaunes', 0, 0, 0, '', 41.447892, 2.251001, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (274, 1, 'La tapeta del prat', 0, 0, 0, '', 41.323513, 2.091568, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (275, 1, 'Vori Bistro Burguer', 0, 0, 0, '', 41.324046, 2.091412, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (276, 1, 'Can Camp', 0, 0, 0, '', 41.661817, 2.256826, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (277, 1, 'El Jardí de Can Marc', 0, 0, 0, '', 41.952858, 3.207153, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (278, 1, 'Oasis Beach Bar | Chiringuito Badalona', 0, 0, 0, '', 41.459817, 2.267377, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (279, 1, 'Restaurant Vintage Cafè Arenys', 0, 0, 0, '', 41.588297, 2.543869, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (280, 1, 'Panoramic bar', 0, 0, 0, '', 41.466782, 2.271629, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (282, 1, 'La Capella de Can Gambús', 0, 0, 0, '', 41.545966, 2.081870, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (283, 1, 'El Llit Bar', 0, 0, 0, '', 41.547610, 2.108475, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (284, 1, 'Amics de les Arts i Joventuts Musicals. T DSS I DG', 0, 0, 0, '', 41.564609, 2.012396, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (285, 1, 'La Rampa. T DLL', 0, 0, 0, '', 41.446661, 2.049653, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (286, 1, 'Ca l\'Enric', 0, 0, 0, '', 41.491641, 2.140816, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (287, 1, 'Emporium Loung. T ENTRE SETMANA', 0, 0, 0, '', 41.466470, 2.281220, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (288, 1, 'El Racó d\'en Josep. T DG', 0, 0, 0, '', 41.353222, 2.087822, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (289, 1, 'Restaurante Caracé. T DLL', 0, 0, 0, '', 41.352455, 2.073793, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (290, 1, 'El Mesón. T DM I DLL TARDA', 0, 0, 0, '', 41.473653, 2.084017, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (291, 1, 'Unlugar Restaurante', 0, 0, 0, '', 41.265426, 1.989066, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (292, 1, 'Tragamar', 0, 0, 0, '', 41.888813, 3.188467, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (293, 1, 'Restaurante La Buixeda', 0, 0, 0, '', 42.374881, 1.892292, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (294, 1, 'Afrika. T DLL', 0, 0, 0, '', 41.321296, 2.086055, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (295, 1, 'Ristol Viladecavalls. T DM I DG TARDA', 0, 0, 0, '', 41.555280, 1.954289, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (296, 1, 'El Racó d\'Ullastrell. T DG', 0, 0, 0, '', 41.527678, 1.957128, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (297, 1, 'El Doll - Cerveseria Moderna & Restaurant', 0, 0, 0, '', 41.987354, 2.824318, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (298, 1, 'Casal Independentista El Forn', 0, 0, 0, '', 41.989599, 2.825263, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (299, 1, 'Studio66', 0, 0, 0, '', 41.703859, 2.853640, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (300, 1, 'Can Gallina Gastrobar. T DG TARDA', 0, 0, 0, '', 41.606904, 2.288994, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (301, 1, 'Mio Mio Restaurant. T DLL-DJ', 0, 0, 0, '', 42.171011, 2.470163, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (302, 1, 'Febrer. T DLL I DG TARDA', 0, 0, 0, '', 41.469790, 2.081740, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (303, 1, 'CheChe Restaurant. T DLL', 0, 0, 0, '', 41.265980, 1.964429, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (304, 1, 'Hotel Montarto', 0, 0, 0, '', 42.699332, 0.930327, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (305, 1, 'VIU By Tapiñas', 0, 0, 0, '', 41.562868, 2.015625, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (306, 1, 'Fooco. T DG', 0, 0, 0, '', 41.537577, 2.439853, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (57, 1, 'medina BAR & RESTAURANT', 0, 0, 0, '-', 41.448772, 2.190114, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (60, 1, 'MANA75', 0, 0, 0, '-', 41.368828, 2.188036, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (61, 1, 'Louise Se Va', 0, 0, 0, '-', 41.430829, 2.160657, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (62, 1, 'Casa de Tapes Cañota', 0, 0, 0, '-', 41.374302, 2.154541, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (63, 1, 'Bar Marín', 0, 0, 0, '-', 41.437107, 2.191174, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (64, 1, 'Cervecería la Tasca', 0, 0, 0, '-', 41.425901, 2.157497, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (65, 1, 'Bar la Gamba', 0, 0, 0, '-', 41.420735, 2.180819, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (67, 1, 'Bodega Montferry', 0, 0, 0, '-', 41.379418, 2.131888, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (68, 1, 'Bar Kasparo', 0, 0, 0, '-', 41.384469, 2.168990, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (69, 1, 'Fragments Café', 0, 0, 0, 'Pl/ de la Concòrdia 12, 08014 Barcelona', 41.386587, 2.132516, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (71, 1, 'El quimet d\'horta', 0, 0, 0, '-', 41.430709, 2.160733, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (72, 3, 'Central Park', 0, 0, 0, 'C/ Pedro i Pons 11, 08034 Barcelona', 41.390009, 2.122310, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (73, 1, 'Mitjagalta', 0, 0, 0, '-', 41.368317, 2.131854, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (74, 1, 'Wow', 0, 0, 0, '-', 41.391273, 2.157597, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (75, 1, 'Vaso de oro', 0, 0, 0, '-', 41.381889, 2.187254, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (76, 1, 'La mestressa', 0, 0, 0, '-', 41.375883, 2.138582, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (77, 1, 'Bar Joanet', 0, 0, 0, '-', 41.387982, 2.180449, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (78, 1, 'Tast Gastro Bar \n', 0, 0, 0, '-', 41.374793, 2.159657, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (79, 1, 'Restaurante Sagàs', 0, 0, 0, '-', 41.383345, 2.183366, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (80, 1, 'PURA BRASA Arenas de Barcelona', 0, 0, 0, '-', 41.376275, 2.150125, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (81, 1, 'Tío Carlos', 0, 0, 0, '-', 41.376787, 2.174875, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (82, 1, 'Moix Wine & Gastrobar', 0, 0, 0, '-', 41.377763, 2.173094, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (84, 1, 'Bar Mendizábal', 0, 0, 0, '-', 41.380492, 2.170802, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (85, 1, 'Cerveseria El Tap', 0, 0, 0, '-', 41.388037, 2.136123, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (86, 1, 'Gatsby Barcelona', 0, 0, 0, '-', 41.396196, 2.151404, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (87, 1, 'The Bagel Hood', 0, 0, 0, '-', 41.381655, 2.164606, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (88, 1, 'Bar La Garchetta', 0, 0, 0, '-', 41.413129, 2.215756, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (89, 1, 'Dora tapas bar', 0, 0, 0, '-', 41.395830, 2.162655, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (90, 1, 'Yours', 0, 0, 0, '-', 41.392084, 2.148449, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (91, 1, 'L\'Anxoveta de Sants', 0, 0, 0, '-', 41.377629, 2.135154, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (92, 1, 'Casa Tejada', 0, 0, 0, '-', 41.395083, 2.142133, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (93, 1, 'Bormuth', 0, 0, 0, '-', 41.385810, 2.182485, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (94, 1, 'Bar Nino', 0, 0, 0, '-', 41.413502, 2.215864, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (95, 1, 'Pla De La Garsa', 0, 0, 0, '-', 41.386007, 2.180555, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (96, 1, 'Bar Lafuente', 0, 0, 0, '-', 41.422083, 2.210685, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (97, 1, 'Bar Nostalgic BCN', 0, 0, 0, '-', 41.376734, 2.161376, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (98, 1, 'Telefèric Restaurant', 0, 0, 0, '-', 41.389531, 2.160825, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (100, 1, 'Toca teca', 0, 0, 0, '-', 41.423583, 2.180945, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (101, 1, 'Pastís i sucre', 0, 0, 0, '-', 41.406277, 2.137528, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (102, 1, 'Time\'s Café & Co', 0, 0, 0, '-', 41.362374, 2.121996, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (103, 1, 'L\'Ow Boqueria', 0, 0, 0, '-', 41.381902, 2.170744, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (104, 1, 'El Manolo', 0, 0, 0, '-', 41.414861, 2.194730, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (105, 1, 'El Pacífico', 0, 0, 0, '-', 41.378138, 2.191168, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (106, 1, 'Restaurant CentOnze', 0, 0, 0, '-', 41.383556, 2.170526, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (107, 1, 'Caramba Tapas', 0, 0, 0, '-', 41.377677, 2.164884, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (108, 1, 'Bar El Velódromo', 0, 0, 0, '-', 41.393490, 2.150155, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (109, 1, 'El Celler del Nou Priorat', 0, 0, 0, '-', 41.378445, 2.137625, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (110, 1, 'Barraca', 0, 0, 0, '-', 41.379072, 2.191950, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (111, 1, 'Orvay', 0, 0, 0, '-', 41.384065, 2.182576, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (112, 1, 'Bodega Bartolí', 0, 0, 0, '-', 41.379325, 2.137032, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (113, 1, 'TONI BIGOTI', 0, 0, 0, '-', 41.389818, 2.138698, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (114, 1, 'Inblue', 0, 0, 0, '-', 41.387693, 2.136832, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (115, 1, 'Bodega Pujós', 0, 0, 0, '-', 41.373684, 2.119123, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (116, 1, 'Ten\'s Tapas Restaurant Barcelona', 0, 0, 0, '-', 41.384322, 2.184163, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (117, 1, 'Bodega del Cabo', 0, 0, 0, '-', 41.399613, 2.179970, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (118, 1, 'BOCALOCA', 0, 0, 0, '-', 41.418935, 2.203733, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (119, 1, 'Antunez', 0, 0, 0, 'C/ Neptú 18, 08006 Barcelona', 41.397891, 2.154693, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (120, 1, 'Santagustina', 0, 0, 0, '-', 41.388218, 2.180559, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (121, 1, 'La Bodegueta Provença', 0, 0, 0, '-', 41.393318, 2.159417, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (123, 1, 'Cal Robert', 0, 0, 0, '-', 41.379697, 2.163807, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (124, 1, 'Las Fritas del Born - Bar', 0, 0, 0, '-', 41.383522, 2.181216, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (125, 1, 'Els Sortidors del Parlament', 0, 0, 0, '-', 41.377581, 2.163831, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (126, 1, 'Restaurante Bivio', 0, 0, 0, '-', 41.376584, 2.188978, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (127, 1, 'La terrasa del DO', 0, 0, 0, '-', 41.379993, 2.174932, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (128, 1, 'O\'Chispa Taberna galega', 0, 0, 0, '-', 41.368161, 2.112205, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (129, 1, 'Almalibre Açaí Bar', 0, 0, 0, 'Varies ubicacions', 41.397104, 2.168287, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (130, 1, 'La Esquinita de Blai', 0, 0, 0, '-', 41.373392, 2.165232, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (131, 1, 'Casa de Comidas Nogal', 0, 0, 0, '-', 41.399005, 2.178707, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (132, 1, 'Jonny Aldana Bar', 0, 0, 0, '-', 41.375823, 2.166101, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (133, 1, 'RAO Restaurant & Bar', 0, 0, 0, '-', 41.384290, 2.169572, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (134, 1, 'Restaurant CentOnze', 0, 0, 0, '-', 41.383556, 2.170526, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (135, 1, 'LUTE Bar & Bowls', 0, 0, 0, '-', 41.374348, 2.133232, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (136, 1, 'L\'Olivera', 0, 0, 0, '-', 41.405899, 2.189411, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (137, 1, 'Reñé', 0, 0, 0, '-', 41.394400, 2.170243, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (138, 1, 'RENOI Tapes i Vins', 0, 0, 0, '-', 41.405611, 2.180347, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (140, 1, 'La Tiza BCN', 0, 0, 0, '-', 41.373692, 2.164360, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (141, 1, 'Tapeo Gracia', 0, 0, 0, '-', 41.404562, 2.155454, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (144, 1, 'Bambú Beach Bar', 0, 0, 0, '-', 41.405040, 2.218824, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (145, 1, 'El Bitxo', 0, 0, 0, '-', 41.387235, 2.175698, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (146, 1, 'Pisamorena', 0, 0, 0, '-', 41.382554, 2.182283, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (147, 1, 'La terraza Miró', 0, 0, 0, '-', 41.377440, 2.146075, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (148, 1, 'La Ramona', 0, 0, 0, '-', 41.402474, 2.168007, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (149, 1, 'Ocho Patas', 0, 0, 0, '-', 41.381847, 2.142089, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (151, 1, 'El Quim de la Boquería', 0, 0, 0, '-', 41.381648, 2.171950, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (152, 1, 'Bar Makinavaja', 0, 0, 0, '-', 41.377102, 2.168042, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (153, 1, 'Colmado Barcelona', 0, 0, 0, '-', 41.391704, 2.157666, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (154, 1, 'TRIKI-TRAC', 0, 0, 0, '-', 41.381266, 2.141563, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (155, 1, 'Abirradero', 0, 0, 0, '-', 41.374167, 2.168578, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (156, 1, 'Tres Torres Atiram', 0, 0, 0, '-', 41.399919, 2.130009, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (157, 1, 'Hotel El Palace - Winter Garden', 0, 0, 0, '-', 41.391396, 2.171474, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (158, 1, 'a restaurant', 0, 0, 0, '-', 41.383307, 2.175193, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (159, 1, 'Grill Room Bar Thonet', 0, 0, 0, '-', 41.379278, 2.176096, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (160, 1, 'La Rubia', 0, 0, 0, '-', 41.382425, 2.166411, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (161, 1, 'Casa Rafols', 0, 0, 0, '-', 41.391230, 2.179247, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (163, 1, 'CASA DORITA', 0, 0, 0, '-', 41.377898, 2.160166, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (164, 1, 'Entre Catas', 0, 0, 0, '-', 41.416869, 2.195318, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (165, 1, 'La Comparsita', 0, 0, 0, '-', 41.410519, 2.179941, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (166, 1, 'PIMIENTO BAR', 0, 0, 0, '-', 41.377147, 2.175130, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (167, 1, 'Sucursal Aceitera', 0, 0, 0, '-', 41.377138, 2.163178, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (168, 1, 'Vermuteria La Guapa', 0, 0, 0, '-', 41.385604, 2.154253, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (169, 1, 'Restaurant Amaya', 0, 0, 0, '-', 41.378024, 2.176261, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (170, 1, 'PORK boig per tu!', 0, 0, 0, '-', 41.382128, 2.181900, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (171, 1, 'Restaurant Dispensa', 0, 0, 0, '-', 41.421636, 2.181117, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (172, 1, 'Bar Bodega Carol', 0, 0, 0, '-', 41.406962, 2.184842, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (173, 1, 'Catacroquet', 0, 0, 0, '-', 41.401818, 2.196100, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (174, 1, 'Plaça d\'Osca, 6', 0, 0, 0, '-', 41.376198, 2.138751, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (175, 1, 'Marcelino 1968', 0, 0, 0, '-', 41.401403, 2.156800, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (176, 1, 'La Bodegueta De Sants', 0, 0, 0, '-', 41.371062, 2.134448, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (178, 1, 'El Canalla', 0, 0, 0, '-', 41.399590, 2.121668, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (180, 1, 'Grupo Abrassame', 0, 0, 0, '-', 41.376391, 2.148920, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (181, 1, 'Mirablau', 0, 0, 0, '-', 41.416043, 2.131883, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (182, 1, 'OBE restaurant', 0, 0, 0, '-', 41.385413, 2.178781, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (183, 1, 'Purobeach Barcelona', 0, 0, 0, '-', 41.408535, 2.217434, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (185, 1, 'Calabrasa', 0, 0, 0, '-', 41.385379, 2.183005, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (186, 1, 'Bar Torrente', 0, 0, 0, '-', 41.432998, 2.193468, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (187, 1, 'Ale&Hop', 0, 0, 0, '-', 41.388637, 2.180060, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (188, 1, 'Espai Mireia', 0, 0, 0, '-', 41.393237, 2.093776, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (190, 1, 'Xampu Barcelona', 0, 0, 0, '-', 41.393726, 2.174447, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (191, 1, 'Equilibribcn', 0, 0, 0, '-', 41.407216, 2.168466, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (192, 1, 'Bubó', 0, 0, 0, '-', 41.383140, 2.181833, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (193, 1, 'Atabalats Gastrobar', 0, 0, 0, '-', 41.408768, 2.160520, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (194, 1, 'Bar Bero', 0, 0, 0, '-', 41.403395, 2.133436, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (195, 1, 'Bar Restaurant Jordi', 0, 0, 0, '-', 41.424973, 2.176822, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (197, 1, 'El Disbarat', 0, 0, 0, '-', 41.401721, 2.154579, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (198, 1, 'Zarautz', 0, 0, 0, '-', 41.378065, 2.143281, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (199, 1, 'Superclàssic', 0, 0, 0, 'C/ Floristes de la Rambla 14, 08001 Barcelona', 41.381935, 2.169829, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (200, 1, 'Jumilla', 0, 0, 0, '-', 41.403194, 2.134816, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (201, 1, 'Mirch Barcelona', 0, 0, 0, 'C/ dels Àngels 12, 08001 Barcelona', 41.382345, 2.168298, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (202, 1, 'Tipo Tapa', 0, 0, 0, 'C/ Rogent 21, 08026 Barcelona', 41.409097, 2.184872, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (203, 1, 'Fat Cat', 0, 0, 0, 'Pl/ Salvador Seguí 13, 08001 Barcelona', 41.379070, 2.170716, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (204, 1, 'Bar Ri Sarrià', 0, 0, 0, 'Pl/ Joaquim Pena 4, 08017 Barcelona', 41.396578, 2.128056, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (205, 1, 'Los Tortillez', 0, 0, 0, 'C/ Consell de Cent 299, 08007 Barcelona', 41.388770, 2.162260, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (206, 1, 'Gent Del Barri', 0, 0, 0, 'C/ Rogent 25, 08026 Barcelona', 41.409172, 2.184632, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (207, 1, 'Red Fish Barcelona', 0, 0, 0, 'Platja del somorrostro, Moll de la Marina, 08005 Barcelona', 41.384934, 2.199312, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (208, 1, 'Bar El Raconet Charrua', 0, 0, 0, 'Av/ Mare de Déu de Montserrat 175, 08041 Barcelona', 41.419322, 2.172355, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (209, 1, 'Café Turó', 0, 0, 0, 'C/ Tenor Viñas 1, 08021 Barcelona', 41.394891, 2.141966, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (210, 1, 'Paella Bar Boqueria', 0, 0, 0, 'Mercat de la Boqueria Pòrtics de la Boqueria, Locals 6-7, 08001 Barcelona', 41.381416, 2.171966, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (211, 1, 'La Lolita Barcelona', 0, 0, 0, 'Rambla de Catalunya 27, 08007 Barcelona', 41.389105, 2.165929, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (212, 1, 'Le Bouchon (nova versió)', 0, 0, 0, 'C/ Lledó, 7 08002 Barcelona', 41.382588, 2.178943, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (213, 1, 'My Fucking Restaurant', 0, 0, 0, 'C/ Nou de la Rambla 35, 08001 Barcelona', 41.377784, 2.173146, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (214, 1, 'Bar Fidel', 0, 0, 0, 'C/ de Ferlandina 24, 08001 Barcelona', 41.381929, 2.165431, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (215, 1, 'bohl. T TARDA', 0, 0, 0, 'C/ Trafalgar 47, 08010 Barcelona', 41.390597, 2.178239, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (216, 1, 'Bar jai-ca', 0, 0, 0, 'C/ Ginebra, 13, 08003 Barcelona', 41.381622, 2.188111, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (217, 1, 'La Esquina', 0, 0, 0, 'C/ Bergara 2, 08002 Barcelona', 41.385898, 2.168038, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (218, 3, 'Kook', 0, 0, 0, 'Pg/ St. Joan 85, 08009 Barcelona', 41.397984, 2.171015, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (219, 1, 'Gandul', 0, 0, 0, '-', 41.392384, 2.149062, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (222, 1, 'Hotel Calasanz', 0, 0, 0, '-', 41.409127, 2.020292, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (223, 1, 'Las Bravas', 0, 0, 0, '-', 40.416179, -3.701906, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (224, 1, 'La Fina', 0, 0, 0, '-', 41.482350, 2.318543, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (225, 1, 'Follia', 0, 0, 0, '-', 41.371669, 2.055602, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (226, 1, 'El Clandestí', 0, 0, 0, '-', 41.381562, 2.044173, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (227, 1, 'Debut', 0, 0, 0, '-', 41.362586, 2.101877, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (228, 1, 'Restaurant La Pubilla', 0, 0, 0, 'Pl/ de la Llibertat 23, 08012 Barcelona', 41.372048, 2.098463, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (229, 1, 'Mug', 0, 0, 0, '-', 41.358967, 2.100339, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (230, 1, 'Restaurante Peperonata', 0, 0, 0, 'C/ Petit 7, 08820 El Prat de Llobregat, Barcelona', 41.323093, 2.100734, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (231, 1, 'El Parlament de sant feliu', 0, 0, 0, 'C/ Rectoria 15, 08980 Sant Feliu de Llobregat, Barcelona', 41.381519, 2.045166, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (232, 1, 'La Santa Burger', 0, 0, 0, 'C/ Ferran Puig 53, 08820 El Prat de Llobregat, Barcelona', 41.327482, 2.094985, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (233, 1, 'Restaurant El Regust', 0, 0, 0, 'C/ Narcís Monturiol 24, 08820 El Prat de Llobregat, Barcelona', 41.325111, 2.095438, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (234, 1, 'Bocca Restaurant & Club', 0, 0, 0, 'Av/ Corts Catalanes 2, 08173 Sant Cugat del Vallès, Barcelona', 41.475914, 2.097442, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (235, 1, 'Plats', 0, 0, 0, '-', 41.359387, 2.073356, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (236, 1, 'La Bonaigua', 0, 0, 0, '-', 41.378695, 2.077365, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (237, 1, 'La Cantineta de l\'Alba', 0, 0, 0, '-', 41.278577, 1.972865, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (238, 1, 'Sucapa', 0, 0, 0, '-', 41.360190, 2.101273, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (239, 1, 'Bar Verat', 0, 0, 0, '-', 41.455395, 2.206415, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (240, 1, 'Giraldillo', 0, 0, 0, '-', 41.221550, 1.720820, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (241, 1, 'Albayzín Cervecería', 0, 0, 0, 'Av/ Pablo Picasso 12-14, 08940 Cornellà de Llobregat', 41.353680, 2.087570, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (242, 1, 'Restaurante Casa Narváez', 0, 0, 0, '-', 41.350067, 2.072921, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (243, 1, 'Bar La Patata', 0, 0, 0, '-', 41.361368, 2.077606, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (244, 1, 'Vins i Tapes Galileu', 0, 0, 0, '-', 41.559320, 2.005303, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (245, 1, 'La Taberna del Terra Gourmet', 0, 0, 0, '-', 41.353599, 2.087061, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (246, 1, 'El Cortijo', 0, 0, 0, '-', 41.321737, 2.090663, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (247, 1, '2 de Vins', 0, 0, 0, 'C/ de Caldetes 10, 08820 El Prat de Llobregat', 41.322379, 2.098003, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (248, 1, 'Casa Meli', 0, 0, 0, '-', 41.325950, 2.097327, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (249, 1, 'La Castellana', 0, 0, 0, '-', 41.328589, 2.097673, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (250, 1, 'Traska Truska', 0, 0, 0, '-', 41.416482, 2.012283, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (253, 1, 'El teleferic', 0, 0, 0, '-', 41.472057, 2.089873, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (254, 1, 'La Calèche', 0, 0, 0, '-', 42.464710, 1.982360, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (255, 1, 'L\'Horta de Can Patxei', 0, 0, 0, '-', 42.034096, 3.099818, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (256, 1, 'Ca la Pilar Dumingu', 0, 0, 0, '-', 41.959566, 3.038497, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (257, 1, 'Can Carlitos', 0, 0, 0, '-', 38.733012, 1.414133, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (258, 1, 'La Marineta', 0, 0, 0, '-', 41.536611, 2.441283, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (259, 1, 'Restaurante Gamberro', 0, 0, 0, '-', 41.653614, -0.880939, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (260, 1, 'Meli Del Tubo', 0, 0, 0, '-', 41.653368, -0.880254, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (261, 1, 'Rausell', 0, 0, 0, '-', 39.469289, -0.389797, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (262, 1, 'Restaurant La Plaça d\'Alella', 0, 0, 0, '-', 41.493878, 2.294574, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (263, 1, 'Espinaler', 0, 0, 0, '-', 41.513669, 2.384685, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (264, 1, 'Restaurant Sibaris', 0, 0, 0, '-', 41.675864, 2.800398, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (265, 1, 'Toc al Mar', 0, 0, 0, '-', 41.933723, 3.216322, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (266, 1, 'Gargonich', 0, 0, 0, '-', 42.465532, -2.448534, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (267, 1, 'Sunset Burger', 0, 0, 0, '-', 41.305570, 2.007620, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (268, 1, 'La Abadía Cervecería Artesana', 0, 0, 0, '-', 39.859971, -4.022830, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (269, 1, 'La Sucursal', 0, 0, 0, '-', 40.430109, -3.703368, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (270, 1, 'El Cable', 0, 0, 0, '-', 41.236186, 1.811942, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (271, 1, 'Restaurant La Santa', 0, 0, 0, '-', 41.476482, 2.310084, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (272, 1, 'El Cortijo', 0, 0, 0, '-', 41.321737, 2.090663, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (273, 1, 'Can Llaunes', 0, 0, 0, '-', 41.447892, 2.251001, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (274, 1, 'La tapeta del prat', 0, 0, 0, '-', 41.323513, 2.091568, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (275, 1, 'Vori Bistro Burguer', 0, 0, 0, '-', 41.324046, 2.091412, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (276, 1, 'Can Camp', 0, 0, 0, '-', 41.661817, 2.256826, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (277, 1, 'El Jardí de Can Marc', 0, 0, 0, '-', 41.952858, 3.207153, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (278, 1, 'Oasis Beach Bar | Chiringuito Badalona', 0, 0, 0, '-', 41.459817, 2.267377, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (279, 1, 'Restaurant Vintage Cafè Arenys', 0, 0, 0, '-', 41.588297, 2.543869, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (280, 1, 'Panoramic bar', 0, 0, 0, '-', 41.466782, 2.271629, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (282, 1, 'La Capella de Can Gambús', 0, 0, 0, '-', 41.545966, 2.081870, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (283, 1, 'El Llit Bar', 0, 0, 0, '-', 41.547610, 2.108475, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (284, 1, 'Amics de les Arts i Joventuts Musicals', 0, 0, 0, '-', 41.564609, 2.012396, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (285, 1, 'La Rampa', 0, 0, 0, '-', 41.446661, 2.049653, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (286, 1, 'Ca l\'Enric', 0, 0, 0, '-', 41.491641, 2.140816, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (287, 1, 'Emporium Loung', 0, 0, 0, '-', 41.466470, 2.281220, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (288, 1, 'El Racó d\'en Josep', 0, 0, 0, '-', 41.353222, 2.087822, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (289, 1, 'Restaurante Caracé', 0, 0, 0, '-', 41.352455, 2.073793, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (290, 1, 'El Mesón', 0, 0, 0, '-', 41.473653, 2.084017, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (291, 1, 'Unlugar Restaurante', 0, 0, 0, '-', 41.265426, 1.989066, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (292, 1, 'Tragamar', 0, 0, 0, '-', 41.888813, 3.188467, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (293, 1, 'Restaurante La Buixeda', 0, 0, 0, '-', 42.374881, 1.892292, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (294, 1, 'Cafetería Pizzería Afrika', 0, 0, 0, 'C/ Dolores Ibarruri 35-37, 08820 El Prat de Llobregat', 41.321296, 2.086055, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (295, 1, 'Ristol Viladecavalls', 0, 0, 0, '-', 41.555280, 1.954289, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (297, 1, 'El Doll - Cerveseria Moderna & Restaurant', 0, 0, 0, '-', 41.987354, 2.824318, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (298, 1, 'Casal Independentista El Forn', 0, 0, 0, '-', 41.989599, 2.825263, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (299, 1, 'Studio66', 0, 0, 0, '-', 41.703859, 2.853640, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (300, 1, 'Can Gallina Gastrobar', 0, 0, 0, '-', 41.606904, 2.288994, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (301, 1, 'Mio Mio Restaurant', 0, 0, 0, '-', 42.171011, 2.470163, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (302, 1, 'Febrer', 0, 0, 0, '-', 41.469790, 2.081740, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (303, 1, 'CheChe Restaurant', 0, 0, 0, '-', 41.265980, 1.964429, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (304, 1, 'Hotel Montarto', 0, 0, 0, '-', 42.699332, 0.930327, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (305, 1, 'VIU By Tapiñas', 0, 0, 0, '-', 41.562868, 2.015625, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (306, 1, 'Fooco', 0, 0, 0, '-', 41.537577, 2.439853, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (307, 3, 'La Trini', 0, 0, 1, 'C/ Verdi 30, 08012 Barcelona', 41.403913, 2.156903, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (308, 3, 'Els Pinxus Barra de Tapes', 1, 0, 1, 'C/ Marià Cubí 81, 08006 Barcelona', 41.397520, 2.148461, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (309, 3, 'Vivanda', 1, 0, 1, 'C/ Major de Sarrià 134, 08017 Barcelona', 41.400486, 2.120973, '2023-05-25 16:04:15');
@@ -1327,7 +1349,7 @@ INSERT INTO `brava` VALUES (314, 3, 'Sa Tuna Begur', 0, 0, 0, 'Pg/ de l\'Àncora
 INSERT INTO `brava` VALUES (315, 3, 'Cal Bandarra', 1, 0, 0, 'C/ Forgas i Elias, 4, 17255 Begur, Girona', 41.954609, 3.206615, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (316, 3, 'Casa Angela', 0, 0, 1, 'Pl/ Sagrada Família 13, 15, 08025 Barcelona', 41.403438, 2.172785, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (317, 3, 'El Born', 1, 0, 1, '651 Manhattan Ave, Brooklyn, NY 11222, USA', 40.724320, -73.951400, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (318, 3, 'Restaurante Tapas Bula', 1, 0, 0, 'C/ José María Lacarra de Miguel 23, 50008 Zaragoza', 41.645250, -0.882108, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (318, 3, 'Bula Tapas', 0, 0, 0, 'C/ José María Lacarra de Miguel 23, 50008 Zaragoza', 41.645250, -0.882108, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (319, 3, 'Sant Antoni Gloriós', 0, 1, 0, 'C/ Manso 42, 08015 Barcelona', 41.376697, 2.160805, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (320, 3, 'La Bicicleta', 1, 0, 1, 'C/ Verdi 65, 08012 Barcelona', 41.404708, 2.155870, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (321, 3, 'Sucursal Aceitera', 0, 0, 0, 'C/ Comte Borrell 36, 08015 Barcelona', 41.377162, 2.163103, '2023-05-25 16:04:15');
@@ -1369,7 +1391,7 @@ INSERT INTO `brava` VALUES (356, 3, 'BORO Bar', 0, 0, 0, 'C/ Diputació 286, 080
 INSERT INTO `brava` VALUES (357, 3, 'La Cachapera', 0, 0, 0, 'C/ Marina 241, 08013 Barcelona', 41.402946, 2.176066, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (358, 3, 'El Mercat', 0, 0, 0, 'C/ Casp 35, 08010 Barcelona', 41.391369, 2.172949, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (359, 3, 'Casa Lolea', 0, 0, 0, 'C/ Sant Pere Més Alt 49, 08003 Barcelona', 41.388809, 2.177129, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (360, 3, 'Celler de Tapes Edar', 0, 0, 0, 'C/ Sardenya 211, 08013 Barcelona', 41.399446, 2.178340, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (360, 3, 'Celler de Tapes Edar', 0, 1, 0, 'C/ Sardenya 211, 08013 Barcelona', 41.399446, 2.178340, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (361, 3, 'Winchester BCN', 0, 1, 0, 'Pg/ de St. Joan 62, 08009 Barcelona', 41.396680, 2.173712, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (362, 3, 'Muten town', 1, 0, 0, 'C/ de Lleó 55, 08911 Badalona, Barcelona', 41.448668, 2.247632, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (363, 3, 'Monopol', 0, 0, 0, 'Rambla del Poblenou 74, 08005 Barcelona', 41.401249, 2.201229, '2023-05-25 16:04:15');
@@ -1479,7 +1501,7 @@ INSERT INTO `brava` VALUES (466, 3, 'Bar Oviso', 0, 0, 0, 'C/ de n\'Arai 5, 0800
 INSERT INTO `brava` VALUES (467, 3, 'El Santet', 0, 0, 0, 'Av/ Icària 215, 08005 Barcelona', 41.394800, 2.200795, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (468, 3, 'Bar Can Rafa', 0, 0, 0, 'C/ Camèlies 62, 08024 Barcelona', 41.413189, 2.163191, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (469, 3, 'O\'Retorno', 0, 0, 0, 'C/ Comte d\'Urgell 168, 08036 Barcelona', 41.386873, 2.152742, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (470, 3, 'INNSBRUCK RESTAURANTE', 0, 0, 0, 'Pl/ Cabrinetty 9, 17520 Puigcerdà, Girona', 42.430747, 1.928065, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (470, 3, 'Innsbruck Restaurante', 0, 0, 0, 'Pl/ Cabrinetty 9, 17520 Puigcerdà, Girona', 42.430747, 1.928065, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (471, 3, 'Ovante', 0, 0, 0, 'Pg/ Fabra i Puig 95, 08016 Barcelona', 41.430051, 2.182707, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (472, 3, 'The Juice House', 0, 0, 0, 'C/ Parlament 12, 08015 Barcelona', 41.375657, 2.161724, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (473, 3, 'Celler de Tapas', 0, 0, 0, 'Pl/ Universitat 5, 08001 Barcelona', 41.385392, 2.164423, '2023-05-25 16:04:15');
@@ -1493,7 +1515,7 @@ INSERT INTO `brava` VALUES (480, 3, 'O\'Candil', 0, 1, 0, 'C/ Madrazo 78, 08021 
 INSERT INTO `brava` VALUES (481, 3, 'L\'autèntic', 0, 0, 0, 'C/ Campuig 1, 17255 Begur, Girona', 41.954896, 3.205837, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (482, 3, 'Steam & Coal', 0, 0, 0, 'Pl/ Julio González 4, 08005 Barcelona', 41.401348, 2.206907, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (483, 3, 'KAT MAY', 0, 0, 0, 'C/ St. Antoni Maria Claret 132, 08025 Barcelona', 41.408073, 2.170413, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (484, 3, 'Civico 46', 1, 0, 0, 'C/ Manso 46, 08015 Barcelona', 41.377046, 2.161361, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (484, 3, 'Civico 46', 1, 1, 0, 'C/ Manso 46, 08015 Barcelona', 41.377046, 2.161361, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (485, 3, 'La Colosal', 0, 0, 0, 'Rambla Catalunya 23, 08007 Barcelona', 41.388829, 2.166271, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (486, 3, 'La Informal', 1, 0, 0, 'Rambla del Raval 32, 08001 Barcelona', 41.377721, 2.170006, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (487, 3, 'Bitacora', 0, 0, 0, 'Pl/ de la Unió 24, 08005 Barcelona', 41.401015, 2.204621, '2023-05-25 16:04:15');
@@ -1521,7 +1543,7 @@ INSERT INTO `brava` VALUES (508, 3, 'La Bombeta', 0, 0, 0, 'C/ Maquinista 3, 080
 INSERT INTO `brava` VALUES (509, 3, 'Déjà Burg', 1, 0, 0, 'C/ Còrsega 216, 08036 Barcelona', 41.391767, 2.153216, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (510, 4, 'El Chigre 1769', 0, 0, 0, 'C/ dels Sombrerers 7, 08003 Barcelona', 41.383764, 2.181679, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (511, 4, 'La Porca', 1, 0, 0, 'C/ Mata 16, 08004 Barcelona', 41.373009, 2.170651, '2023-05-25 16:04:15');
-INSERT INTO `brava` VALUES (512, 4, 'Les Truites', 1, 0, 1, 'C/ d\'Arimon 22, 08022 Barcelona', 41.404378, 2.136910, '2023-05-25 16:04:15');
+INSERT INTO `brava` VALUES (512, 3, 'Les Truites', 1, 0, 1, 'C/ Viladomat 324, 08029 Barcelona', 41.389990, 2.143980, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (513, 4, 'Rooster', 1, 1, 0, 'C/ Casanova 262, 08021 Barcelona', 41.394101, 2.147616, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (514, 4, 'Pasta Market', 1, 0, 0, 'La Rambla 77, 08002 Barcelona', 41.381365, 2.172835, '2023-05-25 16:04:15');
 INSERT INTO `brava` VALUES (515, 4, 'Caramba Tapas', 0, 1, 0, 'C/ de la Cera 57, 08001 Barcelona', 41.377677, 2.164884, '2023-05-25 16:04:15');
@@ -1550,13 +1572,13 @@ INSERT INTO `brava` VALUES (537, 3, 'Ignició', 0, 1, 0, 'C/ Còrsega 244, 08036
 INSERT INTO `brava` VALUES (538, 3, 'The Hideout Bar', 0, 1, 0, 'C/ Alzina 2, 08024 Barcelona', 41.406058, 2.161954, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (539, 3, 'Mika Milan', 0, 1, 0, 'Rambla del Poblenou 127-129, 08018 Barcelona', 41.404337, 2.196739, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (540, 3, 'El Rincón Criollo', 0, 1, 0, 'Pg/ de St. Joan 72, 08009 Barcelona', 41.397095, 2.173057, '2023-05-25 16:04:16');
-INSERT INTO `brava` VALUES (541, 3, 'Apats Puigcerda', 0, 1, 0, 'Pl/ dels Herois 1, 17520 Puigcerdà, Girona', 42.433089, 1.927208, '2023-05-25 16:04:16');
+INSERT INTO `brava` VALUES (541, 3, 'Apats Puigcerda', 0, 1, 0, 'Pl/ dels Herois 1, 17520 Puigcerdà, Girona', 42.433040, 1.927300, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (542, 3, 'El Zorrito', 0, 1, 0, 'Av/ Josep Tarradellas 133, 08029 Barcelona', 41.390206, 2.143217, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (543, 3, 'Districte Born', 0, 1, 0, 'C/ Princesa 53, 08003 Barcelona', 41.385992, 2.181079, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (545, 3, 'Bretón', 0, 1, 0, 'C/ Bretón de los Herreros 6, 08012 Barcelona', 41.402541, 2.152090, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (546, 3, 'Telefèric Born', 0, 1, 0, 'Pl/ Jacint Reventós, 08003 Barcelona', 41.383468, 2.180823, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (547, 3, 'Cafe & Co', 0, 1, 0, 'C/ Santaló 39, 08021 Barcelona', 41.395843, 2.145402, '2023-05-25 16:04:16');
-INSERT INTO `brava` VALUES (548, 3, 'Frankfurt Innsbrug', 0, 1, 0, 'C/ Capità Canal 7, 17520 Puigcerdà, Girona', 42.432090, 1.928784, '2023-05-25 16:04:16');
+INSERT INTO `brava` VALUES (548, 3, 'Frankfurt Innsbruck', 0, 1, 0, 'C/ Capità Canal 7, 17520 Puigcerdà, Girona', 42.432090, 1.928784, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (549, 3, 'Piscolabis', 0, 1, 0, 'Rambla de Catalunya 27, 08007 Barcelona', 41.389154, 2.165842, '2023-05-25 16:04:16');
 INSERT INTO `brava` VALUES (550, 3, 'Eldiset', 0, 0, 0, 'C/ Antic de Sant Joan 3, 08003 Barcelona', 41.384990, 2.183390, '2023-05-29 09:10:01');
 INSERT INTO `brava` VALUES (551, 3, 'SAGÀS Pagesos i Cuiners', 0, 0, 0, 'Pla de Palau 13, 08003 Barcelona', 41.383330, 2.183430, '2023-05-29 09:14:24');
@@ -1564,6 +1586,23 @@ INSERT INTO `brava` VALUES (552, 3, 'La Chula Cerveseria Mexicana', 1, 0, 0, 'C/
 INSERT INTO `brava` VALUES (553, 3, 'D9', 0, 0, 0, 'C/ Pallars 122, 08016 Barcelona', 41.396785, 2.192138, '2023-06-07 12:45:31');
 INSERT INTO `brava` VALUES (554, 3, 'La Tere Gastrobar', 0, 0, 0, 'C/ Riego 25, 08014 Barcelona', 41.376520, 2.138170, '2023-07-10 16:34:51');
 INSERT INTO `brava` VALUES (555, 3, 'Bar Tapitas', 0, 0, 0, 'Av/ Àngel Sallent 169, 08224 Terrassa, Barcelona', 41.561170, 1.998490, '2023-07-10 16:40:28');
+INSERT INTO `brava` VALUES (556, 3, 'Namaste', 0, 0, 0, 'C/ Moll d\'en Pons, 07720 Es Castell, Illes Balears', 39.880770, 4.294170, '2023-08-08 10:39:47');
+INSERT INTO `brava` VALUES (557, 3, 'La Llimoneta', 0, 1, 0, 'C/ d\'Aribau 282, 08006 Barcelona', 41.398370, 2.146710, '2023-08-08 10:47:38');
+INSERT INTO `brava` VALUES (558, 3, 'Machete\'s', 1, 0, 0, 'C/ dels Rajolers 16, 17214 Regencós, Girona', 41.951440, 3.169240, '2023-08-21 10:15:42');
+INSERT INTO `brava` VALUES (559, 3, 'Cercle Calongí', 0, 0, 0, 'Pl/ Major 5, 17251 Calonge, Girona', 41.862620, 3.073600, '2023-08-21 10:19:26');
+INSERT INTO `brava` VALUES (560, 3, 'Vermouth & Bar', 0, 0, 0, 'Pl/ Forgas 1, 17255 Begur, Girona', 41.952730, 3.205980, '2023-08-21 10:22:43');
+INSERT INTO `brava` VALUES (561, 1, 'Señora Dolores', 0, 0, 0, 'C/ Marquès de Campo Sagrado, 27, 08015 Barcelona', 41.376420, 2.165150, '2023-08-21 10:32:03');
+INSERT INTO `brava` VALUES (562, 1, 'Soma', 0, 0, 0, 'C/ de Provença 179, 08036 Barcelona', 41.391000, 2.156270, '2023-09-20 20:08:58');
+INSERT INTO `brava` VALUES (563, 1, 'Café París', 1, 0, 0, 'C/ Mestre Nicolau, 16, BAJO, 08021 Barcelona', 41.394240, 2.143470, '2023-09-29 10:15:41');
+INSERT INTO `brava` VALUES (564, 3, 'Es Mos', 0, 0, 0, 'C/ Bonaventura Carreras 9, 17255 Begur, Girona', 41.954490, 3.208240, '2023-10-01 20:17:50');
+INSERT INTO `brava` VALUES (565, 1, 'Josephine', 0, 0, 0, 'C/ Pau Claris 147, 08009 Barcelona', 41.394220, 2.164960, '2023-10-01 20:58:23');
+INSERT INTO `brava` VALUES (566, 1, 'Balabar', 0, 0, 0, 'C/ Còrsega 525, 08025 Barcelona', 41.405510, 2.171070, '2023-10-01 21:02:03');
+INSERT INTO `brava` VALUES (567, 3, 'Bula del Tubo', 0, 0, 0, 'C/ Mártires 8, 50003 Zaragoza', 41.652630, -0.880260, '2023-10-16 17:51:39');
+INSERT INTO `brava` VALUES (568, 1, 'Can Tresó', 0, 0, 0, 'C/ Astúries 18, 08012 Barcelona', 41.404330, 2.155880, '2023-10-16 18:33:23');
+INSERT INTO `brava` VALUES (569, 3, 'Terra Mar', 0, 0, 0, 'C/ Roc Boronat 9, 08005 Barcelona', 41.397070, 2.201720, '2023-11-06 11:47:01');
+INSERT INTO `brava` VALUES (570, 3, 'Bilbao Argentina', 0, 0, 0, 'Thames 1795, C1414 CABA, Buenos Aires', -34.586870, -58.429180, '2023-11-23 21:04:05');
+INSERT INTO `brava` VALUES (571, 3, 'Temple Craft Hollywood', 0, 0, 0, 'Honduras 5602, C1414BNF CABA, Argentina', -34.584100, -58.436470, '2023-11-30 10:11:10');
+INSERT INTO `brava` VALUES (572, 1, 'Cafè del Sol', 0, 0, 0, 'Pl/ del Sol 16, 08012 Barcelona', 41.401770, 2.156510, '2024-01-02 16:13:01');
 COMMIT;
 
 -- ----------------------------
@@ -1576,7 +1615,7 @@ CREATE TABLE `brava_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `text` text DEFAULT NULL,
   PRIMARY KEY (`id_brava_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1145 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of brava_lang
@@ -1616,10 +1655,6 @@ INSERT INTO `brava_lang` VALUES (31, 16, 1, '<img src=\"https://doc-10-0s-mymaps
 INSERT INTO `brava_lang` VALUES (32, 16, 2, NULL);
 INSERT INTO `brava_lang` VALUES (33, 17, 1, '<img src=\"https://doc-0s-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/63063lfgjmtifnhhu8oami7lko/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EZBO2cVAUWFtVYaCs0ObrLfcjO9Amau8pY1Qpy5gatABZXPbNr1WH2ZBsKngpWH2vGJJGWAyqiBS0NR657q3qgSlPdmiO1RHoHthTPvssus2QC5d2Cz98yMMxgdWPGVGOdqLNDWDemJbFzksyWccppLhaepW9vARZA9uzToXG5xnYs4stFZgHDXVUG?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>BravasBCN<br><br>DG-DJ 13:00–16:00, 19:30–22:30<br>DV-DSS 13:00–16:00, 19:30–23:30');
 INSERT INTO `brava_lang` VALUES (34, 17, 2, NULL);
-INSERT INTO `brava_lang` VALUES (35, 18, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/quu3cjhopai15ctm9p5dje1gu8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HmoEQG4xYy9DDVxddgNfVprI322kWKXTSl8-jNEgPcshy7xtUCpW19zioPH696tdx6SywlYZcTTJs1uH_n4kIsxiwGS9RfZ9oPKmcxDfdG6Ekrfdd5PfV0OYb39N1kgm3-nNHNGvdVgMbNS5_Q-ECRS6rdWr78K4zREWPIpGuo5pC66HaiLdSSMAtd?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DG-DLL 12:30–16:30<br>DM-DSS 12:30–16:30, 20:00–2:00<br><br>Maria Boines');
-INSERT INTO `brava_lang` VALUES (36, 18, 2, NULL);
-INSERT INTO `brava_lang` VALUES (37, 19, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/42angrh57n1qr6gel666e3adqs/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EsSX9_WSDjCXNg_vIgmwTQL-VYhN6dOyIKDqwcVVpsTVkLsz3cvOw2wnvZXqkhgAmdHGS4FbnaiZMB5NIESkclv2BSMbnPbGSXztfTq9kMZx3ImaaGHzQPwCS7dsAF-SutRVKpP62Exke-IX8MGlWFKXZ6ospV5eyJonmTUdmFtB-yNKzvwgxIf9Zr?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dss 13:00–15:30, 20:00–23:30<br>dg 13:00–16:00<br><br>dos braves:unes amb chili<br><br>food_vader<br>suirnodor<br><br><img src=\"https://doc-14-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/094spcs5trjaa8ro2cvq1fa270/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-H8z9VuQwe6v-FPDXRmoMF_o29wgDHb6gLSd8qqU_4SPExWXP33dw5MJxheMxS5H2KektKgL5knkV7Q7SmYroWHwM9jbISveJcv_CBp1r5LzR48dwOXxE6Aa3QZmT13neAhw3TuPi5oHP-FGmO5PyHNZiv-3REoMRUMgX_2jnj5p6LPw0SpLivau4qs?session=0&fife\" height=\"200\" width=\"auto\" />');
-INSERT INTO `brava_lang` VALUES (38, 19, 2, NULL);
 INSERT INTO `brava_lang` VALUES (39, 20, 1, '<img src=\"https://doc-0s-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/29fvu81vdhnmoukabkk0s8g9a0/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EANVxq9CfPHpXzdg-9IyT9iwrOize6axgORQKrYMQbL8eSs_2ZzdB2lcx3O2JljKV9UOFbRvhJUHG5GmroWoWhQ4bIGNf9Dj-el0-68ipNXc3vJyK_1S_nv_u-frYqxbn6yeFb1RiZ8lPOMM-gXckDfFWLsD6-fMaC6uugdbI-Vn5L-RwPTOknvsHI?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dss 13:00–16:00, 20:00–23:30<br><br>mariaboines, bravasBCN');
 INSERT INTO `brava_lang` VALUES (40, 20, 2, NULL);
 INSERT INTO `brava_lang` VALUES (41, 21, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/kfr0hsn87qug8vlo1k8hmnv2d8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-ErxMZWIXdflDWt9_X2ZQ36dHRWkBzAR_XG6R_3Vkp-kYSvDHGiz3pVwviLQJMT22ctYU6SouovLNVwZgBMgWe1UHlMsMhwdlwopWLCiOthe7bd0RpniuUOBEPXERCuK61cc6hg2jxCY9EMgqivyrr29Fg8diDlFi-lAyFxdgBbuD4oYg8l3QKtF1Bd?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>C/ Mühlberg, 1. Dilluns tancat<br><br>MATINS: dt-dg: 10:00 - 16.00<br>TARDES: dr-dj: 19:00 - 22:30, dv-ds: 20:00-23:30');
@@ -1628,8 +1663,6 @@ INSERT INTO `brava_lang` VALUES (43, 22, 1, '<img src=\"https://doc-0k-0s-mymaps
 INSERT INTO `brava_lang` VALUES (44, 22, 2, NULL);
 INSERT INTO `brava_lang` VALUES (45, 23, 1, '<img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/kmkc5ol1kbjc58ph80n9vr6ctc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FRXQL7WscjIKwAhvTj3bIoHEBHvjqNmvpzpxX_52xHUsAIKE9ZksQCuY1eQ4I21RdAhGbq8co7waMJ-aneZ2pkhPcLFtRPIEYgcsjYVKy2vDRO21ArzGGehhGV_S2er2-lD5wbhgsDAn6j_pW58GLDJNWsxT0QAzFezFgjk4xI3YmT-DzQzb4dGnsu?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>13:00–16:33, 19:30–0:00');
 INSERT INTO `brava_lang` VALUES (46, 23, 2, NULL);
-INSERT INTO `brava_lang` VALUES (47, 24, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/vkj9i9ajiei74b61qp7iv0l5po/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-GBPfPDoOULsCdqngmlnx6eCmQgDYfY5z3P5h8e6UGuCjyYNHx4KxHvOXP_Z9tdejirK3RXWuOqwMI5rml3tv15IRZ1P82d5JUdODinqjl-aKSSOz3ywAQWFSiLgxo0mbS-PMFWbVmsqaMfs4oDKjogt7kjVg7Qd_S95OZagR3JX8wAPtwBJ8KYdkvn?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dss 13:00–16:00, 20:00–0:00<br>dg 13:00–16:00<br><br>oidococinabcn');
-INSERT INTO `brava_lang` VALUES (48, 24, 2, NULL);
 INSERT INTO `brava_lang` VALUES (49, 25, 1, '<img src=\"https://doc-0o-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/hm3h6np7buhs89bltti8fpv8ok/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Fv3G_uFSJI9lQkpPF28Y-nOMoCLrIc-A466Z9dG92lh3tyWmk5Z9GXqiL5aGihAIUbqV9Z59Pz7DaxJ9pnO9sFTPiiXS8a0ncU7OGKJ_jSdZ5bXy5T7sjNP5bnhgjorbMoXpjzgkMBp80qpYTND6hnw-r8zBYw8nsG8bodPfVFDV22YbhbDo5_L-Sg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL, DSS 19:00–22:30<br>DM-DV 13:30–15:30, 20:00–22:30<br><br>bravablogbcn<br><br><img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/hdgi0s1h2g1kctd5nc31lcoat8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EFZC9KyyRGIFYoLTgHdTbbKiD8Xp6F-mpPBJ3d1KGWHGfBi-ss2ZAveTBVf0Jm-LHJg5W6GCotjQbs3GWDMavqfF9j0Bg6a_IP5czG0dPK3YTGFeIfTIyTN_mGxuIVYLEyjtYaq9fTIjw-ISr9mkjaj4g8EXhOezGMem_B2Ix2WqU6je2RBUq-8O39?session=0&fife\" height=\"200\" width=\"auto\" />');
 INSERT INTO `brava_lang` VALUES (50, 25, 2, NULL);
 INSERT INTO `brava_lang` VALUES (51, 26, 1, '<img src=\"https://doc-0s-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/um39sdis0hbobqddja1f1bpbgg/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EIzcxYobQEajveqr3QrkIfPhtKPy3AbxQFOciJNt03qh44ukRfY3ZcNQhdYzAgy6pQuOjk46xTzQaQP6gbZf0i8rWb7naFp8PlonssRb5p7rVa_rtmWeXDbAMGBQNUx09SngfRqUNb6dbHdwG5Z9MdmCBfzTdYIuc-gnKj-mY9pHYoSiCutPb6EE-A?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dilluns	Tancat<br>dm-dss 13:00–16:00 i 20:00 -23:00<br>dg 13:00–17:00<br><br>BravasBCN');
@@ -1654,7 +1687,7 @@ INSERT INTO `brava_lang` VALUES (69, 35, 1, '<img src=\"https://doc-08-0s-mymaps
 INSERT INTO `brava_lang` VALUES (70, 35, 2, NULL);
 INSERT INTO `brava_lang` VALUES (71, 36, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/8v4bf7gfrgsalopthc5msitfjc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FMqiThJHQKXvtcRpEzLP50xA4DKvhNblJAPKW_zd6iUASoOgujg_K2hrGffvSPuXIh4D6Kdm_3cjGeQ6tvG6SeXPuY8oeZiFj-I_l5pJGQ8tqjgQzU75-DsMTWrG52ZhjULdOB7ZB4nsYCH_e3Ff5RFoEKlsgTg9eZ78bfbrfAReWO_qWw8-MDkfM-?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DM-DSS 13:00–16:00, 20:00–0:00<br>DG 13:00–16:00<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (72, 36, 2, NULL);
-INSERT INTO `brava_lang` VALUES (75, 38, 1, '<img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/7p42jrj6a9kg76dgenenaamlb8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Hb7FJEY6QATXi1NvMcCCRK9u4z9noRA8_WiEgPexX0-0dS8LUKXJRIrhKQQj_seEwzoOE-ddKKEF8ewaoiJ8st33hoCxcEkEO7fvHD7XgkbDhR4sw44QCF4O1fLYY37hNaIjVr9pn73GrDQvWsYDnZR0-WrQpMy18cokjoQZeErY4AjxIXUNtKwr0m?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ma-J: 20h a 23.30h<br>V: 20h a 1h<br>S: 13h a 17h y 20h a 1h<br>D: 13h a 17h y 20h a 23.30h');
+INSERT INTO `brava_lang` VALUES (75, 38, 1, '<p><img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/7p42jrj6a9kg76dgenenaamlb8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Hb7FJEY6QATXi1NvMcCCRK9u4z9noRA8_WiEgPexX0-0dS8LUKXJRIrhKQQj_seEwzoOE-ddKKEF8ewaoiJ8st33hoCxcEkEO7fvHD7XgkbDhR4sw44QCF4O1fLYY37hNaIjVr9pn73GrDQvWsYDnZR0-WrQpMy18cokjoQZeErY4AjxIXUNtKwr0m?session=0&amp;fife\" height=\"200\" width=\"auto\"><br><br>Ma-J: 20h a 23.30h<br>V: 20h a 1h<br>S: 13h a 17h y 20h a 1h<br>D: 13h a 17h y 20h a 23.30h</p><p>una altra versió: dimarts promoció?</p>');
 INSERT INTO `brava_lang` VALUES (76, 38, 2, NULL);
 INSERT INTO `brava_lang` VALUES (77, 39, 1, '<img src=\"https://doc-14-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/1sbjp5fn1pm27o525o0d3pn9s8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Hik5kHySKMPMZw3WWDL4vYKzqgSQL5QPC4AJk6vwtZuzpyPSQoXxYLNEo8LePE_aIa3FsiS262_0cxlKippABK-tNgjhUG98HelgLO7NNqFS00esvqgryV_t55TVvbH-CGkj64n3EsWC8epn9lcnIfnLTFeSm7qVydd5UL9Po1YiOPwf9OkzhwC8N2?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DM 20:30–22:30<br>DX-DSS 13:00–14:30, 20:30–22:30<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (78, 39, 2, NULL);
@@ -1674,8 +1707,6 @@ INSERT INTO `brava_lang` VALUES (91, 46, 1, '<img src=\"https://doc-08-0s-mymaps
 INSERT INTO `brava_lang` VALUES (92, 46, 2, NULL);
 INSERT INTO `brava_lang` VALUES (93, 47, 1, '<img src=\"https://doc-0o-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/7pojj4ilh1nif5b13jtosm1h9g/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EcHbPU8UW4ZPFMyKvFnQA_vPR9CfiHRQQfGHchzCkryzmMgGgj6ktDQyvVKmXr6-2yZ4gzfbT02ckoYpj4MJykTEIZVkO6R3MohgqrgnW9FJ_xD0XcK7sZxBW1wjpPLbl7CX3zOuhtYQne1QCwOQjLMVFVWXdsInSVvizJQG3kYTHascJqA3rZOuSb?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DM-DSS: 13:15–15:30, 19:30–23:30<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (94, 47, 2, NULL);
-INSERT INTO `brava_lang` VALUES (95, 48, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/586jk57b2ei326ac6ff277nb64/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FrEGdimfHlhRcTqUTqr2UNfg90wsBIisauZvFKobXNUed87-4Gs95mT28_xKMprYeg5m2yqCBrkHL4Wcvi3wuayp24kMy1P-z4zKZ2aj0FFBvAE8M8JVgR-QUyYvIk6vtoXVWZD10jo-eeFWyGa-encb_tkZ_f9z4ysGZPmVsYpzYWt4FJDT7xthc8yg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DM-DV: 10:30–17:00<br>DSS: 11:30–15:30');
-INSERT INTO `brava_lang` VALUES (96, 48, 2, NULL);
 INSERT INTO `brava_lang` VALUES (97, 49, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/jcq6lj6rvb3apk5j3bc2bl4eds/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Ea6Q2s4F3yUhrIcDqIO2u4vsJRgILNNYjJm58odwNR74cR0yIgL9BohzLVZxbWBnrhZabQf4bd9QOwm9g49_8HYzkzoT6Qw5kWbzkYQndIdAFO_WWwpZ1hO6hweBfS8VDlul7nCLovH-wEJ8QbHDIO2e5qW3TNzHbv83IlaAkWOswSDNAy7GRzXMRJ9w?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DSS: 12:30–16:00, 19:30–23:00<br>DG 12:30–16:00<br><br>bravasBCN<br><br><img src=\"https://doc-0k-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/ab3metn4jbbim1lsmcv8rgeo7o/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FNRFnF-40n-OS5ADp7N5GtUtL5dQ6QyRszeeGqpTdN93nR1WgiD3lyTwPWKWHDPLEjdHdkpqXIIx36cRIFHVQymimZkA0pKlpHxWEAqXXmtEgfLGyFntGvoknAw7BA8lu1uhyfhjxJfEdV9TdATi9ZOXEjnZZokCVchlXrBRyPz9z3QWtlaDMJKt2b?session=0&fife\" height=\"200\" width=\"auto\" />');
 INSERT INTO `brava_lang` VALUES (98, 49, 2, NULL);
 INSERT INTO `brava_lang` VALUES (99, 50, 1, '<img src=\"https://doc-14-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/gk4gr8j671gq9n9psobhs63aco/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-H693Cq6D7et3zWhSDnSqunRb--wI-m51n51vb0JvvwLz4jAiUnZg45k-ASJi8KVJzFji9IT6Ao7Z0RsQRHxe_sjqZ4iGn1MicJUeZYJx-DUwRGuUhDUUGF5inYMfdAOUIzPurtSxCWR63NGF-TjRXoykO8PDI8TZzfALUZL0nLQQ05MVAF-wi42hElkmtICq__sDIol5e-7fITUqvJG_7gNHYtLII0ZfZoJRU?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DV 11:00–16:00');
@@ -1694,8 +1725,6 @@ INSERT INTO `brava_lang` VALUES (111, 56, 1, '<img src=\"https://doc-14-0s-mymap
 INSERT INTO `brava_lang` VALUES (112, 56, 2, NULL);
 INSERT INTO `brava_lang` VALUES (113, 57, 1, '<img src=\"https://doc-0c-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/snutihjku1ns53fica1dchfiac/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EVTDZMHUCNhcODAdFKxh2tEn8tZad_mpIrpELNiGj2EyKmgJEfa6YBASv5Xnt_OKT4YnSNOzG-OPqYiUl7uCW4ilTDBvuJ0VWdO1Oszm-UMS8xNDHuoSEQ_WZCvmNapQIDSHpo4tkwwqZ_HCJxSJXmDn4jw323KRVmR4JIIZ4vb3dUsHQ_u_lWYSnH?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dg 6:00–0:00<br><br>gatrobirro');
 INSERT INTO `brava_lang` VALUES (114, 57, 2, NULL);
-INSERT INTO `brava_lang` VALUES (117, 59, 1, '<img src=\"https://doc-10-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/or5rg2rvl2japt67b732qmuga8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FhoNJUxSKsNtRpO8SnHtLYu2H2P_Gl3flrkE5-MNCksfYOmytG-5uR4UxsJTBTLb0ctjVQYcuiaa33tpazGedOsNlq5zLyMzP_kSqBa_Jio2FATrUgwm9TbplYk-LYShDb29H9qWHlYKWetwNGG90gmKetl-uQkz02qYjSN6dAv01vEVvG04P1w0LQQQ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DJ: 13:00–17:00, 20:00–0:00<br>DV-DG: 12:00–1:00<br><br>bravadictos');
-INSERT INTO `brava_lang` VALUES (118, 59, 2, NULL);
 INSERT INTO `brava_lang` VALUES (119, 60, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/hvpk6997vde4pv4keop42g7jjc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-GDttZc-Bg7EQ_PRTlW4KTbWl7_bXJguJuYcqdcg29rSIPVy9lQ3U4F8e_eykbi3MLbg71dh1Qz0ikXZ0K2Jjq7aMdQElIGhLZWGkMxYVKOjxMiFU67eEjwG9ygKsKdKyi67meinBodkFxaIGRvdcnyCeKIEfI2kVPc5pMP-0yBVGHzKpgabfoMcDWL?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>13:00h a 23:30h. <br>badalona forever');
 INSERT INTO `brava_lang` VALUES (120, 60, 2, NULL);
 INSERT INTO `brava_lang` VALUES (121, 61, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ0c_-QTVAHnRd0HHSL76SnhYaN4TucsAHHvWCpPKMtWXa9vVVU-u-1PwtuSX0f-MHP9_8N6mL8CpqV42VkQ-ZQ__0fYmYVyWGUaR-vRXTL8hkK84DXVbLs4UfODgIY6at-oLjukR2A\" height=\"200\" width=\"auto\" /><br><br>Plaça d\'Eivissa, 11<br><br>dg-dj: 17:00-02:00<br>Dv-Ds:	17:00-03:00');
@@ -1712,11 +1741,11 @@ INSERT INTO `brava_lang` VALUES (133, 67, 1, '<img src=\"https://lh3.googleuserc
 INSERT INTO `brava_lang` VALUES (134, 67, 2, NULL);
 INSERT INTO `brava_lang` VALUES (135, 68, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ2yeDC0zkWQbQA0ZiD5DGDkezVAMCSVdk0gYfSn2UQh5LykvsFffJgnfXynMsk4k5ZXOnUdLAB5P0SSSv9cPHFcjR5cEf360raFWQ8iVvVXXjncXMJb8DMTgpe2yFcmcjHVuDBjdzgNyLqWxZaoVg7ByfsH2wMO81cgaEcP6qg0X3k\" height=\"200\" width=\"auto\" /><br><br>Plaça de Vicenç Martorell, 4<br><br>DM- ds: 9:00 - 00:00');
 INSERT INTO `brava_lang` VALUES (136, 68, 2, NULL);
-INSERT INTO `brava_lang` VALUES (137, 69, 1, '<img src=\"https://doc-0o-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/v2kqv62o3dkugams48raulgpqc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Gw1FAaNtveVVGhTQRlFJjfZd5Smkc0xszSPBmHQcyN6-URkkD0Er_uZqBUwCRxEsWnnYvERej3ga6kmjFG2z1JtZvNwUU1uoyRpWy2a7Zuw7KdVRuYlcozgyPfiR_GfdavSFvWR1kr5nzslW7U5Ob7wXLtOjH7WivnxdCV2ofISESRnZqBV_KDnTlX?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Plaça de la Concòrdia, 12<br><br>dt-dx:  12:30 – 1:00<br>dj-dv: 12:30 – 2:30<br>ds 11:30 – 2:30<br>dg 11:30 – 1:00<br><br>BravasBCN');
+INSERT INTO `brava_lang` VALUES (137, 69, 1, '<img src=\"https://doc-0o-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/v2kqv62o3dkugams48raulgpqc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Gw1FAaNtveVVGhTQRlFJjfZd5Smkc0xszSPBmHQcyN6-URkkD0Er_uZqBUwCRxEsWnnYvERej3ga6kmjFG2z1JtZvNwUU1uoyRpWy2a7Zuw7KdVRuYlcozgyPfiR_GfdavSFvWR1kr5nzslW7U5Ob7wXLtOjH7WivnxdCV2ofISESRnZqBV_KDnTlX?session=0&amp;fife\" height=\"200\" width=\"auto\"><br>la cuina obre a les 20:30<br><br><br>dt-dx: &nbsp;12:30 – 1:00<br>dj-dv: 12:30 – 2:30<br>ds 11:30 – 2:30<br>dg 11:30 – 1:00<br><br>BravasBCN');
 INSERT INTO `brava_lang` VALUES (138, 69, 2, NULL);
 INSERT INTO `brava_lang` VALUES (141, 71, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ1E3ai_-HUfm_aYSj22coMzCNc3Pl_H7Y9NxyPjvlBwnMkctMoDOxvbi8W7CL7Es9UypLU9cc2IWIzZjTOwit4oNxkM0g075IDkwx9BpZ9THSQOlQC0d3CirbbcxH9EcCUHyAc-DvrvfgbM9sFSjWC1PMYoS5n3e0EH2xTsFXVkrSZwpq3DLw\" height=\"200\" width=\"auto\" /><br><br>Plaça d\'Eivissa, 10<br><br>Obert tots el dies de 9 a 24h, <br>cap de setmana - 00.30h.<br>Dimecres tancat (excepte festius).');
 INSERT INTO `brava_lang` VALUES (142, 71, 2, NULL);
-INSERT INTO `brava_lang` VALUES (143, 72, 1, '<img src=\"https://doc-0k-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/88cpukg96go8begjfc03ouanr4/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Eiy-JoEGHCLjEq8cDT5bU5s01yZEsUqs_TlXcwqijJ19vxrVMG5Y4sfgCk99bt_nnAGaguWaC-K8KQvJe1Nbj0CMgZI82XVdd3SIl0AbK5b20M-QS9T44B9VHi5sDs55xB_IGTKvuHYPhF_69EK4sp0E93WrmzpM59mJ-mJLXwv6LUCippR7VzNvRf?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Carrer de Pedro i Pons, 9<br><br>Dj-ds i vísperas: 08.00h - 03.00h <br>El resto de días de 08.00h a 00.30h aprox.');
+INSERT INTO `brava_lang` VALUES (143, 72, 1, '<br>');
 INSERT INTO `brava_lang` VALUES (144, 72, 2, NULL);
 INSERT INTO `brava_lang` VALUES (145, 73, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ08gTX0g4AIqAoYUizboDefOYp1JyhZcqEK6FA6ZrlXarH9v_pLuHDQfiTRCyKyBTlALkk3rhs3su4P5M7QIb58DH-xt-vMGIO4sxZn7mDNRg-xYay9Cr4TQUIJqy2Px4PdpmRfUMRCA79hNENzJ2fJtkSIYXw1NI3cQUHX3K8KXUBKBMv2Paj_rZMWohxFSLDlhJMXOs-At_uXhUJ9NUrKa3fomrlxgjGqU-LxIyrKF2jWRDU\" height=\"200\" width=\"auto\" /><br><br>Carrer de la Constitució, 181<br><br>DM-DX: 13:00–16:00<br>DJ-DS 13:00–16:00, 20:00–23:00');
 INSERT INTO `brava_lang` VALUES (146, 73, 2, NULL);
@@ -1812,8 +1841,6 @@ INSERT INTO `brava_lang` VALUES (239, 120, 1, '<img src=\"https://doc-00-0s-myma
 INSERT INTO `brava_lang` VALUES (240, 120, 2, NULL);
 INSERT INTO `brava_lang` VALUES (241, 121, 1, '<img src=\"https://doc-0s-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/nonqp82gshv0cpik4r6plbl98k/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HXK-yn9Kp3OqELz3OUekZAwcMd6vBwndvEfV0dHmuSJ3XgLyiSRdsr0w95gVD6wvyCDMq4kVCuvA2S8mZefay8Kak-n-sZZ77mpYwi9oAjhuGPDrKEbRlF5dMDRy6zjFLHRFGujDFUMGXdIidmJJGHOok8ICBY1i4zjmMOGTTSF7_4velZ01nKoqRL?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll.dv 7:00–1:00<br>dss 8:00–1:00<br>dg 13:00–0:00<br><br>donde si bcn');
 INSERT INTO `brava_lang` VALUES (242, 121, 2, NULL);
-INSERT INTO `brava_lang` VALUES (243, 122, 1, '<img src=\"https://doc-10-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/5722v7vaoh6so7jfka0obih7j0/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FM5dAGGTunDE3ThpFaEplBv-svxI29G3e8L3kcrf_woFS1b3nWgv5QdA1XP-5Zutca3CpbtOxqEHycS4fE5lZ47C6QctEx8fmFM5eZhq8vwUVqJRmJ7xUTY_O9WBb1-80zxfyt_xqn1LNUJw3KBSYWAHajHGs0J5oScJ7ikjyVs9omig0CQaKA561X?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DM-DSS 9:00–23:00<br>DG 10:00–18:00<br><br>BravasBCN');
-INSERT INTO `brava_lang` VALUES (244, 122, 2, NULL);
 INSERT INTO `brava_lang` VALUES (245, 123, 1, '<img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/c419ki8139qf1do6759fll777g/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HZ3UUbebk4RpJcKyJXuryPk-zHRtX_18YQ0lvYrL_qxZJgMs0IndP5X_d1q9mmuVadcyT_kq7L_MeZN5ZMVLqkxxJ3Zu_wLmcQRM372wSkvM14r_rom5FaZXMgwxClUvNnZneeUL2GMCmBXp3NXGncY_48lRh1ANv2dQmAFIQIz8ZRlrWsATShuNPg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Horari?<br><br>Suirnodor');
 INSERT INTO `brava_lang` VALUES (246, 123, 2, NULL);
 INSERT INTO `brava_lang` VALUES (247, 124, 1, '<img src=\"https://doc-10-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/ubchsmif3nn79bu4un6qhcf4jg/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-E0gL4iWcS6Q4GSDQ8jY1ak6Di6gjkYxSdtZdTDkzahlBrA7vqGrHUHY17qd8cK8fT3-aydlJap0iDlIh2Ya68AKLtrGvBLv1SkQWsj6wAeAwnHxmvVJrlHjFIf7ERprYkY4EIMx8RMzHPs-aq2ytcOm8BOrXkCLJYS0-i2ezOah78Q13Fk4qhiI8l-?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dg-dj 11:30–22:00<br>dv-dss 11:30–23:00<br><br>maria boines');
@@ -1862,8 +1889,6 @@ INSERT INTO `brava_lang` VALUES (295, 148, 1, 'DLL:  13:00–17:00<br>DM-DJ 13:
 INSERT INTO `brava_lang` VALUES (296, 148, 2, NULL);
 INSERT INTO `brava_lang` VALUES (297, 149, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/6dlmjm3jhmdf963okt394nj8ms/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-GB12CFz7PWjqe_MhnRntGzR3SQYRnEWsK4E0_zJs8ZPlQmJK9Oz5kpjHP5WZ5wxqwoRzk0BDNwsQ3yEijLS7EJ-ztf8TXRWebvw9UVG0VaTCEDVC1-W1Ver2yv-3lT6tRV-z9-xon5NQJJDd6dVJtsQvSG7YcK4LnzPy4en0rkvaF_z98sG3KJrxLY?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dv 7:00–0:00<br>dss 10:00–17:00, 20:00–0:00<br>dg 11:00–17:00<br><br>bravasbcn');
 INSERT INTO `brava_lang` VALUES (298, 149, 2, NULL);
-INSERT INTO `brava_lang` VALUES (299, 150, 1, '<img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/c678km7iq6svnjlvnqe88uqcg8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-ER6W-XevzEPIwRZGcoGHJHCcuTp8PLyNRI4HWsl8WD8us63engrGzUMFiwvyJ_xWBJ2KUa3426UeYbA0KDJhwR7Ot2CgRLxifGQvuFmHzE-xLv6QwMOv5PiA5itL26tmBikI4EJ0Rw2VUgnfNmEwPypEolEV51sKCKkASbVD40qzz7RFy2xcIyzPni?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll-dj 19:00–0:00<br>dv-dss 19:00–1:30<br><br>bravasBCN');
-INSERT INTO `brava_lang` VALUES (300, 150, 2, NULL);
 INSERT INTO `brava_lang` VALUES (301, 151, 1, '<img src=\"https://doc-0k-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/np0c1k0gpkdj1arctf61gso7b4/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HG5cbyVMoawjpPN7xqIpLFlUSWex9QLkCZuOvLa3_yboWO52v1bTFXxvgeondJEP95bNCRLH796jBbqDRFP7ZxvXfeL-jAvoqFkYUsXhbbouOEpEGX69rAHmqDfCn70og5nscH4fEIQnZ81ZfXw2oNFF-0Dg2cJqsIiYOlvrij4Q-cmhgdMvVo4AKu?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL 12:00–16:00<br>DM 7:00–16:00<br>DX 12:00–16:00<br>DJ 7:00–16:00<br>DV-DSS 7:00–17:00<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (302, 151, 2, NULL);
 INSERT INTO `brava_lang` VALUES (303, 152, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/cosli3a13pu5up3mkkupvbhp1c/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HhSikrsdgBvFhjsjVZU9yXKuR2jo_1D09FwlwTyMG39HQY-lWICSYspv9mPicuLfxHaVTi2YbGGyykmmSM36CZFg3Jb6tbbnHTL3EklJnoPTRTPZoUOK1SpzFzBOtV_LxRK_Vx4xbfsMbqidzyJ8RldPaiqQ2UC4SbEB_2uv8nWfqCd4I6MsSMbknA?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DSS 13:00–3:00<br><br>istefaniazinthejungle');
@@ -1932,8 +1957,6 @@ INSERT INTO `brava_lang` VALUES (373, 187, 1, '<img src=\"https://doc-0c-0s-myma
 INSERT INTO `brava_lang` VALUES (374, 187, 2, NULL);
 INSERT INTO `brava_lang` VALUES (375, 188, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/50uj28tkk6b3rr02ons07einoo/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FjUpgMJiQHe4ayylRgxkbNEBAaopDRA3hScSRKtbo-LZpb_0eL-Nm9l_yoNDVxs8Q1TiiTIoFBDnRPfE9rSV2cgHi6cGGLkibR-yh2MGUF9T1Zg9fN2bIFkUvMejP9DrGJZNmykh8EG66CtCGrWVnlEtS7_ZSIKdaRiCFFD4nFY663GJO_x7iK2Yc_?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>9:00–0:00<br><br>cuoreciones');
 INSERT INTO `brava_lang` VALUES (376, 188, 2, NULL);
-INSERT INTO `brava_lang` VALUES (377, 189, 1, '<img src=\"https://doc-0k-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/4feliduko2eq88ph9asgsheivg/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EOaYbkADGSxp9QInJ16erBrS-C8YEdkvFvBicoh_z2DmQpVtWbybad0v9sbKZwzEKFgDskgf4lKFJKwrXDsrinDBrhzojsSsHXvm44NsdiWZuSO--xn1z32RpDljHE3bXQAqmTt-rficB8odVAmQtNNo_kveKWJXm86AoagySIRjgG8n13P0HGeEgG?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DV: 11:00–23:00<br>DSS: 12:00–0:00<br>DG: 12:00–23:00');
-INSERT INTO `brava_lang` VALUES (378, 189, 2, NULL);
 INSERT INTO `brava_lang` VALUES (379, 190, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/9lups67pkh560gtcpuppinpmck/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-E5mCrfrnBUDGoh7bkZlJr6rfzhql2JlncCDrK7KbR8pxyTkoIKfEkaQwClhDu_iofhV52ZPlyFq2v3b6GMMO2OdYqGZRjaMdpjJhHrqZTZ4v4VzyhZxIi4OqlLN2EJLCTfLmErdWZatBurR1WUiM5FYP5OGw04EIQJP7FxziLenL9qU9eX3sfO1lYl?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>8:00–0:00<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (380, 190, 2, NULL);
 INSERT INTO `brava_lang` VALUES (381, 191, 1, '<img src=\"https://doc-0k-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/k7al2tvuvc7hhrt148c7rursbc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HHhIhlprEENl3P3tGTr5azx1J-NM0YNgwEDOdBxvC3r1tkkuFm7e9Fw5z8TPrLtLMbOynGqCZA3YS5yOx-SyBHJJQqYyPcrNBRJGTqJmeplDu3P18MlZqAYpOKwVQDwf4wL_VTW0jriYNqc4_k_tEEuqmKl2zg2cMXARroe_xSEO1lXmoYXVcMCmk8?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL, DM-DSS 11:00–0:00<br>DG 12:00–17:00<br><br>bravesBCN');
@@ -1946,8 +1969,6 @@ INSERT INTO `brava_lang` VALUES (387, 194, 1, '<img src=\"https://doc-0g-0s-myma
 INSERT INTO `brava_lang` VALUES (388, 194, 2, NULL);
 INSERT INTO `brava_lang` VALUES (389, 195, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/3tgn50nhnr9o6dt025qsd3i8rs/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-F1CnN3OJ0DqVrA2HxAsq7lywVk_PbjNlabvPpfyJp5m-m7bzTZHey2OVZ1smlqrzCD8PnV2vRngC0uUo-B3o713ShWVTVhUPy9NiacUI_zX1POO2UdLTPVv744lTQx3Njaui05q2TyqeYE_VJxajaEtyH-1BozOyYZIkaJ5uZQbDp_bUs-qhlypvLh?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DSS: 8:00–23:00<br>DG: 9:00–17:00<br><br>jufremi');
 INSERT INTO `brava_lang` VALUES (390, 195, 2, NULL);
-INSERT INTO `brava_lang` VALUES (391, 196, 1, '<img src=\"https://doc-0c-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/h568s1dpk6tvud0st0dutljm2k/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-GLwNhWzeUO5sDEwIw13ymGb1mpF1cfQT0qjcMC-HxgNVHnbavsLLIFYUGZIRyfYfBAH9gQPZzZqHDzFy7IJhQOSO7qtvcXAp3PfI5ZX7vf7jPFUN0JylfcQuZ5-sjMSLtgC8Y8THLTIH4iJBRoijSVabO4MYNGmv0FAw12hWlRaeh4weVnVN2ki5lg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>8:00–1:00<br><br>bravasBCN');
-INSERT INTO `brava_lang` VALUES (392, 196, 2, NULL);
 INSERT INTO `brava_lang` VALUES (393, 197, 1, '<img src=\"https://doc-08-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/ssnv7qbrtpabe07uvnlg29p2c4/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EaUEaoSXarBfk9bV3KZhH4QU5mo80IEiB-ouN8s-SmToje6TvdQN2CMiYjJmrGlwSD9PaQRLg3kCYWw54U0OLOC1PDtSKTpLumgVrHHF2pAP8-Fs1hpFu36j9rsZajIrYCJRP_V5STEU8zqDWHI4RMaJcPezMKj_JXfq_FQjHOiTe_IYTBSKNGjdjA?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DX: Tancat<br>DJ-DG: 13:00–15:30<br>Post-pandemia: ?<br><br>eatchipglobal');
 INSERT INTO `brava_lang` VALUES (394, 197, 2, NULL);
 INSERT INTO `brava_lang` VALUES (395, 198, 1, '<img src=\"https://doc-0c-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/ehh8ip6ggn6qaff8hc9ps2lu1c/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-GHv6xKvTCLR1DXvISi8vSvE9fckZg2dunieL19i-wY0ArkqFvEWABp4IncDJbm2PBsRUVOQ-KPBHNqxDOl8bOh43GgUYGVNC7q8XVixiUlMWScKfMF7JM2MbBkl-zFRuf7_Doj1MCb5o_eDJK9tzDlSlvhhJ0zY5I9_eYhUjvOa0-UQq26PU4bSNwnyg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DS: 8:00–0:00<br>DG: 11:00–17:00<br><br>BravasBCN');
@@ -1990,12 +2011,10 @@ INSERT INTO `brava_lang` VALUES (431, 216, 1, '<img src=\"https://doc-0s-0s-myma
 INSERT INTO `brava_lang` VALUES (432, 216, 2, NULL);
 INSERT INTO `brava_lang` VALUES (433, 217, 1, '<img src=\"https://doc-0c-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/jvpesrpbvcoj84v2gtcn9hh550/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Ghpw1eK0e45HeHDtbHVTHwZrqCUL3E_XUvq47SDPsxnzkpAqpO-gqmWKw4mQRJEw3gEAIGcv2fS_DsjLKzfvPMFIK0XfLrBv7Bq9t88pW_oqJBi7_Le6--eTdLPIm6DTIZafsMZldaEHV506A1NuvnBIXFLsoHSQ_RqiXxLnvC2-ghTrpQUtyAUSoS-g?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>8:00 - 17:30');
 INSERT INTO `brava_lang` VALUES (434, 217, 2, NULL);
-INSERT INTO `brava_lang` VALUES (435, 218, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/scsgika58pnd0m0pq2vjkeccqo/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HF4PCVq8hxNsGNQdwAtx-eM2oqTFwWyv7kTEI3TXe04e58HX2OBSJdJX6nA7ZhN-SQ2jFY-3UUKlBx-IdWPDa1Onqd7fDVORCoAuPU2e9S_iJNqmcmLvGs13MJ-0jXmyiSKuuNdPpDNoPqCPteAdA0Se8Dwj_dGi38mP1nLytXBEEKhg045_-RWEsW?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>13:00–23:30');
+INSERT INTO `brava_lang` VALUES (435, 218, 1, NULL);
 INSERT INTO `brava_lang` VALUES (436, 218, 2, NULL);
 INSERT INTO `brava_lang` VALUES (437, 219, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/9o1d7t2tq4071jsor2vsg95bao/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Gmb1jufqcbyzZXh23UUPNArI5Rw9VH9_Y1xbATYDt0rzAxFROCOuq7IqAMQBM9Qw50IkDoTQ4nnezWzKFLsCSsYpFIwHpHEVGRh-0n8hEHiYUpi16RMQI3IiP7gqvEusiKbcVgHXJiKEzePaSAYxMtgI3i8_sb5OpPRM7MLMSUbZu5N02OvYMObe-9?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Abierto de martes a viernes: 8:30h a 00:00h<br>Sábado de 9h a 00:30h');
 INSERT INTO `brava_lang` VALUES (438, 219, 2, NULL);
-INSERT INTO `brava_lang` VALUES (441, 221, 1, '<img src=\"https://doc-14-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/s4aifpbeh36tvormmmb53s4h8c/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-H9qL9eQTLTgMqZTp2TAGk7N_p3p79F55CikVSVG-KXSMOPZiJOiBkgvD7CXJM-atNqsLKkmJuodY_Dgo8mvuwDQT7WZo3UjYljQqY4GnAAghDGJPYb7l18ZnslOPWgtYox1Dg7JhLXZAjL5BQI3GgPbTG1k9A7EI8CA6oU-5fYFppZJnFJiSHZLTGyl_rZRBkOYM59OEBlXWshszspvMsR7VgcNaaIzV9E?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DM: 13:00–16:00<br>DX-DJ: 12:00–23:00<br>DV- DSS: 12:00–0:00<br>DG: tancat');
-INSERT INTO `brava_lang` VALUES (442, 221, 2, NULL);
 INSERT INTO `brava_lang` VALUES (443, 222, 1, '<img src=\"https://doc-04-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/23iqqedkim6tro5sto4j5mkem8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HtWr-OAHLzdqMKPsCGr4epPzeEhz7uDF_qhbEKw2V0CM4sDwsNbSwMSpjDaNtF5WxHOOqZlCj1QARz-5-eUdwBRq7mSB4hDWGW6stnJyRIbbUqzDLXjQrkeSU7tr3XDwXcaz3R-SvU_1j21TP-rcFZyV0PeEOhISi4Z2nzzwC_QUdZ9SEzBTJc87dT?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (444, 222, 2, NULL);
 INSERT INTO `brava_lang` VALUES (445, 223, 1, '<img src=\"https://doc-0s-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/7sot37c7f5afcqf7bldck6b1c0/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-HhTkQ17lMXuKCz7svTqX3118W6bIEuMPkhkSZAP3QMCDOD8oOU9pgbASXU2wFcg7cZg-zASLG2HsGbsJUP4mQWvKkFOC4yStfch4X5b8sz3guFZdJsRoeyotHy9hlQEw61f6SmE57TsS6D-M5VevoaHDtQSJQcVVIPNxlmSYbWwan3jkxlNG9pgEn7?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dg-dj 12:30–17:00, 19:00–23:30<br>dv-dss 12:30–17:00, 19:00–0:30<br><br>las mas bravas');
@@ -2046,7 +2065,7 @@ INSERT INTO `brava_lang` VALUES (489, 245, 1, '<img src=\"https://doc-14-0s-myma
 INSERT INTO `brava_lang` VALUES (490, 245, 2, NULL);
 INSERT INTO `brava_lang` VALUES (491, 246, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/2mccvvkl3cu614d700kau2uehc/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Ef7b4SXtkFCAhS0Wepm1e9PWY3ViYHZhQjP3rnBUDeW1MMf7X_IVDD3bjXu0zSwWBVh8c2zXuPwodDLIoe7j_JcaGXMWlGb-BBpghiVZkJOeli-K8njJcOl9ksbsF0nl7b4L5Aho2O-tuTg5AIFSBQ4MV7ifqnnIGP7bUsxMcwbGZoUGFZRUQCxckw?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>9:00–17:00<br><br>BravasBCN');
 INSERT INTO `brava_lang` VALUES (492, 246, 2, NULL);
-INSERT INTO `brava_lang` VALUES (493, 247, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ33qke-k0RMAnCsKzdSbJXvilIbzwxRPMbJy7VVw1ep3gmxmbSsMo2MceY9ve-qoQHcmweA8TWu-xoavsFWlln5Ich8mE0qlNWc8kgSUcABuRqyw3EC7CeEb_Xhch7n64V3nIG0eidhRhDkKZY8TZ2J4-Y_ZwICuVVdUXVIEPgJQ1OC7KzTdU0RcXAM6N1qmNK_Dj5yTKWjQsaY7Smfp_J51OrksvuOUAFCzXClLVXdxvpDHg\" height=\"200\" width=\"auto\" /><br><br>Carrer de Caldetes, 10<br><br>DL Tancat<br>DM-DJ I DG 8:00–0:30<br>DV-DS 9:00–3:00');
+INSERT INTO `brava_lang` VALUES (493, 247, 1, '<p>DL-DX 13:00–17:00<br>DJ-DS 13:00–17:00 - 20:00 - 0:00<br>DG Tancat</p>');
 INSERT INTO `brava_lang` VALUES (494, 247, 2, NULL);
 INSERT INTO `brava_lang` VALUES (495, 248, 1, '<img src=\"https://doc-10-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/35iikqkc8s6t37hph7ebj1oip0/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-Es9O3Dna3P3lJI7CSQALZXqUeKllIdsWqoruacDn25BbhMXJOAD0CMDC0H1HjzybzsMFDVoqREyE2MklkhrnmKSH4XjwmR7chLUGEA_yateZMqvZEWgbsCX9mXbzg-MJ2RY5bl6Wh1TI4Sdwnpe-BXm1pIYh_UE99TEU59LeLlm1NWmsW8hQjDj-nE?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>dll 8:00–11:00<br>dm-dj 8:00–16:00<br>dv-dss 8:00–16:00, 20:00–0:00<br>dg 11:00–16:00<br><br>bravasBCN');
 INSERT INTO `brava_lang` VALUES (496, 248, 2, NULL);
@@ -2054,10 +2073,6 @@ INSERT INTO `brava_lang` VALUES (497, 249, 1, '<img src=\"https://doc-0c-0s-myma
 INSERT INTO `brava_lang` VALUES (498, 249, 2, NULL);
 INSERT INTO `brava_lang` VALUES (499, 250, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/iebrovqhl54cgc5t9mjl67jv0g/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-H6lOnIbs14BIFygjz5lxscfJJMCxj22nfTgQXHpcOIG0exQ_sz9XA4TCPFIb5AGqlpzVfmp-x_BTBNKROzhzq3zAYwBnY336xy9FyFanFXviS7xIJ-zPUhGQDLEzteHu4EB2pZMaS0qLuZ-sV0Bw45HMbMWGwhQczBPOGmHOPQtFQystR97I2qTZ3L?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DG 13:00–16:00, 20:00–23:00');
 INSERT INTO `brava_lang` VALUES (500, 250, 2, NULL);
-INSERT INTO `brava_lang` VALUES (501, 251, 1, '<img src=\"https://doc-00-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/12v1tpfvm7apoklousd4fanl2c/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EcyeVHRzBntHkIDGOYFdKBpMCPa4bKgYWhboZG8SfhBni9-Sb_16Bmo31EfVPfikxRHVUESNkgq39WrqqxXS7HMAwFanj2fKW-nzofRJGmWssMalhFTXsUraiOnYLTNpz7EcDV1H955UKakcFckRp_Hald22b2wuPlx2PbKmRKncYpjH-I2lbniV3U?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DX 9:00–21:00<br>DV 9:00–21:00<br>DSS-DG 10:00–15:00');
-INSERT INTO `brava_lang` VALUES (502, 251, 2, NULL);
-INSERT INTO `brava_lang` VALUES (503, 252, 1, '<img src=\"https://lh3.googleusercontent.com/umsh/AKnoyZ1X8FoYkdULn5WYmOnzCpZNIF0OiYY54nDxHvYK89FNn3rQprErRATonLGQ7LhDrU8fEEtEr880cHBKavfqQpU4TGLga3rrL3yfUP375BVbmpns5-cPx8d6LX8SG9JItCV7VvjeiJZlFIawOojmi8luSbpgwdTFXvIFekLG-A7U3FdC0NIHbY3R7dO6cm0\" height=\"200\" width=\"auto\" /><br><br>Plaça de Catalunya, 39<br><br>dg-dj: de 09:00 a 23:00<br>dv-ds de 09:00 a 03:00');
-INSERT INTO `brava_lang` VALUES (504, 252, 2, NULL);
 INSERT INTO `brava_lang` VALUES (505, 253, 1, 'Av. Torre Blanca, 2-8');
 INSERT INTO `brava_lang` VALUES (506, 253, 2, NULL);
 INSERT INTO `brava_lang` VALUES (507, 254, 1, 'Carrer dels Forns, 7');
@@ -2142,8 +2157,6 @@ INSERT INTO `brava_lang` VALUES (587, 294, 1, '<img src=\"https://doc-10-0s-myma
 INSERT INTO `brava_lang` VALUES (588, 294, 2, NULL);
 INSERT INTO `brava_lang` VALUES (589, 295, 1, '<img src=\"https://doc-0g-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/8l9g8h3nbm037rot546pvv6e30/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-H2bGH0IC4Fess3a5KfkO8vvyeI1aMSh4cnHyBM6SL6f4FjXQ5p53BWwucQ8hBfCSQi7zyNUqKzR3rwZRXSdTisai-GMGUdEj-6skLAyoxKN_U5iZyqdwOoZKZfpZbM57HmQT3nKBZ-YVJzHxofvcRlbeV9FYD_zlt2-xl-7KdQWh5t2i0qLTOS-oeu?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL, DX: 13:00–16:00<br>DJ-DSS: 13:00–16:00, 21:00–23:00<br>DG: 13:00–16:00<br><br>MORFANDING_BCN');
 INSERT INTO `brava_lang` VALUES (590, 295, 2, NULL);
-INSERT INTO `brava_lang` VALUES (591, 296, 1, '<img src=\"https://doc-0c-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/j0q6dv25vpubg5tet4aokhvf48/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-FFmbu_xlt0dQmCnZeJbAnfL23xB4kwQ5aGWeLPW49tNNdDejRpT3rFL4xYvy47zL8GxHG35Uj2KTKUmYefiYCvsTSJ6-449Z3CnCzCFsXlk_MyuVFz_REtRnOjARQ6E4_wCakqgb_j60FkCnS-SFJn_0GHNOkgo3vXAOSxHaH7-hPIoqkse-JUm8NMvg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>DLL-DSS: 8:00–23:00');
-INSERT INTO `brava_lang` VALUES (592, 296, 2, NULL);
 INSERT INTO `brava_lang` VALUES (593, 297, 1, '<img src=\"https://doc-10-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/vkef89mceg2vtg7qu109pr0ud8/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-G59428522OUPqwwZwEtB7ESBUquqc_y0-k4pfC_ACzUO2kj44vYt7bedm9lI8ZOgwF89ROPvREXJNeUcIEmzahQdfEvc6HmFLl9tUXPKPz8jM0cAmkXOP5WpxFe3OOx41S1m4UozOTSowzwqZiEVwvQ9060ax4OUW6NEIYVNyiNzyb4aAh557E0tpj?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>');
 INSERT INTO `brava_lang` VALUES (594, 297, 2, NULL);
 INSERT INTO `brava_lang` VALUES (595, 298, 1, '<img src=\"https://doc-0o-0s-mymaps.googleusercontent.com/untrusted/hostedimage/sp540u1gdhv7u5v9na7627phvo/0eso27dd7icac51fbb2m6gt72k/1684942590500/xUcpN3FudnuQYrEAf25SWSdkT0JYD12L/17346896698994278261/5ACtvi-EvEs-bu0txNebS7goiC0MT4IGyy9q5UQxSOQqPAHgcTALzJx84_skzO__YtrLjbK8qTA1KrHgLGDEPgC5CIcpeOO_tgXcHJYKUf2ZgOhCrbb1jCLYaxJMnNcADk9GfRW0eR6-WGNpGS7Z-ol_0smRl92Qb4UV6iM8jRI7wbHLj_HI89EDUEIc0FDpy?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>');
@@ -2286,8 +2299,8 @@ INSERT INTO `brava_lang` VALUES (731, 366, 1, NULL);
 INSERT INTO `brava_lang` VALUES (732, 366, 2, NULL);
 INSERT INTO `brava_lang` VALUES (733, 367, 1, NULL);
 INSERT INTO `brava_lang` VALUES (734, 367, 2, NULL);
-INSERT INTO `brava_lang` VALUES (735, 368, 1, NULL);
-INSERT INTO `brava_lang` VALUES (736, 368, 2, NULL);
+INSERT INTO `brava_lang` VALUES (735, 368, 1, '<p>Si estàs al centre, és un lloc bonic i les tapes fan molt bona pinta!</p>');
+INSERT INTO `brava_lang` VALUES (736, 368, 2, '<p>Si estàs al centre, és un lloc bonic i les tapes fan molt bona pinta!</p>');
 INSERT INTO `brava_lang` VALUES (737, 369, 1, NULL);
 INSERT INTO `brava_lang` VALUES (738, 369, 2, NULL);
 INSERT INTO `brava_lang` VALUES (739, 370, 1, NULL);
@@ -2660,6 +2673,40 @@ INSERT INTO `brava_lang` VALUES (1107, 554, 1, NULL);
 INSERT INTO `brava_lang` VALUES (1108, 554, 2, NULL);
 INSERT INTO `brava_lang` VALUES (1109, 555, 1, NULL);
 INSERT INTO `brava_lang` VALUES (1110, 555, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1111, 556, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1112, 556, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1113, 557, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1114, 557, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1115, 558, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1116, 558, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1117, 559, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1118, 559, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1119, 560, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1120, 560, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1121, 561, 1, '<p>dilluns	Tancat</p><p>dimarts	18:00–1:00</p><p>dimecres	18:00–1:00</p><p>dijous	18:00–1:00</p><p>divendres	18:00–1:00</p><p>dissabte	18:00–1:00</p><p>diumenge	12:00–17:00</p>');
+INSERT INTO `brava_lang` VALUES (1122, 561, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1123, 562, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1124, 562, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1125, 563, 1, '<p>13:00–16:00<br></p><p>20:00–23:00</p><p>Oscar broc</p>');
+INSERT INTO `brava_lang` VALUES (1126, 563, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1127, 564, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1128, 564, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1129, 565, 1, '<p>&nbsp;8:00–0:00</p>');
+INSERT INTO `brava_lang` VALUES (1130, 565, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1131, 566, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1132, 566, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1133, 567, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1134, 567, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1135, 568, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1136, 568, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1137, 569, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1138, 569, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1139, 570, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1140, 570, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1141, 571, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1142, 571, 2, NULL);
+INSERT INTO `brava_lang` VALUES (1143, 572, 1, NULL);
+INSERT INTO `brava_lang` VALUES (1144, 572, 2, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -2677,7 +2724,7 @@ CREATE TABLE `brava_review` (
   `score` double(3,1) unsigned DEFAULT NULL,
   `last_visit` date DEFAULT NULL,
   PRIMARY KEY (`id_brava_review`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=287 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of brava_review
@@ -2742,7 +2789,7 @@ INSERT INTO `brava_review` VALUES (56, 362, 166, 6.00, 8.0, 8.0, 8.0, 8.0, '2021
 INSERT INTO `brava_review` VALUES (57, 363, 167, 5.50, 7.0, 8.0, 8.0, 8.0, '2021-03-13');
 INSERT INTO `brava_review` VALUES (58, 364, 162, NULL, 8.0, 9.0, 7.0, 8.0, '2020-01-09');
 INSERT INTO `brava_review` VALUES (59, 365, 180, 5.00, 2.0, 6.0, 8.0, 8.0, '2018-10-16');
-INSERT INTO `brava_review` VALUES (60, 366, 164, 4.50, 7.0, 6.0, 10.0, 8.0, '2027-06-25');
+INSERT INTO `brava_review` VALUES (60, 366, 164, 4.50, 7.0, 6.0, 10.0, 8.0, '2017-06-25');
 INSERT INTO `brava_review` VALUES (61, 367, 192, 4.80, 8.0, 8.0, 8.0, 8.0, '2017-02-02');
 INSERT INTO `brava_review` VALUES (62, 368, 193, 4.00, 8.0, 9.0, 7.0, 8.0, '2018-01-10');
 INSERT INTO `brava_review` VALUES (63, 369, NULL, 8.00, 7.0, 8.0, 8.0, 8.0, '2019-12-10');
@@ -2819,7 +2866,7 @@ INSERT INTO `brava_review` VALUES (133, 439, 283, 3.75, 8.0, 7.0, 7.0, 7.0, NULL
 INSERT INTO `brava_review` VALUES (134, 440, 257, 4.50, 7.0, 7.0, 8.0, 7.0, '2016-07-28');
 INSERT INTO `brava_review` VALUES (135, 441, 280, 3.25, 9.0, 6.0, 7.0, 7.0, '2016-06-04');
 INSERT INTO `brava_review` VALUES (136, 442, 278, NULL, NULL, NULL, NULL, 7.0, '2015-11-07');
-INSERT INTO `brava_review` VALUES (137, 443, 274, 3.95, 7.0, 9.0, 5.0, 7.0, NULL);
+INSERT INTO `brava_review` VALUES (137, 443, 274, 3.95, 7.0, 9.0, 5.0, 7.0, '2019-11-22');
 INSERT INTO `brava_review` VALUES (138, 444, 277, 4.90, 6.0, 8.0, 7.0, 7.0, '2016-11-25');
 INSERT INTO `brava_review` VALUES (139, 445, 245, 5.50, 8.0, 8.0, 6.5, 7.0, '2017-05-30');
 INSERT INTO `brava_review` VALUES (140, 446, 266, NULL, NULL, 7.0, 7.0, 7.0, '2018-08-23');
@@ -2834,7 +2881,7 @@ INSERT INTO `brava_review` VALUES (148, 454, 269, 5.50, 6.0, 7.0, 7.0, 7.0, '202
 INSERT INTO `brava_review` VALUES (149, 455, 287, NULL, 8.0, 7.0, 6.0, 6.5, '2023-05-07');
 INSERT INTO `brava_review` VALUES (150, 456, 296, 9.00, 7.0, 7.0, 6.0, 6.5, '2022-09-16');
 INSERT INTO `brava_review` VALUES (151, 457, 297, NULL, 9.0, 6.0, 7.0, 6.5, '2022-07-21');
-INSERT INTO `brava_review` VALUES (152, 458, 294, 4.50, 10.0, 7.0, 9.0, 8.5, '2027-06-02');
+INSERT INTO `brava_review` VALUES (152, 458, 294, 4.50, 10.0, 7.0, 9.0, 8.5, '2017-06-02');
 INSERT INTO `brava_review` VALUES (153, 459, NULL, NULL, NULL, NULL, NULL, 6.5, NULL);
 INSERT INTO `brava_review` VALUES (154, 460, 289, NULL, 6.0, 5.0, 6.0, 6.5, '2017-05-15');
 INSERT INTO `brava_review` VALUES (155, 461, 316, 4.00, 6.0, 7.0, 6.0, 6.5, NULL);
@@ -2863,7 +2910,7 @@ INSERT INTO `brava_review` VALUES (177, 483, 320, 5.50, 5.0, 5.0, 6.0, 5.5, '202
 INSERT INTO `brava_review` VALUES (178, 484, 321, 5.50, 7.0, 8.0, 8.0, 8.0, '2022-12-11');
 INSERT INTO `brava_review` VALUES (179, 485, 351, 6.90, 5.0, 5.0, 6.0, NULL, '2021-10-21');
 INSERT INTO `brava_review` VALUES (180, 486, 318, 4.10, 7.0, 7.0, 4.0, 5.5, '2018-07-27');
-INSERT INTO `brava_review` VALUES (181, 487, 350, 3.90, 8.0, 4.0, 6.0, 5.5, NULL);
+INSERT INTO `brava_review` VALUES (181, 487, 350, 3.90, 8.0, 4.0, 6.0, 5.5, '2018-06-06');
 INSERT INTO `brava_review` VALUES (182, 488, 323, NULL, 4.0, 5.0, 6.0, 5.5, NULL);
 INSERT INTO `brava_review` VALUES (183, 489, 317, NULL, 7.0, 6.0, 5.0, 6.5, '2017-04-18');
 INSERT INTO `brava_review` VALUES (184, 490, 322, 4.85, 6.0, 6.0, 5.0, 5.5, '2017-04-25');
@@ -2889,12 +2936,12 @@ INSERT INTO `brava_review` VALUES (203, 509, 345, 3.90, 8.0, 3.0, 1.0, 2.0, '201
 INSERT INTO `brava_review` VALUES (204, 510, 79, NULL, NULL, NULL, NULL, 10.0, '2017-04-25');
 INSERT INTO `brava_review` VALUES (205, 511, 80, 6.00, 8.0, NULL, NULL, 9.0, '2018-02-08');
 INSERT INTO `brava_review` VALUES (206, 512, 81, 28.00, 7.0, 9.0, 10.0, 8.5, '2018-02-22');
-INSERT INTO `brava_review` VALUES (207, 513, 84, 5.00, 8.0, NULL, 9.0, 8.0, '2013-10-17');
+INSERT INTO `brava_review` VALUES (207, 513, 84, 5.00, 8.0, 0.0, 9.0, 8.0, '2013-10-17');
 INSERT INTO `brava_review` VALUES (208, 514, 82, 4.90, 10.0, 6.0, 9.0, 7.5, '2019-09-10');
 INSERT INTO `brava_review` VALUES (209, 515, 83, 4.50, 8.0, NULL, NULL, 5.5, '2018-02-08');
 INSERT INTO `brava_review` VALUES (210, 307, 86, 5.50, 10.0, 9.0, 10.0, 9.5, '2019-06-11');
 INSERT INTO `brava_review` VALUES (211, 309, 89, NULL, 6.0, 9.0, 8.0, 8.5, '2021-04-04');
-INSERT INTO `brava_review` VALUES (212, 312, 93, NULL, 7.0, 9.0, 10.0, 9.5, '2023-03-21');
+INSERT INTO `brava_review` VALUES (212, 312, 93, 4.95, 7.0, 9.0, 10.0, 9.5, '2023-03-21');
 INSERT INTO `brava_review` VALUES (213, 315, 97, 5.70, 6.0, 9.0, 9.0, 9.0, '2020-08-13');
 INSERT INTO `brava_review` VALUES (214, 322, 106, 4.80, 7.0, 8.0, 10.0, 9.0, '2018-08-15');
 INSERT INTO `brava_review` VALUES (215, 322, 107, 4.80, 7.0, 8.0, 10.0, 9.0, '2019-06-28');
@@ -2940,7 +2987,7 @@ INSERT INTO `brava_review` VALUES (254, 539, 290, 4.50, 12.0, 7.0, 6.0, 6.5, '20
 INSERT INTO `brava_review` VALUES (255, 540, 292, 4.50, 7.0, 7.0, 6.0, 6.5, '2017-07-18');
 INSERT INTO `brava_review` VALUES (256, 458, 295, NULL, 7.0, 6.0, 7.0, 6.5, '2022-02-02');
 INSERT INTO `brava_review` VALUES (257, 542, 308, 4.50, 3.0, 7.0, 5.0, 6.0, NULL);
-INSERT INTO `brava_review` VALUES (258, 467, NULL, NULL, 7.0, 9.0, 7.0, 8.0, '2013-10-14');
+INSERT INTO `brava_review` VALUES (258, 467, NULL, NULL, 7.0, 9.0, 7.0, 8.0, '2015-10-14');
 INSERT INTO `brava_review` VALUES (259, 543, NULL, NULL, NULL, NULL, NULL, 6.0, NULL);
 INSERT INTO `brava_review` VALUES (260, 541, 315, 4.50, 6.0, 6.0, 5.0, 5.5, '2016-12-02');
 INSERT INTO `brava_review` VALUES (261, 546, NULL, 5.00, 6.0, 6.0, 5.0, 5.5, '2017-09-23');
@@ -2949,6 +2996,26 @@ INSERT INTO `brava_review` VALUES (263, 495, 331, 4.00, 8.0, 6.0, 4.0, 5.0, '202
 INSERT INTO `brava_review` VALUES (264, 554, 332, 6.50, 7.0, 8.0, 7.0, 7.5, '2023-06-14');
 INSERT INTO `brava_review` VALUES (265, 555, 333, 4.70, 8.0, 7.0, 7.0, 7.0, '2023-07-08');
 INSERT INTO `brava_review` VALUES (266, 555, 334, 4.50, 8.0, 7.0, 6.0, 6.5, '2023-07-08');
+INSERT INTO `brava_review` VALUES (267, 556, 357, NULL, 7.0, 7.0, 7.0, 7.0, '2023-07-17');
+INSERT INTO `brava_review` VALUES (268, 557, 358, 5.30, 2.0, 2.0, 2.0, 2.0, '2023-08-04');
+INSERT INTO `brava_review` VALUES (269, 558, 363, 6.50, 8.0, 7.0, 10.0, 8.5, '2023-08-12');
+INSERT INTO `brava_review` VALUES (270, 559, 364, NULL, 8.0, 9.0, 7.0, 8.0, '2023-08-17');
+INSERT INTO `brava_review` VALUES (271, 560, 365, NULL, 6.0, 7.0, 5.0, 6.0, '2023-08-17');
+INSERT INTO `brava_review` VALUES (272, 561, 366, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (273, 218, 372, 6.50, 7.0, 7.0, 9.0, 8.0, '2023-09-12');
+INSERT INTO `brava_review` VALUES (274, 562, 373, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (275, 563, 374, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (276, 564, 375, 3.50, 7.0, 2.0, 7.0, 4.5, '2023-09-29');
+INSERT INTO `brava_review` VALUES (277, 565, 376, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (278, 567, 377, 6.50, 8.0, 8.0, 9.0, 8.5, '2023-10-12');
+INSERT INTO `brava_review` VALUES (279, 393, 378, 6.00, 5.0, 8.0, 8.0, 8.0, '2023-10-15');
+INSERT INTO `brava_review` VALUES (280, 568, 379, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (281, 569, 381, NULL, 8.0, 8.0, 5.0, 6.5, '2023-11-05');
+INSERT INTO `brava_review` VALUES (282, 570, 382, 3.30, 8.0, 6.0, 5.0, 5.5, '2023-11-22');
+INSERT INTO `brava_review` VALUES (283, 571, 383, 4.30, 10.0, 8.0, 5.0, 6.5, '2023-11-27');
+INSERT INTO `brava_review` VALUES (284, 572, 384, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `brava_review` VALUES (285, 72, 385, 6.40, 8.0, 7.0, 6.0, 6.5, '2024-01-14');
+INSERT INTO `brava_review` VALUES (286, 368, 386, 6.00, 5.0, 7.0, 7.0, 7.0, '2024-01-16');
 COMMIT;
 
 -- ----------------------------
@@ -2959,9 +3026,9 @@ CREATE TABLE `brava_review_lang` (
   `id_brava_review_lang` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `id_brava_review` smallint(5) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
-  `review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `review` text DEFAULT NULL,
   PRIMARY KEY (`id_brava_review_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=533 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of brava_review_lang
@@ -3499,6 +3566,46 @@ INSERT INTO `brava_review_lang` VALUES (529, 265, 1, '<p>Patates no congelades q
 INSERT INTO `brava_review_lang` VALUES (530, 265, 2, '<p>Patatas no congeladas que las fríen con todo lo que cocinan en el restaurante. Salsa brava bastante picante.</p>');
 INSERT INTO `brava_review_lang` VALUES (531, 266, 1, '<p>Patates no congelades que les fregeixen amb tot el que cuinen al restaurant. Allioli + salsa picant que pica bastant. El Toni creu que casolanes però la Bàrbara i la Lara no.</p>');
 INSERT INTO `brava_review_lang` VALUES (532, 266, 2, '<p>Patatas no congeladas que las fríen con todo lo que cocinan en el restaurante. Alioli + salsa picante que pica bastante. Toni cree que caseras pero Bárbara y Lara no.</p>');
+INSERT INTO `brava_review_lang` VALUES (533, 267, 1, '<p>Patates bones, falta cruixentor. Salses: allioli i salsa amb pimentón a saco, el conjunt pica i està molt bo.</p>');
+INSERT INTO `brava_review_lang` VALUES (534, 267, 2, '<p>Patatas buenas, falta crujiente. Salsas: alioli y salsa con pimentón a saco, el conjunto fregadero y está muy bueno.</p>');
+INSERT INTO `brava_review_lang` VALUES (535, 268, 1, '<p>Ens les han fet al moment i (així i tot): tot malament. Patates fregides/cuinades malament i salsa de pot amb pimentón per sobre.</p>');
+INSERT INTO `brava_review_lang` VALUES (536, 268, 2, '<p>Nos las han hecho al momento y (aun así): todo mal. Patatas fritas/cocinadas mal y salsa de bote con pimentón por encima.</p>');
+INSERT INTO `brava_review_lang` VALUES (537, 269, 1, '<p>Patata bona, però farinosa, igual no és la varietat correcta? La salsa tremenda i dissimula el fet que la patata no sigui perfecta.</p>');
+INSERT INTO `brava_review_lang` VALUES (538, 269, 2, '<p>Patata buena, pero harinosa, ¿al igual no es la variedad correcta? La salsa tremenda y disimula el hecho de que la patata no sea perfecta.</p>');
+INSERT INTO `brava_review_lang` VALUES (539, 270, 1, '<p>Patata bona i ben fregida, com sempre un toc més de cruixent seria ideal. Salsa de tomàquet fregit amb tabasco suau i \"ajonesa\" correcte amb rodanxes de caiena per sobre.</p>');
+INSERT INTO `brava_review_lang` VALUES (540, 270, 2, '<p>Patata buena y bien frita, como siempre un toque más crujiente sería ideal. Salsa de tomate frito con tabasco suave y \"ajonesa\" correcto con rodajas de cayena por encima.</p>');
+INSERT INTO `brava_review_lang` VALUES (541, 271, 1, '<p>Típiques braves estàndard de bar amb salses industrials. La patata bastant bé de gust.</p>');
+INSERT INTO `brava_review_lang` VALUES (542, 271, 2, '<p>Típicas bravas estándar de bar con salsas industriales. La patata bastante bien a gusto.</p>');
+INSERT INTO `brava_review_lang` VALUES (543, 272, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (544, 272, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (545, 273, 1, '<p>Les patates estan ben fetes i sabroses, però un pèl olioses. Les salses: allioli potent i oli picant (de veritat). El conjunt bastant bastant bo.</p>');
+INSERT INTO `brava_review_lang` VALUES (546, 273, 2, '<p>Las patatas están bien hechas y sabrosas, pero algo aceitosas. Las salsas: alioli potente y aceite picante (de verdad). El conjunto bastante bastante bueno.</p>');
+INSERT INTO `brava_review_lang` VALUES (547, 274, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (548, 274, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (549, 275, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (550, 275, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (551, 276, 1, '<p>Patates xips de bossa (no enganyen, perquè a la carta no diu que siguin braves) amb salsa brava que no pica gaire, però està força bona.</p>');
+INSERT INTO `brava_review_lang` VALUES (552, 276, 2, '<p>Patatas chips de bolsa (no engañan, porque en la carta no dice que sean bravas) con salsa brava que no pica demasiado, pero está bastante buena.</p>');
+INSERT INTO `brava_review_lang` VALUES (553, 277, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (554, 277, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (555, 278, 1, '<p>Les patates estan bullides i un toc fregides que els hi dona un toc bastant cruixent. Tres salses: olives negres, salsa molt picant, allioli supersuau. No sé si la idea és ajuntar-les totes... però està molt bo el conjunt.</p>');
+INSERT INTO `brava_review_lang` VALUES (556, 278, 2, '<p>Las patatas están hervidas y un toque fritas que les da un toque bastante crujiente. Tres salsas: aceitunas negras, salsa muy picante, alioli supersuave. No sé si la idea es juntarlas todas... pero está muy bueno el conjunto.</p>');
+INSERT INTO `brava_review_lang` VALUES (557, 279, 1, '<p>Les patates estan bastant bé, igual falta cruixentor. Les salses estan bones, però no piquen gens!</p>');
+INSERT INTO `brava_review_lang` VALUES (558, 279, 2, '<p>Las patatas están bastante bien, igual falta crujiente. Las salsas están buenas, ¡pero no pican nada!</p>');
+INSERT INTO `brava_review_lang` VALUES (559, 280, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (560, 280, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (561, 281, 1, '<p>Típiques braves de bar típic: patates sorprenentment bones, salses normals.</p>');
+INSERT INTO `brava_review_lang` VALUES (562, 281, 2, '<p>Típicos toros de bar típico: patatas sorprendentemente buenas, salsas normales.</p>');
+INSERT INTO `brava_review_lang` VALUES (563, 282, 1, '<p>Les patates no són la varietat que toca i la textura no és la bona. Les sales: la blanca prou bé (allioli correcte) però la vermella és una salsa mexicana amb coriandre a un restaurant que es diu Bilbao, no Mezcal...!</p>');
+INSERT INTO `brava_review_lang` VALUES (564, 282, 2, '<p>Las patatas no son la variedad que toca y la textura no es buena. Las salas: la blanca bastante bien (alioli correcto) pero la roja es una salsa mexicana con cilantro en un restaurante llamado Bilbao, no Mezcal...!</p>');
+INSERT INTO `brava_review_lang` VALUES (565, 283, 1, '<p>Les patates estan ben fregides i les espècies que porten li donen un rollo, però la veritat, com a tota argentina, és molt farinosa. Les salses molt fluixes... la blanca: maionesa amb all en pols, la vermella: salsa mexicana vermella massa líquida.</p>');
+INSERT INTO `brava_review_lang` VALUES (566, 283, 2, '<p>Las patatas están bien fritas y las especias que llevan le dan un rollo, pero la verdad, como a toda argentina, es muy harinosa. Las salsas muy flojas... la blanca: mayonesa con ajo en polvo, la roja: salsa mejicana roja demasiado líquida.</p>');
+INSERT INTO `brava_review_lang` VALUES (567, 284, 1, NULL);
+INSERT INTO `brava_review_lang` VALUES (568, 284, 2, NULL);
+INSERT INTO `brava_review_lang` VALUES (569, 285, 1, '<p>Patata ben feta però farinosa. La salsa és una blanca d\'allioli bona amb una salsa de tomàquet que no?!?! ?... una llàstima! Massa salt el conjunt.</p>');
+INSERT INTO `brava_review_lang` VALUES (570, 285, 2, '<p>Patata bien hecha pero harinosa. La salsa es una blanca de alioli buena con una salsa de tomate que no?!?! ?... ¡una lástima! Demasiado salto el conjunto.</p>');
+INSERT INTO `brava_review_lang` VALUES (571, 286, 1, '<p>Les patates estan bones, però encara falta cruixentor i un toc de més amor perquè siguin més rodones. Algunes estan crues...! La salsa allioli amb oli que pica bastant.</p>');
+INSERT INTO `brava_review_lang` VALUES (572, 286, 2, '<p>Las patatas están buenas, pero todavía falta crujiente y un toque de más amor para que sean más redondas. ¡Algunas están crudas...! La salsa alioli con aceite que pica bastante.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -3509,7 +3616,7 @@ CREATE TABLE `brava_type` (
   `id_brava_type` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id_brava_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of brava_type
@@ -3531,23 +3638,22 @@ CREATE TABLE `brava_type_lang` (
   `id_brava_type` tinyint(3) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
+  `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_brava_type_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of brava_type_lang
 -- ----------------------------
 BEGIN;
-INSERT INTO `brava_type_lang` VALUES (1, 1, 1, 'Per fer: bars');
-INSERT INTO `brava_type_lang` VALUES (2, 1, 2, 'Por hacer: bares');
-INSERT INTO `brava_type_lang` VALUES (3, 2, 1, 'Per fer: restaurants');
-INSERT INTO `brava_type_lang` VALUES (4, 2, 2, 'Por hacer: restaurantes');
-INSERT INTO `brava_type_lang` VALUES (5, 3, 1, 'Fetes');
-INSERT INTO `brava_type_lang` VALUES (6, 3, 2, 'Hechas');
-INSERT INTO `brava_type_lang` VALUES (7, 4, 1, 'Fetes: altres');
-INSERT INTO `brava_type_lang` VALUES (8, 4, 2, 'Hechas: otras');
-INSERT INTO `brava_type_lang` VALUES (9, 5, 1, 'Tancat');
-INSERT INTO `brava_type_lang` VALUES (10, 5, 2, ' Cerrado');
+INSERT INTO `brava_type_lang` VALUES (1, 1, 1, 'Per fer: bars', 'per-fer-bars');
+INSERT INTO `brava_type_lang` VALUES (2, 1, 2, 'Por hacer: bares', 'por-hacer-bares');
+INSERT INTO `brava_type_lang` VALUES (3, 2, 1, 'Per fer: restaurants', 'per-fer-restaurants');
+INSERT INTO `brava_type_lang` VALUES (4, 2, 2, 'Por hacer: restaurantes', 'por-hacer-restaurantes');
+INSERT INTO `brava_type_lang` VALUES (5, 3, 1, 'Fetes', 'fetes');
+INSERT INTO `brava_type_lang` VALUES (6, 3, 2, 'Hechas', 'hechas');
+INSERT INTO `brava_type_lang` VALUES (7, 4, 1, 'Fetes: altres', 'fetes-altres');
+INSERT INTO `brava_type_lang` VALUES (8, 4, 2, 'Hechas: otras', 'hechas-otras');
 COMMIT;
 
 -- ----------------------------
@@ -3558,7 +3664,7 @@ CREATE TABLE `difficulty` (
   `id_difficulty` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id_difficulty`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of difficulty
@@ -3581,7 +3687,7 @@ CREATE TABLE `difficulty_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_difficulty_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of difficulty_lang
@@ -3607,13 +3713,13 @@ CREATE TABLE `ingredient` (
   `id_ingredient_category` tinyint(3) unsigned DEFAULT NULL,
   `id_recipe` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=239 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of ingredient
 -- ----------------------------
 BEGIN;
-INSERT INTO `ingredient` VALUES (1, '$dryTomatoes', 4, 0);
+INSERT INTO `ingredient` VALUES (1, '$dryTomatoes', 21, NULL);
 INSERT INTO `ingredient` VALUES (2, '$virginOliveOil', NULL, 0);
 INSERT INTO `ingredient` VALUES (3, '$blackOlives', NULL, 0);
 INSERT INTO `ingredient` VALUES (4, '$goatRollCheese', 8, 0);
@@ -3622,7 +3728,7 @@ INSERT INTO `ingredient` VALUES (6, '$lemon', 4, 0);
 INSERT INTO `ingredient` VALUES (7, '$basil', 10, 0);
 INSERT INTO `ingredient` VALUES (8, '$provencalHerbs', 10, 0);
 INSERT INTO `ingredient` VALUES (9, '$pepper', 9, 0);
-INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 13, NULL);
+INSERT INTO `ingredient` VALUES (10, '$oilDryTomatoes', 21, NULL);
 INSERT INTO `ingredient` VALUES (11, '$lemonJuice', NULL, 0);
 INSERT INTO `ingredient` VALUES (12, '$baconStrips', 1, 0);
 INSERT INTO `ingredient` VALUES (13, '$chickenBreasts', 6, 0);
@@ -3634,7 +3740,7 @@ INSERT INTO `ingredient` VALUES (18, '$parmesan', 8, 0);
 INSERT INTO `ingredient` VALUES (19, '$onion', 5, 0);
 INSERT INTO `ingredient` VALUES (20, '$garlic', 5, 0);
 INSERT INTO `ingredient` VALUES (21, '$garlicPowder', 9, 0);
-INSERT INTO `ingredient` VALUES (22, '$salt', 9, 0);
+INSERT INTO `ingredient` VALUES (22, '$salt', NULL, NULL);
 INSERT INTO `ingredient` VALUES (23, '$pecorino', 8, 0);
 INSERT INTO `ingredient` VALUES (24, '$pineNut', 13, 0);
 INSERT INTO `ingredient` VALUES (25, '$sushiRice', 7, NULL);
@@ -3653,7 +3759,7 @@ INSERT INTO `ingredient` VALUES (37, '$cornTortitas', NULL, NULL);
 INSERT INTO `ingredient` VALUES (38, '$onionPowder', 9, NULL);
 INSERT INTO `ingredient` VALUES (39, '$sweetPaprika', 9, NULL);
 INSERT INTO `ingredient` VALUES (40, '$cheesePowder', 8, NULL);
-INSERT INTO `ingredient` VALUES (41, '$guacamole', 16, NULL);
+INSERT INTO `ingredient` VALUES (41, '$guacamole', 16, 86);
 INSERT INTO `ingredient` VALUES (42, '$mozzarellaBalls', 8, NULL);
 INSERT INTO `ingredient` VALUES (43, '$toast', 17, NULL);
 INSERT INTO `ingredient` VALUES (44, '$cherryTomatoes', 4, NULL);
@@ -3673,7 +3779,7 @@ INSERT INTO `ingredient` VALUES (57, '$pistachios', 13, NULL);
 INSERT INTO `ingredient` VALUES (58, '$icingSugar', NULL, NULL);
 INSERT INTO `ingredient` VALUES (59, '$sunflowerOil', NULL, NULL);
 INSERT INTO `ingredient` VALUES (60, '$mascarpone', 8, NULL);
-INSERT INTO `ingredient` VALUES (61, '$whiteChocolate', NULL, NULL);
+INSERT INTO `ingredient` VALUES (61, '$whiteChocolate', 11, NULL);
 INSERT INTO `ingredient` VALUES (62, '$coffee', NULL, NULL);
 INSERT INTO `ingredient` VALUES (63, '$ladyFinger', NULL, NULL);
 INSERT INTO `ingredient` VALUES (64, '$pureCocoaPowder', NULL, NULL);
@@ -3721,7 +3827,6 @@ INSERT INTO `ingredient` VALUES (105, '$sushiRice', 7, 45);
 INSERT INTO `ingredient` VALUES (106, '$salmon', 2, NULL);
 INSERT INTO `ingredient` VALUES (107, '$avocado', 4, NULL);
 INSERT INTO `ingredient` VALUES (108, '$cucumber', 3, NULL);
-INSERT INTO `ingredient` VALUES (109, '$chive', 3, NULL);
 INSERT INTO `ingredient` VALUES (110, '$wakame', 14, NULL);
 INSERT INTO `ingredient` VALUES (111, '$sesameOil', NULL, NULL);
 INSERT INTO `ingredient` VALUES (112, '$japaneseMayonnaise', 16, 46);
@@ -3730,8 +3835,8 @@ INSERT INTO `ingredient` VALUES (114, '$dijonMustard', 16, NULL);
 INSERT INTO `ingredient` VALUES (115, '$dashiPowder', NULL, NULL);
 INSERT INTO `ingredient` VALUES (116, '$ricePaper', 7, NULL);
 INSERT INTO `ingredient` VALUES (117, '$cabbage', 3, NULL);
-INSERT INTO `ingredient` VALUES (118, '$shiitake', NULL, NULL);
-INSERT INTO `ingredient` VALUES (119, '$greenOnion', 3, NULL);
+INSERT INTO `ingredient` VALUES (118, '$shiitake', 22, NULL);
+INSERT INTO `ingredient` VALUES (119, '$springOnion', 3, NULL);
 INSERT INTO `ingredient` VALUES (120, '$poppySeeds', 9, NULL);
 INSERT INTO `ingredient` VALUES (121, '$curry', 9, NULL);
 INSERT INTO `ingredient` VALUES (122, '$croissants', NULL, NULL);
@@ -3847,9 +3952,42 @@ INSERT INTO `ingredient` VALUES (232, '$valentinaSauce', 16, NULL);
 INSERT INTO `ingredient` VALUES (233, '$wheatTortitas', NULL, NULL);
 INSERT INTO `ingredient` VALUES (234, '$vanillaExtract', NULL, NULL);
 INSERT INTO `ingredient` VALUES (235, '$bakingSoda', NULL, NULL);
-INSERT INTO `ingredient` VALUES (236, '$chocolateChips', NULL, NULL);
+INSERT INTO `ingredient` VALUES (236, '$chocolateChips', 11, NULL);
 INSERT INTO `ingredient` VALUES (237, '$stuffedGreenOlives', NULL, NULL);
 INSERT INTO `ingredient` VALUES (238, '$chive', 3, NULL);
+INSERT INTO `ingredient` VALUES (239, '$cannedWholeTomato', 21, NULL);
+INSERT INTO `ingredient` VALUES (240, '$dillMustard', 16, NULL);
+INSERT INTO `ingredient` VALUES (241, '$pickledPiparra', 24, NULL);
+INSERT INTO `ingredient` VALUES (242, '$strainer', 23, NULL);
+INSERT INTO `ingredient` VALUES (243, '$vodka', 18, NULL);
+INSERT INTO `ingredient` VALUES (244, '$gin', 18, NULL);
+INSERT INTO `ingredient` VALUES (245, '$crushedIce', NULL, NULL);
+INSERT INTO `ingredient` VALUES (246, '$gingerBeer', 18, NULL);
+INSERT INTO `ingredient` VALUES (247, '$85Chocolate', 11, NULL);
+INSERT INTO `ingredient` VALUES (248, '$flakeSalt', 9, NULL);
+INSERT INTO `ingredient` VALUES (249, '$breadCrumbs', 17, NULL);
+INSERT INTO `ingredient` VALUES (251, '$limeJuice', NULL, NULL);
+INSERT INTO `ingredient` VALUES (252, '$tomato', 4, NULL);
+INSERT INTO `ingredient` VALUES (253, '$porkRib', 1, NULL);
+INSERT INTO `ingredient` VALUES (254, '$honey', NULL, NULL);
+INSERT INTO `ingredient` VALUES (255, '$greenApple', 4, NULL);
+INSERT INTO `ingredient` VALUES (256, '$driedCilantro', 9, NULL);
+INSERT INTO `ingredient` VALUES (257, '$mincedPork', 1, NULL);
+INSERT INTO `ingredient` VALUES (258, '$sweetPotato', 5, NULL);
+INSERT INTO `ingredient` VALUES (259, '$greenOnion', 3, NULL);
+INSERT INTO `ingredient` VALUES (260, '$foodThread', 23, NULL);
+INSERT INTO `ingredient` VALUES (261, '$mincedPoultry', NULL, NULL);
+INSERT INTO `ingredient` VALUES (263, '$shirataki', 12, NULL);
+INSERT INTO `ingredient` VALUES (264, '$firmTofu', 25, NULL);
+INSERT INTO `ingredient` VALUES (265, '$enoki', 22, NULL);
+INSERT INTO `ingredient` VALUES (266, '$shimeji', 22, NULL);
+INSERT INTO `ingredient` VALUES (267, '$udon', 12, NULL);
+INSERT INTO `ingredient` VALUES (268, '$shungiku', 10, NULL);
+INSERT INTO `ingredient` VALUES (269, '$arugula', 10, NULL);
+INSERT INTO `ingredient` VALUES (270, '$portableGasStove', 23, NULL);
+INSERT INTO `ingredient` VALUES (271, '$chocolateForDesserts', 11, NULL);
+INSERT INTO `ingredient` VALUES (272, '$bakingPowder', NULL, NULL);
+INSERT INTO `ingredient` VALUES (273, '$rawGroundAlmond', 13, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -3859,7 +3997,7 @@ DROP TABLE IF EXISTS `ingredient_category`;
 CREATE TABLE `ingredient_category` (
   `id_ingredient_category` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_ingredient_category`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of ingredient_category
@@ -3889,6 +4027,7 @@ INSERT INTO `ingredient_category` VALUES (21);
 INSERT INTO `ingredient_category` VALUES (22);
 INSERT INTO `ingredient_category` VALUES (23);
 INSERT INTO `ingredient_category` VALUES (24);
+INSERT INTO `ingredient_category` VALUES (25);
 COMMIT;
 
 -- ----------------------------
@@ -3902,7 +4041,7 @@ CREATE TABLE `ingredient_category_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_category_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of ingredient_category_lang
@@ -3956,6 +4095,8 @@ INSERT INTO `ingredient_category_lang` VALUES (45, 23, 1, 'Utensili', 'utensili'
 INSERT INTO `ingredient_category_lang` VALUES (46, 23, 2, 'Utensilio', 'utensilio');
 INSERT INTO `ingredient_category_lang` VALUES (47, 24, 1, 'Encurtits', 'encurtits');
 INSERT INTO `ingredient_category_lang` VALUES (48, 24, 2, 'Encurtidos', 'encurtidos');
+INSERT INTO `ingredient_category_lang` VALUES (49, 25, 1, 'Proteïna vegetal', 'proteina-vegetal');
+INSERT INTO `ingredient_category_lang` VALUES (50, 25, 2, 'Proteína vegetal ', 'proteina-vegetal');
 COMMIT;
 
 -- ----------------------------
@@ -3969,7 +4110,7 @@ CREATE TABLE `ingredient_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ingredient_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=547 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of ingredient_lang
@@ -4075,8 +4216,8 @@ INSERT INTO `ingredient_lang` VALUES (97, 49, 1, 'Carn de vedella per estofat', 
 INSERT INTO `ingredient_lang` VALUES (98, 49, 2, 'Carne de ternera para estofado', 'carne-de-ternera-para-estofado');
 INSERT INTO `ingredient_lang` VALUES (99, 50, 1, 'Ceba dolça', 'ceba-dolca');
 INSERT INTO `ingredient_lang` VALUES (100, 50, 2, 'Cebolla dulce', 'cebolla-dulce');
-INSERT INTO `ingredient_lang` VALUES (101, 51, 1, 'Pastanagues', 'pastanagues');
-INSERT INTO `ingredient_lang` VALUES (102, 51, 2, 'Zanahorias', 'zanahorias');
+INSERT INTO `ingredient_lang` VALUES (101, 51, 1, 'Pastana', 'pastana');
+INSERT INTO `ingredient_lang` VALUES (102, 51, 2, 'Zanahoria', 'zanahoria');
 INSERT INTO `ingredient_lang` VALUES (103, 52, 1, 'Api', 'api');
 INSERT INTO `ingredient_lang` VALUES (104, 52, 2, 'Apio', 'apio');
 INSERT INTO `ingredient_lang` VALUES (105, 53, 1, 'Llorer', 'llorer');
@@ -4191,8 +4332,6 @@ INSERT INTO `ingredient_lang` VALUES (213, 107, 1, 'Alvocat', 'alvocat');
 INSERT INTO `ingredient_lang` VALUES (214, 107, 2, 'Aguacate', 'aguacate');
 INSERT INTO `ingredient_lang` VALUES (215, 108, 1, 'Cogombre', 'cogombre');
 INSERT INTO `ingredient_lang` VALUES (216, 108, 2, 'Pepino', 'pepino');
-INSERT INTO `ingredient_lang` VALUES (217, 109, 1, 'Cebulet', 'cebulet');
-INSERT INTO `ingredient_lang` VALUES (218, 109, 2, 'Cebollino', 'cebollino');
 INSERT INTO `ingredient_lang` VALUES (219, 110, 1, 'Wakame', 'wakame');
 INSERT INTO `ingredient_lang` VALUES (220, 110, 2, 'Wakame', 'wakame');
 INSERT INTO `ingredient_lang` VALUES (221, 111, 1, 'Oli de sèsam', 'oli-de-sesam');
@@ -4433,8 +4572,8 @@ INSERT INTO `ingredient_lang` VALUES (457, 229, 1, 'Llima', 'llima');
 INSERT INTO `ingredient_lang` VALUES (458, 229, 2, 'Lima', 'lima');
 INSERT INTO `ingredient_lang` VALUES (459, 230, 1, '\"Hierbabuena\"', 'hierbabuena');
 INSERT INTO `ingredient_lang` VALUES (460, 230, 2, 'Hierbabuena', 'hierbabuena');
-INSERT INTO `ingredient_lang` VALUES (461, 231, 1, 'Coriandre', 'coriandre');
-INSERT INTO `ingredient_lang` VALUES (462, 231, 2, 'Cilantro', 'cilantro');
+INSERT INTO `ingredient_lang` VALUES (461, 231, 1, 'Coriandre fresc', 'coriandre-fresc');
+INSERT INTO `ingredient_lang` VALUES (462, 231, 2, 'Cilantro fresco', 'cilantro-fresco');
 INSERT INTO `ingredient_lang` VALUES (463, 232, 1, 'Salsa Valentina', 'salsa-valentina');
 INSERT INTO `ingredient_lang` VALUES (464, 232, 2, 'Salsa Valentina', 'salsa-valentina');
 INSERT INTO `ingredient_lang` VALUES (465, 233, 1, '\"Tortitas\" de blat', 'tortitas-de-blat');
@@ -4449,6 +4588,72 @@ INSERT INTO `ingredient_lang` VALUES (473, 237, 1, 'Olives verdes farcides', 'ol
 INSERT INTO `ingredient_lang` VALUES (474, 237, 2, 'Aceitunas verdes rellenas', 'aceitunas-verdes-rellenas');
 INSERT INTO `ingredient_lang` VALUES (475, 238, 1, 'Cibulet', 'cibulet');
 INSERT INTO `ingredient_lang` VALUES (476, 238, 2, 'Cebollino', 'cebollino');
+INSERT INTO `ingredient_lang` VALUES (477, 239, 1, 'Tomàquet sencer en conserva', 'tomaquet-sencer-en-conserva');
+INSERT INTO `ingredient_lang` VALUES (478, 239, 2, 'Tomate entero en conserva', 'tomate-entero-en-conserva');
+INSERT INTO `ingredient_lang` VALUES (479, 240, 1, 'Mostassa amb anet', 'mostassa-amb-anet');
+INSERT INTO `ingredient_lang` VALUES (480, 240, 2, 'Mostaza con eneldo', 'mostaza-con-eneldo');
+INSERT INTO `ingredient_lang` VALUES (481, 241, 1, 'Piparra encurtida', 'piparra-encurtida');
+INSERT INTO `ingredient_lang` VALUES (482, 241, 2, 'Piparra encurtida', 'piparra-encurtida');
+INSERT INTO `ingredient_lang` VALUES (483, 242, 1, 'Colador', 'colador');
+INSERT INTO `ingredient_lang` VALUES (484, 242, 2, 'Colador', 'colador');
+INSERT INTO `ingredient_lang` VALUES (485, 243, 1, 'Vodka', 'vodka');
+INSERT INTO `ingredient_lang` VALUES (486, 243, 2, 'Vodka', 'vodka');
+INSERT INTO `ingredient_lang` VALUES (487, 244, 1, 'Ginebra', 'ginebra');
+INSERT INTO `ingredient_lang` VALUES (488, 244, 2, 'Ginebra', 'ginebra');
+INSERT INTO `ingredient_lang` VALUES (489, 245, 1, 'Gel picat', 'gel-picat');
+INSERT INTO `ingredient_lang` VALUES (490, 245, 2, 'Hielo picado', 'hielo-picado');
+INSERT INTO `ingredient_lang` VALUES (491, 246, 1, 'Ginger beer', 'ginger-beer');
+INSERT INTO `ingredient_lang` VALUES (492, 246, 2, 'Ginger beer', 'ginger-beer');
+INSERT INTO `ingredient_lang` VALUES (493, 247, 1, 'Xocolata 85%', 'xocolata-85');
+INSERT INTO `ingredient_lang` VALUES (494, 247, 2, 'Chocolate 85%', 'chocolate-85');
+INSERT INTO `ingredient_lang` VALUES (495, 248, 1, 'Sal en escates', 'sal-en-escates');
+INSERT INTO `ingredient_lang` VALUES (496, 248, 2, 'Sal en escamas', 'sal-en-escamas');
+INSERT INTO `ingredient_lang` VALUES (497, 249, 1, 'Pa ratllat', 'pa-ratllat');
+INSERT INTO `ingredient_lang` VALUES (498, 249, 2, 'Pan rallado', 'pan-rallado');
+INSERT INTO `ingredient_lang` VALUES (501, 251, 1, 'Suc de llima', 'suc-de-llima');
+INSERT INTO `ingredient_lang` VALUES (502, 251, 2, 'Zumo de lima', 'zumo-de-lima');
+INSERT INTO `ingredient_lang` VALUES (503, 252, 1, 'Tomàquet', 'tomaquet');
+INSERT INTO `ingredient_lang` VALUES (504, 252, 2, 'Tomate', 'tomate');
+INSERT INTO `ingredient_lang` VALUES (505, 253, 1, 'Costella de porc', 'costella-de-porc');
+INSERT INTO `ingredient_lang` VALUES (506, 253, 2, 'Costillar de cerdo', 'costillar-de-cerdo');
+INSERT INTO `ingredient_lang` VALUES (507, 254, 1, 'Mel', 'mel');
+INSERT INTO `ingredient_lang` VALUES (508, 254, 2, 'Miel', 'miel');
+INSERT INTO `ingredient_lang` VALUES (509, 255, 1, 'Poma verda', 'poma-verda');
+INSERT INTO `ingredient_lang` VALUES (510, 255, 2, 'Manzana verde', 'manzana-verde');
+INSERT INTO `ingredient_lang` VALUES (511, 256, 1, 'Coriandre sec', 'coriandre-sec');
+INSERT INTO `ingredient_lang` VALUES (512, 256, 2, 'Cilantro seco', 'cilantro-seco');
+INSERT INTO `ingredient_lang` VALUES (513, 257, 1, 'Carn picada de porc', 'carn-picada-de-porc');
+INSERT INTO `ingredient_lang` VALUES (514, 257, 2, 'Carne picada de cerdo', 'carne-picada-de-cerdo');
+INSERT INTO `ingredient_lang` VALUES (515, 258, 1, 'Moniato', 'moniato');
+INSERT INTO `ingredient_lang` VALUES (516, 258, 2, 'Boniato', 'boniato');
+INSERT INTO `ingredient_lang` VALUES (517, 259, 1, 'All tendre', 'all-tendre');
+INSERT INTO `ingredient_lang` VALUES (518, 259, 2, 'Ajo tierno', 'ajo-tierno');
+INSERT INTO `ingredient_lang` VALUES (519, 260, 1, 'Fil alimentari', 'fil-alimentari');
+INSERT INTO `ingredient_lang` VALUES (520, 260, 2, 'Hilo alimentario', 'hilo-alimentario');
+INSERT INTO `ingredient_lang` VALUES (521, 261, 1, 'Carn picada d\'au', 'carn-picada-dau');
+INSERT INTO `ingredient_lang` VALUES (522, 261, 2, 'Carne picada de ave', 'carne-picada-de-ave');
+INSERT INTO `ingredient_lang` VALUES (525, 263, 1, 'Shirataki', 'shirataki');
+INSERT INTO `ingredient_lang` VALUES (526, 263, 2, 'Shirataki', 'shirataki');
+INSERT INTO `ingredient_lang` VALUES (527, 264, 1, 'Tofu ferm', 'tofu-ferm');
+INSERT INTO `ingredient_lang` VALUES (528, 264, 2, 'Tofu firme', 'tofu-firme');
+INSERT INTO `ingredient_lang` VALUES (529, 265, 1, 'Enoki', 'enoki');
+INSERT INTO `ingredient_lang` VALUES (530, 265, 2, 'Enoki', 'enoki');
+INSERT INTO `ingredient_lang` VALUES (531, 266, 1, 'Shimeji', 'shimeji');
+INSERT INTO `ingredient_lang` VALUES (532, 266, 2, 'Shimeji', 'shimeji');
+INSERT INTO `ingredient_lang` VALUES (533, 267, 1, 'Udon', 'udon');
+INSERT INTO `ingredient_lang` VALUES (534, 267, 2, 'Udon', 'udon');
+INSERT INTO `ingredient_lang` VALUES (535, 268, 1, 'Shungiku', 'shungiku');
+INSERT INTO `ingredient_lang` VALUES (536, 268, 2, 'Shungiku', 'shungiku');
+INSERT INTO `ingredient_lang` VALUES (537, 269, 1, 'Rúcula', 'rucula');
+INSERT INTO `ingredient_lang` VALUES (538, 269, 2, 'Rúcula', 'rucula');
+INSERT INTO `ingredient_lang` VALUES (539, 270, 1, 'Cuina gas portàtil', 'cuina-gas-portatil');
+INSERT INTO `ingredient_lang` VALUES (540, 270, 2, 'Cocina gas portátil', 'cocina-gas-portatil');
+INSERT INTO `ingredient_lang` VALUES (541, 271, 1, 'Xocolata per postres', 'xocolata-per-postres');
+INSERT INTO `ingredient_lang` VALUES (542, 271, 2, 'Chocolate para postres', 'chocolate-para-postres');
+INSERT INTO `ingredient_lang` VALUES (543, 272, 1, 'Llevat químic', 'llevat-quimic');
+INSERT INTO `ingredient_lang` VALUES (544, 272, 2, 'Levadura química', 'levadura-quimica');
+INSERT INTO `ingredient_lang` VALUES (545, 273, 1, 'Ametlla molta crua', 'ametlla-molta-crua');
+INSERT INTO `ingredient_lang` VALUES (546, 273, 2, 'Almendra molida cruda', 'almendra-molida-cruda');
 COMMIT;
 
 -- ----------------------------
@@ -4469,7 +4674,7 @@ CREATE TABLE `recipe` (
   `link` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_recipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe
@@ -4478,13 +4683,13 @@ BEGIN;
 INSERT INTO `recipe` VALUES (1, 4, NULL, 30, 15, NULL, NULL, 0, 1, 0, 'http://www.nomecomesnada.es/tapenade-de-tomates-secos-y-queso-de-cabra/', '2020-09-02 13:52:42');
 INSERT INTO `recipe` VALUES (2, 1, 4, NULL, 60, NULL, NULL, 0, 1, 0, 'https://tasty.co/recipe/one-pot-chicken-spinach-bacon-alfredo', '2020-10-14 16:16:32');
 INSERT INTO `recipe` VALUES (3, 4, 4, 5, NULL, NULL, 11, 0, 1, 0, NULL, '2020-10-15 16:54:38');
-INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, NULL, 3, 1, 1, 1, NULL, '2020-10-16 13:06:45');
+INSERT INTO `recipe` VALUES (4, 1, 2, 55, 40, NULL, 3, 0, 1, 1, NULL, '2020-10-16 13:06:45');
 INSERT INTO `recipe` VALUES (5, 1, 2, 10, 20, 30, 2, 0, 1, 1, NULL, '2020-10-16 13:13:34');
 INSERT INTO `recipe` VALUES (6, 1, NULL, 45, 15, NULL, 12, 0, 1, 1, NULL, '2020-10-16 14:31:42');
-INSERT INTO `recipe` VALUES (7, 1, 2, 15, 5, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CFsLgWohr5k/', '2022-03-16 18:35:12');
+INSERT INTO `recipe` VALUES (7, 4, 2, 15, 5, NULL, 380, 0, 1, 0, 'https://www.instagram.com/p/CFsLgWohr5k/', '2022-03-16 18:35:12');
 INSERT INTO `recipe` VALUES (8, 4, 2, 5, NULL, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CCih-Nvq4ww/', '2022-03-16 18:58:55');
 INSERT INTO `recipe` VALUES (9, 1, 8, 15, 10, NULL, 49, 1, 1, 0, 'https://www.instagram.com/p/B7ZLOybCvz_/', '2022-03-16 19:19:37');
-INSERT INTO `recipe` VALUES (10, 1, 2, 15, 270, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
+INSERT INTO `recipe` VALUES (10, 1, 2, 15, 270, NULL, 361, 0, 1, 0, 'https://www.instagram.com/p/CWp_wJnolFA/', '2022-03-16 19:37:04');
 INSERT INTO `recipe` VALUES (11, 2, 4, 30, NULL, 120, 43, 0, 1, 0, 'https://chefincamicia.com/ricetta/tiramisu-pistacchio-cioccolato-bianco/', '2022-03-16 19:40:06');
 INSERT INTO `recipe` VALUES (12, 1, 1, 5, 5, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CMQJ_i6L42p/', '2022-03-16 19:45:10');
 INSERT INTO `recipe` VALUES (13, 1, 1, 20, 20, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CNcLLYLBHGz/', '2022-03-16 19:46:59');
@@ -4496,12 +4701,11 @@ INSERT INTO `recipe` VALUES (18, 1, NULL, 10, 10, NULL, 39, 0, 1, 0, 'https://ww
 INSERT INTO `recipe` VALUES (19, 1, NULL, 15, 10, NULL, 40, 0, 1, 0, NULL, '2022-03-16 19:59:51');
 INSERT INTO `recipe` VALUES (20, 1, NULL, 10, 15, NULL, 41, 1, 1, 0, 'https://www.instagram.com/p/BlVytV8nryM/', '2022-03-16 20:01:38');
 INSERT INTO `recipe` VALUES (21, 1, 2, 20, 20, 30, 36, 0, 1, 0, 'https://chefincamicia.com/ricetta/panino-pollo-balsamico/', '2022-03-16 20:02:53');
-INSERT INTO `recipe` VALUES (23, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/B1lyJ96jDVt/', '2022-03-16 20:06:47');
 INSERT INTO `recipe` VALUES (24, 4, 6, 5, NULL, NULL, 38, 0, 1, 0, NULL, '2022-03-16 20:09:16');
 INSERT INTO `recipe` VALUES (25, 1, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CAZ5oWmoVdx/', '2022-03-16 20:10:22');
-INSERT INTO `recipe` VALUES (26, 1, 2, 10, NULL, NULL, 35, 1, 1, 0, 'https://chefincamicia.com/ricetta/panino-morbido-con-mortadella/', '2022-03-16 20:12:02');
+INSERT INTO `recipe` VALUES (26, 1, 2, 10, NULL, NULL, 392, 1, 1, 0, 'https://chefincamicia.com/ricetta/panino-morbido-con-mortadella/', '2022-03-16 20:12:02');
 INSERT INTO `recipe` VALUES (27, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.directoalpaladar.com/recetas-de-carnes-y-aves/receta-de-pollo-a-la-crema-con-tomates-secos', '2022-03-16 20:13:56');
-INSERT INTO `recipe` VALUES (28, 1, 2, 10, 30, 60, NULL, 0, 1, 0, NULL, '2022-03-16 20:14:46');
+INSERT INTO `recipe` VALUES (28, 1, 2, 10, 30, 60, 356, 0, 1, 0, NULL, '2022-03-16 20:14:46');
 INSERT INTO `recipe` VALUES (29, 1, 4, 5, 20, NULL, NULL, 0, 1, 0, 'https://www.tasteofhome.com/recipes/french-market-sandwiches/', '2022-03-16 20:17:40');
 INSERT INTO `recipe` VALUES (30, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.directoalpaladar.com/cultura-gastronomica/que-raclette-suiza-como-se-prepara', '2022-03-16 20:21:02');
 INSERT INTO `recipe` VALUES (31, 4, 4, NULL, NULL, NULL, NULL, 0, 1, 0, 'https://www.recetasderechupete.com/tartar-de-salmon-al-estilo-clasico-receta-paso-a-paso/10154/', '2022-03-16 20:22:08');
@@ -4510,9 +4714,6 @@ INSERT INTO `recipe` VALUES (33, 1, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'http
 INSERT INTO `recipe` VALUES (34, 1, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CFFIOq1AFnd/', '2022-03-16 20:27:49');
 INSERT INTO `recipe` VALUES (35, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CBK3OaugsSl/', '2022-03-16 20:29:19');
 INSERT INTO `recipe` VALUES (36, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CNR9UKyhxOS/', '2022-03-16 20:31:25');
-INSERT INTO `recipe` VALUES (38, 1, 0, 0, 0, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CFFUnuoFhQf/', '2022-03-16 20:35:56');
-INSERT INTO `recipe` VALUES (39, 1, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CPIso5gq8g9/', '2022-03-16 20:37:22');
-INSERT INTO `recipe` VALUES (40, 1, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/Bx7GHJrnwj-/', '2022-03-16 20:38:19');
 INSERT INTO `recipe` VALUES (41, 1, NULL, 15, 60, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CJgNZwBAOTN/', '2022-03-16 20:40:03');
 INSERT INTO `recipe` VALUES (43, 1, 4, 45, 60, NULL, 37, 0, 1, 0, NULL, '2022-09-05 12:45:32');
 INSERT INTO `recipe` VALUES (44, 4, NULL, 5, NULL, NULL, NULL, 0, 1, 0, NULL, '2022-09-05 13:26:38');
@@ -4520,12 +4721,11 @@ INSERT INTO `recipe` VALUES (45, 2, 4, 10, 20, 30, 25, 0, 1, 0, NULL, '2022-09-0
 INSERT INTO `recipe` VALUES (46, 1, NULL, 10, NULL, NULL, 27, 0, 1, 0, 'https://www.justonecookbook.com/japanese-mayonnaise/', '2022-09-05 15:57:35');
 INSERT INTO `recipe` VALUES (47, 1, 4, 20, 10, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CYQ92SFlRn2/', '2022-09-07 13:09:35');
 INSERT INTO `recipe` VALUES (49, 4, 4, 15, NULL, 120, 31, 0, 1, 0, NULL, '2022-09-13 12:50:39');
-INSERT INTO `recipe` VALUES (50, 1, 2, 10, 20, NULL, NULL, 0, 0, 0, 'https://www.instagram.com/p/CeqCpGRoxW8/', '2022-09-13 16:27:55');
 INSERT INTO `recipe` VALUES (51, 1, 4, 20, 25, NULL, 55, 0, 1, 0, NULL, '2022-09-14 10:33:09');
 INSERT INTO `recipe` VALUES (52, 1, 1, 10, NULL, NULL, 34, 0, 1, 0, NULL, '2022-10-02 19:46:41');
 INSERT INTO `recipe` VALUES (53, 4, NULL, 5, NULL, 60, NULL, 0, 1, 0, NULL, '2022-11-09 19:16:22');
 INSERT INTO `recipe` VALUES (54, 4, 4, 20, 20, NULL, NULL, 0, 1, 0, NULL, '2022-11-25 18:07:52');
-INSERT INTO `recipe` VALUES (55, 2, 6, 45, 15, NULL, NULL, 0, 1, 0, NULL, '2022-11-26 15:24:17');
+INSERT INTO `recipe` VALUES (55, 2, 6, 45, 15, NULL, 388, 0, 1, 0, NULL, '2022-11-26 15:24:17');
 INSERT INTO `recipe` VALUES (56, 2, 6, 60, NULL, 30, NULL, 0, 1, 0, 'https://www.justonecookbook.com/gyoza-wrappers/', '2022-11-26 15:29:36');
 INSERT INTO `recipe` VALUES (57, 2, 2, 10, 150, NULL, 45, 0, 1, 0, 'https://canalcocina.es/receta/alitas-infierno', '2022-11-26 15:49:22');
 INSERT INTO `recipe` VALUES (58, 1, 5, 5, 80, NULL, 44, 0, 1, 0, NULL, '2022-11-26 16:55:23');
@@ -4545,12 +4745,27 @@ INSERT INTO `recipe` VALUES (71, 4, 4, 10, NULL, 60, NULL, 0, 1, 0, 'https://www
 INSERT INTO `recipe` VALUES (72, 1, 6, 30, 20, NULL, 63, 0, 1, 0, 'https://www.instagram.com/p/CpkpqzNA9VA/', '2023-05-20 10:43:41');
 INSERT INTO `recipe` VALUES (73, 1, 4, 20, 40, 90, 64, 0, 1, 0, 'https://www.penguinlibros.com/es/cocina/310289-ebook-nopi-9788418681547', '2023-05-23 13:17:56');
 INSERT INTO `recipe` VALUES (74, 4, NULL, 1, 4, NULL, 65, 0, 1, 0, 'https://www.instagram.com/p/Cpk533LIBv_/', '2023-05-23 20:20:05');
-INSERT INTO `recipe` VALUES (75, 2, 4, 15, 90, NULL, 179, 0, 0, 0, 'https://www.instagram.com/p/CafCw_2rxL1/', '2023-06-06 12:59:24');
+INSERT INTO `recipe` VALUES (75, 2, 4, 15, 90, NULL, 179, 1, 1, 0, 'https://www.instagram.com/p/CafCw_2rxL1/', '2023-09-01 12:59:24');
 INSERT INTO `recipe` VALUES (76, 2, 6, 45, 60, 720, 212, 0, 1, 0, 'https://www.instagram.com/p/CO5GBF0Kbp-/', '2023-06-09 19:52:14');
-INSERT INTO `recipe` VALUES (77, 1, 6, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, '2023-06-16 10:12:33');
-INSERT INTO `recipe` VALUES (78, 1, 8, 20, 45, 60, NULL, 0, 1, 0, 'https://www.instagram.com/p/CfBnGUYrXAw/', '2023-07-11 17:20:32');
+INSERT INTO `recipe` VALUES (77, 1, NULL, 30, 15, 480, 387, 0, 0, 0, NULL, '2023-06-16 10:12:33');
+INSERT INTO `recipe` VALUES (78, 1, 8, 20, 45, 60, 390, 0, 1, 0, 'https://www.instagram.com/p/CfBnGUYrXAw/', '2023-07-11 17:20:32');
 INSERT INTO `recipe` VALUES (79, 1, 3, 15, 30, NULL, 353, 0, 1, 1, 'https://www.instagram.com/p/CYxdnPMBnXt/', '2023-07-12 09:38:13');
-INSERT INTO `recipe` VALUES (80, 2, 4, NULL, NULL, NULL, 354, 0, 1, 0, 'https://www.instagram.com/p/Cq7iQ3bt6N_/', '2023-07-12 11:19:55');
+INSERT INTO `recipe` VALUES (80, 2, 4, NULL, NULL, NULL, 354, 1, 1, 0, 'https://www.instagram.com/p/Cq7iQ3bt6N_/', '2023-07-12 11:19:55');
+INSERT INTO `recipe` VALUES (81, 1, 4, 20, NULL, 480, 359, 0, 1, 0, 'https://www.instagram.com/p/CukQbEnN_Ln/', '2023-08-07 11:14:38');
+INSERT INTO `recipe` VALUES (82, 1, 1, 10, NULL, NULL, 362, 0, 1, 0, NULL, '2023-08-16 18:35:43');
+INSERT INTO `recipe` VALUES (83, 4, NULL, 5, 5, 120, 367, 0, 1, 0, 'https://www.instagram.com/p/CrdQCZ6t7xw/', '2023-08-21 11:10:36');
+INSERT INTO `recipe` VALUES (84, 2, 8, 30, 60, NULL, 368, 1, 1, 0, 'https://www.instagram.com/p/CqEF7dljch-/', '2023-08-21 12:20:27');
+INSERT INTO `recipe` VALUES (85, 2, 4, 15, 15, 720, 369, 1, 1, 0, 'https://www.chefincamicia.com/ricette/tuorlo-fritto-con-crema-granapadano', '2023-08-21 12:24:04');
+INSERT INTO `recipe` VALUES (86, 4, NULL, 20, NULL, NULL, 370, 0, 1, 0, NULL, '2023-08-25 14:56:56');
+INSERT INTO `recipe` VALUES (87, 2, 8, 30, 240, 15, 371, 1, 1, 0, 'https://amzn.eu/d/9FEgggw', '2023-09-12 10:39:17');
+INSERT INTO `recipe` VALUES (88, 1, 4, 20, 45, NULL, NULL, 0, 1, 0, 'https://www.instagram.com/p/CwbOY3xpTsX/', '2023-10-26 21:15:18');
+INSERT INTO `recipe` VALUES (89, 4, 4, 5, 15, 480, NULL, 0, 0, 0, 'https://www.justonecookbook.com/ramen-egg/', '2024-01-02 17:46:24');
+INSERT INTO `recipe` VALUES (90, 2, 8, 20, 140, 480, NULL, 0, 0, 0, 'https://www.justonecookbook.com/homemade-chashu/', '2024-01-02 18:08:33');
+INSERT INTO `recipe` VALUES (91, 3, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'https://www.justonecookbook.com/shoyu-ramen/', '2024-01-03 11:19:16');
+INSERT INTO `recipe` VALUES (92, 1, NULL, 15, 45, NULL, NULL, 0, 1, 0, NULL, '2024-01-17 17:40:58');
+INSERT INTO `recipe` VALUES (93, 1, 4, 30, 10, NULL, 389, 0, 1, 0, 'https://www.planetadelibros.com/libro-tokio-las-recetas-de-culto/201768', '2023-12-19 10:36:47');
+INSERT INTO `recipe` VALUES (94, 1, 2, 5, 30, NULL, NULL, 0, 1, 0, NULL, '2023-08-29 08:57:39');
+INSERT INTO `recipe` VALUES (95, 1, 6, 30, 30, 480, 394, 0, 0, 0, NULL, '2024-01-19 12:11:30');
 COMMIT;
 
 -- ----------------------------
@@ -4561,7 +4776,7 @@ CREATE TABLE `recipe_appacman_user` (
   `id_recipe` smallint(5) unsigned NOT NULL,
   `id_appacman_user` tinyint(3) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_recipe`,`id_appacman_user`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_appacman_user
@@ -4589,7 +4804,6 @@ INSERT INTO `recipe_appacman_user` VALUES (18, 1);
 INSERT INTO `recipe_appacman_user` VALUES (19, 1);
 INSERT INTO `recipe_appacman_user` VALUES (20, 1);
 INSERT INTO `recipe_appacman_user` VALUES (21, 1);
-INSERT INTO `recipe_appacman_user` VALUES (23, 1);
 INSERT INTO `recipe_appacman_user` VALUES (24, 1);
 INSERT INTO `recipe_appacman_user` VALUES (25, 1);
 INSERT INTO `recipe_appacman_user` VALUES (26, 1);
@@ -4604,9 +4818,6 @@ INSERT INTO `recipe_appacman_user` VALUES (33, 1);
 INSERT INTO `recipe_appacman_user` VALUES (34, 1);
 INSERT INTO `recipe_appacman_user` VALUES (35, 1);
 INSERT INTO `recipe_appacman_user` VALUES (36, 1);
-INSERT INTO `recipe_appacman_user` VALUES (38, 1);
-INSERT INTO `recipe_appacman_user` VALUES (39, 1);
-INSERT INTO `recipe_appacman_user` VALUES (40, 1);
 INSERT INTO `recipe_appacman_user` VALUES (41, 1);
 INSERT INTO `recipe_appacman_user` VALUES (43, 1);
 INSERT INTO `recipe_appacman_user` VALUES (44, 1);
@@ -4614,7 +4825,6 @@ INSERT INTO `recipe_appacman_user` VALUES (45, 1);
 INSERT INTO `recipe_appacman_user` VALUES (46, 1);
 INSERT INTO `recipe_appacman_user` VALUES (47, 1);
 INSERT INTO `recipe_appacman_user` VALUES (49, 1);
-INSERT INTO `recipe_appacman_user` VALUES (50, 1);
 INSERT INTO `recipe_appacman_user` VALUES (51, 1);
 INSERT INTO `recipe_appacman_user` VALUES (52, 1);
 INSERT INTO `recipe_appacman_user` VALUES (53, 1);
@@ -4647,6 +4857,23 @@ INSERT INTO `recipe_appacman_user` VALUES (77, 1);
 INSERT INTO `recipe_appacman_user` VALUES (78, 1);
 INSERT INTO `recipe_appacman_user` VALUES (79, 1);
 INSERT INTO `recipe_appacman_user` VALUES (80, 1);
+INSERT INTO `recipe_appacman_user` VALUES (81, 1);
+INSERT INTO `recipe_appacman_user` VALUES (82, 1);
+INSERT INTO `recipe_appacman_user` VALUES (83, 1);
+INSERT INTO `recipe_appacman_user` VALUES (84, 1);
+INSERT INTO `recipe_appacman_user` VALUES (85, 1);
+INSERT INTO `recipe_appacman_user` VALUES (86, 1);
+INSERT INTO `recipe_appacman_user` VALUES (87, 1);
+INSERT INTO `recipe_appacman_user` VALUES (87, 2);
+INSERT INTO `recipe_appacman_user` VALUES (88, 1);
+INSERT INTO `recipe_appacman_user` VALUES (89, 1);
+INSERT INTO `recipe_appacman_user` VALUES (90, 1);
+INSERT INTO `recipe_appacman_user` VALUES (91, 1);
+INSERT INTO `recipe_appacman_user` VALUES (92, 1);
+INSERT INTO `recipe_appacman_user` VALUES (93, 1);
+INSERT INTO `recipe_appacman_user` VALUES (94, 1);
+INSERT INTO `recipe_appacman_user` VALUES (95, 1);
+INSERT INTO `recipe_appacman_user` VALUES (95, 2);
 COMMIT;
 
 -- ----------------------------
@@ -4663,7 +4890,7 @@ CREATE TABLE `recipe_ingredient` (
   `is_optional` tinyint(1) unsigned DEFAULT 0,
   `order_ingredient` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id_recipe_ingredient`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=560 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=722 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_ingredient
@@ -4844,7 +5071,7 @@ INSERT INTO `recipe_ingredient` VALUES (172, 43, '500', 106, 4, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (173, 43, '1', 107, NULL, 0, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (174, 43, '1', 51, NULL, 0, 0, 4);
 INSERT INTO `recipe_ingredient` VALUES (175, 43, '0.5', 108, NULL, 0, 0, 5);
-INSERT INTO `recipe_ingredient` VALUES (176, 43, NULL, 109, 9, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (176, 43, NULL, 238, 9, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (177, 43, NULL, 68, 9, 0, 1, 7);
 INSERT INTO `recipe_ingredient` VALUES (178, 43, NULL, 83, 9, 0, 0, 8);
 INSERT INTO `recipe_ingredient` VALUES (179, 43, NULL, 34, 9, 0, 0, 9);
@@ -4909,7 +5136,7 @@ INSERT INTO `recipe_ingredient` VALUES (238, 20, NULL, 134, 9, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (239, 20, NULL, 66, 9, 1, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (240, 19, '1', 88, 1, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (241, 19, '1', 13, NULL, 0, 0, 2);
-INSERT INTO `recipe_ingredient` VALUES (242, 19, '250', 135, 4, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (242, 19, '200', 135, 4, 0, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (243, 19, '150', 42, 4, 0, 0, 5);
 INSERT INTO `recipe_ingredient` VALUES (244, 19, NULL, 136, 9, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (245, 19, NULL, 138, 9, 1, 0, 7);
@@ -4935,20 +5162,20 @@ INSERT INTO `recipe_ingredient` VALUES (264, 32, NULL, 22, 9, 0, 0, 8);
 INSERT INTO `recipe_ingredient` VALUES (265, 28, '3', 28, NULL, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (266, 28, '1', 74, NULL, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (267, 28, '25', 47, 4, 0, 0, 3);
-INSERT INTO `recipe_ingredient` VALUES (268, 28, '500', 145, 5, 0, 0, 4);
-INSERT INTO `recipe_ingredient` VALUES (269, 28, '500', 146, 5, 1, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (268, 28, '750', 145, 5, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (269, 28, '750', 146, 5, 1, 0, 5);
 INSERT INTO `recipe_ingredient` VALUES (270, 28, NULL, 9, 9, 0, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (271, 56, '280', 46, 4, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (272, 56, '0.5', 22, 3, 0, 0, 2);
 INSERT INTO `recipe_ingredient` VALUES (273, 57, '500', 155, 4, 0, 0, 1);
 INSERT INTO `recipe_ingredient` VALUES (274, 57, '2', 20, 11, 0, 0, 2);
-INSERT INTO `recipe_ingredient` VALUES (275, 57, '2', 79, 2, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (275, 57, '1', 79, 2, 0, 0, 3);
 INSERT INTO `recipe_ingredient` VALUES (276, 57, '4', 156, 1, 0, 0, 4);
 INSERT INTO `recipe_ingredient` VALUES (277, 57, '1', 157, 1, 0, 0, 5);
 INSERT INTO `recipe_ingredient` VALUES (278, 57, '1', 158, 3, 1, 0, 6);
 INSERT INTO `recipe_ingredient` VALUES (279, 57, '1', 54, 10, 0, 0, 7);
 INSERT INTO `recipe_ingredient` VALUES (280, 57, '1', 159, 10, 0, 0, 8);
-INSERT INTO `recipe_ingredient` VALUES (281, 57, '1500', 145, 5, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (281, 57, '350', 145, 5, 0, 0, 9);
 INSERT INTO `recipe_ingredient` VALUES (282, 57, NULL, 22, 9, 0, 0, 10);
 INSERT INTO `recipe_ingredient` VALUES (283, 57, NULL, 9, 9, 0, 0, 11);
 INSERT INTO `recipe_ingredient` VALUES (284, 57, NULL, 73, 9, 0, 0, 12);
@@ -5223,6 +5450,167 @@ INSERT INTO `recipe_ingredient` VALUES (556, 80, NULL, 22, 9, 0, 0, 11);
 INSERT INTO `recipe_ingredient` VALUES (557, 80, NULL, 73, 9, 0, 0, 12);
 INSERT INTO `recipe_ingredient` VALUES (558, 80, NULL, 47, 9, 1, 0, 13);
 INSERT INTO `recipe_ingredient` VALUES (559, 80, '1', 89, 1, 1, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (560, 77, NULL, 164, NULL, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (561, 81, '500', 239, 20, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (562, 81, NULL, 22, 9, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (563, 81, '1', 102, 3, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (564, 81, '1.5', 136, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (565, 81, '0.5', 114, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (566, 81, '0.5', 240, 3, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (567, 81, '0.5', 232, 3, 0, 1, 7);
+INSERT INTO `recipe_ingredient` VALUES (568, 81, '1', 168, 2, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (569, 81, '1', 191, 2, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (570, 81, NULL, 9, 9, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (571, 81, NULL, 73, 10, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (572, 81, NULL, 242, NULL, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (573, 81, NULL, 43, NULL, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (574, 82, '0.5', 229, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (575, 82, '40', 243, 5, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (576, 82, '40', 244, 5, 1, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (577, 82, '200', 246, 5, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (578, 82, '4', 245, 2, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (579, 82, '4', 209, 7, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (580, 83, '125', 247, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (581, 83, '125', 130, 4, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (582, 83, '12', 103, 16, 1, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (583, 83, NULL, 2, 9, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (584, 83, NULL, 248, 9, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (585, 83, '12', 43, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (586, 78, NULL, 43, NULL, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (587, 85, '4', 113, 1, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (588, 85, NULL, 249, 14, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (589, 85, '240', 130, 19, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (590, 85, '320', 18, 19, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (592, 85, NULL, 9, 9, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (593, 85, '2', 54, 10, 0, 1, 6);
+INSERT INTO `recipe_ingredient` VALUES (594, 85, NULL, 73, 14, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (595, 86, '2', 107, 1, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (596, 86, '2', 251, 2, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (597, 86, '1', 20, 11, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (598, 86, '0.25', 19, NULL, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (599, 86, '0.5', 252, 9, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (600, 86, NULL, 22, 9, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (601, 86, NULL, 9, 9, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (602, 86, NULL, 172, 9, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (603, 84, '2500', 253, 19, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (604, 84, '2', 83, 2, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (605, 84, '2', 143, 2, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (606, 84, NULL, 22, 9, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (607, 84, NULL, 9, 9, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (608, 84, NULL, 73, 9, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (609, 84, '400', 246, 5, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (610, 84, '6', 34, 2, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (611, 84, NULL, 254, 9, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (612, 84, '300', 26, 5, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (613, 84, '2', 52, 12, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (614, 84, '1', 255, NULL, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (615, 84, '0.5', 256, 3, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (616, 84, '1', 104, 10, 0, 0, 14);
+INSERT INTO `recipe_ingredient` VALUES (617, 84, '4', 102, 2, 0, 0, 15);
+INSERT INTO `recipe_ingredient` VALUES (618, 84, '2', 114, 3, 0, 0, 16);
+INSERT INTO `recipe_ingredient` VALUES (619, 84, '2', 240, 3, 0, 0, 17);
+INSERT INTO `recipe_ingredient` VALUES (620, 84, '2', 168, 2, 0, 0, 18);
+INSERT INTO `recipe_ingredient` VALUES (621, 84, '2', 163, 2, 0, 1, 19);
+INSERT INTO `recipe_ingredient` VALUES (622, 84, '16', 37, NULL, 0, 0, 20);
+INSERT INTO `recipe_ingredient` VALUES (623, 84, NULL, 188, NULL, 0, 0, 21);
+INSERT INTO `recipe_ingredient` VALUES (624, 87, '3', 52, 12, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (625, 87, '2', 51, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (626, 87, '1', 19, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (627, 87, '150', 149, 19, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (628, 87, '500', 135, 19, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (629, 87, '500', 257, 19, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (630, 87, '75', 54, 5, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (631, 87, '680', 134, 4, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (632, 87, '60', 47, 19, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (633, 87, '460', 46, 19, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (634, 87, '1000', 15, 5, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (635, 87, '500', 18, 19, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (636, 87, NULL, 73, 10, 0, 0, 14);
+INSERT INTO `recipe_ingredient` VALUES (637, 87, NULL, 22, 9, 0, 0, 15);
+INSERT INTO `recipe_ingredient` VALUES (638, 87, NULL, 9, 9, 0, 0, 16);
+INSERT INTO `recipe_ingredient` VALUES (639, 87, NULL, 226, 9, 0, 0, 17);
+INSERT INTO `recipe_ingredient` VALUES (640, 87, '4', 32, NULL, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (641, 87, NULL, 166, NULL, 0, 0, 18);
+INSERT INTO `recipe_ingredient` VALUES (642, 88, '1', 258, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (643, 88, '1', 20, 11, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (644, 88, '1', 19, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (645, 88, '400', 94, 19, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (646, 88, '250', 145, 5, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (647, 88, '250', 146, 5, 1, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (648, 88, '400', 197, 5, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (649, 88, '1', 121, 2, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (650, 88, '1', 39, 3, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (651, 88, '10', 151, 4, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (652, 88, NULL, 22, 9, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (653, 88, NULL, 9, 9, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (654, 88, NULL, 73, 9, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (655, 88, NULL, 215, 9, 0, 0, 14);
+INSERT INTO `recipe_ingredient` VALUES (656, 88, NULL, 126, 9, 1, 0, 15);
+INSERT INTO `recipe_ingredient` VALUES (657, 89, '4', 32, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (658, 89, '0.25', 34, 6, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (659, 89, '0.25', 35, 6, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (660, 89, '0.25', 152, 6, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (661, 89, '1', 33, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (662, 90, '1000', 149, 19, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (663, 90, '1', 259, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (664, 90, '10', 151, 19, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (665, 90, '1', 59, 2, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (666, 90, '1', 152, 6, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (667, 90, '1', 34, 6, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (668, 90, '2', 26, 6, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (669, 90, '0.66', 33, 6, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (670, 90, NULL, 260, NULL, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (671, 90, NULL, 124, NULL, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (672, 70, '1', 54, 10, 0, 1, 7);
+INSERT INTO `recipe_ingredient` VALUES (673, 92, '1', 19, NULL, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (674, 92, '2', 20, 11, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (675, 92, '2', 32, NULL, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (676, 92, '0.5', 48, 3, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (677, 92, '1', 22, 3, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (678, 92, '0.5', 9, 3, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (679, 92, '2', 114, 3, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (680, 92, '2', 170, 3, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (681, 92, '0.25', 172, 3, 0, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (682, 92, '1', 215, NULL, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (683, 92, '0.5', 181, 16, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (684, 92, '500', 135, 4, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (685, 92, '150', 257, 4, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (686, 92, '250', 261, 4, 0, 0, 14);
+INSERT INTO `recipe_ingredient` VALUES (687, 92, '10', 162, 16, 0, 0, 15);
+INSERT INTO `recipe_ingredient` VALUES (688, 92, '0.5', 136, 6, 0, 0, 16);
+INSERT INTO `recipe_ingredient` VALUES (689, 93, '75', 118, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (690, 93, '75', 266, 4, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (691, 93, '75', 265, 4, 1, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (692, 93, '1', 28, NULL, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (693, 93, '0.25', 150, NULL, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (694, 93, '0.5', 268, 22, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (695, 93, '0.5', 269, 22, 1, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (696, 93, '1', 263, 21, 0, 0, 8);
+INSERT INTO `recipe_ingredient` VALUES (697, 93, '2', 267, 21, 1, 0, 9);
+INSERT INTO `recipe_ingredient` VALUES (698, 93, '1', 34, 6, 0, 0, 10);
+INSERT INTO `recipe_ingredient` VALUES (699, 93, '1', 152, 6, 0, 0, 11);
+INSERT INTO `recipe_ingredient` VALUES (700, 93, '3', 33, 2, 0, 0, 12);
+INSERT INTO `recipe_ingredient` VALUES (701, 93, '1', 26, 6, 0, 0, 13);
+INSERT INTO `recipe_ingredient` VALUES (702, 93, '4', 32, NULL, 0, 0, 14);
+INSERT INTO `recipe_ingredient` VALUES (703, 93, '600', 201, 4, 0, 0, 15);
+INSERT INTO `recipe_ingredient` VALUES (704, 93, '600', 200, 4, 1, 0, 16);
+INSERT INTO `recipe_ingredient` VALUES (705, 93, NULL, 270, NULL, 0, 0, 17);
+INSERT INTO `recipe_ingredient` VALUES (706, 94, '400', 94, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (707, 94, '0.5', 19, NULL, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (708, 94, '200', 14, 4, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (709, 94, '150', 66, 4, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (710, 94, NULL, 22, 9, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (711, 94, NULL, 73, 9, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (712, 94, NULL, 9, 9, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (713, 95, '200', 271, 4, 0, 0, 1);
+INSERT INTO `recipe_ingredient` VALUES (714, 95, '175', 47, 4, 0, 0, 2);
+INSERT INTO `recipe_ingredient` VALUES (715, 95, '100', 33, 4, 0, 0, 3);
+INSERT INTO `recipe_ingredient` VALUES (716, 95, '1', 272, 2, 0, 0, 4);
+INSERT INTO `recipe_ingredient` VALUES (717, 95, '100', 273, 4, 0, 0, 5);
+INSERT INTO `recipe_ingredient` VALUES (718, 95, '4', 32, NULL, 0, 0, 6);
+INSERT INTO `recipe_ingredient` VALUES (719, 95, '50', 249, 4, 0, 0, 7);
+INSERT INTO `recipe_ingredient` VALUES (720, 95, NULL, 22, 8, 0, 1, 8);
+INSERT INTO `recipe_ingredient` VALUES (721, 95, NULL, 46, 9, 0, 0, 9);
 COMMIT;
 
 -- ----------------------------
@@ -5237,7 +5625,7 @@ CREATE TABLE `recipe_lang` (
   `uri` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   PRIMARY KEY (`id_recipe_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_lang
@@ -5261,8 +5649,8 @@ INSERT INTO `recipe_lang` VALUES (15, 8, 1, 'Torrades de guacamole, mozzarella i
 INSERT INTO `recipe_lang` VALUES (16, 8, 2, 'Tostadas de guacamole, mozzarella y cherry', 'tostadas-de-guacamole-mozzarella-y-cherry', NULL);
 INSERT INTO `recipe_lang` VALUES (17, 9, 1, 'Galetes de permesà', 'galetes-de-permesa', '<p>Una tapa que enamorarà als fanàtics del formatge.</p>');
 INSERT INTO `recipe_lang` VALUES (18, 9, 2, 'Galletas de parmesano', 'galletas-de-parmesano', '<p>Una tapa que enamorará a los fanáticos del queso.</p>');
-INSERT INTO `recipe_lang` VALUES (19, 10, 1, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', '<p>T\'animo a preparar aquesta pasta si tens una tarda lliure: et sorprendrà.</p>');
-INSERT INTO `recipe_lang` VALUES (20, 10, 2, 'Zite N\'10 a la Genovese', 'zite-n10-a-la-genovese', '<p>Te animo a preparar esta pasta si tienes una tarde libre: te sorprenderá.</p>');
+INSERT INTO `recipe_lang` VALUES (19, 10, 1, 'Pasta a la Genovese', 'pasta-a-la-genovese', '<p>T\'animo a preparar aquesta pasta si tens una tarda lliure: et sorprendrà.</p>');
+INSERT INTO `recipe_lang` VALUES (20, 10, 2, 'Pasta a la Genovese', 'pasta-a-la-genovese', '<p>Te animo a preparar esta pasta si tienes una tarde libre: te sorprenderá.</p>');
 INSERT INTO `recipe_lang` VALUES (21, 11, 1, 'Tiramisú de pistatxo i xocolata blanca', 'tiramisu-de-pistatxo-i-xocolata-blanca', NULL);
 INSERT INTO `recipe_lang` VALUES (22, 11, 2, 'Tiramisú de pistacho y chocolate blanco', 'tiramisu-de-pistacho-y-chocolate-blanco', NULL);
 INSERT INTO `recipe_lang` VALUES (23, 12, 1, 'Truita d\'espinacs i formatge', 'truita-despinacs-i-formatge', '<p>Sopar bo i fàcil en pocs minuts.</p>');
@@ -5285,8 +5673,6 @@ INSERT INTO `recipe_lang` VALUES (39, 20, 1, 'Pizza burrata i pesto', 'pizza-bur
 INSERT INTO `recipe_lang` VALUES (40, 20, 2, 'Pizza burrata y pesto', 'pizza-burrata-y-pesto', NULL);
 INSERT INTO `recipe_lang` VALUES (41, 21, 1, 'Entrepà de pollastre', 'entrepa-de-pollastre', NULL);
 INSERT INTO `recipe_lang` VALUES (42, 21, 2, 'Bocadillo de pollo', 'bocadillo-de-pollo', NULL);
-INSERT INTO `recipe_lang` VALUES (45, 23, 1, 'Pizza pepperoni desconstruïda', 'pizza-pepperoni-desconstruida', NULL);
-INSERT INTO `recipe_lang` VALUES (46, 23, 2, 'Pizza pepperoni deconstruida', 'pizza-pepperoni-deconstruida', NULL);
 INSERT INTO `recipe_lang` VALUES (47, 24, 1, 'Hummus', 'hummus', NULL);
 INSERT INTO `recipe_lang` VALUES (48, 24, 2, 'Hummus', 'hummus', NULL);
 INSERT INTO `recipe_lang` VALUES (49, 25, 1, 'Entrepà de feta', 'entrepa-de-feta', NULL);
@@ -5313,12 +5699,6 @@ INSERT INTO `recipe_lang` VALUES (69, 35, 1, 'Ous Benedictins amb salmó fumat',
 INSERT INTO `recipe_lang` VALUES (70, 35, 2, 'Huevos Benedictinos con salmón ahumado', 'huevos-benedictinos-con-salmon-ahumado', NULL);
 INSERT INTO `recipe_lang` VALUES (71, 36, 1, 'Carbonara plus', 'carbonara-plus', NULL);
 INSERT INTO `recipe_lang` VALUES (72, 36, 2, 'Carbonara plus', 'carbonara-plus', NULL);
-INSERT INTO `recipe_lang` VALUES (75, 38, 1, 'Rotllet de carbassó', 'rotllet-de-carbasso', NULL);
-INSERT INTO `recipe_lang` VALUES (76, 38, 2, 'Rollito de calabacín', 'rollito-de-calabacin', NULL);
-INSERT INTO `recipe_lang` VALUES (77, 39, 1, 'Hummus de pèsols i wasabi', 'hummus-de-pesols-i-wasabi', NULL);
-INSERT INTO `recipe_lang` VALUES (78, 39, 2, 'Hummus de guisantes y wasabi', 'hummus-de-guisantes-y-wasabi', NULL);
-INSERT INTO `recipe_lang` VALUES (79, 40, 1, 'Hummus de mongeta blanca i pèsols', 'hummus-de-mongeta-blanca-i-pesols', NULL);
-INSERT INTO `recipe_lang` VALUES (80, 40, 2, 'Hummus de alubias y guisantes', 'hummus-de-alubias-y-guisantes', NULL);
 INSERT INTO `recipe_lang` VALUES (81, 41, 1, 'Crema de carbassa', 'crema-de-carbassa', NULL);
 INSERT INTO `recipe_lang` VALUES (82, 41, 2, 'Crema de calabaza', 'crema-de-calabaza', NULL);
 INSERT INTO `recipe_lang` VALUES (85, 43, 1, 'Poke', 'poke', NULL);
@@ -5333,8 +5713,6 @@ INSERT INTO `recipe_lang` VALUES (93, 47, 1, 'Rotllets de primavera', 'rotllets-
 INSERT INTO `recipe_lang` VALUES (94, 47, 2, 'Rollitos de primavera', 'rollitos-de-primavera', NULL);
 INSERT INTO `recipe_lang` VALUES (97, 49, 1, 'Coleslaw', 'coleslaw', NULL);
 INSERT INTO `recipe_lang` VALUES (98, 49, 2, 'Coleslaw', 'coleslaw', NULL);
-INSERT INTO `recipe_lang` VALUES (99, 50, 1, 'Fideus amb oli y cebulet', 'fideus-amb-oli-y-cebulet', NULL);
-INSERT INTO `recipe_lang` VALUES (100, 50, 2, 'Fideos con aceite y cebolleta', 'fideos-con-aceite-y-cebolleta', NULL);
 INSERT INTO `recipe_lang` VALUES (101, 51, 1, 'Quiche', 'quiche', NULL);
 INSERT INTO `recipe_lang` VALUES (102, 51, 2, 'Quiche', 'quiche', NULL);
 INSERT INTO `recipe_lang` VALUES (103, 52, 1, 'Cafè dalgona', 'cafe-dalgona', NULL);
@@ -5395,6 +5773,36 @@ INSERT INTO `recipe_lang` VALUES (157, 79, 1, 'Pollastre al sèsam', 'pollastre-
 INSERT INTO `recipe_lang` VALUES (158, 79, 2, 'Pollo al sésamo', 'pollo-al-sesamo', NULL);
 INSERT INTO `recipe_lang` VALUES (159, 80, 1, 'Risotto d\'ànec, pesto i burrata', 'risotto-danec-pesto-i-burrata', NULL);
 INSERT INTO `recipe_lang` VALUES (160, 80, 2, 'Risotto de pato, pesto y burrata', 'risotto-de-pato-pesto-y-burrata', NULL);
+INSERT INTO `recipe_lang` VALUES (161, 81, 1, 'Tàrtar de tomàquet en conserva', 'tartar-de-tomaquet-en-conserva', '<p>\"Trampantojo\" d\'un tàrtar de vedella.</p>');
+INSERT INTO `recipe_lang` VALUES (162, 81, 2, 'Tartar de tomate en conserva', 'tartar-de-tomate-en-conserva', '<p>Trampantojo de un steak tartar.</p>');
+INSERT INTO `recipe_lang` VALUES (163, 82, 1, 'Moscow mule', 'moscow-mule', NULL);
+INSERT INTO `recipe_lang` VALUES (164, 82, 2, 'Moscow mule', 'moscow-mule', NULL);
+INSERT INTO `recipe_lang` VALUES (165, 83, 1, 'Pa amb xocolata, oli i sal', 'pa-amb-xocolata-oli-i-sal', NULL);
+INSERT INTO `recipe_lang` VALUES (166, 83, 2, 'Pan con chocolate, aceite y sal', 'pan-con-chocolate-aceite-y-sal', NULL);
+INSERT INTO `recipe_lang` VALUES (167, 84, 1, 'Tacos de costelles de porc', 'tacos-de-costelles-de-porc', NULL);
+INSERT INTO `recipe_lang` VALUES (168, 84, 2, 'Tacos de costillas de cerdo', 'tacos-de-costillas-de-cerdo', NULL);
+INSERT INTO `recipe_lang` VALUES (169, 85, 1, '\"Trampantojo\" d\'ou fregit', 'trampantojo-dou-fregit', NULL);
+INSERT INTO `recipe_lang` VALUES (170, 85, 2, 'Trampantojo de huevo frito', 'trampantojo-de-huevo-frito', NULL);
+INSERT INTO `recipe_lang` VALUES (171, 86, 1, 'Guacamole', 'guacamole', NULL);
+INSERT INTO `recipe_lang` VALUES (172, 86, 2, 'Guacamole', 'guacamole', NULL);
+INSERT INTO `recipe_lang` VALUES (173, 87, 1, 'Lasanya', 'lasanya', '<p>\"La\" lasanya.</p>');
+INSERT INTO `recipe_lang` VALUES (174, 87, 2, 'Lasaña', 'lasana', '<p>\"La\" lasaña.</p>');
+INSERT INTO `recipe_lang` VALUES (175, 88, 1, 'Curry de cigrons i moniato', 'curry-de-cigrons-i-moniato', NULL);
+INSERT INTO `recipe_lang` VALUES (176, 88, 2, 'Curry de garbanzos y boniato', 'curry-de-garbanzos-y-boniato', NULL);
+INSERT INTO `recipe_lang` VALUES (177, 89, 1, 'Ous per ramen', 'ous-per-ramen', NULL);
+INSERT INTO `recipe_lang` VALUES (178, 89, 2, 'Huevos para ramen', 'huevos-para-ramen', NULL);
+INSERT INTO `recipe_lang` VALUES (179, 90, 1, 'Chashu', 'chashu', NULL);
+INSERT INTO `recipe_lang` VALUES (180, 90, 2, 'Chashu', 'chashu', NULL);
+INSERT INTO `recipe_lang` VALUES (181, 91, 1, 'Ramen', 'ramen', NULL);
+INSERT INTO `recipe_lang` VALUES (182, 91, 2, 'Ramen', 'ramen', NULL);
+INSERT INTO `recipe_lang` VALUES (183, 92, 1, 'Pastís de carn', 'pastis-de-carn', NULL);
+INSERT INTO `recipe_lang` VALUES (184, 92, 2, 'Pastel de carne', 'pastel-de-carne', NULL);
+INSERT INTO `recipe_lang` VALUES (185, 93, 1, 'Sukiyaki', 'sukiyaki', NULL);
+INSERT INTO `recipe_lang` VALUES (186, 93, 2, 'Sukiyaki', 'sukiyaki', NULL);
+INSERT INTO `recipe_lang` VALUES (187, 94, 1, 'Cigrons amb espinacs', 'cigrons-amb-espinacs', NULL);
+INSERT INTO `recipe_lang` VALUES (188, 94, 2, 'Cigrons amb espinacs', 'cigrons-amb-espinacs', NULL);
+INSERT INTO `recipe_lang` VALUES (189, 95, 1, 'Sacher', 'sacher', NULL);
+INSERT INTO `recipe_lang` VALUES (190, 95, 2, 'Sacher', 'sacher', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -5407,7 +5815,7 @@ CREATE TABLE `recipe_step` (
   `image_step` mediumint(8) unsigned DEFAULT NULL,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_recipe_step`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=278 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_step
@@ -5417,9 +5825,9 @@ INSERT INTO `recipe_step` VALUES (1, 1, NULL, 1);
 INSERT INTO `recipe_step` VALUES (2, 1, NULL, 2);
 INSERT INTO `recipe_step` VALUES (3, 1, NULL, 3);
 INSERT INTO `recipe_step` VALUES (4, 1, NULL, 4);
-INSERT INTO `recipe_step` VALUES (5, 3, NULL, NULL);
+INSERT INTO `recipe_step` VALUES (5, 3, NULL, 1);
 INSERT INTO `recipe_step` VALUES (6, 2, NULL, 1);
-INSERT INTO `recipe_step` VALUES (7, 2, NULL, 2);
+INSERT INTO `recipe_step` VALUES (7, 2, 0, 2);
 INSERT INTO `recipe_step` VALUES (8, 2, NULL, 3);
 INSERT INTO `recipe_step` VALUES (9, 2, NULL, 4);
 INSERT INTO `recipe_step` VALUES (10, 2, NULL, 5);
@@ -5437,7 +5845,7 @@ INSERT INTO `recipe_step` VALUES (21, 4, NULL, 2);
 INSERT INTO `recipe_step` VALUES (22, 4, NULL, 3);
 INSERT INTO `recipe_step` VALUES (23, 4, NULL, 4);
 INSERT INTO `recipe_step` VALUES (24, 7, NULL, 1);
-INSERT INTO `recipe_step` VALUES (25, 7, 6, 2);
+INSERT INTO `recipe_step` VALUES (25, 7, NULL, 2);
 INSERT INTO `recipe_step` VALUES (26, 7, NULL, 3);
 INSERT INTO `recipe_step` VALUES (27, 7, NULL, 4);
 INSERT INTO `recipe_step` VALUES (28, 7, NULL, 5);
@@ -5690,6 +6098,75 @@ INSERT INTO `recipe_step` VALUES (274, 80, NULL, 3);
 INSERT INTO `recipe_step` VALUES (275, 80, NULL, 4);
 INSERT INTO `recipe_step` VALUES (276, 80, NULL, 4);
 INSERT INTO `recipe_step` VALUES (277, 80, NULL, 5);
+INSERT INTO `recipe_step` VALUES (278, 77, NULL, 1);
+INSERT INTO `recipe_step` VALUES (279, 77, NULL, 2);
+INSERT INTO `recipe_step` VALUES (280, 77, NULL, 3);
+INSERT INTO `recipe_step` VALUES (281, 77, NULL, 4);
+INSERT INTO `recipe_step` VALUES (282, 77, NULL, 5);
+INSERT INTO `recipe_step` VALUES (288, 28, NULL, 6);
+INSERT INTO `recipe_step` VALUES (289, 81, NULL, 1);
+INSERT INTO `recipe_step` VALUES (290, 81, NULL, 2);
+INSERT INTO `recipe_step` VALUES (291, 81, NULL, 3);
+INSERT INTO `recipe_step` VALUES (292, 81, NULL, 4);
+INSERT INTO `recipe_step` VALUES (293, 82, NULL, 1);
+INSERT INTO `recipe_step` VALUES (294, 82, NULL, 2);
+INSERT INTO `recipe_step` VALUES (295, 83, NULL, 1);
+INSERT INTO `recipe_step` VALUES (296, 83, NULL, 2);
+INSERT INTO `recipe_step` VALUES (297, 85, NULL, 1);
+INSERT INTO `recipe_step` VALUES (298, 85, NULL, 2);
+INSERT INTO `recipe_step` VALUES (299, 85, NULL, 3);
+INSERT INTO `recipe_step` VALUES (300, 85, NULL, 4);
+INSERT INTO `recipe_step` VALUES (301, 86, NULL, 1);
+INSERT INTO `recipe_step` VALUES (302, 86, NULL, 2);
+INSERT INTO `recipe_step` VALUES (303, 86, NULL, 3);
+INSERT INTO `recipe_step` VALUES (304, 84, NULL, 1);
+INSERT INTO `recipe_step` VALUES (305, 84, NULL, 2);
+INSERT INTO `recipe_step` VALUES (306, 84, NULL, 3);
+INSERT INTO `recipe_step` VALUES (307, 84, NULL, 4);
+INSERT INTO `recipe_step` VALUES (308, 84, NULL, 5);
+INSERT INTO `recipe_step` VALUES (309, 87, NULL, 1);
+INSERT INTO `recipe_step` VALUES (310, 87, NULL, 2);
+INSERT INTO `recipe_step` VALUES (311, 87, NULL, 3);
+INSERT INTO `recipe_step` VALUES (312, 87, NULL, 4);
+INSERT INTO `recipe_step` VALUES (313, 87, NULL, 5);
+INSERT INTO `recipe_step` VALUES (314, 87, NULL, 6);
+INSERT INTO `recipe_step` VALUES (315, 75, NULL, 1);
+INSERT INTO `recipe_step` VALUES (316, 75, NULL, 2);
+INSERT INTO `recipe_step` VALUES (317, 75, NULL, 3);
+INSERT INTO `recipe_step` VALUES (318, 88, NULL, 1);
+INSERT INTO `recipe_step` VALUES (319, 88, NULL, 2);
+INSERT INTO `recipe_step` VALUES (320, 88, NULL, 3);
+INSERT INTO `recipe_step` VALUES (321, 88, NULL, 4);
+INSERT INTO `recipe_step` VALUES (322, 89, NULL, 1);
+INSERT INTO `recipe_step` VALUES (323, 89, NULL, 2);
+INSERT INTO `recipe_step` VALUES (324, 89, NULL, 3);
+INSERT INTO `recipe_step` VALUES (325, 90, NULL, 1);
+INSERT INTO `recipe_step` VALUES (326, 90, NULL, 2);
+INSERT INTO `recipe_step` VALUES (327, 90, NULL, 3);
+INSERT INTO `recipe_step` VALUES (328, 90, NULL, 4);
+INSERT INTO `recipe_step` VALUES (329, 90, NULL, 5);
+INSERT INTO `recipe_step` VALUES (330, 90, NULL, 6);
+INSERT INTO `recipe_step` VALUES (331, 92, NULL, 1);
+INSERT INTO `recipe_step` VALUES (332, 92, NULL, 2);
+INSERT INTO `recipe_step` VALUES (333, 92, NULL, 3);
+INSERT INTO `recipe_step` VALUES (334, 92, NULL, 4);
+INSERT INTO `recipe_step` VALUES (335, 92, NULL, 5);
+INSERT INTO `recipe_step` VALUES (336, 92, NULL, 6);
+INSERT INTO `recipe_step` VALUES (337, 92, NULL, 5);
+INSERT INTO `recipe_step` VALUES (338, 92, NULL, 6);
+INSERT INTO `recipe_step` VALUES (339, 92, NULL, 7);
+INSERT INTO `recipe_step` VALUES (340, 93, NULL, 1);
+INSERT INTO `recipe_step` VALUES (341, 93, NULL, 2);
+INSERT INTO `recipe_step` VALUES (342, 93, NULL, 3);
+INSERT INTO `recipe_step` VALUES (343, 93, NULL, 4);
+INSERT INTO `recipe_step` VALUES (344, 94, NULL, 1);
+INSERT INTO `recipe_step` VALUES (345, 94, NULL, 2);
+INSERT INTO `recipe_step` VALUES (346, 94, NULL, 3);
+INSERT INTO `recipe_step` VALUES (347, 95, NULL, 1);
+INSERT INTO `recipe_step` VALUES (348, 95, NULL, 2);
+INSERT INTO `recipe_step` VALUES (349, 95, NULL, 3);
+INSERT INTO `recipe_step` VALUES (350, 95, NULL, 4);
+INSERT INTO `recipe_step` VALUES (351, 95, NULL, 5);
 COMMIT;
 
 -- ----------------------------
@@ -5702,7 +6179,7 @@ CREATE TABLE `recipe_step_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `description_step` text NOT NULL,
   PRIMARY KEY (`id_recipe_step_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=555 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=703 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_step_lang
@@ -5716,8 +6193,8 @@ INSERT INTO `recipe_step_lang` VALUES (5, 3, 1, '<p>Afegim tots els ingredients 
 INSERT INTO `recipe_step_lang` VALUES (6, 3, 2, '<p>Añadimos todos los ingredientes a un robot de cocina o vaso de batidora:</p>\r\n<ul><li>los tomates</li><li>las olivas negras</li><li>$virginOliveOil</li><li>$goatRollCheese</li><li>$creamCheese</li><li>$lemonJuice</li><li>$basil</li><li>$provencalHerbs</li><li>$pepper</li></ul><p>Trituramos hasta obtener una pasta más bien densa. Probamos y rectificamos añadiendo cualquiera de los ingredientes para que quede a tu gusto.</p>');
 INSERT INTO `recipe_step_lang` VALUES (7, 4, 1, '<p>Finalment ho servim en un bol acompanyat de torrades.</p><p>Sabem que la pinta no sempre és molt agradable... però confieu en nosaltres i animeu-vos a fer aquesta recepta tant fàcil que segur que us encantarà per afegir als vostres pica-pica.</p>');
 INSERT INTO `recipe_step_lang` VALUES (8, 4, 2, '<p>Finalmente lo servimos en un cuenco acompañado de tostadas.</p><p>Sabemos que la pinta no siempre es muy agradable... pero confiad en nosotros y animaros a hacer esta receta tan fácil que seguro que os encantará para añadir a vuestros picoteos.</p>');
-INSERT INTO `recipe_step_lang` VALUES (9, 5, 1, '<p>Afegim tots els ingredients al vas de la batedora o al processador d\'aliments i ho piquem fins a obtenir el pesto.</p><p>A mi m\'agrada que no quedi massa liquida, però podeu afegir tant $virginOliveOil(0) com vulgueu fins que us quedi la textura desitjada.</p><p>Per conservar-ho: a la nevera en un pot petit amb un raig d\'oli per cobrir la salsa i evitar que l\'aire el faci malbé.</p>');
-INSERT INTO `recipe_step_lang` VALUES (10, 5, 2, '<p>Añadimos todos los ingredientes en el vaso de la batidora o el procesador de alimentos y lo picamos hasta obtener el pesto.</p><p>A mí me gusta que no quede demasiado liquido, pero puede añadir tanto $virginOliveOil(0) como desee hasta que quede la textura deseada.</p><p>Para conservarlo: en la nevera en un bote pequeño con un chorro de aceite para cubrir la salsa y evitar que el aire el estropee.</p>');
+INSERT INTO `recipe_step_lang` VALUES (9, 5, 1, '<p>Sempre que compro alfàbrega fresca per alguna recepta, faig pesto amb què em sobra perquè no es faci malbé.</p><p>Afegim tots els ingredients al vas de la batedora o al processador d\'aliments i ho piquem fins a obtenir el pesto:&nbsp; $basil, $pineNut, $pecorino i $virginOliveOil.</p><p>A mi m\'agrada que no quedi massa liquida, però podeu afegir tant oli com vulgueu fins que us quedi la textura desitjada.</p><p>Per conservar-ho: a la nevera en un pot petit amb un raig d\'oli per cobrir la salsa i evitar que l\'aire el faci malbé.</p>');
+INSERT INTO `recipe_step_lang` VALUES (10, 5, 2, '<p>Siempre que compro albahaca fresca para alguna receta, hago pesto con que me sobra para que no se estropee.</p><p>Añadimos todos los ingredientes en el vaso de la batidora o el procesador de alimentos y lo picamos hasta obtener el pesto:  $basil, $pineNut, $pecorino y $virginOliveOil.</p><p>A mí me gusta que no quede demasiado liquido, pero podéis añadir tanto oli como queráis hasta que quede la textura deseada.</p><p>Para conservarlo: en la nevera en un bote pequeño con un chorro de aceite para cubrir la salsa y evitar que el aire el estropee.</p>');
 INSERT INTO `recipe_step_lang` VALUES (11, 6, 1, '<p>Ho prepararem tot (de principi a fi) en una olla o cassola prou gran on poder bullir tota la pasta.</p><p>A foc mig-alt daurem tot el $baconStrips fins que estiguin daurades. Mentrestant:</p><ul><li>tallem el $chickenBreasts en daus </li><li>piquem l\'$garlic </li><li>tallem la $onion en juliana.</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (12, 6, 2, '<p>Lo prepararemos todo (de principio a fin) en una olla o cacerola suficientemente grande donde poder hervir toda la pasta.</p><p>A fuego medio-alto doramos todo el $baconStrips hasta que estén doradas. Mientras:</p><ul><li>cortamos el $chickenBreasts en dados</li><li>picamos el $garlic</li><li>cortamos la $onion en juliana.</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (13, 7, 1, '<p>Afegim el $chickenBreasts, la $salt ,el $pepper i l\'$garlicPowder.</p><p>Quan el pollastre hagi perdut el color rosa, el retirem de la cassola i deixem només les $baconStrips(0) daurades.</p>');
@@ -5756,14 +6233,14 @@ INSERT INTO `recipe_step_lang` VALUES (45, 23, 1, '<p>Decorem amb els quadrats d
 INSERT INTO `recipe_step_lang` VALUES (46, 23, 2, '<p>Decoramos con los cuadrados de alga $nori que le dará un toque salado.</p>');
 INSERT INTO `recipe_step_lang` VALUES (47, 24, 1, '<p>Preescalfem el forn a 170ºC.</p>');
 INSERT INTO `recipe_step_lang` VALUES (48, 24, 2, '<p>Precalentamos el horno a 170ºC.</p>');
-INSERT INTO `recipe_step_lang` VALUES (49, 25, 1, '<p>Tallem les $cornTortitas com a la foto.</p>');
-INSERT INTO `recipe_step_lang` VALUES (50, 25, 2, '<p>Cortamos las $cornTortitas como en la foto.</p>');
+INSERT INTO `recipe_step_lang` VALUES (49, 25, 1, '<p>Tallem les $cornTortitas en triangles.</p>');
+INSERT INTO `recipe_step_lang` VALUES (50, 25, 2, '<p>Cortamos las $cornTortitas en triángulos.</p>');
 INSERT INTO `recipe_step_lang` VALUES (51, 26, 1, '<p>En un bol barregem la resta d\'ingredients ($oliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) fins que obtinguem una barreja homogènia. Afegim els triangles perquè es vagin impregnant bé.</p>');
 INSERT INTO `recipe_step_lang` VALUES (52, 26, 2, '<p>En un cuenco mezclamos el resto de ingredientes ($oliveOil, $water, $sweetPaprika, $cheesePowder, $salt i $onionPowder) hasta que obtengamos una mezcla homogénea. Añadimos los triángulos para que se vayan impregnando bien.</p>');
 INSERT INTO `recipe_step_lang` VALUES (53, 27, 1, '<p>En una safata de forn sobre un paper vegetal, anem col·locant els triangles impregnats de la barreja separats: que no es toquin ni quedi un damunt l\'altre.</p>');
 INSERT INTO `recipe_step_lang` VALUES (54, 27, 2, '<p>En una bandeja de horno sobre un papel vegetal, vamos colocando los triangulitos impregnados de la mezcla separados: que no se toquen ni quede uno encima de otro.</p>');
-INSERT INTO `recipe_step_lang` VALUES (55, 28, 1, '<p>Enfornar fins que comencin a daurar i llest! No patiu, després d\'una estona de sortir del forn, quedaran ben cruixents.</p>');
-INSERT INTO `recipe_step_lang` VALUES (56, 28, 2, '<p>Hornear hasta que empiecen a dorar y listo! No sufráis, después de un rato de salir del horno, quedaran bien crujientes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (55, 28, 1, '<p>Enfornar fins que comencin a daurar (uns 10 minuts) i llest! No patiu, després d\'una estona de sortir del forn, quedaran ben cruixents.</p>');
+INSERT INTO `recipe_step_lang` VALUES (56, 28, 2, '<p>Hornear hasta que empiecen a dorar (unos 10 minutos) y listo! No sufráis, después de un rato de salir del horno, quedaran bien crujientes.</p>');
 INSERT INTO `recipe_step_lang` VALUES (57, 29, 1, '<p>Escorre les $mozzarellaBalls.</p><p>Renta, asseca i talla per la meitat els $cherryTomatoes.⁣</p>');
 INSERT INTO `recipe_step_lang` VALUES (58, 29, 2, '<p>Escurre las $mozzarellaBalls.</p><p>Lava, seca y corta por la mitad los $cherryTomatoes.⁣</p><p><br></p><p>⁣</p>');
 INSERT INTO `recipe_step_lang` VALUES (59, 30, 1, '<p>Estén sobre les torrades una mica de $guacamole.</p>');
@@ -5824,8 +6301,8 @@ INSERT INTO `recipe_step_lang` VALUES (113, 57, 1, '<p>Preparem la $caramelizedO
 INSERT INTO `recipe_step_lang` VALUES (114, 57, 2, '<p>Preparamos la $caramelizedOnion.</p>');
 INSERT INTO `recipe_step_lang` VALUES (115, 58, 1, '<p>Si ho cuinem amb nyoquis: no cal fer aquest pas.</p><p>Preparem les $potato, les tallem a daus no gaire petits i salpebrem. Deixem reposar 15 minuts.</p>');
 INSERT INTO `recipe_step_lang` VALUES (116, 58, 2, '<p>Si lo cocinamos con ñoquis: no es necesario dar este paso.</p><p>Preparamos las $potato, las cortamos en dados no muy pequeños y salpimentamos. Dejar reposar 15 minutos.</p>');
-INSERT INTO `recipe_step_lang` VALUES (117, 59, 1, '<p>Mentrestant, podem preparar l\'allioli ràpid: al túrmix afegim l\'$sunflowerOil, $garlic, $egg i la $salt i ho batem a velocitat baixa mantenint el braç a l\'inferior del vas. Quan hagi començat a emulsionar, podem fer petits moviments a dalt i a baix per acabar d\'integrar-ho tot i triturar l\'all per complet.</p>');
-INSERT INTO `recipe_step_lang` VALUES (118, 59, 2, '<p>Mientras tanto, podemos preparar el alioli rápido: al túrmix añadimos el $sunflowerOil, $garlic, $egg y la $salt y lo batimos a velocidad baja manteniendo el brazo en el inferior del vaso. Cuando haya empezado a emulsionar, podemos realizar pequeños movimientos arriba y abajo para acabar de integrarlo todo y triturar el ajo por completo.</p>');
+INSERT INTO `recipe_step_lang` VALUES (117, 59, 1, '<p>Mentrestant, podem preparar l\'allioli ràpid: al túrmix afegim </p><ul><li>l\'$sunflowerOil, </li><li>$garlic, </li><li>$egg </li><li>i la $salt</li></ul><p>i ho batem a velocitat baixa mantenint el braç a l\'inferior del vas. Quan hagi començat a emulsionar, podem fer petits moviments a dalt i a baix per acabar d\'integrar-ho tot i triturar l\'all per complet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (118, 59, 2, '<p>Mientras tanto, podemos preparar el alioli rápido: al túrmix añadimos </p><ul><li>el $sunflowerOil, </li><li>$garlic, </li><li>$egg </li><li>y la $salt</li></ul><p>y lo batimos a velocidad baja manteniendo el brazo en el inferior del vaso. Cuando haya empezado a emulsionar, podemos realizar pequeños movimientos arriba y abajo para acabar de integrarlo todo y triturar el ajo por completo.</p>');
 INSERT INTO `recipe_step_lang` VALUES (119, 60, 1, '<p>També podem anar preparant la salsa vermella.</p><p>En un bol afegim tots els ingredients:</p><ul><li>$spicyOil, </li><li>$tomatoSauce, </li><li>$espinalerSauce, </li><li>$vermut, </li><li>$pepper, </li><li>$rasElHanout, </li><li>$spicyPaprika </li><li>ceba caramel·litzada</li></ul><p>Els barregem bé i ho deixem reposar un mínim de 10 minuts.</p>');
 INSERT INTO `recipe_step_lang` VALUES (120, 60, 2, '<p>También podemos ir preparando la salsa roja.</p><p>En un cuenco añadimos todos los ingredientes:</p><ul><li>$spicyOil, </li><li>$tomatoSauce, </li><li>$espinalerSauce, </li><li>$vermut, </li><li>$pepper, </li><li>$rasElHanout, </li><li>$spicyPaprika</li><li>cebolla caramelizada</li></ul><p>Los mezclamos bien y lo dejamos reposar un mínimo de 10 minutos.</p>');
 INSERT INTO `recipe_step_lang` VALUES (121, 61, 1, '<p>Si ho cuinem amb nyoquis: no cal fer aquest pas.</p><p>Passats els minuts, eliminem l\'excés d\'aigua de les patates i les fregim durant 5 minuts <b>a 150ºC</b>.<br></p><p>Les colem, les escorrem i les col·loquem en un bol que taparem amb paper d\'alumini 15 minuts més perquè s\'acabin d\'estovar per dins.<br></p>');
@@ -5924,8 +6401,8 @@ INSERT INTO `recipe_step_lang` VALUES (213, 107, 1, '<p>Opcionalment, podem pass
 INSERT INTO `recipe_step_lang` VALUES (214, 107, 2, '<p>Opcionalmente, podemos pasarlos por la sartén con algo de $sunflowerOil para que queden crujientes.</p>');
 INSERT INTO `recipe_step_lang` VALUES (215, 108, 1, '<p>Preescalfa el forn a 180°C. </p>');
 INSERT INTO `recipe_step_lang` VALUES (216, 108, 2, '<p>Precalienta el horno a 180°C.</p>');
-INSERT INTO `recipe_step_lang` VALUES (217, 109, 1, '<p>Talla els $croissants a mode d\'entrepà.</p><p>En un bol, combina la $butter, la $dijonMustard, les $greenOnion picades, les $poppySeeds i el $curry en pols i escampa la salsa per les dues meitats de tots els croissants.</p>');
-INSERT INTO `recipe_step_lang` VALUES (218, 109, 2, '<p>Corta los $croissants a modo de bocadillo.</p><p>En un bol combina la $butter, la $dijonMustard, las $greenOnion picadas, las $poppySeeds y el $curry en polvo y esparce la salsa por las dos mitades de todos los croissants.</p>');
+INSERT INTO `recipe_step_lang` VALUES (217, 109, 1, '<p>Talla els $croissants a mode d\'entrepà.</p><p>En un bol, combina la $butter, la $dijonMustard, les $springOnion picades, les $poppySeeds i el $curry en pols i escampa la salsa per les dues meitats de tots els croissants.</p>');
+INSERT INTO `recipe_step_lang` VALUES (218, 109, 2, '<p>Corta los $croissants a modo de bocadillo.</p><p>En un bol combina la $butter, la $dijonMustard, las $springOnion picadas, las $poppySeeds y el $curry en polvo y esparce la salsa por las dos mitades de todos los croissants.</p>');
 INSERT INTO `recipe_step_lang` VALUES (219, 110, 1, '<p>Poseu el $cookedHam i el $cheeseSlices als croissants i tanca el croissant y embolica individualment amb $aluminumFoil.</p><p>Coure al forn 15-20 minuts o fins que s\'escalfi.</p>');
 INSERT INTO `recipe_step_lang` VALUES (220, 110, 2, '<p>Pon el $cookedHam y el $cheeseSlices a los croissants y cierra el croissant y envuelve individualmente con $aluminumFoil.</p><p>Cocer en el horno 15-20 minutos o hasta que se caliente.<br></p>');
 INSERT INTO `recipe_step_lang` VALUES (221, 111, 1, '<p>Tallem la $cabbage a rodanxes molt fines. La $carrot i la $apple a tires.</p>');
@@ -5990,8 +6467,8 @@ INSERT INTO `recipe_step_lang` VALUES (279, 140, 1, '<p>A mi m\'agrada la vichys
 INSERT INTO `recipe_step_lang` VALUES (280, 140, 2, '<p>A mí me gusta la vichyssoise con poca patata. Es por eso que elijo los puerros más grandes que encuentro o añado alguno más si son pequeños, y elijo las patatas pequeñas.</p><p>Pelamos las $potato y la cortamos en dos trozos.</p><p>Sacamos la primera capa de los $leek y los limpiamos para sacar la arena. Cortamos la parte verde en 4-5 trozos.</p><p>La parte verde no la arroje!!! Se puede aprovechar para hacer una salsa por pasta. Os cuento como aquí: [54].</p>');
 INSERT INTO `recipe_step_lang` VALUES (281, 141, 1, '<p>En una cassola, desfem la $butter i, a foc mitjà, daurem el porro i les patates durant 5 minuts.</p>');
 INSERT INTO `recipe_step_lang` VALUES (282, 141, 2, '<p>En una cazuela, deshacemos la $butter y, a fuego medio, doramos el puerro y las patatas durante 5 minutos.</p>');
-INSERT INTO `recipe_step_lang` VALUES (283, 142, 1, '<p>Afegim el $chickenBroth i ho bullim durant uns 15-20 minuts o fins que el porro i la patata estiguin tous.</p>');
-INSERT INTO `recipe_step_lang` VALUES (284, 142, 2, '<p>Añadimos el $chickenBroth y lo hervimos durante unos 15-20 minutos o hasta que el puerro y la patata estén blandos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (283, 142, 1, '<p>Afegim el $chickenBroth i ho bullim durant uns 10-15 minuts o fins que el porro i la patata estiguin tous.</p>');
+INSERT INTO `recipe_step_lang` VALUES (284, 142, 2, '<p>Añadimos el $chickenBroth y lo hervimos durante unos 10-15 minutos o hasta que el puerro y la patata estén blandos.</p>');
 INSERT INTO `recipe_step_lang` VALUES (285, 143, 1, '<p>A l\'hora de triturar les cremes, sempre m\'agrada separar el caldo sobrant de les verdures, i després afegir més caldo si vull una consistència més liquida.</p><p>Així que colem les verdures i les posem a un recipient per triturar-les amb la batedora. Afegim caldo de la cassola si volem que quedi més líquid.</p><p>Incorporem $pepper recent molta.</p>');
 INSERT INTO `recipe_step_lang` VALUES (286, 143, 2, '<p>A la hora de triturar las cremas, siempre me gusta separar el caldo sobrante de las verduras, y después añadir más caldo si quiero una consistencia más liquida.</p><p>Así que colamos las verduras y las ponemos en un recipiente para triturarlas con la batidora. Añadimos caldo de la cazuela si queremos que quede más líquido.</p><p>Incorporamos $pepper recién molida.</p>');
 INSERT INTO `recipe_step_lang` VALUES (287, 144, 1, '<p>Tot i que es pot prendre calenta, si la volem freda cal posar-la a la nevera durant, almenys, 1 hora.</p>');
@@ -6054,8 +6531,8 @@ INSERT INTO `recipe_step_lang` VALUES (343, 172, 1, '<p>En el moment de cuinar-l
 INSERT INTO `recipe_step_lang` VALUES (344, 172, 2, '<p>En el momento de cocinarlas, primero preparamos la salsa que nos servirá para acompañar a las gyozas:</p><ul><li>$soySauce(0.8)</li><li>$riceVinegar</li><li>$sesameOil(0.33)</li></ul>');
 INSERT INTO `recipe_step_lang` VALUES (345, 173, 1, '<p>Calenta una paella a foc fort i afegeix un raig d\'$sunflowerOil. Col·loca les gyozas durant uns 5 minuts o fins que agafin un color torradet per la part inferior.</p><p>Llavors, afegeix a la paella l\'$water i cobreix amb una tapa perquè les gyozes es cuinin amb el vapor de l\'aigua durant uns 10 minuts. Sabràs que estan fetes perquè la pasta es tornarà més transparent i tova.</p>');
 INSERT INTO `recipe_step_lang` VALUES (346, 173, 2, '<p>Calienta una sartén a fuego fuerte y añade un chorro de $sunflowerOil. Coloca las gyozas durante unos 5 minutos o hasta que cojan un color tostadito por la parte inferior.</p><p>Entonces, añade a la sartén el $water y cubre con una tapa para que las gyozes se cocinen con el vapor del agua durante unos 10 minutos. Sabrás que están hechas porque la pasta se volverá más transparente y blanda.</p>');
-INSERT INTO `recipe_step_lang` VALUES (347, 174, 1, '<p>Piquem els ingredients i els anem afegint en un bol gran:</p><ul><li>la $greenOnion molt fina</li><li>les $pickledCapers</li><li>els $pickles</li><li>la $oldFashionedMustard</li><li>la $worcestershireSauce</li><li>la $soySauce</li><li>l\'$virginOliveOil</li><li>el $tabasco</li><li>la $pepper</li></ul><p>Integrem bé tots els ingredients i rectifiquem el punt de sal si cal.</p>');
-INSERT INTO `recipe_step_lang` VALUES (348, 174, 2, '<p>Picamos los ingredientes y los vamos añadiendo en un cuenco grande:</p><ul><li>la $greenOnion muy fina</li><li>las $pickledCapers</li><li>los $pickles</li><li>la $oldFashionedMustard</li><li>la $worcestershireSauce</li><li>la $soySauce</li><li>el $virginOliveOil</li><li>el $tabasco</li><li>la $pepper</li></ul><p>Integramos bien todos los ingredientes y rectificamos el punto de sal si es necesario.</p>');
+INSERT INTO `recipe_step_lang` VALUES (347, 174, 1, '<p>Piquem els ingredients i els anem afegint en un bol gran:</p><ul><li>la $springOnion molt fina</li><li>les $pickledCapers</li><li>els $pickles</li><li>la $oldFashionedMustard</li><li>la $worcestershireSauce</li><li>la $soySauce</li><li>l\'$virginOliveOil</li><li>el $tabasco</li><li>la $pepper</li></ul><p>Integrem bé tots els ingredients i rectifiquem el punt de sal si cal.</p>');
+INSERT INTO `recipe_step_lang` VALUES (348, 174, 2, '<p>Picamos los ingredientes y los vamos añadiendo en un cuenco grande:</p><ul><li>la $springOnion muy fina</li><li>las $pickledCapers</li><li>los $pickles</li><li>la $oldFashionedMustard</li><li>la $worcestershireSauce</li><li>la $soySauce</li><li>el $virginOliveOil</li><li>el $tabasco</li><li>la $pepper</li></ul><p>Integramos bien todos los ingredientes y rectificamos el punto de sal si es necesario.</p>');
 INSERT INTO `recipe_step_lang` VALUES (349, 175, 1, '<p>Eliminem la pell, les espines i les escates que li puguin quedar al $salmon.</p><p>El tallem en daus petits i els afegim a la mescla de la resta d\'ingredients.</p><p>Reservem a la nevera mínim durant una hora.</p>');
 INSERT INTO `recipe_step_lang` VALUES (350, 175, 2, '<p>Eliminamos la piel, las espinas y las escamas que le puedan quedar en el $salmon.</p><p>Lo cortamos en dados pequeños y los añadimos a la mezcla del resto de ingredientes.</p><p>Reservamos en el frigorífico mínimo durante una hora.<br></p>');
 INSERT INTO `recipe_step_lang` VALUES (351, 176, 1, '<p>Podem servir-lo així i acompanyar-lo amb unes torradetes.</p><p>També podem pelar i tallar en daus d\'$avocado. El salpebrem i, en el moment d\'emplatat fem un llit d\'alvocat i a sobre col·loquem el tàrtar de salmó.</p>');
@@ -6098,8 +6575,8 @@ INSERT INTO `recipe_step_lang` VALUES (387, 194, 1, '<p>Tapem l\'olla de pressi�
 INSERT INTO `recipe_step_lang` VALUES (388, 194, 2, '<p>Tapamos la olla a presión y cocinamos durante 1 hora (en la Instant Pot: pressure cook - high pressure) más los 15 minutos que tardará en presurizar.</p><p>Cuando haya terminado de cocinar, liberamos el vapor hasta que la válvula baje y transferimos el cerdo a una bandeja de horno con dobladillo.</p><p>Desfilamos la carne de cerdo con dos tenedores.</p>');
 INSERT INTO `recipe_step_lang` VALUES (389, 195, 1, '<p>Tornem a posar la carn de porc a l\'olla i anem remenant de tant en tant fins que s\'evapori tot el caldo que quedava.</p><p>Amb el pulled pork podeu fer [65].</p>');
 INSERT INTO `recipe_step_lang` VALUES (390, 195, 2, '<p>Volvemos a poner la carne de cerdo en la olla y vamos removiendo de vez en cuando hasta que se evapore todo el caldo que quedaba.</p><p>Con el pulled pork podéis hacer [65].</p>');
-INSERT INTO `recipe_step_lang` VALUES (391, 196, 1, '<p>Picar fina la $greenOnion i ofegar-la en $butter a foc suau uns 30 minuts fins que estigui ben potxadeta.</p><p>Ho deixem refredar.</p>');
-INSERT INTO `recipe_step_lang` VALUES (392, 196, 2, '<p>Picar fina la $greenOnion y rehogarla en $butter a fuego suave unos 30 minutos hasta que esté bien pochadita.</p><p>Lo dejamos enfriar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (391, 196, 1, '<p>Picar fina la $springOnion i ofegar-la en $butter a foc suau uns 30 minuts fins que estigui ben potxadeta.</p><p>Ho deixem refredar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (392, 196, 2, '<p>Picar fina la $springOnion y rehogarla en $butter a fuego suave unos 30 minutos hasta que esté bien pochadita.</p><p>Lo dejamos enfriar.</p>');
 INSERT INTO `recipe_step_lang` VALUES (393, 197, 1, '<p>Mentrestant, escaldem un minut els $freshSpinach en abundant aigua bullent amb $salt.</p><p>Colem i els refredem en un bol amb aigua ben freda.</p><p>Els escorrem molt bé aixafant amb suavitat, perquè deixin anar la major quantitat de líquid possible.</p>');
 INSERT INTO `recipe_step_lang` VALUES (394, 197, 2, '<p>Mientrastanto, escaldamos un minuto los $freshSpinach en abundante agua hirviendo con $salt.</p><p>Colamos y enfriamos en un cuenco con agua bien fría.</p><p>Los escurrimos muy bien aplastando con suavidad, para que suelten la mayor cantidad de líquido posible.</p>');
 INSERT INTO `recipe_step_lang` VALUES (395, 198, 1, '<p>Barregem en un bol els espinacs picats, la ceba tendra, els $egg lleugerament batuts i la $milk.</p><p>Esmicolar el formatge feta per sobre i barrejar el just per incorporar-lo.</p><p>Salpebrem al gust.</p>');
@@ -6164,8 +6641,8 @@ INSERT INTO `recipe_step_lang` VALUES (453, 227, 1, '<p>Passades les hores de re
 INSERT INTO `recipe_step_lang` VALUES (454, 227, 2, '<p>Pasadas las horas de reposo, precalentamos el horno a 200ºC con calor arriba y abajo.</p>');
 INSERT INTO `recipe_step_lang` VALUES (455, 228, 1, '<p>Estenem la $puffPastry i a sobre li afegim la $filo (amb les làmines sobrants podeu fer una [63]).</p><p>Agafem la preparació guardada a la nevera i li traiem el film transparent. Ho col·loquem en un extrem de la pasta del full i ho emboliquem com si fos un regal.</p><p>Col·loquem el filet Wellington a la safata de forn, amb la part més lletja a l\'inferior i pintem la part exterior amb l\'$egg batut.</p>');
 INSERT INTO `recipe_step_lang` VALUES (456, 228, 2, '<p>Extendemos la $puffPastry y encima le añadimos la $filo (con las láminas sobrantes puede hacer una [63]).</p><p>Cogemos la preparación guardada en la nevera y le sacamos el film transparente. Lo colocamos en un extremo de la hojaldre y lo envolvemos como si fuera un regalo.<br></p><p>Colocamos el solomillo Wellington en la bandeja de horno, con la parte más fea en el inferior y pintamos la parte exterior con el $egg batido.<br></p>');
-INSERT INTO `recipe_step_lang` VALUES (457, 229, 1, '<p>Ho cuinen al forn durant uns 30-40 minuts, comprovant que la pasta de full quedi ben daurada.</p>');
-INSERT INTO `recipe_step_lang` VALUES (458, 229, 2, '<p>Lo cocinan en el horno durante unos 30-40 minutos, comprobando que el hojaldre quede bien dorado.</p>');
+INSERT INTO `recipe_step_lang` VALUES (457, 229, 1, '<p>Ho cuinem al forn durant uns 30-40 minuts, comprovant que la pasta de full quedi ben daurada.</p>');
+INSERT INTO `recipe_step_lang` VALUES (458, 229, 2, '<p>Lo cocinamos en el horno durante unos 30-40 minutos, comprobando que el hojaldre quede bien dorado.</p>');
 INSERT INTO `recipe_step_lang` VALUES (459, 230, 1, '<p>En un vas o recipient barregem l\'$water calenta amb el $freshYeast, l\'$oliveOil i la $milk fins que el llevat es dissolgui.</p><p>En un bol integrem bé la $flour, la $salt i el $sugar.</p>');
 INSERT INTO `recipe_step_lang` VALUES (460, 230, 2, '<p>En un vaso o recipiente mezclamos el $water caliente con el $freshYeast, el $oliveOil y la $milk hasta que la levadura se disuelva.</p><p>En un bol integramos bien la $flour, la $salt y el $sugar.</p>');
 INSERT INTO `recipe_step_lang` VALUES (461, 231, 1, '<p>Incorporem els elements lí­quids al bol de la farina i ho remenem amb una cullera fins que es pugui amassar amb les mans.</p><p>Una vegada que estigui tot ben integrat, ho deixiem reposar 10 minuts.</p>');
@@ -6184,8 +6661,8 @@ INSERT INTO `recipe_step_lang` VALUES (473, 237, 1, '<p>Quan la ceba comenci a e
 INSERT INTO `recipe_step_lang` VALUES (474, 237, 2, '<p>Cuando la cebolla empiece a estar transparente: bajamos el fuego, añadimos $water y lo tapamos para que la cebolla se siga caramelizando.</p><p>Debemos conseguir que reduzca mucho y que quede de un color marrón dorado (mínimo 30 minutos, si es necesario: añadimos más agua). Cuanto más rato la dejéis: mejor quedará).</p><p>Cuando creemos que ya está en su punto, podemos subir de nuevo el fuego y terminar de reducir todos los líquidos.<br></p>');
 INSERT INTO `recipe_step_lang` VALUES (475, 238, 1, '<p>Preescalfem el forn a 200ºC. Si el vostre forn té ventilador: activeu-lo.</p>');
 INSERT INTO `recipe_step_lang` VALUES (476, 238, 2, '<p>Precalentamos el horno a 200ºC. Si vuestro horno tiene ventilador: activadlo.</p>');
-INSERT INTO `recipe_step_lang` VALUES (477, 239, 1, '<p>Primer prepararem les patates i la ceba, ja que trigaran més a cuinar-se.</p><p>Tallem les $potato a la fornera (panadera) de mig centímetre de gruix aproximadament i les $onion en juliana.</p><p>En una safata de forn col·loquem totes les verdures i ho condimentem amb $oliveOil, $salt i $pepper. Ho repartim tot bé per la safata intercalant la ceba i la patata.</p>');
-INSERT INTO `recipe_step_lang` VALUES (478, 239, 2, '<p>Primero prepararemos las patatas y la cebolla, ya que tardarán más en cocinarse.</p><p>Cortamos las $potato a la panadera de medio centímetro de grosor aproximadamente y las $onion en juliana.</p><p>En una bandeja de horno colocamos todas las verduras y lo condimentamos con $oliveOil, $salt y $pepper. Lo repartimos bien por la bandeja intercalando la cebolla y la patata.</p>');
+INSERT INTO `recipe_step_lang` VALUES (477, 239, 1, '<p>Primer prepararem les patates i la ceba, ja que trigaran més a cuinar-se.</p><p>Tallem les $potato a la fornera (panadera) de mig centímetre de gruix aproximadament i les $onion en juliana.</p><p>En una safata de forn col·loquem totes les verdures i ho condimentem amb $oliveOil, $salt i $pepper. Ho repartim tot bé per la safata intercalant la ceba i la patata.</p><p>Opcionalment, podem afegir $whiteWine.</p>');
+INSERT INTO `recipe_step_lang` VALUES (478, 239, 2, '<p>Primero prepararemos las patatas y la cebolla, ya que tardarán más en cocinarse.</p><p>Cortamos las $potato a la panadera de medio centímetro de grosor aproximadamente y las $onion en juliana.</p><p>En una bandeja de horno colocamos todas las verduras y lo condimentamos con $oliveOil, $salt y $pepper. Lo repartimos bien por la bandeja intercalando la cebolla y la patata.</p><p>Opcionalmente, podemos añadir $whiteWine.</p>');
 INSERT INTO `recipe_step_lang` VALUES (479, 240, 1, '<p>Quan el forn estigui calent, introduïm la safata i cuinem les patates durant 40 minuts, remenant cada 10 minuts.</p><p>Si veiem que les patates s\'estan enganxant, podem afegir una mica més d\'oli.</p>');
 INSERT INTO `recipe_step_lang` VALUES (480, 240, 2, '<p>Cuando el horno esté caliente, introducimos la bandeja y cocinamos las patatas durante 40 minutos, removiendo cada 10 minutos.</p><p>Si vemos que las patatas se están enganchando, podemos añadir un poco más de aceite.</p>');
 INSERT INTO `recipe_step_lang` VALUES (481, 241, 1, '<p>Passats els primers 40 minuts, col·loquem les orades sobre de les patates. No cal salar-les ni res, simplement treure la tripa (podeu demanar que us la netegin a la peixateria).</p>');
@@ -6201,15 +6678,15 @@ INSERT INTO `recipe_step_lang` VALUES (490, 245, 2, '<p>Pasada la hora, en un bo
 INSERT INTO `recipe_step_lang` VALUES (491, 246, 1, '<p>En un processador d\'aliments afegeix els ingredients que formaran la nostra hamburguesa:</p><ul><li>el $salmon tallat a daus (sense pell ni espines)</li><li>l\'$garlic pelat</li><li>$onionPowder o $friedOnion</li><li>$sweetPaprika</li><li>$salt</li><li>$pepper</li><li>$semicuredCheese tallat a daus</li><li>$panko</li></ul><p>Ho triturem tot fins a obtenir una massa homogènia.</p>');
 INSERT INTO `recipe_step_lang` VALUES (492, 246, 2, '<p>En un procesador de alimentos añade los ingredientes que formarán nuestra hamburguesa:</p><ul><li>el $salmon cortado en dados (sin piel ni espinas)</li><li>el $garlic pelado</li><li>$onionPowder o $friedOnion</li><li>$sweetPaprika</li><li>$salt</li><li>$pepper</li><li>$semicuredCheese cortado en dados</li><li>$panko</li></ul><p>Ho triturem tot fins a obtenir una massa homogènia.</p>');
 INSERT INTO `recipe_step_lang` VALUES (493, 247, 1, '<p>Formem $diners hamburgueses amb l\'ajuda d\'un motlle o amb la mà.</p>');
-INSERT INTO `recipe_step_lang` VALUES (494, 247, 2, '<p>Formamos $dinero hamburguesas con la ayuda de un molde o con la mano.</p>');
+INSERT INTO `recipe_step_lang` VALUES (494, 247, 2, '<p>Formamos $diners hamburguesas con la ayuda de un molde o con la mano.</p>');
 INSERT INTO `recipe_step_lang` VALUES (495, 248, 1, '<p>Tallem el $zucchini en làmines transversals fines.</p><p>El podem utilitzar així, però a mi m\'agrada passar-lo per la paella salpebrat i amb un raig d\'oli.</p>');
 INSERT INTO `recipe_step_lang` VALUES (496, 248, 2, '<p>Cortamos el $zucchini en finas láminas transversales.</p><p>Podemos utilizarlo así, pero a mí me gusta pasarlo por la sartén salpimentado y con un chorrito de aceite.</p>');
 INSERT INTO `recipe_step_lang` VALUES (497, 249, 1, '<p>Obrim els $hamburgerBun i els torrem una mica a la paella.</p><p>Mentrestant, encenem una paella a foc mitjà-alt i cuinem les hamburgueses per una banda durant 2-3 minuts. Al donar la volta: col·loquem una llesca de formatge i tapem la paella amb una tapa perquè el formatge es desfaci correctament i ho cuinem durant 2-3 minuts més.</p>');
 INSERT INTO `recipe_step_lang` VALUES (498, 249, 2, '<p>Abrimos los $hamburgerBun y los tostamos un poco en la sartén.</p><p>Mientras, encendemos una sartén a fuego medio-alto y cocinamos las hamburguesas por un lado durante 2-3 minutos. Al dar la vuelta: colocamos una rebanada de queso y tapamos la sartén con una tapa para que el queso se deshaga correctamente y lo cocinamos durante 2-3 minutos más.</p>');
 INSERT INTO `recipe_step_lang` VALUES (499, 250, 1, '<p>Emplatem: a la base del pa d\'hamburguesa hi untem una mica de $tzatziki, a sobre l\'hamburguesa de salmó i a sobre les làmines de carabassó.</p><p>Cobrim amb la tapa del pa, si voleu, aquesta també la podem untar de tzatziki.<br></p>');
 INSERT INTO `recipe_step_lang` VALUES (500, 250, 2, '<p>Emplatamos: en la base del pan de hamburguesa untamos un poco de $tzatziki, encima la hamburguesa de salmón y sobre las láminas de calabacín.</p><p>Cubrimos con la tapa del pan, si lo desea, ésta también la podemos untar de tzatziki.<br></p>');
-INSERT INTO `recipe_step_lang` VALUES (501, 251, 1, '<p>Preescalfem el forn a 200ºC, amb ventilador si en forn ho permet.</p>');
-INSERT INTO `recipe_step_lang` VALUES (502, 251, 2, '<p>Precalentamos el horno a 200ºC, con ventilador si en horno lo permite.</p>');
+INSERT INTO `recipe_step_lang` VALUES (501, 251, 1, '<p>Preescalfem el forn a 200ºC, amb ventilador si el forn ho permet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (502, 251, 2, '<p>Precalentamos el horno a 200ºC, con ventilador si el horno lo permite.</p>');
 INSERT INTO `recipe_step_lang` VALUES (503, 252, 1, '<p>Tallem l\'$eggplant per la meitat, i aquestes meitats les tallem en 6-8 grills, en forma de falca.</p><p>Condimentem els grills amb $salt, $pepper i un bon raig d\'oli d\'oliva i ho integrem tot molt bé.</p>');
 INSERT INTO `recipe_step_lang` VALUES (504, 252, 2, '<p>Cortamos el $eggplant por la mitad, y estas mitades las cortamos en 6-8 gajos, en forma de cuña.</p><p>Condimentamos los gajos con $salt, $pepper y un buen chorro de aceite de oliva y lo integramos todo muy bien.</p>');
 INSERT INTO `recipe_step_lang` VALUES (505, 253, 1, '<p>Col·loquem l\'albergínia en una safata de forn amb la pell cap per avall i deixant espai entre cada tros.</p><p>Les escalivem al forn durant 40 minuts. En acabar: ho deixem refredar durant al menys 30 minuts.<br></p>');
@@ -6238,8 +6715,8 @@ INSERT INTO `recipe_step_lang` VALUES (527, 264, 1, '<p>Passades de nou les hore
 INSERT INTO `recipe_step_lang` VALUES (528, 264, 2, '<p>Pasadas de nuevo las horas del marinado, precalentamos el horno con la opción grill a máxima potencia.</p><p>Colocamos las brochetas en una bandeja de horno de forma que queden flotando, y las cocinamos 20 minutos por cada lado. En el momento de darles la vuelta, las pintamos con el aceite de pollo que teníamos reservado.</p><p>Una vez cocinado (debe quedar alguna parte tostada), lo dejamos reposar unos minutos y después lo podemos cortar de arriba abajo para hacer los trozos característicos del kebab.</p>');
 INSERT INTO `recipe_step_lang` VALUES (529, 265, 1, '<p>Per preparar el kebab tenim a mà:</p><ul><li>$wheatTortitas</li><li>salsa blanca</li><li>salsa picant (en el nostre cas $valentinaSauce)</li><li>el pollastre tallat en trossets</li><li>$feta a daus</li><li>$lettuce picat</li><li>$blackOlives sense os i picades<br></li><li>les crostes de la pell de pollastre picades</li></ul><p>Emplatem: una capa de les dues salses, el pollastre, el feta, l\'enciam, les olives, més sales (si volem) i les crostes de pollastre.</p><p>Enrotllem com si fos un burrito i ho escalfem a la planxa o sandvitxera <span style=\"-webkit-text-size-adjust: 100%;\">per segellar el kebab.</span></p>');
 INSERT INTO `recipe_step_lang` VALUES (530, 265, 2, '<p>Para preparar el kebab tenemos a mano:</p><ul><li>$wheatTortitas</li><li>salsa blanca</li><li>salsa picante (en nuestro caso $valentinaSauce)</li><li>el pollo cortado en trocitos</li><li>$feta a dados</li><li>$lettuce picado</li><li>$blackOlives sin hueso y picadas</li><li>las cortezas de la piel de pollo picadas</li></ul><p>Emplatamos: una capa de las dos salsas, el pollo, el feta, la lechuga, las aceitunas, más salas (si queremos) y las costras de pollo.</p><p>Enrollamos como si fuera un burrito y lo calentamos a la plancha o sándwichera para sellar el kebab.</p>');
-INSERT INTO `recipe_step_lang` VALUES (531, 266, 1, '<p>Per aquesta recepta, és molt important que els <b>ingredients siguin de qualitat</b>: compreu les olives al mercat o a granel i el millor formatge de rul·lo cabra de la xarcuteria.</p><p>En una cassola afegiu tots els dents d\'$garlic pelats i, aproximadament, una $stuffedGreenOlives per cada dent. Cobri-ho amb $oliveOil i afegiu les  $bayLeaf i els $grainBlackPepper.</p><p>Cuineu-ho durant 45 minuts a foc baix o fins que els alls estiguin tant tous que sembli que es vagin a desfer.</p>');
-INSERT INTO `recipe_step_lang` VALUES (532, 266, 2, '<p>Para esta receta, es muy importante que los<b> ingredientes sean de calidad</b>: compre las aceitunas en el mercado o a granel y el mejor queso de rulo cabra de la charcutería.</p><p>En una cazuela añadid todos los dientes de $garlic pelados y, aproximadamente, una $stuffedGreenOlives por cada diente. Cubra con $oliveOil y añada $bayLeaf y $grainBlackPepper.</p><p>Cocínelo durante 45 minutos a fuego bajo o hasta que los ajos estén tan blandos que parezca que se vayan a deshacer.</p>');
+INSERT INTO `recipe_step_lang` VALUES (531, 266, 1, '<p>Per aquesta recepta, és molt important que els <b>ingredients siguin de qualitat</b>: compreu les olives al mercat o a granel i el millor formatge de rul·lo cabra de la xarcuteria.</p><p>En una cassola afegiu tots els dents d\'$garlic pelats i les $stuffedGreenOlives. Aproximadament: dos grans d\'all per cada oliva. Cobri-ho amb $oliveOil i afegiu el $bayLeaf i el $grainBlackPepper.</p><p>Cuineu-ho durant 45 minuts a foc baix o fins que els alls estiguin tant tous que sembli que es vagin a desfer.</p>');
+INSERT INTO `recipe_step_lang` VALUES (532, 266, 2, '<p>Para esta receta, es muy importante que los<b> ingredientes sean de calidad</b>: compre las aceitunas en el mercado o a granel y el mejor queso de rulo cabra de la charcutería.</p><p>En una cazuela añadid todos los dientes de $garlic pelados y las $stuffedGreenOlives. Aproximadamente: dos dientes de ajo por cada aceituna. Cubre con $oliveOil y añade el $bayLeaf y $grainBlackPepper.</p><p>Cocínalo durante 45 minutos a fuego bajo o hasta que los ajos estén tan blandos que parezca que se vayan a deshacer.</p>');
 INSERT INTO `recipe_step_lang` VALUES (533, 267, 1, '<p>Coleu l\'oli i deixeu refredar les olives i l\'all.</p><p>L\'oli el podeu guardar per cuinar, per amanides, per pa amb tomàquet... té un gust d\'all molt suau súper bo.</p>');
 INSERT INTO `recipe_step_lang` VALUES (534, 267, 2, '<p>Colad el aceite y dejad enfriar las aceitunas y el ajo.</p><p>El aceite se puede guardar para cocinar, para ensaladas, para pan con tomate... tiene un sabor de ajo muy suave súper bueno.</p>');
 INSERT INTO `recipe_step_lang` VALUES (535, 268, 1, '<p>A l\'hora de servir-ho: sobre d\'una $toast fica-hi una mica de $goatRollCheese i a sobre alls i olives confitades.</p>');
@@ -6262,6 +6739,144 @@ INSERT INTO `recipe_step_lang` VALUES (551, 276, 1, '<p>Quan el caldo estigui bu
 INSERT INTO `recipe_step_lang` VALUES (552, 276, 2, '<p>Cuando el caldo esté hirviendo, lo vamos añadiendo paulatinamente al arroz y lo vamos removiendo constantemente con el fuego medio-alto. Nunca debe haber demasiado caldo ni demasiado poco: a medida que se evapore, añadimos más.</p><p>Pasados unos 18 minutos, el arroz debería estar cocido.</p><p>Añadimos el pesto y lo continuamos removiendo hasta que se integren todos los ingredientes.</p>');
 INSERT INTO `recipe_step_lang` VALUES (553, 277, 1, '<p>Emplatem en un plat fondo: al fons el risotto, sobre d\'aquest unes cullerades de $bufalaStracciatella, $parmesan(0.33) ratllat i uns trossos de magret.</p>');
 INSERT INTO `recipe_step_lang` VALUES (554, 277, 2, '<p>Emplatamos en un plato hondo: al fondo el risotto, encima de éste unas cucharadas de $bufalaStracciatella, $parmesan(0.33) rallado y unos trozos de magret.</p>');
+INSERT INTO `recipe_step_lang` VALUES (555, 278, 1, '<p>Deixem la $butter fora de la nevera durant una hora com a mínim.</p><p>Quan tinguem la mantega pomada, en un bol gran, la mesclem molt bé amb el $brownSugar i el $sugar: ha de tenir textura de crema.</p>');
+INSERT INTO `recipe_step_lang` VALUES (556, 278, 2, '<p>Dejamos la $butter fuera de la nevera durante una hora por lo menos.</p><p>Cuando tengamos la mantequilla pomada, en un cuenco grande, la mezclamos muy bien con el $brownSugar y el $sugar: debe tener textura de crema.</p>');
+INSERT INTO `recipe_step_lang` VALUES (557, 279, 1, '<p>Afegim el $vanillaExtract, els $egg i els $eggYolk i ho integrem molt bé.</p>');
+INSERT INTO `recipe_step_lang` VALUES (558, 279, 2, '<p>Añadimos el $vanillaExtract, los $egg y los $eggYolk y lo integramos muy bien.</p>');
+INSERT INTO `recipe_step_lang` VALUES (559, 280, 1, '<p>Afegim la resta d\'ingredients i ho mesclem tot bé de nou:</p><ul><li>$flour</li><li>$bakingSoda</li><li>$salt</li><li>$chocolateChips</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (560, 280, 2, '<p>Añadimos el resto de ingredientes y mezclamos todo bien de nuevo:</p><ul><li>$flour</li><li>$bakingSoda</li><li>$salt</li><li>$chocolateChips</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (561, 281, 1, '<p>Fem un xurro i l\'emboliquem amb $plasticWrap. Ho reservem a la nevera durant 8 hores.</p>');
+INSERT INTO `recipe_step_lang` VALUES (562, 281, 2, '<p>Hacemos un churro y lo envolvemos con $plasticWrap. Reservamos en la nevera durante 8 horas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (563, 282, 1, '<p>Al moment de cuinar-les:</p><ol><li>preescalfem el forn a 180ºC</li><li>talla el xurro en rodanxes d\'un o dos centímetres de gruix</li><li>col·loca les rodanxes en una safata amb paper de forn</li><li>cuina durant 10 minuts</li><li>quan estiguin fetes, deixa-les reposar 5 minuts abans de treure-les de la safata (així segur que no es trenquen).</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (564, 282, 2, '<p>En el momento de cocinarlas:</p><ol><li>precalentamos el horno a 180ºC</li><li>corta el churro en rodajas de uno o dos centímetros de grosor</li><li>coloca las rodajas en una bandeja con papel de horno</li><li>cocina durante 10 minutos</li><li>cuando estén hechas, déjalas reposar 5 minutos antes de sacarlas de la bandeja (así seguro que no se rompen).</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (575, 288, 1, '<p>A l\'hora d\'emplatar: afegim uns cullerots de vichyssoise en un plat fondo i ho decorem amb un raig d\'oli i una mica de pebre negre recent mòlt. Si voleu, també podeu afegir uns encenalls de pernil salat o bacó.</p>');
+INSERT INTO `recipe_step_lang` VALUES (576, 288, 2, '<p>Para emplatar: añadimos unos cucharones de vichyssoise en un plato hondo y lo decoramos con un chorrito de aceite y un poco de pimienta negra reciente molida. Si queréis, también se pueden añadir unas virutas de jamón salado o beicon.</p>');
+INSERT INTO `recipe_step_lang` VALUES (577, 289, 1, '<p>Escorrim els $cannedWholeTomato i els hi traiem les llavors.</p><p>Els tallem en quadradets petits però amb compte de no picar-ho massa.</p><p>Col·loquem el tomàquet en el $strainer i afegim la $salt. Ho integrem bé fent moviments evolvents amb una cullera. Ho guardem a la nevera durant 6 hores o durant la nit perquè deixi anar l\'aigua sobrant.</p>');
+INSERT INTO `recipe_step_lang` VALUES (578, 289, 2, '<p>Escurrimos los $cannedWholeTomato y les quitamos las semillas.</p><p>Los cortamos en cuadritos pequeños pero con cuidado de no machacarlo demasiado.</p><p>Colocamos el tomate en el $strainer y añadimos la $salt. Lo integramos bien haciendo movimientos envolventes con una cuchara. Lo guardamos en la nevera durante 6 horas o durante la noche para que suelte el agua sobrante.</p>');
+INSERT INTO `recipe_step_lang` VALUES (579, 290, 1, '<p>Preparem la salsa mesclant:</p><ul><li>$mayonnaise</li><li>$bbqSauce</li><li>$dijonMustard</li><li>$dillMustard</li><li>$valentinaSauce o una salsa picant que t\'agradi</li><li>$pickles picats</li><li>$pickledRedOnion picada</li><li>$pepper</li><li>$oliveOil</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (580, 290, 2, '<p>Preparamos la salsa mezclando:</p><ul><li>$mayonnaise</li><li>$bbqSauce</li><li>$dijonMustard</li><li>$dillMustard</li><li>$valentinaSauce o una salsa picante que te guste</li><li>$pickles picados</li><li>$pickledRedOnion picada</li><li>$pepper</li><li> $oliveOil</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (581, 291, 1, '<p>Una vegada el tomàquet ha reposat totes les seves hores, el mesclem amb la salsa i ho integrem de nou fent moviments evolvents.</p><p>Ho deixem reposar dues hores més a la nevera perquè deixi anar més aigua.</p>');
+INSERT INTO `recipe_step_lang` VALUES (582, 291, 2, '<p>Una vez el tomate ha repuesto todas sus horas, lo mezclamos con la salsa y lo integramos de nuevo haciendo movimientos envolventes.</p><p>Lo dejamos reposar dos horas más en la nevera para que suelte más agua.</p>');
+INSERT INTO `recipe_step_lang` VALUES (583, 292, 1, '<p>Per servir: ho col·loquem en un plat i ho repartim fent una capa fina de tartar. Ho acompanyem amb torradetes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (584, 292, 2, '<p>Para servir: lo colocamos en un plato y lo repartimos haciendo una fina capa de tartar. Lo acompañamos con tostaditas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (585, 293, 1, '<p>Espremem la $lime per aconseguir uns 20 ml de suc per cada còctel.</p>');
+INSERT INTO `recipe_step_lang` VALUES (586, 293, 2, '<p>Exprimimos la $lime para conseguir unos 20ml de zumo para cada cóctel.</p>');
+INSERT INTO `recipe_step_lang` VALUES (587, 294, 1, '<p>Preparem el còctel afegint al got (si és de coure molt millor):</p><ul><li>$crushedIce</li><li>el suc de la llima</li><li>$vodka, $gin o la beguda blanca que vulgueu</li><li>$gingerBeer</li></ul><p>Ho mesclem tot bé i finalment fi col·loquem $freshMint. A mi m\'agrada trencar una mica les fulles perquè desprenguin una mica de gust.</p>');
+INSERT INTO `recipe_step_lang` VALUES (588, 294, 2, '<p>Preparamos el cóctel añadiendo al vaso (si es de hornear mucho mejor):</p><ul><li>$crushedIce</li><li>el zumo del limón</li><li>$vodka, $gin o la bebida blanca que queráis</li><li>$gingerBeer</li></ul><p>Lo mezclamos todo bien y finalmente colocamos $freshMint. A mí me gusta romper un poco las hojas para que desprendan algo de gusto.&nbsp;</p>');
+INSERT INTO `recipe_step_lang` VALUES (589, 295, 1, '<p>En un cassó a foc mitjà: afegim la  $85Chocolate en trossets i la  $cookingCream i ho anem barrejant fins que la xocolata es desfaci completament i tot tingui una textura espessa.</p><p>Ho deixem refredar a la nevera mínim dues hores.</p>');
+INSERT INTO `recipe_step_lang` VALUES (590, 295, 2, '<p>En un cazo a fuego medio: añadimos el  $85Chocolate en trocitos y la  $cookingCream y lo vamos mezclando hasta que el chocolate se deshaga completamente y todo tenga una textura espesa.</p><p>Lo dejamos enfriar en el frigorífico mínimo dos horas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (591, 296, 1, '<p>Sobre les $toast col·loquem la ganache de xocolata donant-li forma rodona amb una cullera (com si fos un gelat).</p><p>Afegim l\'$virginOliveOil i la $flakeSalt.</p>');
+INSERT INTO `recipe_step_lang` VALUES (592, 296, 2, '<p>Sobre las $toast colocamos la ganache de chocolate dándole forma redonda con una cuchara (como si fuera un helado).</p><p>Añadimos $virginOliveOil y $flakeSalt.</p>');
+INSERT INTO `recipe_step_lang` VALUES (593, 297, 1, '<p>En un got petit col·loquem una base de $breadCrumbs i fem un espai per al $eggYolk. Posem amb compte el rovell sobre el pa i ho cobrim amb més pa ratllat. Repetim l\'operació per a tots els rovells.</p><p>Deixem reposar a la nevera 12 hores com a mínim.</p>');
+INSERT INTO `recipe_step_lang` VALUES (594, 297, 2, '<p>En un vaso pequeño colocamos una base de $breadCrumbs y hacemos un espacio para $eggYolk. Ponemos con cuidado la yema sobre el pan y lo cubrimos con más pan rallado. Repetimos la operación para todas las yemas.</p><p>Dejamos reposar en el frigorífico 12 horas como mínimo.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (595, 298, 1, '<p>En un cassó escalfem la $cookingCream junt amb el $parmesan ratllat. Ho anem removent i afegim $whiteWine fins a evaporar-lo i $pepper.</p><p>Si la fondue no us lliga, podeu afegir una mica de maizena mesclada amb aigua freda.</p>');
+INSERT INTO `recipe_step_lang` VALUES (596, 298, 2, '<p>En un cazo calentamos la $cookingCream junto con el $parmesan rayado. Lo vamos removiendo y añadimos $whiteWine hasta evaporarlo y $pepper.</p><p>Si la fondue no se ata, puede añadir un poco de maicena mezclada con agua fría.</p>');
+INSERT INTO `recipe_step_lang` VALUES (597, 299, 1, '<p>En un altre cassó, escalfem $oliveOil a uns 140°C.</p><p>Retirem els rovells de la nevera i els fregim durant 1-2 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (598, 299, 2, '<p>En otro cazo, calentamos $oliveOil a unos 140°C.</p><p>Retiramos las yemas de la nevera y las freímos durante 1-2 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (599, 300, 1, '<p>Servim en un bol amb una base de fondue de parmesà i posem el rovell d\'ou al centre.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (600, 300, 2, '<p>Servimos en un cuenco con una base de fondue de parmesano y ponemos la yema de huevo en el centro.</p>');
+INSERT INTO `recipe_step_lang` VALUES (601, 301, 1, '<p>Pelem la meitat de l\'$avocado(0.5) i li traiem el pinyol. En robot de cuina triturar:</p><ul><li>l\'alvocat</li><li>l\'$garlic</li><li>el $limeJuice</li></ul><p>i ho processem fins a obtenir una mescla homogènia. Lo colocamos todo en un bol.</p>');
+INSERT INTO `recipe_step_lang` VALUES (602, 301, 2, '<p>Pelamos la meitad de los $avocado(0.5) y le quitamos el hueso. En robot de cocina triturar:</p><ul><li>el aguacate</li><li>el $garlic</li><li>el $limeJuice</li></ul><p>y lo procesamos hasta obtener una mezcla homogénea.</p>');
+INSERT INTO `recipe_step_lang` VALUES (603, 302, 1, '<p>En un bol afegim al bol:</p><ul><li>la mescla anterior</li><li>la resta d\'$avocado(0.5)</li><li>la $onion picada</li><li>$salt</li><li>$pepper</li><li>$tabasco</li><li>i si teniu algun xili o \"jalapeño\" picat (per afegir una mica més de picant).</li></ul><p>Ho integrem tot xafant l\'advocat perquè quedi més triturat.</p>');
+INSERT INTO `recipe_step_lang` VALUES (604, 302, 2, '<p>En un bol añadimos al bol:</p><ul><li>la mezcla anterior</li><li>el resto de $abogado(0.5)</li><li>la $onion picada</li><li>$salt</li><li>$pepper</li><li>$tabasco</li><li>y si tenéis algún chile o jalapeño picado (para añadir algo más de picante).</li></ul><p>Lo integramos aplastando al aguacate para que quede más triturado.</p>');
+INSERT INTO `recipe_step_lang` VALUES (605, 303, 1, '<p>Finalment, afegim el $tomato picat petit i ho remenem tot per mesclar bé tots els ingredients.</p>');
+INSERT INTO `recipe_step_lang` VALUES (606, 303, 2, '<p>Por último, añadimos el $tomato picado pequeño y removemos todo para mezclar bien todos los ingredientes.</p>');
+INSERT INTO `recipe_step_lang` VALUES (607, 304, 1, '<p>Condimentem les $porkRib amb:</p><ul><li> $whiteSesameSeeds(0.5)</li><li> $chiliPowder(0.5)</li><li>$salt</li><li>$pepper</li><li>$oliveOil</li></ul><p>Tallem les costelles individualment.</p><p>A l\'olla a pressió hi afegim un raig d\'oli per daurar les costelles. Si cal: feu-ho per tandes perquè quedin ben segellades.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (608, 304, 2, '<p>Condimentamos las $porkRib con:</p><ul><li>$whiteSesameSeeds(0.5)</li><li>$chiliPowder(0.5)</li><li>$salt</li><li>$pepper</li><li>$oliveOil</li></ul><p>Cortamos las costillas individualmente.</p><p>A la olla a presión añadimos un chorro de aceite para dorar las costillas. Si es necesario: hágalo por tandas para que queden bien selladas.</p>');
+INSERT INTO `recipe_step_lang` VALUES (609, 305, 1, '<p>Col·loquem totes les costelles a l\'olla i incorporem els líquids:</p><ul><li>$gingerBeer</li><li>$soySauce</li><li>$honey</li><li>$water o fins a cobrir tota la carn</li></ul><p>Tanquem l\'olla a pressió i ho cuinem a alta temperatura durant 45 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (610, 305, 2, '<p>Colocamos todas las costillas en la olla e incorporamos los líquidos:</p><ul><li>$gingerBeer</li><li>$soySauce</li><li>$honey</li><li>$water o hasta cubrir toda la carne</li></ul><p>Cerramos la olla a presión y cocinamos a alta temperatura durante 45 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (611, 306, 1, '<p>Mentre es cuina preparem l\'attrezzo i la salsa pels tacos.</p><p>Attrezzo:</p><ul><li>$celery tallat en dauets</li><li>$greenApple tallada en dauets de la mateixa mida que l\'api</li><li>$driedCilantro</li><li>$whiteSesameSeeds(0.5)</li><li>$chiliPowder(0.5)</li><li>$salt</li><li>$pepper</li><li>$riceVinegar</li></ul><p>Salsa:</p><ul><li>$mayonnaise</li><li>$dijonMustard</li><li>$dillMustard</li><li>$pickles picadets</li></ul><p><br></p>');
+INSERT INTO `recipe_step_lang` VALUES (612, 306, 2, '<p>Mientras se cocina preparamos el atrezzo y la salsa por los tacos.</p><p>Atrezzo:</p><ul><li>$celery cortado en daditos</li><li>$greenApple cortada en daditos del mismo tamaño que el apio</li><li>$driedCilantro</li><li>$whiteSesameSeeds(0.5)</li><li>$chiliPowder(0.5)</li><li>$salt</li><li>$pepper</li><li>$riceVinegar</li></ul><p>Salsa:</p><ul><li>$mayonnaise</li><li>$dijonMustard</li><li>$dillMustard</li><li>$pickles picaditos</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (613, 307, 1, '<p>Quan s\'hagi acabat el temps de cuinat de les costelles: alliberem la pressió de l\'olla i reservem les costelles.</p><p>Reduïm la salsa que queda a foc mitjà. Si cal espessir-la: podem mesclar en un got $cornStarch amb aigua freda i ho incorporem a l\'olla removent contínuament.</p><p>Una vegada la salsa estigui prou densa, afegim les costelles perquè quedin untades amb la salsa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (614, 307, 2, '<p>Cuando haya terminado el tiempo de cocinado de las costillas: liberamos la presión de la olla y reservamos las costillas.</p><p>Reducimos la salsa que queda a fuego medio. Si es necesario espesarla: podemos mezclar en un vaso $cornStarch con agua fría y lo incorporamos a la olla removiendo continuamente.</p><p>Una vez la salsa esté suficientemente densa, añadimos las costillas para que queden untadas con la salsa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (615, 308, 1, '<p>Per emplatar: sobre una \"toritita\" hi col·loquem una o dues costelles de porc desossades i sobre hi afegim la salsa i l\'attrezzo. Podem decorar amb una mica més de pebre i sèsam.</p>');
+INSERT INTO `recipe_step_lang` VALUES (616, 308, 2, '<p>Para emplatar: sobre una toritita colocamos una o dos chuletas de cerdo deshuesadas y sobre añadimos la salsa y el atrezzo. Podemos decorar con un poco más de pimienta y sésamo.</p>');
+INSERT INTO `recipe_step_lang` VALUES (617, 309, 1, '<p>Primer cuinarem el ragú. El podem fer el dia abans o inclús tenir-ne de fet i congelar-lo.</p><ol><li>Piquem totes les verdures en quadrats petits (l\'$celery, la $carrot i la $onion). En una cassola, afegim l\'$oliveOil i les sofregim.</li><li>Quan comencin a estovar-se, afegim les carns: la $porkBelly picada fineta, la $mincedBeef i la $mincedPork.</li><li>Incorporem el $whiteWine i $salt i ho anem remenant perquè la carn picada es vagi separant i s\'evapori tot el vi.</li><li>Afegim la $passata i ho deixem fer xup-xup durant dues hores, remenant de tant en tant.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (618, 309, 2, '<p>Primero cocinaremos el ragú. Podemos hacerlo el día antes o incluso tenerlo hecho y congelarlo.</p><ol><li>Picamos todas las verduras en cuadrados pequeños ($celery, $carrot y $onion). En una cazuela, añadimos el $oliveOil y las sofreímos.</li><li>Cuando las verduras empiecen a ablandarse, añadimos las carnes: la $porkBelly picada finita, la $mincedBeef y la $mincedPork.</li><li>Incorporamos el $whiteWine y $salt y lo vamos removiendo para que la carne picada se vaya separando y se evapore todo el vino.</li><li>Añadimos la $passata y lo dejamos hacer chup-chup durante dos horas, removiendo de vez en cuando.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (619, 310, 1, '<p>Ara prepararem la pasta (encara que podeu comprar làmines prepreparades).</p><ol><li>Posem la $flour(0.869) al marbre en forma de volcà i col·loquem els $egg dins del forat de manera que anem batent els ous a poc a poc perquè s\'incorporin totalment amb la farina.</li><li>Pastem empenyent la massa lluny de nosaltres diverses vegades. Quan tingui forma allargada: li donem una volta de 90º, la dobleguem per la meitat, i repetim l\'operació durant 10-15 minuts fins que quedi una massa fina i suau.</li><li>Si la massa s\'asseca molt: afegeix aigua. Si és massa líquida: afegeix farina.</li><li>Deixa reposar en un bol cobert amb un drap durant 30 minuts.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (620, 310, 2, '<p>Ahora prepararemos la pasta (aunque podéis comprar láminas prepreparadas).</p><ol><li>Ponemos la $flour(0.869) en el mármol en forma de volcán y colocamos los $egg en el agujero de forma que vayamos batiendo los huevos poco a poco para que se incorporen totalmente con la harina.</li><li>Amasamos empujando la masa lejos de nosotros varias veces. Cuando tenga forma alargada: le damos una vuelta de 90º, la doblamos por la mitad, y repetimos la operación durante 10-15 minutos hasta que quede una masa fina y suave.</li><li>Si la masa se seca mucho: añade agua. Si es demasiado líquida: añade harina.</li><li>Deja reposar en un cuenco cubierto con un paño durante 30 minutos.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (621, 311, 1, '<p>Mentre la pasta reposa, preparem la beixamel.</p><ol><li>Desfem la $butter en una cassola.</li><li>Afegim la $flour(0.131) batent contínuament durant dos minuts perquè no es cremi.</li><li>Anem afegint la $milk a poc a poc i batent contínuament perquè no es facin grumolls.</li><li>Quan tota la llet estigui incorporada i comenci a espessir, ho deixem bullir dos minuts i afegim $salt, $pepper i $nutmeg. Ha de quedar una salsa bastant espessa.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (622, 311, 2, '<p>Mientras la pasta reposa, preparamos la bechamel.</p><ol><li>Deshacemos la $butter en una cazuela.</li><li>Añadimos la $flour(0.131) batiendo continuamente durante dos minutos para que no se queme.</li><li>Vamos añadiendo la $milk despacio y batiendo continuamente para que no se hagan grumos.</li><li>Cuando toda la leche esté incorporada y empiece a espesar, lo dejamos hervir dos minutos y añadimos $salt, $pepper y $nutmeg. Debe quedar una salsa bastante espesa.</li></ol>');
+INSERT INTO `recipe_step_lang` VALUES (623, 312, 1, '<p>Quan la pasta hagi reposat, posem l\'aigua a bullir en una cassola gran (quan bulli: afegim $salt).</p><p>Dividim la massa en 5 i amb l\'ajuda d\'un $rollingPin fem les làmines amb un gruix d\'un mil·límetre.</p><p>Les podeu tallar de la mida que vulgueu per cobrir la vostra safata (penseu que en bullir-la es fa una mica gran). A nosaltres ens agrada que tinguin la mida de la safata.</p><p>Bullim les làmines durant 2 minuts i, a continuació, les col·loquem en un bol amb aigua freda per parar la cocció. Les assequem en un drap.</p>');
+INSERT INTO `recipe_step_lang` VALUES (624, 312, 2, '<p>Cuando la pasta haya reposado, ponemos el agua a hervir en una cazuela grande (cuando hierva: añadimos $salt).</p><p>Dividimos la masa en 5 y con la ayuda de un $rollingPin hacemos las láminas con un grosor de un milímetro.</p><p>Puedes cortarlas del tamaño que quieras para cubrir la bandeja (piensa que al hervirla se hace un poco grande). A nosotros nos gusta que tengan el tamaño de la bandeja.</p><p>Hervimos las láminas durante 2 minutos y, a continuación, las colocamos en un cuenco con agua fría para parar la cocción. Las secamos en un paño.</p>');
+INSERT INTO `recipe_step_lang` VALUES (625, 313, 1, '<p>Ara ja tenim totes les preparacions llestes i és moment de muntar la lasanya. En una safata de forn:</p><ul><li>Afegim quatre cullerades de ragú a la base perquè no s\'enganxi.</li><li>Col·loquem una capa de làmines de pasta (sense que se solapin). Repartim 1/4 part del ragú i l\'escampem bé per tota la superfície. Repartim una capa de beixamel i una capa generosa de parmesà ratllat.</li><li>Repetim el pas anterior tres vegades més.</li><li>Col·loquem l\'última capa de pasta i sobre una mica de beixamel i una capa encara més generosa de parmesà ratllat.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (626, 313, 2, '<p>Ahora ya tenemos todas las preparaciones listas y es momento de montar la lasaña. En una fuente de horno:</p><ul><li>Añadimos cuatro cucharadas de ragú a la base para que no se pegue.</li><li>Colocamos una capa de láminas de pasta (sin que se solapen). Repartimos 1/4 parte del ragú y esparcimos bien por toda la superficie. Repartimos una capa de bechamel y una capa generosa de parmesano rallado.</li><li>Repetimos el paso anterior tres veces más.</li><li>Colocamos la última capa de pasta y sobre un poco de bechamel y una capa aún más generosa de parmesano rayado.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (627, 314, 1, '<p>Preescalfem el forn a 180ºC.</p><p>Cuinem la lasanya durant 40 minuts. Si passat aquest temps no ha quedat gratinada: activeu el gratinador del forn uns minuts.</p><p>Deixeu reposar durant 15 minuts abans de servir.</p>');
+INSERT INTO `recipe_step_lang` VALUES (628, 314, 2, '<p>Precalentamos el horno a 180ºC.</p><p>Cocinamos la lasaña durante 40 minutos. Si pasado este tiempo no ha quedado gratinada: activa el gratinador del horno unos minutos.</p><p>Deja reposar durante 15 minutos antes de servir.</p>');
+INSERT INTO `recipe_step_lang` VALUES (629, 315, 1, '<p>Preparem la $caramelizedOnion.</p>');
+INSERT INTO `recipe_step_lang` VALUES (630, 315, 2, '<p>Preparamos la $caramelizedOnion.</p>');
+INSERT INTO `recipe_step_lang` VALUES (631, 316, 1, '<p>Preparem els ingredients de l\'arròs:</p><ul><li>en una cassola posem a bullir tot el caldo ($meatBroth i $escudellaBroth).</li><li>daurem el $ribeye (salpebrat) en una paella amb una mica d\'$oliveOil i el reservem.</li><li>en aquest mateix oli, confitem una mica els $piquilloPeppers i els reservem.</li><li>afegim la ceba caramel·litzada i l\'$bombaRice i integrem bé fins que l\'arròs comenci a estar transparent.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (632, 316, 2, '<p>Preparamos los ingredientes del arroz:</p><ul><li>en una cazuela ponemos a hervir todo el caldo ($meatBroth y $escudellaBroth).</li><li>doramos el $ribeye (salpimentado) en una sartén con un poco de $oliveOil y lo reservamos.</li><li>en ese mismo aceite, confitamos un poco los $piquilloPeppers y los reservamos.</li><li>añadimos la cebolla caramelizada y el $bombaRice e integramos bien hasta que el arroz empiece a estar transparente.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (633, 317, 1, '<p>Cuinem l\'arròs: afegim a la paella el caldo bullint i cuinem durant uns 18 minuts sense remenar.</p><p>Mentrestant, tallem la carn en fines llesques.</p><p>Afegim els pebrots perquè s\'escalfin amb els 2-3 últims minuts de cocció i, quan agafem el foc, col·loquem la carn per donar-li un punt més de cocció indirecta.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (634, 317, 2, '<p>Cocinamos el arroz: añadimos a la sartén el caldo hirviendo y cocinamos durante unos 18 minutos sin remover.</p><p>Mientras, cortamos la carne en finas rebanadas.</p><p>Añadimos los pimientos para que se calienten con los 2-3 últimos minutos de cocción y, cuando cojamos el fuego, colocamos la carne para darle un punto más de cocción indirecta.</p>');
+INSERT INTO `recipe_step_lang` VALUES (635, 318, 1, '<p>Pelem i trossegem el $sweetPotato i els posem a bullir amb aigua durant uns 15 minuts o fins que estigui tou.</p><p>Retirem del foc, escorrem i reservem.</p>');
+INSERT INTO `recipe_step_lang` VALUES (636, 318, 2, '<p>Pelamos y troceamos el $sweetPotato y los ponemos a hervir con agua durante unos 15 minutos o hasta que esté blando.</p><p>Retiramos del fuego, escurrimos y reservamos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (637, 319, 1, '<p>Mentrestant, piquem l\'$garlic i la $onion. Ho sofregim amb una mica d\'$oliveOil i $salt.</p><p>Afegim els $cookedChickpeas escorreguts i ho sofregim uns minuts més.</p>');
+INSERT INTO `recipe_step_lang` VALUES (638, 319, 2, '<p>Mientras, picamos $garlic y $onion. Lo sofreímos con algo de $oliveOil y $salt.</p><p>Añadimos los $cookedChickpeas escurridos y sofreímos unos minutos más.</p>');
+INSERT INTO `recipe_step_lang` VALUES (639, 320, 1, '<p>En un processador d\'aliments triturem:</p><ul><li> el moniato cuit,</li><li>opcionalment, podem afegir el líquid dels cigrons,</li><li>la $cocoMilk, </li><li>el $chickenBroth o $vegetableBroth,</li><li>$curry</li><li>$sweetPaprika</li><li>$salt,</li><li>$pepper.</li></ul><p>Aboquem la barreja de moniato als cigrons i ho reduïm a foc baix a mitjà durant 10-15 minuts, remenant regularment, o fins que quedi amb la textura que us agradi.</p>');
+INSERT INTO `recipe_step_lang` VALUES (640, 320, 2, '<p>En un procesador de alimentos trituramos:</p><ul><li>el boniato cocido,</li><li>opcionalmente, podemos añadir el líquido de los garbanzos,</li><li>la $cocoMilk,</li><li>el $chickenBroth o $vegetableBroth,</li><li>$curry</li><li>$sweetPaprika</li><li>$salt,</li><li>$pepper.</li></ul><p>Vertemos la mezcla de boniato en los garbanzos y lo reducimos a fuego bajo a medio durante 10-15 minutos, removiendo regularmente, o hasta que quede con la textura que le guste.</p>');
+INSERT INTO `recipe_step_lang` VALUES (641, 321, 1, '<p>A l\'hora d\'emplatar, es pot afegir unes cullerades de $yogurt o $sourCream per sobre.</p>');
+INSERT INTO `recipe_step_lang` VALUES (642, 321, 2, '<p>A la hora de emplatar, se puede añadir unas cucharadas de $yogurt o $sourCream por encima.</p>');
+INSERT INTO `recipe_step_lang` VALUES (643, 322, 1, '<p>En una cassola posem a bullir la $soySauce, el $mirin, el $sake i el $sugar.</p><p>Ho fem bullir durant 1 minut perquè es dissolgui el sucre completament i ho deixem refredar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (644, 322, 2, '<p>En una cazuela ponemos a hervir $soySauce, $mirin, $sake y $sugar.</p><p>Hervir durante 1 minuto para que se disuelva el azúcar completamente y lo dejamos enfriar.</p>');
+INSERT INTO `recipe_step_lang` VALUES (645, 323, 1, '<p>Mentrestant, posem aigua a bullir.</p><p>Quan bulli, afegim amb compte el $egg (a temperatura de nevera) i els cuinem durant 6 minuts i mig.</p><p>En aquest moment baixem el foc perquè continuï bullint, però molt poc. També podem anar girant els ous durant els 3 primers minuts perquè el rovell quedi centrat.</p><p>Retirem els ous i els refredem immediatament en aigua amb gel. Quan els ous estiguin freds: els pelem.</p>');
+INSERT INTO `recipe_step_lang` VALUES (646, 323, 2, '<p>Mientras, ponemos agua a hervir.</p><p>Cuando hierva, añadimos con cuidado el $egg (a temperatura de nevera) y los cocinamos durante 6 minutos y medio.</p><p>En ese momento bajamos el fuego para que siga hirviendo, pero muy poco. También podemos ir girando los huevos durante los 3 primeros minutos para que la yema quede centrada.</p><p>Retiramos los huevos y los enfriamos inmediatamente en agua con hielo. Cuando los huevos estén fríos: los pelamos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (647, 324, 1, '<p>Col·loquem els ous en una bossa de plàstic junt amb la marinada que hem preparat anteriorment.</p><p>Tanquem la bossa sense aire assegurant-nos que els ous queden completament submergits.</p><p>Els deixem marinant a la nevera durant 8 hores.</p>');
+INSERT INTO `recipe_step_lang` VALUES (648, 324, 2, '<p>Colocamos los huevos en una bolsa de plástico junto a la marinada que hemos preparado anteriormente.</p><p>Cerramos la bolsa sin aire asegurándonos que los huevos quedan completamente sumergidos.</p><p>Los dejamos marinando en el frigorífico durante 8 horas.<br></p>');
+INSERT INTO `recipe_step_lang` VALUES (649, 325, 1, '<p>Retirem, si cal, la pell de la $porkBelly i l\'enrotllem sobre si mateixa.</p><p>Subjectarem el porc amb $foodThread. Hem de fer cercles al voltant de la carn per mantenir la forma de tronc, per tant: fem la primera volta i fem un o dos nusos perquè se subjecti bé i fem una o dues voltes més de fil en aquest punt.</p><p>Anem fins a l\'altra punta del tronc i comencem fent voltes a 1 cm de distància fins a tornar al punt de partida.</p><p>Tanquem el cosit passant el fil a 5 voltes de distància i tornant al punt inicial fent un nus amb la corda d\'inici.</p>');
+INSERT INTO `recipe_step_lang` VALUES (650, 325, 2, '<p>Retiramos, si es necesario, la piel de la $porkBelly y la enrollamos sobre sí misma.</p><p>Sujetaremos el cerdo con $foodThread. Debemos hacer círculos alrededor de la carne para mantener la forma de tronco, por tanto: hacemos la primera vuelta y hacemos uno o dos nudos para que se sujete bien y hacemos una o dos vueltas más de hilo en este punto.</p><p>Vamos hasta la otra punta del tronco y empezamos dando vueltas a 1 cm de distancia hasta volver al punto de partida.</p><p>Cerramos el cosido pasando el hilo a 5 vueltas de distancia y volviendo al punto inicial haciendo un nudo con la cuerda de inicio.</p>');
+INSERT INTO `recipe_step_lang` VALUES (651, 326, 1, '<p>Escalfem $sunflowerOil en una paella a foc alt.</p><p>Daurem el porc per cada costat, assegurant-nos que tots els costats estiguin daurats (uns 10-15 minuts en total).</p>');
+INSERT INTO `recipe_step_lang` VALUES (652, 326, 2, '<p>Calentamos $sunflowerOil en una sartén a fuego alto.</p><p>Doramos el cerdo por cada lado, asegurándonos que todos los lados estén dorados (unos 10-15 minutos en total).</p>');
+INSERT INTO `recipe_step_lang` VALUES (653, 327, 1, '<p>En una cassola preparem el brou afegint:</p><ul><li>$sake</li><li>$soySauce</li><li>$water</li><li>$sugar</li><li>la part verda de l\'$greenOnion</li><li>4 rodanxes de $ginger</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (654, 327, 2, '<p>En una cazuela preparamos el caldo añadiendo:</p><ul><li>$sake</li><li>$soySauce</li><li>$water</li><li>$sugar</li><li>la parte verde del $greenOnion</li><li>4 rodajas de $ginger</li></ul><p>Añadimos el cerdo a la cazuela y lo llevamos a ebullición a fuego medio. Una vez hierva, sacamos la espuma y bajamos el fuego a fuego lento.</p>');
+INSERT INTO `recipe_step_lang` VALUES (655, 328, 1, '<p>Afegim el porc a la cassola i ho portem a ebullició a foc mitjà. Un cop bulli, traiem l\'escuma i baixem el foc a foc lent.</p><p>Fem una tapa amb $aluminumFoil perquè hi càpiga a l\'interior de la cassola i mantingui els aliments submergits al caldo.</p><p>Ho cuinem a foc lent durant 2 hores, girant el chashu cada 30 minuts.</p><p>Passades 2 hores, apaguem el foc perquè el rotllo chashu es refredi una mica.</p>');
+INSERT INTO `recipe_step_lang` VALUES (656, 328, 2, '<p>Añadimos el cerdo a la cazuela y lo llevamos a ebullición a fuego medio. Una vez hierva, sacamos la espuma y bajamos el fuego a fuego lento.</p><p>Hacemos una tapa con $aluminumFoil para que quepa en el interior de la cazuela y mantenga los alimentos sumergidos en el caldo.</p><p>Cocinamos a fuego lento durante 2 horas, girando el chashu cada 30 minutos.</p><p>Pasadas 2 horas, apagamos el fuego para que el rollo chashu se enfríe un poco.</p>');
+INSERT INTO `recipe_step_lang` VALUES (657, 329, 1, '<p>Colem el caldo de cocció.</p><p>Si, a més a més, retirem el greix del caldo, el podem fer servir per marinar [89].</p><p>Transferim el chashu a una bossa de plàstic i hi afegim ½ cup del caldo de cocció fins a cobrir-lo completament. Tanquem bé la bossa procurant que no quedi gens d\'aire dins.</p><p>Ho deixem reposar a la nevera 8 hores.</p>');
+INSERT INTO `recipe_step_lang` VALUES (658, 329, 2, '<p>Colem el caldo de cocció.</p><p>Si, además, retiramos la grasa del caldo, podemos utilizarla para marinar [89].</p><p>Transferim el chashu a una bossa de plàstic i hi afegim ½ cup del caldo de cocció fins a cobrir-lo completament. Tanquem bé la bossa procurant que no quedi gens d\'aire dins.</p><p>Ho deixem reposar a la mai 8 hores.</p>');
+INSERT INTO `recipe_step_lang` VALUES (659, 330, 1, '<p>A l\'hora de servir, i passat el temps de repòs, traiem el chashu de la bossa i li traiem el fil.</p><p>El tallem en trossos de 0.5 - 1 cm. Per millorar el gust, el podem cremar amb un bufador.</p><p>Ho servim immediatament.</p>');
+INSERT INTO `recipe_step_lang` VALUES (660, 330, 2, '<p>A la hora de servir, y pasado el tiempo de reposo, llevamos el chashu de la bolsa y le traemos el hilo.</p><p>Lo cortamos en trozos de 0.5 – 1 cm. Para mejorar el gusto, podemos quemarlo con un soplete.</p><p>Lo servimos de inmediato.</p>');
+INSERT INTO `recipe_step_lang` VALUES (661, 331, 1, '<p>Prepara la $bbqSauce.</p>');
+INSERT INTO `recipe_step_lang` VALUES (662, 331, 2, '<p>Prepara la $bbqSauce.</p>');
+INSERT INTO `recipe_step_lang` VALUES (663, 332, 1, '<p>Preescalfa el forn a 175ºC.</p>');
+INSERT INTO `recipe_step_lang` VALUES (664, 332, 2, '<p>Precalienta el horno a 175ºC.</p>');
+INSERT INTO `recipe_step_lang` VALUES (665, 333, 1, '<p>Piquem la $onion i l\'$garlic i el potxem una mica a una paella, però que no arribi a daurar-se.</p>');
+INSERT INTO `recipe_step_lang` VALUES (666, 333, 2, '<p>Picamos la $onion y el $garlic y lo pochamos un poco en una sartén, pero que no llegue a dorarse.</p>');
+INSERT INTO `recipe_step_lang` VALUES (667, 334, 1, '<p>En un bol mesclem:</p><ul><li>$egg</li><li>$thyme</li><li>$salt</li><li>$pepper</li><li>$dijonMustard</li><li>$worcestershireSauce</li><li>$tabasco</li><li>$yogurt</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (668, 334, 2, '<p>En un cuenco mezclamos:</p><ul><li>$egg</li><li>$thyme</li><li>$salt</li><li>$pepper</li><li>$dijonMustard</li><li>$worcestershireSauce</li><li>$tabasco</li><li>$yogurt</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (669, 335, 1, '<p>En un bol gran mesclem:</p><ul><li>$mincedBeef</li><li>$mincedPork</li><li>$mincedPoultry</li><li>$moldBread sense crosta</li><li>la barreja anterior de les espècies</li><li>la ceba i all potxades</li></ul><p>i ho barregem tot fins que sigui ben uniforme. La barreja no s\'han d\'enganxar al bol; si ho fa: afegim llet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (670, 335, 2, '<p>En un cuenco grande mezclamos:</p><ul><li>$mincedBeef</li><li>$mincedPork</li><li>$mincedPoultry</li><li>$moldBread sin costra</li><li>la mezcla anterior de las especias</li><li>la cebolla y ajo chapudas</li></ul><p>y mezclamos todo hasta que sea uniforme. La mezcla no deben pegarse en el cuenco; si lo hace: añadimos leche.</p>');
+INSERT INTO `recipe_step_lang` VALUES (671, 336, 1, '<p>En una safata de forn, posem la barreja i li donem forma de tronc.</p><p>Ho pintem amb la meitat de la $bbqSauce.</p>');
+INSERT INTO `recipe_step_lang` VALUES (672, 336, 2, '<p>En una bandeja de horno, ponemos la mezcla y le damos forma de tronco.</p><p>Lo pintamos con la mitad de la $bbqSauce.</p>');
+INSERT INTO `recipe_step_lang` VALUES (673, 337, 1, '<p>En un bol gran mesclem:</p><ul><li>$mincedBeef</li><li>$mincedPork</li><li>$mincedPoultry</li><li>$moldBread sense crosta</li><li>la barreja anterior de les espècies</li><li>la ceba i all potxades</li></ul><p>i ho barregem tot fins que sigui ben uniforme. La barreja no s\'han d\'enganxar al bol; si ho fa: afegim llet.</p>');
+INSERT INTO `recipe_step_lang` VALUES (674, 337, 2, '<p>En un cuenco grande mezclamos:</p><ul><li>$mincedBeef</li><li>$mincedPork</li><li>$mincedPoultry</li><li>$moldBread sin costra</li><li>la mezcla anterior de las especias</li><li>la cebolla y ajo chapudas</li></ul><p>y mezclamos todo hasta que sea uniforme. La mezcla no deben pegarse en el cuenco; si lo hace: añadimos leche.</p>');
+INSERT INTO `recipe_step_lang` VALUES (675, 338, 1, '<p>En una safata de forn, posem la barreja i li donem forma de tronc.</p><p>Ho pintem amb la meitat de la $bbqSauce(0.5).</p><p>Cobrim el tronc amb el $bacon de manera horitzontal i transversal (de manera que es pugui amagar una part per sota del pastís) fins que tapem tota la superfície.</p>');
+INSERT INTO `recipe_step_lang` VALUES (676, 338, 2, '<p>En una bandeja de horno, ponemos la mezcla y le damos forma de tronco.</p><p>Lo pintamos con la mitad de la $bbqSauce(0.5).</p><p>Cubrimos el tronco con el $bacon de forma horizontal y transversal (de modo que se pueda esconder una parte por debajo de la tarta) hasta que tapemos toda la superficie.</p>');
+INSERT INTO `recipe_step_lang` VALUES (677, 339, 1, '<p>Enfornem durant uns 45 minuts.</p><p>Emplatem amb la resta de la $bbqSauce perquè cadascú pugui afegir al seu gust.</p>');
+INSERT INTO `recipe_step_lang` VALUES (678, 339, 2, '<p>Horneamos durante unos 45 minutos.</p><p>Emplatamos con el resto de $bbqSauce para que cada uno pueda añadir a su gusto.</p>');
+INSERT INTO `recipe_step_lang` VALUES (679, 340, 1, '<p>Preparem tots els ingredients:</p><ul><li>la carn ($oxTenderloin o $beefTenderloin) ha d\'estar tallada com un carpaccio. Podeu demanar-ho a la carnisseria o congelar la carn i tallar-ho mentre està congelat.</li><li>netegem els bolets i els tallem: $shiitake, $shimeji,  $enoki o els bolets japonesos que trobeu</li><li>tallem el $leek en rodanxes diagonals i un gruix de 2cm</li><li>rentem les verdures i les tallem en parts de 2-3cm:  $shungiku i $chineseCabbage</li><li>tallem el tofu en daus d\'uns 3cm</li><li>escorrem els $shirataki</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (680, 340, 2, '<p>Preparamos todos los ingredientes:</p><ul><li>la carne ($oxTenderloin o $beefTenderloin) debe estar cortada como un carpaccio. Puede pedirlo en la carnicería o congelar la carne y cortarlo mientras está congelado.</li><li>limpiamos las setas y las cortamos: $shiitake, $shimeji, $enoki o las setas japonesas que encuentra</li><li>cortamos el $leek en rodajas diagonales y un grosor de 2cm</li><li>lavamos las verduras y las cortamos en partes de 2-3cm: $shungiku y $chineseCabbage</li><li>cortamos el tofu en dados de unos 3cm</li><li>escurrimos los $shirataki</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (681, 341, 1, '<p>Preparem el caldo (warashita) en una cassola:</p><ul><li>$soySauce</li><li>$sake</li><li>$sugar</li></ul><p>Afegim la meitat dels ingredients (verdures, bolets i $shirataki i/o $udon) i el fem coure a foc mitjà durant 10 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (682, 341, 2, '<p>Preparamos el caldo (warishita) en una cazuela:</p><ul><li>$soy Sauce</li><li>$sake</li><li>$sugar</li></ul><p>Añadimos la mitad de los ingredientes (verduras, setas y $shirataki y/o $udon) y cocemos a fuego medio durante 10 minutos.</p>');
+INSERT INTO `recipe_step_lang` VALUES (683, 342, 1, '<p>En bols individuals, batem un $egg per comensal.</p>');
+INSERT INTO `recipe_step_lang` VALUES (684, 342, 2, '<p>En cuencos individuales, batimos un $egg por comensal.</p>');
+INSERT INTO `recipe_step_lang` VALUES (685, 343, 1, '<p>Portem la cassola a la taula en la $portableGasStove per mantenir-lo calent.</p><p>Al voltant:</p><ul><li>servim la resta de verdures crues. Els comensals poden anar afegint les verdures al caldo perquè es cuinin a mesura que en vulguis més.</li><li>la carn la servim també crua i cadascú la pot cuinar al seu punt amb l\'ajuda del caldo calent, sigui directament a la cassola o en el seu vol individual. No us oblideu de sucar-la a l\'ou cru que queda d\'allò més bo.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (686, 343, 2, '<p>Llevamos la cazuela a la mesa con la $portableGasStove para mantenerlo caliente.</p><p>Alrededor:<br></p><ul><li>servimos el resto de verduras crudas. Los comensales pueden ir añadiendo las verduras al caldo para que se cocinen a medida que quieras más.</li><li>la carne la servimos también cruda y cada uno la puede cocinar en su punto con la ayuda del caldo caliente, sea directamente en la cazuela o en su vuelo individual. No se olvide de mojarla en el huevo crudo que queda muy bueno.</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (687, 344, 1, '<p>Piquem la $onion i la potxem en una cassola amb $oliveOil i $salt.</p>');
+INSERT INTO `recipe_step_lang` VALUES (688, 344, 2, '<p>Picamos la $onion y la pochamos en una cazuela con $oliveOil y $salt.</p>');
+INSERT INTO `recipe_step_lang` VALUES (689, 345, 1, '<p>Quan la ceba tingui un color daurat, afegim els $freshSpinach fins que redueixin el volum.</p>');
+INSERT INTO `recipe_step_lang` VALUES (690, 345, 2, '<p>Cuando la cebolla tenga un color dorado, añadimos los $freshSpinach hasta que reduzcan el volumen.</p>');
+INSERT INTO `recipe_step_lang` VALUES (691, 346, 1, '<p>Afegim el $tomatoSauce i els $cookedChickpeas escorreguts i ho cuinem una estona a foc mitjà fins que la salsa redueixi una mica i tots els ingredients quedin ben integrats.</p><p>Rectifiquem de $salt i $pepper.</p>');
+INSERT INTO `recipe_step_lang` VALUES (692, 346, 2, '<p>Añadimos el $tomatoSauce y los $cookedChickpeas escurridos y lo cocinamos un rato a fuego medio hasta que la salsa reduzca un poco y todos los ingredientes queden bien integrados.</p><p>Rectificamos de $salt y $pepper.</p>');
+INSERT INTO `recipe_step_lang` VALUES (693, 347, 1, '<p>Posar la meitat de la $chocolateForDesserts(0.5) en un bol per desfer-la al microones a la meitat de la potència durant 4 minuts.</p><p>Afegir la meitat de la $butter(0.5) i desfer-la al microones a la meitat de la potència durant 2 minuts més.</p><p>Barrejar-ho tot bé.</p>');
+INSERT INTO `recipe_step_lang` VALUES (694, 347, 2, '<p>Poner la mitad de la $chocolateForDesserts(0.5) en un cuenco para deshacerla en el microondas a la mitad de la potencia durante 4 minutos.</p><p>Añadir la mitad de la $butter(0.5) y deshacerla en el microondas a la mitad de la potencia durante 2 minutos más.</p><p>Mezclar todo bien.</p>');
+INSERT INTO `recipe_step_lang` VALUES (695, 348, 1, '<p>Separem el rovell de la clara dels $egg.</p><p>Anem integrant els següents ingredients, barrejant bé cada ingredient:</p><ul><li>$sugar</li><li>$rawGroundAlmond</li><li>els rovells</li><li>$breadCrumbs</li><li>$bakingPowder</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (696, 348, 2, '<p>Separamos la yema de la clara de los $egg.</p><p>Vamos integrando los siguientes ingredientes, mezclando bien cada ingrediente:</p><ul><li>$sugar</li><li>$rawGroundAlmond</li><li>las yemas</li><li>$breadCrumbs</li><li>$bakingPowder</li></ul>');
+INSERT INTO `recipe_step_lang` VALUES (697, 349, 1, '<p>Muntem les clares d\'ou a punt de neu, opcionalment, amb una mica de $salt perquè muntin millor.</p><p>Una vegada muntades, les afegim a poc a poc a la massa i la integrem amb moviments envolvents per no perdre la textura espumosa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (698, 349, 2, '<p>Montamos las claras de huevo a punto de nieve, opcionalmente, con algo de $salt para que monten mejor.</p><p>Una vez montadas, las añadimos poco a poco a la masa y la integramos con movimientos envolventes para no perder la textura espumosa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (699, 350, 1, '<p>Preescalfem el forn a 170ºC, si teniu ventilador: activeu-lo.</p><p>Mentre s\'escalfa el forn, untem el motlle amb mantega i farina per evitar que el pastís s\'enganxi a la paret.</p><p>Omplim el motlle amb la massa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (700, 350, 2, '<p>Precalentamos el horno a 170ºC, si tiene ventilador: actívalo.</p><p>Mientras se calienta el horno, untamos el molde con mantequilla y harina para evitar que el pastel se pegue en la pared.</p><p>Llenamos el molde con la masa.</p>');
+INSERT INTO `recipe_step_lang` VALUES (701, 351, 1, '<p>Enfornem durant 30 minuts.</p>');
+INSERT INTO `recipe_step_lang` VALUES (702, 351, 2, '<p>Horneamos durante 30 minutos.</p>');
 COMMIT;
 
 -- ----------------------------
@@ -6272,7 +6887,7 @@ CREATE TABLE `recipe_tag` (
   `id_recipe` smallint(5) unsigned NOT NULL,
   `id_tag` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`id_recipe`,`id_tag`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of recipe_tag
@@ -6289,6 +6904,7 @@ INSERT INTO `recipe_tag` VALUES (3, 2);
 INSERT INTO `recipe_tag` VALUES (3, 8);
 INSERT INTO `recipe_tag` VALUES (3, 13);
 INSERT INTO `recipe_tag` VALUES (3, 18);
+INSERT INTO `recipe_tag` VALUES (3, 21);
 INSERT INTO `recipe_tag` VALUES (4, 1);
 INSERT INTO `recipe_tag` VALUES (4, 7);
 INSERT INTO `recipe_tag` VALUES (4, 13);
@@ -6302,6 +6918,7 @@ INSERT INTO `recipe_tag` VALUES (6, 13);
 INSERT INTO `recipe_tag` VALUES (7, 3);
 INSERT INTO `recipe_tag` VALUES (7, 13);
 INSERT INTO `recipe_tag` VALUES (7, 18);
+INSERT INTO `recipe_tag` VALUES (7, 21);
 INSERT INTO `recipe_tag` VALUES (8, 3);
 INSERT INTO `recipe_tag` VALUES (8, 4);
 INSERT INTO `recipe_tag` VALUES (8, 11);
@@ -6354,9 +6971,6 @@ INSERT INTO `recipe_tag` VALUES (20, 18);
 INSERT INTO `recipe_tag` VALUES (21, 1);
 INSERT INTO `recipe_tag` VALUES (21, 13);
 INSERT INTO `recipe_tag` VALUES (21, 15);
-INSERT INTO `recipe_tag` VALUES (23, 2);
-INSERT INTO `recipe_tag` VALUES (23, 3);
-INSERT INTO `recipe_tag` VALUES (23, 4);
 INSERT INTO `recipe_tag` VALUES (24, 2);
 INSERT INTO `recipe_tag` VALUES (24, 3);
 INSERT INTO `recipe_tag` VALUES (24, 4);
@@ -6404,18 +7018,6 @@ INSERT INTO `recipe_tag` VALUES (36, 1);
 INSERT INTO `recipe_tag` VALUES (36, 8);
 INSERT INTO `recipe_tag` VALUES (36, 13);
 INSERT INTO `recipe_tag` VALUES (36, 14);
-INSERT INTO `recipe_tag` VALUES (38, 13);
-INSERT INTO `recipe_tag` VALUES (38, 16);
-INSERT INTO `recipe_tag` VALUES (39, 2);
-INSERT INTO `recipe_tag` VALUES (39, 3);
-INSERT INTO `recipe_tag` VALUES (39, 13);
-INSERT INTO `recipe_tag` VALUES (39, 18);
-INSERT INTO `recipe_tag` VALUES (39, 20);
-INSERT INTO `recipe_tag` VALUES (40, 2);
-INSERT INTO `recipe_tag` VALUES (40, 3);
-INSERT INTO `recipe_tag` VALUES (40, 13);
-INSERT INTO `recipe_tag` VALUES (40, 18);
-INSERT INTO `recipe_tag` VALUES (40, 20);
 INSERT INTO `recipe_tag` VALUES (41, 1);
 INSERT INTO `recipe_tag` VALUES (41, 6);
 INSERT INTO `recipe_tag` VALUES (41, 11);
@@ -6438,10 +7040,6 @@ INSERT INTO `recipe_tag` VALUES (47, 19);
 INSERT INTO `recipe_tag` VALUES (49, 3);
 INSERT INTO `recipe_tag` VALUES (49, 13);
 INSERT INTO `recipe_tag` VALUES (49, 18);
-INSERT INTO `recipe_tag` VALUES (50, 13);
-INSERT INTO `recipe_tag` VALUES (50, 14);
-INSERT INTO `recipe_tag` VALUES (50, 18);
-INSERT INTO `recipe_tag` VALUES (50, 19);
 INSERT INTO `recipe_tag` VALUES (51, 3);
 INSERT INTO `recipe_tag` VALUES (51, 13);
 INSERT INTO `recipe_tag` VALUES (51, 16);
@@ -6449,10 +7047,12 @@ INSERT INTO `recipe_tag` VALUES (52, 5);
 INSERT INTO `recipe_tag` VALUES (52, 12);
 INSERT INTO `recipe_tag` VALUES (53, 2);
 INSERT INTO `recipe_tag` VALUES (53, 13);
+INSERT INTO `recipe_tag` VALUES (53, 23);
 INSERT INTO `recipe_tag` VALUES (54, 1);
 INSERT INTO `recipe_tag` VALUES (54, 2);
 INSERT INTO `recipe_tag` VALUES (54, 14);
 INSERT INTO `recipe_tag` VALUES (54, 18);
+INSERT INTO `recipe_tag` VALUES (54, 21);
 INSERT INTO `recipe_tag` VALUES (55, 3);
 INSERT INTO `recipe_tag` VALUES (55, 4);
 INSERT INTO `recipe_tag` VALUES (55, 7);
@@ -6514,6 +7114,7 @@ INSERT INTO `recipe_tag` VALUES (74, 4);
 INSERT INTO `recipe_tag` VALUES (74, 13);
 INSERT INTO `recipe_tag` VALUES (74, 18);
 INSERT INTO `recipe_tag` VALUES (74, 20);
+INSERT INTO `recipe_tag` VALUES (74, 21);
 INSERT INTO `recipe_tag` VALUES (75, 1);
 INSERT INTO `recipe_tag` VALUES (75, 11);
 INSERT INTO `recipe_tag` VALUES (75, 13);
@@ -6530,6 +7131,52 @@ INSERT INTO `recipe_tag` VALUES (79, 19);
 INSERT INTO `recipe_tag` VALUES (80, 1);
 INSERT INTO `recipe_tag` VALUES (80, 11);
 INSERT INTO `recipe_tag` VALUES (80, 13);
+INSERT INTO `recipe_tag` VALUES (81, 3);
+INSERT INTO `recipe_tag` VALUES (81, 13);
+INSERT INTO `recipe_tag` VALUES (81, 18);
+INSERT INTO `recipe_tag` VALUES (81, 20);
+INSERT INTO `recipe_tag` VALUES (82, 22);
+INSERT INTO `recipe_tag` VALUES (83, 5);
+INSERT INTO `recipe_tag` VALUES (83, 12);
+INSERT INTO `recipe_tag` VALUES (84, 1);
+INSERT INTO `recipe_tag` VALUES (84, 10);
+INSERT INTO `recipe_tag` VALUES (84, 13);
+INSERT INTO `recipe_tag` VALUES (85, 4);
+INSERT INTO `recipe_tag` VALUES (85, 13);
+INSERT INTO `recipe_tag` VALUES (85, 20);
+INSERT INTO `recipe_tag` VALUES (86, 2);
+INSERT INTO `recipe_tag` VALUES (86, 3);
+INSERT INTO `recipe_tag` VALUES (86, 10);
+INSERT INTO `recipe_tag` VALUES (86, 13);
+INSERT INTO `recipe_tag` VALUES (86, 18);
+INSERT INTO `recipe_tag` VALUES (86, 20);
+INSERT INTO `recipe_tag` VALUES (87, 1);
+INSERT INTO `recipe_tag` VALUES (87, 8);
+INSERT INTO `recipe_tag` VALUES (87, 13);
+INSERT INTO `recipe_tag` VALUES (88, 1);
+INSERT INTO `recipe_tag` VALUES (88, 13);
+INSERT INTO `recipe_tag` VALUES (89, 3);
+INSERT INTO `recipe_tag` VALUES (89, 7);
+INSERT INTO `recipe_tag` VALUES (89, 13);
+INSERT INTO `recipe_tag` VALUES (90, 3);
+INSERT INTO `recipe_tag` VALUES (90, 7);
+INSERT INTO `recipe_tag` VALUES (90, 13);
+INSERT INTO `recipe_tag` VALUES (91, 1);
+INSERT INTO `recipe_tag` VALUES (91, 6);
+INSERT INTO `recipe_tag` VALUES (91, 7);
+INSERT INTO `recipe_tag` VALUES (91, 13);
+INSERT INTO `recipe_tag` VALUES (92, 1);
+INSERT INTO `recipe_tag` VALUES (92, 13);
+INSERT INTO `recipe_tag` VALUES (92, 23);
+INSERT INTO `recipe_tag` VALUES (93, 1);
+INSERT INTO `recipe_tag` VALUES (93, 7);
+INSERT INTO `recipe_tag` VALUES (93, 13);
+INSERT INTO `recipe_tag` VALUES (94, 1);
+INSERT INTO `recipe_tag` VALUES (94, 11);
+INSERT INTO `recipe_tag` VALUES (94, 13);
+INSERT INTO `recipe_tag` VALUES (94, 18);
+INSERT INTO `recipe_tag` VALUES (95, 5);
+INSERT INTO `recipe_tag` VALUES (95, 12);
 COMMIT;
 
 -- ----------------------------
@@ -6545,33 +7192,33 @@ CREATE TABLE `restaurant` (
   `longitude` double(9,6) NOT NULL,
   `last_visit` date DEFAULT NULL,
   PRIMARY KEY (`id_restaurant`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of restaurant
 -- ----------------------------
 BEGIN;
-INSERT INTO `restaurant` VALUES (1, 'Chamako', 67, 'C/ de Margarit 18, 08004 Barcelona', 41.373810, 2.163590, '2023-05-23');
+INSERT INTO `restaurant` VALUES (1, 'Chamako', 67, 'C/ Margarit 18, 08004 Barcelona', 41.373810, 2.163590, '2023-05-23');
 INSERT INTO `restaurant` VALUES (2, 'Chez Planes', 68, 'Pl/ de Cerdagne 6, 66800 Saillagouse, França', 42.459430, 2.039250, '2023-04-01');
 INSERT INTO `restaurant` VALUES (3, 'BelleBuòn', 70, 'Travessera de Gràcia 441, 08025 Barcelona', 41.411370, 2.173410, '2023-04-25');
-INSERT INTO `restaurant` VALUES (4, 'Dr. Beer & Mr. Fried', 69, 'C/ de la Riera Alta 33, 08001 Barcelona', 41.380390, 2.165730, '2023-02-24');
-INSERT INTO `restaurant` VALUES (5, 'Gringa All Day', 119, 'C/ de Trafalgar 39, 08010 Barcelona', 41.390520, 2.178630, '2022-09-22');
+INSERT INTO `restaurant` VALUES (4, 'Dr. Beer & Mr. Fried', 69, 'C/ Riera Alta 33, 08001 Barcelona', 41.380390, 2.165730, '2023-02-24');
+INSERT INTO `restaurant` VALUES (5, 'Gringa All Day', 119, 'C/ Trafalgar 39, 08010 Barcelona', 41.390520, 2.178630, '2022-09-22');
 INSERT INTO `restaurant` VALUES (6, 'Obrador DelaCrem', NULL, 'Pg/ de St. Joan 59, 08009 Barcelona', 41.396830, 2.172540, '2023-02-11');
 INSERT INTO `restaurant` VALUES (7, 'Restaurante El Puerto', 77, 'R/ da República Arxentina 15, 36201 Vigo, Pontevedra', 42.119840, -8.854170, '2022-01-05');
-INSERT INTO `restaurant` VALUES (8, 'Gastro Burger', 72, 'C/ d\'Enric Prat de la Riba 150, 08901 L\'Hospitalet de Llobregat', 41.363220, 2.110770, '2022-10-23');
-INSERT INTO `restaurant` VALUES (9, 'Grado Sushi', 71, 'C/ de Vilamarí, 29, 08015 Barcelona', 41.375370, 2.154340, '2023-04-21');
-INSERT INTO `restaurant` VALUES (10, 'Tasca Japonesa WAKASA 3.0', 73, 'C/ de Nàpols 287, 08025 Barcelona', 41.402830, 2.169370, '2021-10-14');
+INSERT INTO `restaurant` VALUES (8, 'Gastro Burger', 72, 'C/ Enric Prat de la Riba 150, 08901 L\'Hospitalet de Llobregat', 41.363220, 2.110770, '2022-10-23');
+INSERT INTO `restaurant` VALUES (9, 'Grado Sushi', 71, 'C/ Vilamarí 29, 08015 Barcelona', 41.375370, 2.154340, '2023-04-21');
+INSERT INTO `restaurant` VALUES (10, 'Tasca Japonesa WAKASA 3.0', 73, 'C/ Nàpols 287, 08025 Barcelona', 41.402830, 2.169370, '2024-01-12');
 INSERT INTO `restaurant` VALUES (11, 'La Sala de l\'Isaac', NULL, 'C/ Barceloneta 44, 17124 Llofriu, Girona', 41.938200, 3.131020, '2022-08-13');
-INSERT INTO `restaurant` VALUES (12, 'Indian Restaurant Shanti', NULL, 'C/ d\'Agustina Saragossa 3, 5, 08017 Barcelona', 41.391230, 2.134230, '2018-02-07');
+INSERT INTO `restaurant` VALUES (12, 'Indian Restaurant Shanti', NULL, 'C/ Agustina Saragossa 3, 5, 08017 Barcelona', 41.391230, 2.134230, '2018-02-07');
 INSERT INTO `restaurant` VALUES (13, 'Yoi Yoi Gion', 117, 'Av/ Diagonal 383, 08008 Barcelona', 41.396550, 2.160620, '2023-06-21');
 INSERT INTO `restaurant` VALUES (14, 'Pulpeira de Lola ~ La Antigua de Melide', 118, 'Rda de Outeiro 135, 15007 A Coruña', 43.355000, -8.411860, '2022-01-09');
-INSERT INTO `restaurant` VALUES (15, 'Carlota Akaneya', 120, 'C/ del Pintor Fortuny 32, 08001 Barcelona', 41.382320, 2.168610, '2017-09-17');
+INSERT INTO `restaurant` VALUES (15, 'Carlota Akaneya', 120, 'C/ Pintor Fortuny 32, 08001 Barcelona', 41.382320, 2.168610, '2017-09-17');
 INSERT INTO `restaurant` VALUES (16, 'La Bella Napoli', 76, 'C/ de Villarroel 101, 08011 Barcelona', 41.385060, 2.156800, '2019-03-17');
 INSERT INTO `restaurant` VALUES (17, 'Soul Coffee Beer', 75, 'C/ Sant Pasqual 12, 46200 Paiporta, Valencia', 39.491800, -0.458260, '2020-10-25');
 INSERT INTO `restaurant` VALUES (18, 'Can Roca', NULL, 'Ctra. de Taialà, 42, 17007 Girona', 41.994290, 2.806300, '2021-08-16');
-INSERT INTO `restaurant` VALUES (19, 'Parking Pizza', 74, 'Pg/ de St. Joan 56, 08009 Barcelona', 41.396380, 2.174020, '2019-07-27');
 INSERT INTO `restaurant` VALUES (20, 'Restaurant Can Dolç', NULL, 'Plaça Esglèsia s/n, 17256 Sant Feliu de Boada, Girona', 41.973750, 3.125150, '2023-05-27');
-INSERT INTO `restaurant` VALUES (21, 'Sintonia', 78, 'C/ del Rosselló 249, 08008 Barcelona', 41.395090, 2.159260, '2023-03-23');
+INSERT INTO `restaurant` VALUES (21, 'Sintonia', 78, 'C/ Rosselló 249, 08008 Barcelona', 41.395090, 2.159260, '2023-03-23');
+INSERT INTO `restaurant` VALUES (22, 'Lanto', 393, 'C/ València 646, 08026 Barcelona', 41.411670, 2.188760, '2024-01-18');
 COMMIT;
 
 -- ----------------------------
@@ -6584,7 +7231,7 @@ CREATE TABLE `restaurant_lang` (
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `text` text DEFAULT NULL,
   PRIMARY KEY (`id_restaurant_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of restaurant_lang
@@ -6626,12 +7273,12 @@ INSERT INTO `restaurant_lang` VALUES (33, 17, 1, '<p>Les millors hamburgueses qu
 INSERT INTO `restaurant_lang` VALUES (34, 17, 2, '<p>¡Las mejores hamburguesas que hemos probado nunca! Si pasáis por Valencia: vale la pena desviarse un poco para comer aquí.</p>');
 INSERT INTO `restaurant_lang` VALUES (35, 18, 1, '<p>Cuina tradicional catalana. Menú del migdia increïble a molt bon preu. Reserveu!</p>');
 INSERT INTO `restaurant_lang` VALUES (36, 18, 2, '<p>Cocina tradicional catalana. Menú del mediodía increíble a muy buen precio. ¡Reservad!</p>');
-INSERT INTO `restaurant_lang` VALUES (37, 19, 1, NULL);
-INSERT INTO `restaurant_lang` VALUES (38, 19, 2, NULL);
 INSERT INTO `restaurant_lang` VALUES (39, 20, 1, '<p>Cuina tradicional boníssima i a bon preu.</p>');
 INSERT INTO `restaurant_lang` VALUES (40, 20, 2, '<p>Cocina tradicional buenísima y a buen precio.</p>');
 INSERT INTO `restaurant_lang` VALUES (41, 21, 1, '<p>Heu de provar el steak tartare!</p>');
 INSERT INTO `restaurant_lang` VALUES (42, 21, 2, '<p>¡Tenéis que probar el steak tartare!</p>');
+INSERT INTO `restaurant_lang` VALUES (43, 22, 1, '<p>Menú degustació sorpresa a 30-40€, depenent del dia (begudes a part).</p>');
+INSERT INTO `restaurant_lang` VALUES (44, 22, 2, '<p>Menú degustación sorpresa a 30-40€, dependiendo del día (bebidas aparte).</p>');
 COMMIT;
 
 -- ----------------------------
@@ -6643,7 +7290,7 @@ CREATE TABLE `tag` (
   `is_highlighted` tinyint(1) unsigned DEFAULT 0,
   `order` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_tag`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of tag
@@ -6668,6 +7315,9 @@ INSERT INTO `tag` VALUES (17, 0, 3);
 INSERT INTO `tag` VALUES (18, 0, 4);
 INSERT INTO `tag` VALUES (19, 0, 3);
 INSERT INTO `tag` VALUES (20, 0, 2);
+INSERT INTO `tag` VALUES (21, 0, 4);
+INSERT INTO `tag` VALUES (22, 0, 2);
+INSERT INTO `tag` VALUES (23, 0, 3);
 COMMIT;
 
 -- ----------------------------
@@ -6681,7 +7331,7 @@ CREATE TABLE `tag_lang` (
   `name` varchar(255) NOT NULL,
   `uri` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tag_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of tag_lang
@@ -6725,6 +7375,12 @@ INSERT INTO `tag_lang` VALUES (37, 19, 1, 'Asiàtic', 'asiatic');
 INSERT INTO `tag_lang` VALUES (38, 19, 2, 'Asiático', 'asiatico');
 INSERT INTO `tag_lang` VALUES (39, 20, 1, 'Aperitiu', 'aperitiu');
 INSERT INTO `tag_lang` VALUES (40, 20, 2, 'Aperitivo', 'aperitivo');
+INSERT INTO `tag_lang` VALUES (41, 21, 1, 'De profit', 'de-profit');
+INSERT INTO `tag_lang` VALUES (42, 21, 2, 'De provecho', 'de-provecho');
+INSERT INTO `tag_lang` VALUES (43, 22, 1, 'Còctel', 'coctel');
+INSERT INTO `tag_lang` VALUES (44, 22, 2, 'Cóctel', 'coctel');
+INSERT INTO `tag_lang` VALUES (45, 23, 1, 'Nord-americà', 'nord-america');
+INSERT INTO `tag_lang` VALUES (46, 23, 2, 'Estadounidense', 'estadounidense');
 COMMIT;
 
 -- ----------------------------
@@ -6735,7 +7391,7 @@ CREATE TABLE `unit` (
   `id_unit` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `is_unitary` tinyint(1) unsigned DEFAULT 0,
   PRIMARY KEY (`id_unit`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of unit
@@ -6760,6 +7416,9 @@ INSERT INTO `unit` VALUES (16, 1);
 INSERT INTO `unit` VALUES (17, 1);
 INSERT INTO `unit` VALUES (18, 0);
 INSERT INTO `unit` VALUES (19, 0);
+INSERT INTO `unit` VALUES (20, 0);
+INSERT INTO `unit` VALUES (21, 1);
+INSERT INTO `unit` VALUES (22, 0);
 COMMIT;
 
 -- ----------------------------
@@ -6773,7 +7432,7 @@ CREATE TABLE `unit_lang` (
   `name` varchar(255) NOT NULL,
   `plural` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_unit_lang`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of unit_lang
@@ -6813,10 +7472,16 @@ INSERT INTO `unit_lang` VALUES (31, 16, 1, 'llesca', 'llesques');
 INSERT INTO `unit_lang` VALUES (32, 16, 2, 'rebanada', 'rebanadas');
 INSERT INTO `unit_lang` VALUES (33, 17, 1, 'làmina', 'làmines');
 INSERT INTO `unit_lang` VALUES (34, 17, 2, 'lámina', 'laminas');
-INSERT INTO `unit_lang` VALUES (35, 18, 2, 'cabeça', 'cabeces');
-INSERT INTO `unit_lang` VALUES (36, 18, 1, 'cabeza', 'cabezas');
+INSERT INTO `unit_lang` VALUES (35, 18, 2, 'cabeza', 'cabezas');
+INSERT INTO `unit_lang` VALUES (36, 18, 1, 'cabeça', 'cabeces');
 INSERT INTO `unit_lang` VALUES (37, 19, 1, 'gram', 'grams');
 INSERT INTO `unit_lang` VALUES (38, 19, 2, 'gramo', 'gramos');
+INSERT INTO `unit_lang` VALUES (39, 20, 1, 'gram net', 'grams nets');
+INSERT INTO `unit_lang` VALUES (40, 20, 2, 'gram neto', 'gramos netos');
+INSERT INTO `unit_lang` VALUES (41, 21, 1, 'Paquet', 'Paquets');
+INSERT INTO `unit_lang` VALUES (42, 21, 2, 'Paquete', 'Paquetes');
+INSERT INTO `unit_lang` VALUES (43, 22, 1, 'Manat', 'Manats');
+INSERT INTO `unit_lang` VALUES (44, 22, 2, 'Manojo', 'Manojos');
 COMMIT;
 
 -- ----------------------------
