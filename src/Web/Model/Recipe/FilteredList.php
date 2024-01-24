@@ -118,8 +118,9 @@ class FilteredList extends Paginated
 
     public static function formatDate($created): string
     {
-        $date = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $created);
-        return IntlDateFormatter::formatObject($date, 'eeee d MMMM Y');
+        $session = Session::getInstance();
+        $date    = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $created);
+        return IntlDateFormatter::formatObject($date, 'eeee d MMMM Y', $session->get('lang_culture'));
     }
 
 }
