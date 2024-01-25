@@ -10,6 +10,7 @@ abstract class Restaurant extends Search
     function search()
     {
         $this->assign('menu', 'restaurants');
+        $this->overrideMetadata(array('metatag_title' => _('Restaurantes')));
         $this->assign('link', _('restaurants'));
     }
 

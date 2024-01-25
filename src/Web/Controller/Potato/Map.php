@@ -29,6 +29,7 @@ class Map extends Search
 
         $this->assign('menu', 'potatoes');
         $this->assign('translations', $this->translate());
+        $this->overrideMetadata(array('metatag_title' => _('Braves')));
         $this->template = 'potatoes/map.twig';
     }
 

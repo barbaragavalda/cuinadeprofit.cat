@@ -19,6 +19,7 @@ class Map extends Restaurant
 
         $this->assign('translations', $this->translate());
         $this->assign('link', _('restaurants') . '/' . _('mapa'));
+        $this->overrideMetadata(array('metatag_title' => _('Restaurantes')));
         $this->template = 'restaurants/map.twig';
     }
 

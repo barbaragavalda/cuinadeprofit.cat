@@ -24,6 +24,7 @@ class Search extends \Web\Controller\Search
         $this->assign('aspectRatio', '1/1');
         $this->assign('noResults', "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s.");
         $this->assign('noResultsLink', _('recepta') . '/' . _('aleatoria'));
+        $this->overrideMetadata(array('metatag_title' => _('Receptes')));
     }
 
     protected function translate(): array{
