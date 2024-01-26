@@ -647,48 +647,60 @@ section h5 {
 
 .ingredients header {
     position: relative;
-    padding-top: 30px;
+    padding-top: 0;
 }
 
-.ingredients header .img {
-    position: absolute;
-    top: 0;
-    width: 130px;
-    left: 50%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-transform: translateX(-60px);
-    -moz-transform: translateX(-60px);
-    -ms-transform: translateX(-60px);
-    -o-transform: translateX(-60px);
-    transform: translateX(-60px);
-}
-
-.ingredients header .img + .resume {
-    padding-top: 100px;
-}
-
-.ingredients header > *:not(.img) {
-    padding: 20px;
+.ingredients header > *, .resume-title {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
+    overflow: hidden;
 }
 
 .ingredients header .resume {
     margin-bottom: 20px;
 }
 
-.ingredients header > ul {
+.resume-title {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.resume-title > h1 {
+    padding-top: 10px;
+}
+
+.resume-title > h1.gradient {
+    padding: 30px 20px 10px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-bottom: 0;
+
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=1);
+}
+
+.resume-title .img {
+    width: 100%;
+    max-height: 300px;
+}
+
+.ingredients header > * {
+    padding: 20px;
+}
+
+.ingredients header > ul, .resume-title {
     -webkit-border-bottom-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;;
     -webkit-border-bottom-right-radius: 0 !important;;
     border-bottom-right-radius: 0 !important;;
-}
-
-.ingredients header h1 {
-    margin-bottom: 4px;
 }
 
 .ingredients header small {

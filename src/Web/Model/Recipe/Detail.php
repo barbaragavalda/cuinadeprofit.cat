@@ -60,7 +60,7 @@ class Detail extends Model
             $recipe['created'] = FilteredList::formatDate($recipe['created']);
 
             $imageID                 = $recipe['image'];
-            $recipe['image']         = $this->getFile($imageID, 'thumb');
+            $recipe['image']         = $this->getFile($imageID);
             $recipe['metatag_image'] = $this->getFBImage($imageID, 'list');
             $recipe['tags']          = $this->getTags();
             $recipe['specs']         = $this->getSpecs($recipe);

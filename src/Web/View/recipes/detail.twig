@@ -26,13 +26,14 @@
     <section id="recipe-detail" class="wrapper container-fluid">
         <div class="row">
             <aside class="col-md-4">
+                <div class="breadcrumb">
+                    <a href="javascript:history.go(-1)" class="main-color">&lt; {% trans "Enrere" %}</a>
+                    &sol;
+                    <span class="grey-color">{{ recipe.name }}</span>
+                </div>
                 <div class="ingredients">
                     <header>
-                        {% if recipe.image %}
-                            {% include 'include/image.twig' with { url: recipe.image, aspectRatio: '1/1' } %}
-                        {% endif %}
                         <div class="resume grey-bg">
-                            <h1 class="ms-madi secondary-color">{{ recipe.name }}</h1>
                             <small class="main-color">
                                 {% trans "Autora / autor" %}: {{ recipe.author }}
                                 <br/>
@@ -101,10 +102,13 @@
                 </div>
             </aside>
             <div class="col-md-8">
-                <div class="breadcrumb">
-                    <a href="javascript:history.go(-1)" class="main-color">&lt; {% trans "Enrere" %}</a>
-                    &sol;
-                    <span class="grey-color">{{ recipe.name }}</span>
+                <div class="resume-title">
+                    {% set class = '' %}
+                    {% if recipe.image %}
+                        {% set class = ' gradient' %}
+                        {% include 'include/image.twig' with { url: recipe.image, aspectRatio: '16/9' } %}
+                    {% endif %}
+                    <h1 class="ms-madi secondary-color{{ class }}">{{ recipe.name }}</h1>
                 </div>
                 {% if recipe.steps|length > 0 %}
                     {% if recipe.steps|length > 1 %}
