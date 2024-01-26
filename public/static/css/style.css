@@ -641,24 +641,25 @@ section h5 {
     padding: 0;
 }
 
-#recipe-detail .col-lg-7, .ingredients header {
+#recipe-detail .col-lg-7, .ingredients {
     padding-top: 30px;
 }
 
-.ingredients header {
+.ingredients {
     position: relative;
     padding-top: 0;
 }
 
-.ingredients header > *, .resume-title {
+.resume-title, .resume, .ingredients > ul {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
     overflow: hidden;
 }
 
-.ingredients header .resume {
-    margin-bottom: 20px;
+.ingredients .resume {
+    margin: 20px 0;
+    padding: 20px;
 }
 
 .resume-title {
@@ -692,65 +693,61 @@ section h5 {
     max-height: 300px;
 }
 
-.ingredients header > * {
-    padding: 20px;
-}
-
-.ingredients header > ul, .resume-title {
+.ingredients > ul, .resume-title {
     -webkit-border-bottom-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;;
     -webkit-border-bottom-right-radius: 0 !important;;
     border-bottom-right-radius: 0 !important;;
 }
 
-.ingredients header small {
+.ingredients small {
     display: block;
     margin-bottom: 10px;
 }
 
-.ingredients header ul {
+.ingredients ul.main-bg {
     padding: 10px;
     text-align: center;
     margin-bottom: 0;
 }
 
-.ingredients header ul li {
+.ingredients ul.main-bg li {
     display: block;
     text-align: center;
     font-weight: bold;
     padding: 3px 0;
 }
 
-.ingredients header ul li.multiplier {
+.ingredients ul.main-bg li.multiplier {
     display: flex;
     justify-content: center;
     padding: 0;
 }
 
-.ingredients header ul span {
+.ingredients ul.main-bg span {
     font-weight: normal;
 }
 
-.ingredients header label {
+.ingredients label {
     margin-bottom: 0;
 }
 
-.ingredients header .input-group {
+.ingredients .input-group {
     width: 100px;
 }
 
-.ingredients header .input-group .btn {
+.ingredients .input-group .btn {
     padding: 0 10px;
     border: none;
     font-size: 1.3em;
 }
 
-.ingredients header .input-group .form-control {
+.ingredients .input-group .form-control {
     padding: 0;
     height: auto;
 }
 
-.ingredients header .input-group input {
+.ingredients .input-group input {
     text-align: center;
     border: none;
 }

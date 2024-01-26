@@ -32,44 +32,30 @@
                     <span class="grey-color">{{ recipe.name }}</span>
                 </div>
                 <div class="ingredients">
-                    <header>
-                        <div class="resume grey-bg">
-                            <small class="main-color">
-                                {% trans "Autora / autor" %}: {{ recipe.author }}
-                                <br/>
-                                {% trans "Data" %}: {{ recipe.created }}
-                            </small>
-                            {% include 'recipes/difficulty.twig' %}
-                            {% for tag in recipe.tags %}
-                                <a href="{{ domain }}{% trans "receptes" %}/{{ tag.uri }}"
-                                   class="badge badge-light main-color">{{ tag.name }}</a>
-                            {% endfor %}
-                        </div>
-                        {% if recipe.specs|length > 0 %}
-                            <ul class="main-bg">
-                                {% for spec in recipe.specs %}
-                                    {% if spec.type in ['amount', 'diners'] %}
-                                        <li class="multiplier">
-                                            <label for="amount" class="pt-2">{{ spec.name }}:</label>
-                                            <div class="input-group pt-1 ml-1">
-                                                <div class="input-group-prepend">
-                                                    <button id="subtract" class="btn secondary-bg" type="button">-
-                                                    </button>
-                                                </div>
-                                                <input id="amount" class="{{ spec.type }} form-control" type="text"
-                                                       value="{{ spec.value }}"/>
-                                                <div class="input-group-append">
-                                                    <button id="add" class="btn secondary-bg" type="button">+</button>
-                                                </div>
+                    {% if recipe.specs|length > 0 %}
+                        <ul class="main-bg">
+                            {% for spec in recipe.specs %}
+                                {% if spec.type in ['amount', 'diners'] %}
+                                    <li class="multiplier">
+                                        <label for="amount" class="pt-2">{{ spec.name }}:</label>
+                                        <div class="input-group pt-1 ml-1">
+                                            <div class="input-group-prepend">
+                                                <button id="subtract" class="btn secondary-bg" type="button">-
+                                                </button>
                                             </div>
-                                        </li>
-                                    {% else %}
-                                        <li>{{ spec.name }}: <span>{{ spec.value }}</span></li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </header>
+                                            <input id="amount" class="{{ spec.type }} form-control" type="text"
+                                                   value="{{ spec.value }}"/>
+                                            <div class="input-group-append">
+                                                <button id="add" class="btn secondary-bg" type="button">+</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <li>{{ spec.name }}: <span>{{ spec.value }}</span></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <div class="list grey-border">
                         <h5>{% trans "Ingredients" %}</h5>
                         <ul>
@@ -94,6 +80,18 @@
                                class="black-color">{% trans "Recepta original" %}</a>
                         </div>
                     {% endif %}
+                    <div class="resume grey-bg">
+                        <small class="main-color">
+                            {% trans "Autora / autor" %}: {{ recipe.author }}
+                            <br/>
+                            {% trans "Data" %}: {{ recipe.created }}
+                        </small>
+                        {% include 'recipes/difficulty.twig' %}
+                        {% for tag in recipe.tags %}
+                            <a href="{{ domain }}{% trans "receptes" %}/{{ tag.uri }}"
+                               class="badge badge-light main-color">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
                     <small class="clarification grey-color">
                         {% trans "Les quantitats que s'especifiquen en cada pas ja estan calculades pel nombre de comensals que hagis indicat i és la quantitat que necessites utilitzar en aquest pas." %}
                         <br/>
