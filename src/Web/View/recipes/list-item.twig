@@ -8,13 +8,17 @@
             {{ tags|join(' | ')|raw }}
         </div>
     {% endif %}
-    <h2 class="ms-madi">
-        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}">
+    <h2>
+        <a href="{{ domain }}{% trans "recepta" %}/{{ item.uri }}" class="ms-madi">
             {{ item.name }}
-            {% if not item.is_visible %}
-                <small class="badge badge secondary-bg black-color">borrador</small>
-            {% endif %}
         </a>
+        {% if item.is_exclusive %}
+            <small class="badge badge tertiary-bg">{% trans "exclusiu" %}</small>
+        {% else %}
+            {% if not item.is_visible %}
+                <small class="badge badge secondary-bg black-color">{% trans "esborrany" %}</small>
+            {% endif %}
+        {% endif %}
     </h2>
     <div>
         {% include 'recipes/difficulty.twig' with { recipe: item } %}

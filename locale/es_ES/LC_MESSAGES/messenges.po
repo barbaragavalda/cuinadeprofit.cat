@@ -67,6 +67,12 @@ msgid "%e %B %G"
 msgstr "%e %B %G"
 
 # recipe
+msgid "esborrany"
+msgstr "borrador"
+
+msgid "exclusiu"
+msgstr "exclusivo"
+
 msgid "Enrere"
 msgstr "Atrás"
 

@@ -76,11 +76,11 @@ class FilteredList extends Paginated
 
         $session = Session::getInstance();
         if ($session->get('user_id') == null) {
-            $where[] = 'r.is_visible = 1';
+            $where[] = 'r.is_visible = 1 AND r.is_exclusive = 0';
         }
 
         $sql         = "
-            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created, r.is_visible,
+            SELECT DISTINCT r.id_recipe, r.prep_time, r.cook_time, r.rest_time, r.image, r.created, r.is_visible, r.is_exclusive,
                 (IFNULL(prep_time, 0) + IFNULL(cook_time, 0)) AS time,
                 rl.name, rl.uri, rl.description,
                 dl.id_difficulty, dl.name AS difficulty, dl.uri AS difficultyURI
