@@ -13,8 +13,12 @@ use PDO;
 class FilteredList extends Paginated
 {
 
-    public function __construct($page, $itemsPerPage = 12)
+    public function __construct($page, $itemsPerPage = 12, $langID = null)
     {
+        if ($langID != null) {
+            $this->langID = $langID;
+        }
+
         parent::__construct($page, $itemsPerPage, false);
     }
 
@@ -96,22 +100,24 @@ class FilteredList extends Paginated
         $this->items = $this->mysql->query($sql, $params);
     }
 
-    public function getItemsPage(): array
+    public function getItemsPage($prepare = true): array
     {
         $recipes = parent::getItemsPage();
 
-        $config = Config::getInstance();
-        $domain = $config->getDomain();
-        foreach ($recipes as &$recipe) {
-            $recipeModel = new Detail();
-            $recipeModel->setID($recipe['id_recipe']);
-            $recipe['image']     = $this->getFile($recipe['image'], 'list');
-            $recipe['time']      = Detail::formatTime($recipe['time']);
-            $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
-            $recipe['tags']      = $recipeModel->getTags(false);
-            $recipe['created']   = self::formatDate($recipe['created']);
+        if ($prepare) {
+            $config = Config::getInstance();
+            $domain = $config->getDomain();
+            foreach ($recipes as &$recipe) {
+                $recipeModel = new Detail();
+                $recipeModel->setID($recipe['id_recipe']);
+                $recipe['image']     = $this->getFile($recipe['image'], 'list');
+                $recipe['time']      = Detail::formatTime($recipe['time']);
+                $recipe['rest_time'] = Detail::formatTime($recipe['rest_time']);
+                $recipe['tags']      = $recipeModel->getTags(false);
+                $recipe['created']   = self::formatDate($recipe['created']);
 
-            $recipe['link'] = $domain . _('recepta') . '/' . $recipe['uri'];
+                $recipe['link'] = $domain . _('recepta') . '/' . $recipe['uri'];
+            }
         }
         return $recipes;
     }

@@ -10,6 +10,12 @@ $config = array(
         'languages' => array('ca')
     ),
 
+    'cronjob' => array(
+        'app'       => 'Cronjob',
+        'folders'   => array('cronjob'),
+        'languages' => array('ca')
+    ),
+
     '{lang}' => array(
         'app'       => 'Web',
         'folders'   => array('web'),

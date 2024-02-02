@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated on {{ now }} -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        {% include 'sitemap-loc.twig' with { url:{'ca': domain ~ 'ca', 'es': domain ~ 'es'}} %}
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    {% for item in menu_ca %}{% set indexMenu = loop.index - 1 %}
+        <url>
+            {% include 'sitemap-loc.twig' with { url:{
+                'ca': domain ~ 'ca/' ~ menu_ca[indexMenu].uri ~ '/' ~ menu_ca[indexMenu].submenu[loop.index-1].uri,
+                'es': domain ~ 'es/' ~ menu_es[indexMenu].uri ~ '/' ~ menu_es[indexMenu].submenu[loop.index-1].uri
+            }} %}
+            <changefreq>weekly</changefreq>
+            <priority>0.9</priority>
+        </url>
+    {% endfor %}
+    {% for recipe in recipes_ca %}
+        <url>
+            {% include 'sitemap-loc.twig' with { url:{
+                'ca': domain ~ 'ca/recepta/' ~ recipes_ca[loop.index-1].uri,
+                'es': domain ~ 'es/receta/' ~ recipes_es[loop.index-1].uri
+            }} %}
+            <lastmod>{{ product.updated }}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    {% endfor %}
+</urlset>
