@@ -22,7 +22,7 @@
                 'ca': domain ~ 'ca/recepta/' ~ recipes_ca[loop.index-1].uri,
                 'es': domain ~ 'es/receta/' ~ recipes_es[loop.index-1].uri
             }} %}
-            <lastmod>{{ product.updated }}</lastmod>
+            <lastmod>{{ recipe.created }}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
         </url>

@@ -118,6 +118,11 @@ class FilteredList extends Paginated
 
                 $recipe['link'] = $domain . _('recepta') . '/' . $recipe['uri'];
             }
+        } else {
+            foreach ($recipes as &$recipe) {
+                $updated           = DateTime::createFromFormat(DateUtils::FORMAT_TIMESTAMP_DB, $recipe['created']);
+                $recipe['created'] = $updated->format('Y-m-d');
+            }
         }
         return $recipes;
     }
