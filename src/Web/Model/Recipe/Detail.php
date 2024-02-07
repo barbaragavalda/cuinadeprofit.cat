@@ -279,11 +279,14 @@ class Detail extends Model
                 $recipe = new Detail();
                 $recipe->setID($matches[1][ $i ]);
                 $recipeInfo = $recipe->get();
+                $baseUri    = $url;
                 if (count($recipeInfo)) {
-                    $url         .= $recipeInfo['uri'];
-                    $link        = "<a href=\"$url\" class=\"secondary-color\" target=\"_blank\"><b>" . mb_strtolower(
-                            $recipeInfo['name']
-                        ) . "</b></a>";
+                    $baseUri     .= $recipeInfo['uri'];
+                    $link        = "
+                        <a href=\"$baseUri\" class=\"secondary-color\" target=\"_blank\">
+                            <b>" . mb_strtolower($recipeInfo['name']) . "</b>
+                        </a>
+                    ";
                     $description = str_replace($matches[0][ $i ], $link, $description);
                 }
             }
