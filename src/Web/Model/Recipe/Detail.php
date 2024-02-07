@@ -239,8 +239,9 @@ class Detail extends Model
             foreach ($steps as &$step) {
                 $fileID        = $step['image'];
                 $step['image'] = $this->getFile($fileID, 'step');
-                if (empty($step['image'])) {
-                    $step['video'] = $this->getFile($fileID);
+                if ($this->isVideo($step['image'])) {
+                    $step['video'] = $step['image'];
+                    unset($step['image']);
                 }
                 $step['description'] = $this->replaceRecipes($step['description'], $domain . _('recepta') . '/');
                 $step['description'] = $this->replaceDiners($step['description'], $diners);
@@ -268,6 +269,15 @@ class Detail extends Model
             return $steps;
         }
         return array();
+    }
+
+    private function isVideo($file): bool
+    {
+        $file_parts = pathinfo($file);
+        if ($file_parts['extension'] == 'mp4') {
+            return true;
+        }
+        return false;
     }
 
     private function replaceRecipes($description, $url): string
