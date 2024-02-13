@@ -44,12 +44,22 @@
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ webName }}">
-    <meta property="og:url" content="{{ canonical }}">
     <meta property="og:title" content="{{ metatagTitle }}">
     <meta property="og:description" content="{{ metatagDescription|striptags }}">
     <meta property="og:image" content="{{ metatagImage['image'] }}">
     <meta property="og:image:width" content="{{ metatagImage['width'] }}">
     <meta property="og:image:height" content="{{ metatagImage['height'] }}">
+
+    {% if canonical.canonical %}
+        <meta property="og:url" content="{{ canonical.canonical }}">
+        <link rel="canonical" href="{{ canonical.canonical }}" />
+    {% endif %}
+    {% if canonical.prev %}
+        <link rel="prev" href="{{ canonical.prev }}" />
+    {% endif %}
+    {% if canonical.next %}
+        <link rel="next" href="{{ canonical.next }}" />
+    {% endif %}
 
     <link rel="stylesheet" href="{{ staticDomain }}css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ staticDomain }}css/font-awesome.min.css" type="text/css">

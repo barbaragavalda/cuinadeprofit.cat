@@ -1,8 +1,12 @@
 {% if pagination %}
+    {% set separator = '?' %}
+    {% if '?' in extraLink %}
+        {% set separator = '&' %}
+    {% endif %}
     <div class="text-center">
         <nav class="btn-group">
             {% if pagination.current > 1 %}
-                <a href="{{ domain }}{{ link }}/{{ pagination.current - 1 }}{{ extraLink }}"
+                <a href="{{ domain }}{{ link }}{{ extraLink }}{{ separator }}p={{ pagination.current - 1 }}"
                    class="btn main-color grey-border">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">{% trans "Anterior" %}</span>
@@ -15,7 +19,7 @@
                     {% if pagination.current == page %}
                         {% set classBtn = ' main-bg white-color' %}
                     {% endif %}
-                    <a href="{{ domain }}{{ link }}/{{ page }}{{ extraLink }}"
+                    <a href="{{ domain }}{{ link }}{{ extraLink }}{{ separator }}p={{ page }}"
                        class="btn {{ classBtn }}">{{ '%02d'|format(page) }}</a>
                 {% else %}
                     &nbsp;...&nbsp;
@@ -24,7 +28,7 @@
 
             {% set lastPage = pagination.pages[ pagination.pages|length - 1 ] %}
             {% if pagination.current < lastPage %}
-                <a href="{{ domain }}{{ link }}/{{ pagination.current + 1 }}{{ extraLink }}"
+                <a href="{{ domain }}{{ link }}{{ extraLink }}{{ separator }}p={{ pagination.current + 1 }}"
                    class="btn main-color grey-border">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">{% trans "Següent" %}</span>

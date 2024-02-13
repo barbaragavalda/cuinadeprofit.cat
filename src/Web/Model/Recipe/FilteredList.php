@@ -15,11 +15,11 @@ class FilteredList extends Paginated
 
     public function __construct($page, $itemsPerPage = 12, $langID = null)
     {
+        parent::__construct($page, $itemsPerPage, false);
+
         if ($langID != null) {
             $this->langID = $langID;
         }
-
-        parent::__construct($page, $itemsPerPage, false);
     }
 
     public function initAll()

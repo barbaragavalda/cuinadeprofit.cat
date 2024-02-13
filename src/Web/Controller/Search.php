@@ -23,11 +23,14 @@ abstract class Search extends Controller
 
         $this->list->setFilters($this->filters);
         $this->list->initAll();
+        $pagination = $this->list->paginate();
         $this->assign('items', $this->list->getItemsPage());
         $this->assign('pagination', $this->list->paginate());
         $this->assign('filters', $this->filters);
         $this->assign('filtersCounter', $this->filtersCounter);
         $this->assign('extraLink', $this->getExtraLink());
+
+        $this->assign('canonical', $this->getCanonicalURL($pagination));
 
         if (empty($this->template)) {
             $this->assign('translations', $this->translate());
@@ -44,13 +47,13 @@ abstract class Search extends Controller
         $params = $this->checkParams();
 
         $this->filters = array('page' => 1);
+        if (isset($_GET['p'])) {
+            $this->filters['page'] = $_GET['p'];
+        }
+
         foreach ($params as $param) {
             if (is_numeric($param)) {
-                if ($param < 2000) {
-                    $this->filters['page'] = $param;
-                } else {
-                    $this->checkParam($param);
-                }
+                $this->checkParam($param);
             } else {
                 $explode = explode('&', $param);
                 foreach ($explode as $value) {

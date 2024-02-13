@@ -30,7 +30,7 @@ abstract class Controller extends \Core\Controller\Controller
 
     private function defaultMetatags()
     {
-        $this->assign('canonical', 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+        $this->assign('canonical', $this->getCanonicalURL());
         $this->assign('webName', 'Cuina de Profit');
         $this->assign('metatagTitle', 'Cuina de Profit');
         $this->assign('metatagKeywords', '');
