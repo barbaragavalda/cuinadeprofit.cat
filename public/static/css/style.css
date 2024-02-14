@@ -114,7 +114,9 @@ input::placeholder {
 /* font */
 @font-face {
     font-family: 'MsMadi';
+    font-style: normal;
     src: url('../font/MsMadi-Regular.ttf');
+    font-display: swap;
 }
 
 .ms-madi {

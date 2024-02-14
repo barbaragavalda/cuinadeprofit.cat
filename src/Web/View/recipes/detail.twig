@@ -104,7 +104,7 @@
                     {% set class = '' %}
                     {% if recipe.image %}
                         {% set class = ' gradient' %}
-                        {% include 'include/image.twig' with { url: recipe.image, aspectRatio: '16/9' } %}
+                        {% include 'include/image.twig' with { url: recipe.image, alt: recipe.name, aspectRatio: '16/9' } %}
                     {% endif %}
                     <h1 class="ms-madi secondary-color{{ class }}">{{ recipe.name }}</h1>
                 </div>

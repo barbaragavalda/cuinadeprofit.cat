@@ -5,7 +5,7 @@
                 <li class="item">
                     <div class="row">
                         <div class="col-sm-4">
-                            {% include 'include/image.twig' with { url: item.image, link: item.link, isOutside: item.isOutside, aspectRatio: aspectRatio } %}
+                            {% include 'include/image.twig' with { url: item.image, link: item.link, alt: item.name, isOutside: item.isOutside, aspectRatio: aspectRatio } %}
                         </div>
                         {% include menu ~ '/list-item.twig' %}
                     </div>

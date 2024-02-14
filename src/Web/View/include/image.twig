@@ -5,12 +5,12 @@
 {% endif %}
 <a href="{{ link }}" {{ target|raw }}>
     {% endif %}
-    {% set image = staticDomain ~ 'img/dummy.jpg' %}
+    {% set image = staticDomain ~ 'img/dummy.webp' %}
     {% if url %}
         {% set image = url %}
     {% endif %}
     <div class="img" style="aspect-ratio: {{ aspectRatio }}">
-        <img data-src="{{ image }}" class="lazyload img-cover" src=""/>
+        <img data-src="{{ image }}" class="lazyload img-cover" src="" alt="{{ alt }}"/>
     </div>
     {% if link is defined %}
 </a>

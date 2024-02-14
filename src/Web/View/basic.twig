@@ -52,13 +52,13 @@
 
     {% if canonical.canonical %}
         <meta property="og:url" content="{{ canonical.canonical }}">
-        <link rel="canonical" href="{{ canonical.canonical }}" />
+        <link rel="canonical" href="{{ canonical.canonical }}"/>
     {% endif %}
     {% if canonical.prev %}
-        <link rel="prev" href="{{ canonical.prev }}" />
+        <link rel="prev" href="{{ canonical.prev }}"/>
     {% endif %}
     {% if canonical.next %}
-        <link rel="next" href="{{ canonical.next }}" />
+        <link rel="next" href="{{ canonical.next }}"/>
     {% endif %}
 
     <link rel="stylesheet" href="{{ staticDomain }}css/bootstrap.min.css" type="text/css">
@@ -72,7 +72,7 @@
     <div class="container-xl">
         <div class="logo">
             {% block startLogo %}<a href="{{ domain }}">{% endblock %}
-                <img src="{{ staticDomain }}img/logo-black.png" alt="{{ webName }}">
+                <img src="{{ staticDomain }}img/logo-black.webp" alt="{{ webName }}">
                 {% block endLogo %}</a>{% endblock %}
         </div>
         <ul id="languages">
@@ -112,7 +112,8 @@
             <div class="col-md-5">
                 <div class="logo">
                     <a href="{{ domain }}">
-                        <img src="{{ staticDomain }}img/logo-white.png" alt="{{ webName }}">
+                        <img data-src="{{ staticDomain }}img/logo-white.png" class="lazyload img-cover" src=""
+                             alt="{{ webName }}"/>
                     </a>
                 </div>
                 <p>{% trans "En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia." %}</p>

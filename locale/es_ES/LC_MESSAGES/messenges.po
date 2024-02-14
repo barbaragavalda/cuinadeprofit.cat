@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 # routing
 msgid "receptes"
@@ -65,6 +65,9 @@ msgstr "Todas"
 
 msgid "%e %B %G"
 msgstr "%e %B %G"
+
+msgid "receptes, receptes fàcils, receptes senzilles, cuina, cuina de profit, braves, les millors braves, barcelona"
+msgstr "recetas, recetas fáciles, recetas sencillas, cocina, cocina de provecho, bravas, las mejores bravas, barcelona"
 
 # recipe
 msgid "esborrany"

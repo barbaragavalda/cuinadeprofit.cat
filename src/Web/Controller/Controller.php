@@ -23,7 +23,7 @@ abstract class Controller extends \Core\Controller\Controller
     {
         $this->defaultMetatags();
 
-        $this->assign('staticVersion', 32);
+        $this->assign('staticVersion', 34);
 
         $this->run();
     }
@@ -33,8 +33,18 @@ abstract class Controller extends \Core\Controller\Controller
         $this->assign('canonical', $this->getCanonicalURL());
         $this->assign('webName', 'Cuina de Profit');
         $this->assign('metatagTitle', 'Cuina de Profit');
-        $this->assign('metatagKeywords', '');
-        $this->assign('metatagDescription', '');
+        $this->assign(
+            'metatagKeywords',
+            _(
+                'receptes, receptes fàcils, receptes senzilles, cuina, cuina de profit, braves, les millors braves, barcelona'
+            )
+        );
+        $this->assign(
+            'metatagDescription',
+            _(
+                'En aquesta web trobareu algunes de les nostres receptes preferides que sabem que us encanten, però també receptes fàcils per poder fer en el dia a dia.'
+            )
+        );
         $this->assign(
             'metatagImage', array(
                 'image' => $this->staticDomain . 'img/fb.jpg',
