@@ -96,10 +96,10 @@ class Filter extends Model
     {
         if ($uri == null) {
             return array(
-                array('id' => array(0, 4.9), 'uri' => self::LESS_5, 'name' => '0 - 4.9'),
-                array('id' => array(5, 6.9), 'uri' => self::BETWEEN_5_7, 'name' => '5 - 6.9'),
+                array('id' => array(9, 10), 'uri' => self::MORE_9, 'name' => '9 - 10'),
                 array('id' => array(7, 8.9), 'uri' => self::BETWEEN_7_9, 'name' => ' 7 - 8.9'),
-                array('id' => array(9, 10), 'uri' => self::MORE_9, 'name' => '9 - 10')
+                array('id' => array(5, 6.9), 'uri' => self::BETWEEN_5_7, 'name' => '5 - 6.9'),
+                array('id' => array(0, 4.9), 'uri' => self::LESS_5, 'name' => '0 - 4.9')
             );
         } else {
             switch (urldecode($uri)) {
