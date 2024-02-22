@@ -13,7 +13,7 @@ use PDO;
 class FilteredList extends Paginated
 {
 
-    public function __construct($page, $itemsPerPage = 12, $langID = null)
+    public function __construct($page, $itemsPerPage = 14, $langID = null)
     {
         parent::__construct($page, $itemsPerPage, false);
 
