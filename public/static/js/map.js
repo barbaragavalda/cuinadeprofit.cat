@@ -335,7 +335,7 @@ var CustomMap = function (staticDomain, dictionary, Map) {
             type = 'bar';
         }
         var status = 'to-do';
-        if (typeof (item['id_brava_type']) === 'undefined' || item['id_brava_type'] == 3) {
+        if (typeof (item['id_brava_type']) === 'undefined' || item['id_brava_type'] == 3 || item['id_brava_type'] == 4) {
             status = 'done';
         }
         if (typeof (item.reviews) != 'undefined' && item.reviews.length > 0) {
