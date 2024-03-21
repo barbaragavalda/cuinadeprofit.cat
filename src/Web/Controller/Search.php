@@ -130,6 +130,12 @@ abstract class Search extends Controller
         if (count($rate)) {
             $this->filters[ Filter::RATE ] = $rate;
         }
+
+        // local type
+        $localType = $this->filter->getLocalType($value);
+        if (count($localType)) {
+            $this->filters[ Filter::LOCAL_TYPE ] = $localType;
+        }
     }
 
     private function addFilter($key, $value)

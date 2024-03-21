@@ -16,6 +16,7 @@ class Filter extends Model
     const TAG          = 'tag';
     const TIME         = 'time';
     const YEAR         = 'year';
+    const LOCAL_TYPE   = 'local_type';
 
     const LESS_15M        = '<15min';
     const BETWEEN_15M_30M = '15min-30min';
@@ -90,6 +91,24 @@ class Filter extends Model
     {
         $types = $this->get(self::POTATO_TYPES, $uri);
         return $this->compare(self::POTATO_TYPES, $types);
+    }
+
+    public function getLocalType($uri = null): array
+    {
+        if ($uri == null) {
+            return array(
+                array('id' => 0, 'uri' => _('bar'), 'name' => _('Bar')),
+                array('id' => 1, 'uri' => _('restaurant'), 'name' => _('Restaurant'))
+            );
+        } else {
+            switch (urldecode($uri)) {
+                case _('bar'):
+                    return array(0);
+                case _('restaurant'):
+                    return array(1);
+            }
+        }
+        return array();
     }
 
     public function getRates($uri = null): array

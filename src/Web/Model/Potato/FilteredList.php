@@ -12,7 +12,6 @@ class FilteredList extends Paginated
 {
 
     const TO_DO_BAR        = 1;
-    const TO_DO_RESTAURANT = 2;
     const DONE             = 3;
     const DONE_OTHER       = 4;
 
@@ -49,6 +48,10 @@ class FilteredList extends Paginated
                 $innerJoin .= ' AND (' . implode(' OR ', $whereOr) . ')';
             }
         }
+        if (array_key_exists('local_type', $this->filters) && count($this->filters['local_type'])) {
+            $where                .= ' AND b.is_restaurant = :local_type';
+            $params['local_type'] = array('value' => $this->filters['local_type'][0] . '%', 'type' => PDO::PARAM_INT);
+        }
         if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
             $needsScore = true;
             $where      .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
@@ -65,7 +68,6 @@ class FilteredList extends Paginated
                 $types = $this->filters['brava_type'];
             } else {
                 $types[] = self::TO_DO_BAR;
-                $types[] = self::TO_DO_RESTAURANT;
             }
         }
 

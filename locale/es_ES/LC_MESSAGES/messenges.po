@@ -191,6 +191,18 @@ msgstr "1-2 horas"
 msgid "> 2 hores"
 msgstr "> 2 horas"
 
+msgid "Bar"
+msgstr "Bar"
+
+msgid "bar"
+msgstr "bar"
+
+msgid "Restaurant"
+msgstr "Restaurante"
+
+msgid "restaurant"
+msgstr "restaurante"
+
 msgid "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."
 msgstr "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
 

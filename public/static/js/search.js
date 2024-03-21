@@ -90,6 +90,7 @@ var Search = function (link) {
             ingredient = $('input[name="ingredient[]"]'),
             type = $('input[name="brava_type[]"]'),
             rate = $('input[name="rate"]'),
+            localType = $('input[name="local_type"]'),
             year = $('input[name="year[]"]'),
             q = $('input[name="q"]');
 
@@ -102,6 +103,7 @@ var Search = function (link) {
                 ingredients = addArray(ingredient),
                 types = addArray(type),
                 rates = addArray(rate),
+                localTypes = addArray(localType),
                 years = addArray(year),
                 query = q.val();
 
@@ -125,6 +127,9 @@ var Search = function (link) {
             }
             if (rates !== '') {
                 url.push(rates);
+            }
+            if (localTypes !== '') {
+                url.push(localTypes);
             }
             if (years !== '') {
                 url.push(years);

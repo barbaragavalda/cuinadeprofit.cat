@@ -25,6 +25,7 @@ class Map extends Search
         }
         $this->assign('rates', $this->filter->getRates());
         $this->assign('years', $this->filter->getPotatoYears());
+        $this->assign('local_type', $this->filter->getLocalType());
         $this->assign('link', $link);
 
         $this->assign('menu', 'potatoes');
