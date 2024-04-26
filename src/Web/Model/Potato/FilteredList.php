@@ -168,7 +168,7 @@ class FilteredList extends Paginated
         );
         $average = $this->mysql->query($sql, $params);
         if (count($average)) {
-            return round($average[0]['average'], 1);
+            return round($average[0]['average'], 2);
         }
         return 0;
     }

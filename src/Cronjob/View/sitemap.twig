@@ -2,7 +2,7 @@
 <!-- Generated on {{ now }} -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        {% include 'sitemap-loc.twig' with { url:{'ca': domain ~ 'ca', 'es': domain ~ 'es'}} %}
+        {% include 'sitemap-loc.twig' with { url:{'ca': domain ~ 'ca/', 'es': domain ~ 'es/'}} %}
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -19,8 +19,8 @@
     {% for recipe in recipes_ca %}
         <url>
             {% include 'sitemap-loc.twig' with { url:{
-                'ca': domain ~ 'ca/recepta/' ~ recipes_ca[loop.index-1].uri,
-                'es': domain ~ 'es/receta/' ~ recipes_es[loop.index-1].uri
+                'ca': domain ~ 'ca/recepta/' ~ recipes_ca[loop.index-1].uri ~ '/',
+                'es': domain ~ 'es/receta/' ~ recipes_es[loop.index-1].uri ~ '/'
             }} %}
             <lastmod>{{ recipe.created }}</lastmod>
             <changefreq>monthly</changefreq>
