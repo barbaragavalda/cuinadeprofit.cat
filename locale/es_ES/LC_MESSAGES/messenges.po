@@ -203,6 +203,12 @@ msgstr "Restaurante"
 msgid "restaurant"
 msgstr "restaurante"
 
+msgid "Ocultar tancats"
+msgstr "Ocultar cerrados"
+
+msgid "ocultar-tancats"
+msgstr "ocultar-cerrados"
+
 msgid "No hem trobat ningún resultat. Prova sort amb una %srecepta aleatòria%s."
 msgstr "No hemos encontrado ningún resultado. Prueba suerte con una %sreceta aleatoria%s."
 

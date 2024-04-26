@@ -84,6 +84,11 @@ abstract class Search extends Controller
 
     private function checkParam($value)
     {
+        // prevent closed
+        if ($value == _('ocultar-tancats')) {
+            $this->addFilter(Filter::PREVENT_CLOSED, 1);
+        }
+
         // year
         if (is_numeric($value)) {
             $this->addFilter(Filter::YEAR, $value);

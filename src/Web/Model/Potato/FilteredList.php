@@ -52,6 +52,9 @@ class FilteredList extends Paginated
             $where                .= ' AND b.is_restaurant = :local_type';
             $params['local_type'] = array('value' => $this->filters['local_type'][0] . '%', 'type' => PDO::PARAM_INT);
         }
+        if (array_key_exists('prevent_closed', $this->filters) && count($this->filters['prevent_closed'])) {
+            $where .= ' AND (b.is_closed = 0 OR b.is_closed IS NULL)';
+        }
         if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
             $needsScore = true;
             $where      .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';

@@ -28,7 +28,8 @@
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Etiqueta'|trans, field: 'tag', checkboxes: tags } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Categoria'|trans, field: 'ingredient_category', checkboxes: categories } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Ingredient'|trans, field: 'ingredient', checkboxes: ingredients } %}
-            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Tipus'|trans, field: 'brava_type', checkboxes: brava_type } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: '', field: 'prevent_closed', checkboxes: prevent_closed } %}
+            {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Estat'|trans, field: 'brava_type', checkboxes: brava_type } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'radio', title: 'Nota'|trans, field: 'rate', checkboxes: rates } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'radio', title: 'Tipus'|trans, field: 'local_type', checkboxes: local_type } %}
             {% include 'recipes/checkboxes.twig' with{ type: 'checkbox', title: 'Any'|trans, field: 'year', checkboxes: years } %}

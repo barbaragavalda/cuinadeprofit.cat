@@ -88,6 +88,7 @@ var Search = function (link) {
             tag = $('input[name="tag[]"]'),
             category = $('input[name="ingredient_category[]"]'),
             ingredient = $('input[name="ingredient[]"]'),
+            preventClosed = $('input[name="prevent_closed[]"]'),
             type = $('input[name="brava_type[]"]'),
             rate = $('input[name="rate"]'),
             localType = $('input[name="local_type"]'),
@@ -101,6 +102,7 @@ var Search = function (link) {
                 tags = addArray(tag),
                 categories = addArray(category),
                 ingredients = addArray(ingredient),
+                preventCloseds = addArray(preventClosed),
                 types = addArray(type),
                 rates = addArray(rate),
                 localTypes = addArray(localType),
@@ -121,6 +123,9 @@ var Search = function (link) {
             }
             if (ingredients !== '') {
                 url.push(ingredients);
+            }
+            if (preventCloseds !== '') {
+                url.push(preventCloseds);
             }
             if (types !== '') {
                 url.push(types);

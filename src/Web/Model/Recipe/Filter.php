@@ -8,15 +8,16 @@ use PDO;
 class Filter extends Model
 {
 
-    const CATEGORY     = 'ingredient_category';
-    const DIFFICULTY   = 'difficulty';
-    const INGREDIENT   = 'ingredient';
-    const POTATO_TYPES = 'brava_type';
-    const RATE         = 'rate';
-    const TAG          = 'tag';
-    const TIME         = 'time';
-    const YEAR         = 'year';
-    const LOCAL_TYPE   = 'local_type';
+    const CATEGORY       = 'ingredient_category';
+    const DIFFICULTY     = 'difficulty';
+    const INGREDIENT     = 'ingredient';
+    const POTATO_TYPES   = 'brava_type';
+    const RATE           = 'rate';
+    const TAG            = 'tag';
+    const TIME           = 'time';
+    const YEAR           = 'year';
+    const PREVENT_CLOSED = 'prevent_closed';
+    const LOCAL_TYPE     = 'local_type';
 
     const LESS_15M        = '<15min';
     const BETWEEN_15M_30M = '15min-30min';
@@ -109,6 +110,16 @@ class Filter extends Model
             }
         }
         return array();
+    }
+
+    public function getPreventClosed($uri = null): array
+    {
+        if ($uri == null) {
+            return array(
+                array('id' => 1, 'uri' => _('ocultar-tancats'), 'name' => _('Ocultar tancats'))
+            );
+        }
+        return array(1);
     }
 
     public function getRates($uri = null): array

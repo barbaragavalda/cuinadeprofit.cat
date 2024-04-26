@@ -23,6 +23,7 @@ class Map extends Search
             $link .= '/pro';
             $this->assign('brava_type', $this->filter->getPotatoTypes());
         }
+        $this->assign('prevent_closed', $this->filter->getPreventClosed());
         $this->assign('rates', $this->filter->getRates());
         $this->assign('years', $this->filter->getPotatoYears());
         $this->assign('local_type', $this->filter->getLocalType());
