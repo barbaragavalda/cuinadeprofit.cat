@@ -11,9 +11,9 @@ use PDO;
 class FilteredList extends Paginated
 {
 
-    const TO_DO_BAR        = 1;
-    const DONE             = 3;
-    const DONE_OTHER       = 4;
+    const TO_DO_BAR  = 1;
+    const DONE       = 3;
+    const DONE_OTHER = 4;
 
     public function __construct($page, $itemsPerPage = 12)
     {
@@ -100,25 +100,35 @@ class FilteredList extends Paginated
 
     private function prepare(&$item)
     {
-        $item['reviews'] = $this->getReviews($item['id']);
-        $item['link']    = \Web\Model\Restaurant\FilteredList::getLinkMaps($item);
+        $item['link'] = \Web\Model\Restaurant\FilteredList::getLinkMaps($item);
+        if (array_key_exists('view', $this->filters) && $this->filters['view'] == 'home') {
+            $item['reviews'] = $this->getReviews($item['id'], $this->filters['year'][0]);
+        } else {
+            $item['reviews'] = $this->getReviews($item['id']);
+        }
     }
 
-    private function getReviews($id): array
+    private function getReviews($id, $year = null): array
     {
-        $sql     = '
-            SELECT r.image, IFNULL(r.last_visit, "") AS last_visit, IFNULL(rl.review, "") AS review, 
-                   IFNULL(r.price, "") AS price, IFNULL(r.amount, "") AS amount, IFNULL(r.potatoes, "") AS potatoes, 
-                   IFNULL(r.sauce, "") AS sauce, IFNULL(r.score, "") AS score
-            FROM brava_review AS r
-            INNER JOIN brava_review_lang AS rl ON r.id_brava_review = rl.id_brava_review AND rl.id_appacman_lang = :lang
-            WHERE r.id_brava = :id
-            ORDER BY r.last_visit DESC
-        ';
-        $params  = array(
+        $where  = '';
+        $params = array(
             'lang' => array('value' => $this->langID, 'type' => PDO::PARAM_INT),
             'id'   => array('value' => $id, 'type' => PDO::PARAM_INT)
         );
+        if ($year != null) {
+            $params['year'] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
+            $where          = ' AND r.last_visit LIKE :year';
+        }
+
+        $sql     = "
+            SELECT r.image, IFNULL(r.last_visit, '') AS last_visit, IFNULL(rl.review, '') AS review, 
+                   IFNULL(r.price, '') AS price, IFNULL(r.amount, '') AS amount, IFNULL(r.potatoes, '') AS potatoes, 
+                   IFNULL(r.sauce, '') AS sauce, IFNULL(r.score, '') AS score
+            FROM brava_review AS r
+            INNER JOIN brava_review_lang AS rl ON r.id_brava_review = rl.id_brava_review AND rl.id_appacman_lang = :lang
+            WHERE r.id_brava = :id $where
+            ORDER BY r.last_visit DESC
+        ";
         $reviews = $this->mysql->query($sql, $params);
         if (count($reviews)) {
             foreach ($reviews as &$review) {

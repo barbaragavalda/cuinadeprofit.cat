@@ -138,7 +138,7 @@ class Filter extends Model
     public function getPotatoYears($limit = PHP_INT_MAX, $preventCurrent = false): array
     {
         $having = '';
-        if ($preventCurrent) {
+        if ($preventCurrent && date('m') < 4) {
             $having = 'HAVING id <> YEAR(CURDATE())';
         }
         $sql   = "

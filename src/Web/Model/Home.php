@@ -33,7 +33,7 @@ class Home extends Model
         $notIn = array();
         foreach ($years as &$year) {
             $list = new Potato\FilteredList(1, 10);
-            $list->setFilters(array('year' => array($year['id']), 'not_in' => $notIn));
+            $list->setFilters(array('year' => array($year['id']), 'view' => 'home'));
             $list->initAll();
             $potatoes      = $list->getItemsPage();
             $notIn         = array_merge($notIn, array_column($potatoes, 'id'));

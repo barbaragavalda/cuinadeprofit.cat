@@ -864,7 +864,7 @@ section h5 {
  * RESTAURANTS
  ******************************/
 #map {
-    aspect-ratio: 2/1;
+    height: 100%;
 }
 
 .marker-position {
