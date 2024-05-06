@@ -55,9 +55,8 @@ class FilteredList extends Paginated
         if (array_key_exists('prevent_closed', $this->filters) && count($this->filters['prevent_closed'])) {
             $where .= ' AND (b.is_closed = 0 OR b.is_closed IS NULL)';
         }
-        if (array_key_exists('not_in', $this->filters) && count($this->filters['not_in'])) {
+        if (array_key_exists('view', $this->filters) && $this->filters['view'] == 'home') {
             $needsScore = true;
-            $where      .= ' AND b.id_brava NOT IN(' . implode(', ', $this->filters['not_in']) . ')';
             $where      .= ' AND b.is_closed <> 1';
             $limit      = "
                 ORDER BY score DESC

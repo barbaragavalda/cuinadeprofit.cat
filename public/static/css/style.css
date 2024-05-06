@@ -866,6 +866,7 @@ section h5 {
 #map {
     height: 100%;
     max-height: 100vh;
+    min-height: 500px;
 }
 
 .marker-position {
@@ -1074,6 +1075,7 @@ section h5 {
     /* restaurants */
     #map {
         aspect-ratio: 1/1;
+        min-height: auto;
         max-height: none;
     }
 
