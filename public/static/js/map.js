@@ -239,15 +239,15 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                         html += '<li>';
                         html += '<p>';
                         var scoreTable = '';
+                        var classBadge = 'main-bg white-color';
+                        if (reviews[j].score < 5) {
+                            classBadge = 'secondary-bg black-color';
+                        }
+                        if (reviews[j].score >= 8) {
+                            classBadge = 'tertiary-bg black-color';
+                        }
+                        html += '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
                         if (isNotEmpty(reviews[j].price) || isNotEmpty(reviews[j].amount) || isNotEmpty(reviews[j].potatoes) || isNotEmpty(reviews[j].sauce)) {
-                            var classBadge = 'main-bg white-color';
-                            if (reviews[j].score < 5) {
-                                classBadge = 'secondary-bg black-color';
-                            }
-                            if (reviews[j].score >= 8) {
-                                classBadge = 'tertiary-bg black-color';
-                            }
-                            html += '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
                             scoreTable = '<table>' +
                                 '<tr>' +
                                 '   <th class="grey-border ' + classBadge + '">' + dictionary.price + '</th>' +

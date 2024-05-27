@@ -133,6 +133,10 @@ h2.ms-madi, #list h2 {
     margin-top: 5px;
 }
 
+a:hover {
+    text-decoration-thickness: 1px;
+}
+
 #list h2 {
     display: flex !important;
     flex-direction: row;
@@ -598,6 +602,10 @@ section h5 {
     width: 50%;
     padding: 10px 0;
     margin-bottom: 20px;
+}
+
+#recipes .row{
+    margin-right: 0;
 }
 
 .filter {
