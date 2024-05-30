@@ -162,22 +162,33 @@ class FilteredList extends Paginated
         for ($i = $year; $i > $year - 4; $i--) {
             $value   = $this->getDone($i);
             $degrees = round(180 * $value / $total);
-            $stats[] = array('name' => $i, 'value' => $value, 'degrees' => $degrees);
+            $stats[] = array(
+                'name'    => $i,
+                'value'   => $value,
+                'degrees' => $degrees,
+                'average' => $this->getAverage($i)
+            );
         }
         return $stats;
     }
 
-    private function getAverage(): float
+    private function getAverage($year = null): float
     {
-        $sql     = '
+        $where  = '';
+        $params = array(
+            'type' => array('value' => self::DONE, 'type' => PDO::PARAM_INT)
+        );
+        if ($year != null) {
+            $where          = ' AND br.last_visit LIKE :year';
+            $params['year'] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
+        }
+
+        $sql     = "
             SELECT AVG(br.score) AS average
             FROM brava AS b
             INNER JOIN brava_review AS br ON br.id_brava = b.id_brava
-            WHERE b.id_brava_type = :type
-        ';
-        $params  = array(
-            'type' => array('value' => self::DONE, 'type' => PDO::PARAM_INT)
-        );
+            WHERE b.id_brava_type = :type $where
+        ";
         $average = $this->mysql->query($sql, $params);
         if (count($average)) {
             return round($average[0]['average'], 2);

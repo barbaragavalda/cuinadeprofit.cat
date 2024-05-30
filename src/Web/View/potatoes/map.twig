@@ -23,20 +23,23 @@
                 </style>
                 <div>
                     {% if loop.index > 2 %}
-                        <a href="{{ domain }}{% trans "braves" %}/{{ stat.name }}" class="black-color">
-                    {% endif %}
-                            <div id="stat-{{ loop.index }}" class="stat grey-bg">
-                                <div class="mask full">
-                                    <div class="fill {{ color }}"></div>
-                                </div>
-                                <div class="mask half">
-                                    <div class="fill {{ color }}"></div>
-                                </div>
-                                <p class="black-color white-bg">{{ stat.value }}</p>
+                    <a href="{{ domain }}{% trans "braves" %}/{{ stat.name }}" class="black-color">
+                        {% endif %}
+                        <div id="stat-{{ loop.index }}" class="stat grey-bg">
+                            <div class="mask full">
+                                <div class="fill {{ color }}"></div>
                             </div>
-                            {{ stat.name }}
-                    {% if loop.index > 2 %}
-                        </a>
+                            <div class="mask half">
+                                <div class="fill {{ color }}"></div>
+                            </div>
+                            <p class="black-color white-bg">
+                                {{ stat.value }}
+                                {% if stat.average %}<small>{{ stat.average }}</small>{% endif %}
+                            </p>
+                        </div>
+                        {{ stat.name }}
+                        {% if loop.index > 2 %}
+                    </a>
                     {% endif %}
                 </div>
                 {% set color = 'main-bg' %}
