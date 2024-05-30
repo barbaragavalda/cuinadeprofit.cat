@@ -1094,6 +1094,10 @@ section h5 {
         min-height: auto;
         max-height: none;
     }
+    .stats{
+        padding: 0;
+        gap: 15px;
+    }
 
     /* footer */
     footer .col-md-5, footer ul {
