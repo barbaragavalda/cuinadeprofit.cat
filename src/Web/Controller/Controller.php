@@ -23,7 +23,7 @@ abstract class Controller extends \Core\Controller\Controller
     {
         $this->defaultMetatags();
 
-        $this->assign('staticVersion', 43);
+        $this->assign('staticVersion', 44);
 
         $this->run();
     }
