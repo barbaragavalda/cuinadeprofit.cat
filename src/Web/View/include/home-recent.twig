@@ -1,7 +1,7 @@
 <div class="item {{ type }}">
     {% include 'include/image.twig' with { url: item.image, link: item.link, alt: item.name, aspectRatio: '1/1' } %}
     <div class="text white-bg">
-        <a href="{{ item.link }}" class="ms-madi secondary-color">{{ item.name }}</a>
+        <a href="{{ item.link }}" class="secondary-font secondary-color">{{ item.name }}</a>
         <div><small class="tertiary-color">{{ item.created }}</small></div>
     </div>
 </div>

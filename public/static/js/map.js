@@ -54,7 +54,7 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                 var id = marker.id;
                 var html = '<div class="map-info">' +
                     '<a href="' + items[id].link + '" class="secondary-color" target="_blank">' +
-                    '   <h2 class="ms-madi">' + items[id].name + '</h2>' +
+                    '   <h2 class="secondary-font">' + items[id].name + '</h2>' +
                     '</a>';
                 if (items[id]['is_closed'] == 1) {
                     html += '<small class="badge closed secondary-bg white-color">' + dictionary['closed'].toUpperCase() + '</small>';
@@ -69,7 +69,7 @@ var CustomMap = function (staticDomain, dictionary, Map) {
                     html += '<p><b>Última visita:</b> ' + items[id].last_visit + '</p>';
                 }
                 if (isNotEmpty(items[id].text)) {
-                    html += items[id].text;
+                    html += '<div class="hint">' + items[id].text + '</div>';
                 }
                 if (typeof (items[id].reviews) != 'undefined' && items[id].reviews.length > 0) {
                     var reviews = items[id].reviews;

@@ -82,7 +82,7 @@
                             <div class="item mix year-{{ category.uri }}">
                                 {% set link = domain ~ 'braves'|trans ~ '/?q=' ~ item.name|url_encode %}
                                 {% include 'include/image.twig' with { url: item.reviews[0].image, link: link, alt: item.name, aspectRatio: '4/3' } %}
-                                <a href="{{ link }}" class="ms-madi text secondary-color">{{ item.name }}</a>
+                                <a href="{{ link }}" class="secondary-font text secondary-color">{{ item.name }}</a>
                             </div>
                         {% endfor %}
                     {% endfor %}

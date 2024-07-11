@@ -29,14 +29,6 @@ body, #main-header a, .hover-effect .item h2 a {
     background: white;
 }
 
-::selection {
-    background-color: rgba(150, 197, 189, 0.3);
-}
-
-::-moz-selection {
-    background-color: rgba(150, 197, 189, 0.3);
-}
-
 .main-color,
 #main-header a:hover, #main-header a.current {
     color: rgb(24, 47, 65) !important;
@@ -67,6 +59,18 @@ body, #main-header a, .hover-effect .item h2 a {
 .categories ul li::after,
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: rgb(241, 147, 114);
+}
+
+::selection {
+    background-color: rgba(150, 197, 189, 0.3);
+}
+
+::-moz-selection {
+    background-color: rgba(150, 197, 189, 0.3);
+}
+
+.map-info .hint {
+    background-color: rgba(150, 197, 189, 0.3);
 }
 
 .tertiary-color {
@@ -113,23 +117,31 @@ input::placeholder {
 
 /* font */
 @font-face {
-    font-family: 'MsMadi';
+    font-family: 'Kranky';
     font-style: normal;
-    src: url('../font/MsMadi-Regular.ttf');
+    src: url('../font/Kranky-Regular.ttf');
     font-display: swap;
 }
 
-.ms-madi {
-    font-family: 'MsMadi', sans-serif;
+/*
+https://fonts.google.com/specimen/Fredericka+the+Great
+https://fonts.google.com/specimen/Sacramento
+https://fonts.google.com/specimen/Bad+Script
+https://fonts.google.com/specimen/Handlee
+https://fonts.google.com/specimen/Chelsea+Market
+ */
+
+.secondary-font {
+    font-family: 'Kranky', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-h1.ms-madi {
+h1.secondary-font {
     font-size: 3.5rem;
     line-height: 1em;
 }
 
-h2.ms-madi, #list h2 {
+h2.secondary-font, #list h2 {
     margin-top: 5px;
 }
 
@@ -145,16 +157,11 @@ a:hover {
     gap: 10px;
 }
 
-h2.ms-madi a, #list h2 .ms-madi {
-    font-size: 1.8rem !important;
-    line-height: 1em;
-}
-
-h2.ms-madi small, #list h2 small {
+h2.secondary-font small, #list h2 small {
     font-size: 12px;
 }
 
-.hover-effect .item .ms-madi {
+.hover-effect .item .secondary-font {
     font-size: 1.4rem;
 }
 
@@ -503,11 +510,11 @@ section h5 {
     position: relative;
 }
 
-.mosaic.hover-effect .item.large-item .ms-madi {
+.mosaic.hover-effect .item.large-item .secondary-font {
     font-size: 34px;
 }
 
-.mosaic.hover-effect .item.large-item .ms-madi:hover {
+.mosaic.hover-effect .item.large-item .secondary-font:hover {
     text-decoration: none;
 }
 
@@ -604,7 +611,7 @@ section h5 {
     margin-bottom: 20px;
 }
 
-#recipes .row{
+#recipes .row {
     margin-right: 0;
 }
 
@@ -882,8 +889,12 @@ section h5 {
     padding-bottom: 14px;
 }
 
+.gm-style-iw-d {
+    margin-top: -35px;
+}
+
 .map-info p {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .map-info img {
@@ -892,6 +903,11 @@ section h5 {
     object-fit: contain;
     object-position: left;
     margin-bottom: 16px;
+}
+
+.map-info .hint {
+    border-radius: 3px;
+    padding: 10px 10px 5px 10px;
 }
 
 .map-info .reviews {
@@ -981,7 +997,8 @@ section h5 {
     position: absolute;
     z-index: 100;
 }
-.stat small{
+
+.stat small {
     display: block;
     font-size: 0.55em;
 }
@@ -1094,7 +1111,8 @@ section h5 {
         min-height: auto;
         max-height: none;
     }
-    .stats{
+
+    .stats {
         padding: 0;
         gap: 15px;
     }
