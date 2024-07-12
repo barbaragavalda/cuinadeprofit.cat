@@ -1,16 +1,8 @@
 'use strict';
 
-async function initMap() {
-    const {Map} = await google.maps.importLibrary('maps');
-    var map = CustomMap(staticDomain, dictionary, Map);
-    map.init(items);
-}
+const CustomMap = function (staticDomain, dictionary, Map, AdvancedMarkerElement) {
 
-initMap();
-
-var CustomMap = function (staticDomain, dictionary, Map) {
-
-    var _infoWindow = null;
+    let _infoWindow = null;
 
     const icons = {
         'bar-done': staticDomain + 'marker-bar-done.png',
@@ -24,100 +16,109 @@ var CustomMap = function (staticDomain, dictionary, Map) {
 
     function init(items) {
         const bounds = new google.maps.LatLngBounds();
-        const map = new google.maps.Map(document.getElementById("map"), {
+        const map = new Map(document.getElementById('map'), {
             minZoom: 0,
             maxZoom: 17,
             center: {lat: 41.38289, lng: 2.17743},
-            mapId: '5c25a3c7e5b7ba85'
+            mapId: '5c25a3c7e5b7ba85',
+            zoomControl: true,
+            mapTypeControl: false,
+            scaleControl: true,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: true
         });
 
         const markers = [];
-        for (var i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             const position = {lat: parseFloat(items[i].latitude), lng: parseFloat(items[i].longitude)};
-            const marker = new google.maps.Marker({
+            const marker = new AdvancedMarkerElement({
                 position: position,
                 map: map,
-                icon: {
-                    scaledSize: new google.maps.Size(44, 50),
-                    url: icons[getType(items[i])]
-                }
+                content: getPin(icons[getType(items[i])], 0),
             });
             bounds.extend(position);
             markers.push(marker);
             marker.id = i;
 
-            marker.addListener("click", () => {
+            marker.addListener('click', () => {
                 if (_infoWindow != null) {
                     _infoWindow.close();
                 }
 
-                var id = marker.id;
-                var html = '<div class="map-info">' +
-                    '<a href="' + items[id].link + '" class="secondary-color" target="_blank">' +
-                    '   <h2 class="secondary-font">' + items[id].name + '</h2>' +
-                    '</a>';
+                const id = marker.id;
+                let html = `
+                    <div class="map-info">
+                        <a href="${items[id].link}" class="secondary-color" target="_blank">
+                        <h2 class="secondary-font">${items[id].name}</h2>
+                    </a>`;
                 if (items[id]['is_closed'] == 1) {
-                    html += '<small class="badge closed secondary-bg white-color">' + dictionary['closed'].toUpperCase() + '</small>';
+                    html += `<small class="badge closed secondary-bg white-color">${dictionary['closed'].toUpperCase()}</small>`;
                 }
                 if (isNotEmpty(items[id].image)) {
-                    html += '<img src="' + items[id].image + '" />';
+                    html += `<img src="${items[id].image}" alt="${items[id].name}" />`;
                 }
                 if (isNotEmpty(items[id].address)) {
-                    html += '<p><b>Adreça:</b> ' + items[id].address + '</p>';
+                    html += `<p><b>Adreça:</b> ${items[id].address}</p>`;
                 }
                 if (isNotEmpty(items[id].last_visit)) {
-                    html += '<p><b>Última visita:</b> ' + items[id].last_visit + '</p>';
+                    html += `<p><b>Última visita:</b> ${items[id].last_visit}</p>`;
                 }
                 if (isNotEmpty(items[id].text)) {
-                    html += '<div class="hint">' + items[id].text + '</div>';
+                    html += `<div class="hint">${items[id].text}</div>`;
                 }
                 if (typeof (items[id].reviews) != 'undefined' && items[id].reviews.length > 0) {
-                    var reviews = items[id].reviews;
-                    html += '<ul class="reviews">';
-                    for (var j = 0; j < reviews.length; j++) {
-                        html += '<li>';
-                        html += '<p>';
-                        var scoreTable = '';
-                        var classBadge = 'main-bg white-color';
+                    const reviews = items[id].reviews;
+                    html += `<ul class="reviews">`;
+                    for (let j = 0; j < reviews.length; j++) {
+                        let scoreTable = '';
+                        let classBadge = 'main-bg white-color';
                         if (reviews[j].score < 5) {
                             classBadge = 'secondary-bg black-color';
                         }
                         if (reviews[j].score >= 8) {
                             classBadge = 'tertiary-bg black-color';
                         }
-                        html += '<small class="badge ' + classBadge + '"><b>' + dictionary.score + ':</b> ' + reviews[j].score + '</small> ';
+
                         if (isNotEmpty(reviews[j].price) || isNotEmpty(reviews[j].amount) || isNotEmpty(reviews[j].potatoes) || isNotEmpty(reviews[j].sauce)) {
-                            scoreTable = '<table>' +
-                                '<tr>' +
-                                '   <th class="grey-border ' + classBadge + '">' + dictionary.price + '</th>' +
-                                '   <th class="grey-border ' + classBadge + '">' + dictionary.amount + '</th>' +
-                                '   <th class="grey-border ' + classBadge + '">' + dictionary.potatoes + '</th>' +
-                                '   <th class="grey-border ' + classBadge + '">' + dictionary.sauce + '</th>' +
-                                '</tr>' +
-                                '<tr>' +
-                                '   <td class="grey-border">' + reviews[j].price + '</td>' +
-                                '   <td class="grey-border">' + reviews[j].amount + '</td>' +
-                                '   <td class="grey-border">' + reviews[j].potatoes + '</td>' +
-                                '   <td class="grey-border">' + reviews[j].sauce + '</td>' +
-                                '</tr>' +
-                                '</table>';
+                            scoreTable = `
+                            <table>
+                                <tr>
+                                    <th class="grey-border ${classBadge}">${dictionary.price}</th>
+                                    <th class="grey-border ${classBadge}">${dictionary.potatoes}</th>
+                                    <th class="grey-border ${classBadge}">${dictionary.sauce}</th>
+                                    <th class="grey-border ${classBadge}">${dictionary.score}</th>
+                                </tr>
+                                <tr>
+                                    <th class="grey-border">${reviews[j].price}</th>
+                                    <th class="grey-border">${reviews[j].amount}</th>
+                                    <th class="grey-border">${reviews[j].potatoes}</th>
+                                    <th class="grey-border">${reviews[j].sauce}</th>
+                                </tr>
+                            </table>`;
                         }
+
+                        html += `
+                            <li>
+                                <p>
+                                    <small class="badge ${classBadge}"><b>${dictionary.score}:</b> ${reviews[j].score}</small>
+                        `;
                         if (isNotEmpty(reviews[j].last_visit)) {
-                            html += '<b>' + dictionary.last_visit + ':</b> ' + reviews[j].last_visit;
+                            html += `<b>${dictionary.last_visit}:</b> ${reviews[j].last_visit}`;
                         }
-                        html += '</p>';
+                        html += `</p>`;
                         if (isNotEmpty(reviews[j].image)) {
-                            html += '<img src="' + reviews[j].image + '" />';
+                            html += `<img src="${reviews[j].image}" alt="${items[id].name}" />`;
                         }
                         html += scoreTable;
                         if (isNotEmpty(reviews[j].review)) {
-                            html += '<p>' + reviews[j].review + '</p>';
+                            html += `<p>${reviews[j].review}</p>`;
                         }
-                        html += '</li>';
+                        html += `</li>`;
                     }
-                    html += '</ul>';
+                    html += `</ul>`;
                 }
-                html += '</div>';
+                html += `</div>`;
                 _infoWindow = new google.maps.InfoWindow({
                     content: html,
                     maxWidth: 300,
@@ -129,18 +130,9 @@ var CustomMap = function (staticDomain, dictionary, Map) {
 
         let renderer = {
             render: ({count, position}) =>
-                new google.maps.Marker({
-                    label: {
-                        text: String(count),
-                        color: '#96C5BD',
-                        fontSize: '13px',
-                        className: 'marker-position'
-                    },
+                new AdvancedMarkerElement({
                     position,
-                    icon: {
-                        scaledSize: new google.maps.Size(57, 65),
-                        url: staticDomain + 'marker-bar-done.png',
-                    },
+                    content: getPin(staticDomain + 'marker-bar-done.png', count),
                     // adjust zIndex to be above other markers
                     zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
                 }),
@@ -157,11 +149,25 @@ var CustomMap = function (staticDomain, dictionary, Map) {
         map.fitBounds(bounds);
     }
 
-    function isNotEmpty(string) {
-        if (!['undefined', 'object'].includes(typeof (string)) && string !== '' && string !== 'null') {
-            return true;
+    function getPin(imageSrc, count) {
+        const pin = document.createElement('div');
+
+        let html = '';
+        if (count > 0) {
+            pin.classList.add('custom-marker-big');
+            html += `<span>${count}</span>`;
+        } else {
+            pin.classList.add('custom-marker');
         }
-        return false;
+        html += `<img src="${imageSrc}" />`;
+        pin.innerHTML = html;
+
+        return pin;
+    }
+
+    function isNotEmpty(string) {
+        return !['undefined', 'object'].includes(typeof (string)) && string !== '' && string !== 'null';
+
     }
 
     function getType(item) {
@@ -169,11 +175,11 @@ var CustomMap = function (staticDomain, dictionary, Map) {
             return 'closed';
         }
 
-        var type = 'restaurant';
+        let type = 'restaurant';
         if (item['is_restaurant'] == 0) {
             type = 'bar';
         }
-        var status = 'to-do';
+        let status = 'to-do';
         if (typeof (item['id_brava_type']) === 'undefined' || item['id_brava_type'] == 3 || item['id_brava_type'] == 4) {
             status = 'done';
         }
@@ -190,3 +196,13 @@ var CustomMap = function (staticDomain, dictionary, Map) {
     }
 
 };
+
+async function initMap() {
+    const {Map} = await google.maps.importLibrary('maps');
+    const {AdvancedMarkerElement} = await google.maps.importLibrary('marker');
+
+    let map = CustomMap(staticDomain, dictionary, Map, AdvancedMarkerElement);
+    map.init(items);
+}
+
+initMap();
