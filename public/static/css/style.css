@@ -123,14 +123,6 @@ input::placeholder {
     font-display: swap;
 }
 
-/*
-https://fonts.google.com/specimen/Fredericka+the+Great
-https://fonts.google.com/specimen/Sacramento
-https://fonts.google.com/specimen/Bad+Script
-https://fonts.google.com/specimen/Handlee
-https://fonts.google.com/specimen/Chelsea+Market
- */
-
 .secondary-font {
     font-family: 'Kranky', sans-serif;
     -webkit-font-smoothing: antialiased;
