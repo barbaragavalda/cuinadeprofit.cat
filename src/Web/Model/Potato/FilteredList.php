@@ -148,9 +148,15 @@ class FilteredList extends Paginated
 
     public function getStats(): array
     {
-        $total = $this->getDone();
-        $stats = array(
-            array('name' => _('En total'), 'value' => $total, 'degrees' => 180)
+        $total       = $this->getDone();
+        $nextHundred = ceil($total / 100) * 100;
+        $degrees     = round(180 * $total / $nextHundred);
+        $stats       = array(
+            array('name'    => _('En total'),
+                  'value'   => $total,
+                  'degrees' => $degrees,
+                  'average' => sprintf(_('de %s'), $nextHundred)
+            )
         );
 
         $average = $this->getAverage();

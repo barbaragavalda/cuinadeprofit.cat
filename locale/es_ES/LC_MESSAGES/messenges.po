@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 # routing
 msgid "receptes"
@@ -231,6 +231,9 @@ msgstr "Ver en versión llista"
 # brava
 msgid "En total"
 msgstr "En total"
+
+msgid "de %"
+msgstr "de %"
 
 msgid "Nota mitjana"
 msgstr "Nota media"
