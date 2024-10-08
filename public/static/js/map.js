@@ -85,9 +85,9 @@ const CustomMap = function (staticDomain, dictionary, Map, AdvancedMarkerElement
                             <table>
                                 <tr>
                                     <th class="grey-border ${classBadge}">${dictionary.price}</th>
+                                    <th class="grey-border ${classBadge}">${dictionary.amount}</th>
                                     <th class="grey-border ${classBadge}">${dictionary.potatoes}</th>
                                     <th class="grey-border ${classBadge}">${dictionary.sauce}</th>
-                                    <th class="grey-border ${classBadge}">${dictionary.score}</th>
                                 </tr>
                                 <tr>
                                     <th class="grey-border">${reviews[j].price}</th>
