@@ -20,6 +20,7 @@ const CustomMap = function (staticDomain, dictionary, Map, AdvancedMarkerElement
             minZoom: 0,
             maxZoom: 17,
             center: {lat: 41.38289, lng: 2.17743},
+            disableDefaultUI: true,
             mapId: '5c25a3c7e5b7ba85',
             zoomControl: true,
             mapTypeControl: false,

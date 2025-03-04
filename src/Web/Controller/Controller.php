@@ -2,6 +2,7 @@
 
 namespace Web\Controller;
 
+use Core\Utils\Config;
 use Web\Model\Translate;
 
 abstract class Controller extends \Core\Controller\Controller
@@ -23,7 +24,9 @@ abstract class Controller extends \Core\Controller\Controller
     {
         $this->defaultMetatags();
 
-        $this->assign('staticVersion', 49);
+        $config = Config::getInstance();
+        $this->assign('donateButton', $config->get('donate-button'));
+        $this->assign('staticVersion', 51);
 
         $this->run();
     }
@@ -46,7 +49,8 @@ abstract class Controller extends \Core\Controller\Controller
             )
         );
         $this->assign(
-            'metatagImage', array(
+            'metatagImage',
+            array(
                 'image' => $this->staticDomain . 'img/fb.jpg',
                 'width' => 1200,
                 'height' => 630

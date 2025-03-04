@@ -97,6 +97,10 @@
                     {% include 'include/li-menu.twig' with{ name: 'Receptes', link: 'receptes', code: 'recipes' } %}
                     {% include 'include/li-menu.twig' with{ name: 'Braves', link: 'braves', code: 'potatoes' } %}
                     {% include 'include/li-menu.twig' with{ name: 'Restaurants', link: 'restaurants', code: 'restaurants' } %}
+                    <li>
+                        <a href="{{ donateButton }}" target="_blank"
+                           class="btn secondary-bg-alpha black-color">{% trans "Compra'ns unes braves" %}</a>
+                    </li>
                 </ul>
             </nav>
             <div class="search-button secondary-color">
@@ -130,6 +134,11 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ donateButton }}" target="_blank" class="btn secondary-bg black-color">
+                    {% trans "Compra'ns unes braves" %}
+                </a>
+            </div>
             <div class="col-lg-12">
                 <div class="copy secondary-color">
                     Copyright &copy;2021 - {{ 'now'|date('Y') }} {{ webName }}
