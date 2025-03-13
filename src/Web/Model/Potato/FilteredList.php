@@ -11,7 +11,7 @@ use PDO;
 class FilteredList extends Paginated
 {
 
-    const TO_DO_BAR  = 1;
+    const TO_DO      = 1;
     const DONE       = 3;
     const DONE_OTHER = 4;
 
@@ -69,7 +69,7 @@ class FilteredList extends Paginated
             if (array_key_exists('brava_type', $this->filters) && count($this->filters['brava_type'])) {
                 $types = $this->filters['brava_type'];
             } else {
-                $types[] = self::TO_DO_BAR;
+                $types[] = self::TO_DO;
             }
         }
 
@@ -152,10 +152,11 @@ class FilteredList extends Paginated
         $nextHundred = ceil($total / 100) * 100;
         $degrees     = round(180 * $total / $nextHundred);
         $stats       = array(
-            array('name'    => _('En total'),
-                  'value'   => $total,
-                  'degrees' => $degrees,
-                  'average' => sprintf(_('de %s'), $nextHundred)
+            array(
+                'name'    => _('En total'),
+                'value'   => $total,
+                'degrees' => $degrees,
+                'average' => sprintf(_('de %s'), $nextHundred)
             )
         );
 
@@ -204,19 +205,33 @@ class FilteredList extends Paginated
 
     private function getDone(?int $year = null): int
     {
+        return $this->get(self::DONE, $year);
+    }
+
+    public function getToDo(): int
+    {
+        return $this->get(self::TO_DO);
+    }
+
+    private function get($type = self::DONE, ?int $year = null)
+    {
         $innerJoin = '';
         $params    = array(
-            'type' => array('value' => self::DONE, 'type' => PDO::PARAM_INT)
+            'type' => array('value' => $type, 'type' => PDO::PARAM_INT)
         );
-        if ($year != null) {
-            $innerJoin      = ' AND last_visit LIKE :year';
-            $params['year'] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
+
+        if($type != self::TO_DO) {
+            $innerJoin = "INNER JOIN brava_review AS br ON br.id_brava = b.id_brava $innerJoin";
+            if ($year != null) {
+                $innerJoin      .= ' AND last_visit LIKE :year';
+                $params['year'] = array('value' => $year . '%', 'type' => PDO::PARAM_STR);
+            }
         }
 
         $sql    = "
-            SELECT COUNT(br.id_brava_review) AS count
+            SELECT COUNT(b.id_brava) AS count
             FROM brava AS b
-            INNER JOIN brava_review AS br ON br.id_brava = b.id_brava $innerJoin
+            $innerJoin
             WHERE b.id_brava_type = :type
         ";
         $result = $this->mysql->query($sql, $params);

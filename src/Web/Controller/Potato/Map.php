@@ -22,6 +22,7 @@ class Map extends Search
             $this->assign('isPro', true);
             $link .= '/pro';
             $this->assign('brava_type', $this->filter->getPotatoTypes());
+            $this->assign('toDo', $this->list->getToDo());
         }
         $this->assign('prevent_closed', $this->filter->getPreventClosed());
         $this->assign('rates', $this->filter->getRates());

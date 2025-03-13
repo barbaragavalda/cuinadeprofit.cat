@@ -57,5 +57,8 @@
 {% endblock %}
 
 {% block filteredView %}
+    {% if isPro %}
+        <small>{% trans "Patates per fer:" %} <b>{{ toDo }}</b></small>
+    {% endif %}
     <div id="map"></div>
 {% endblock %}
