@@ -26,7 +26,7 @@ abstract class Controller extends \Core\Controller\Controller
 
         $config = Config::getInstance();
         $this->assign('donateButton', $config->get('donate-button'));
-        $this->assign('staticVersion', 53);
+        $this->assign('staticVersion', 54);
 
         $this->run();
     }

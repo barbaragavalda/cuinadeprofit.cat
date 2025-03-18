@@ -80,8 +80,8 @@ const CustomMap = function (staticDomain, dictionary, Map, AdvancedMarkerElement
                         if (reviews[j].score >= 8) {
                             classBadge = 'tertiary-bg black-color';
                         }
-
-                        if (isNotEmpty(reviews[j].price) || isNotEmpty(reviews[j].amount) || isNotEmpty(reviews[j].potatoes) || isNotEmpty(reviews[j].sauce)) {
+                        
+                        if (isNotEmpty(reviews[j].price) || reviews[j].amount > 0 || reviews[j].potatoes > 0 || reviews[j].sauce > 0) {
                             scoreTable = `
                             <table>
                                 <tr>

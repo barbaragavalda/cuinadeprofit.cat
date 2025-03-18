@@ -124,8 +124,8 @@ class FilteredList extends Paginated
 
         $sql     = "
             SELECT r.image, IFNULL(r.last_visit, '') AS last_visit, IFNULL(rl.review, '') AS review, 
-                   IFNULL(r.price, '') AS price, IFNULL(r.amount, '') AS amount, IFNULL(r.potatoes, '') AS potatoes, 
-                   IFNULL(r.sauce, '') AS sauce, IFNULL(r.score, '') AS score
+                   IFNULL(r.price, '') AS price, IFNULL(r.amount, 0) AS amount, IFNULL(r.potatoes, 0) AS potatoes, 
+                   IFNULL(r.sauce, 0) AS sauce, IFNULL(r.score, 0) AS score
             FROM brava_review AS r
             INNER JOIN brava_review_lang AS rl ON r.id_brava_review = rl.id_brava_review AND rl.id_appacman_lang = :lang
             WHERE r.id_brava = :id $where
