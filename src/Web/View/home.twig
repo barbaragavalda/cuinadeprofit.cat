@@ -22,11 +22,14 @@
     </script>
 {% endblock %}
 
+{% block startLogo %}<h1>{% endblock %}
+{% block endLogo %}</h1>{% endblock %}
+
 {% block content %}
     {% if recent|length > 0 %}
         <section>
             <div class="title-left">
-                <h5 class="main-bg">{% trans "Últimes receptes" %}</h5>
+                <h2 class="main-bg">{% trans "Últimes receptes" %}</h2>
             </div>
             <div class="wrapper container-fluid">
                 <div class="mosaic hover-effect row">
@@ -57,7 +60,7 @@
     {% if potatoes|length > 0 %}
         <section>
             <div class="title">
-                <h5 class=" main-bg">{% trans "Top Braves" %}</h5>
+                <h2 class=" main-bg">{% trans "Top Braves" %}</h2>
             </div>
 
             <div class="wrapper container-fluid">
@@ -94,7 +97,7 @@
     {% if succeed|length > 0 %}
         <section>
             <div class="title-right">
-                <h5 class="main-bg">{% trans "Receptes per triomfar" %}</h5>
+                <h2 class="main-bg">{% trans "Receptes per triomfar" %}</h2>
             </div>
             <div class="wrapper container-fluid">
                 {% include 'include/list.twig' with { hideFilters: true, menu: 'recipes', aspectRatio: '1/1', items: succeed } %}

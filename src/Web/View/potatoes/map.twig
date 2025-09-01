@@ -2,6 +2,7 @@
 
 {% block header %}
     {% if not isPro and stats|length > 0 %}
+        <h1 class="text-center">{% trans "Braves Barcelona i més" %}</h1>
         <div class="stats">
             {% set color = 'secondary-bg' %}
             {% for stat in stats %}
