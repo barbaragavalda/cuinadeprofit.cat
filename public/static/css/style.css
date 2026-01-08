@@ -631,6 +631,11 @@ section h2 {
     margin-right: 0;
 }
 
+#recipes h2{
+    text-align: left !important;
+    padding: 0 !important;
+}
+
 .filter {
     padding: 20px 3px;
 }

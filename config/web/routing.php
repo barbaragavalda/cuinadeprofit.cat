@@ -6,6 +6,8 @@ $config = array(
         ''    => 'Home',
         '404' => 'DefaultController',
 
+        'map' => 'Map',
+
         _('recepta') . '/{uri}'             => 'Recipe\\Detail',
         _('recepta') . '/' . _('aleatoria') => 'Recipe\\Detail',
 

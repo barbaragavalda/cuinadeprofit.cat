@@ -23,6 +23,18 @@ class Place extends Model
             ORDER BY name ASC
         ';
         $items = $this->mysql->query($sql);
+        $items = array_slice($items, 0, 50);
+//        $items = array_slice($items, 50, 50);
+//        $items = array_slice($items, 100, 50);
+//        $items = array_slice($items, 150, 50);
+//        $items = array_slice($items, 200, 50);
+//        $items = array_slice($items, 250, 50);
+//        $items = array_slice($items, 300, 50);
+//        $items = array_slice($items, 350, 50);
+//        $items = array_slice($items, 400, 50);
+//        $items = array_slice($items, 450, 50);
+//        $items = array_slice($items, 500, 50);
+//        $items = array_slice($items, 550, 50);
 
         $this->closed = array();
         foreach ($items as $item) {
@@ -31,7 +43,7 @@ class Place extends Model
 
         if (count($this->closed)) {
             $mail = new Mail();
-            $mail->send(
+            $result = $mail->send(
                 null,
                 array(array("email" => "barbaragavalda@gmail.com", "name" => "Bàrbara")),
                 "Braves tancades?",
@@ -88,10 +100,12 @@ class Place extends Model
 
     private function checkCandidate($candidate, $item)
     {
-        echo "<h1 style='color: green'>" . $item['name'] . "</h1>";
         if ($candidate['business_status'] == 'CLOSED_PERMANENTLY') {
             // closed
             $this->closed[] = $item;
+            echo "<h1 style='color: red'>" . $item['name'] . " (CLOSED_PERMANENTLY)</h1>";
+        }else{
+            echo "<h1 style='color: green'>" . $item['name'] . "</h1>";
         }
     }
 

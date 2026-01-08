@@ -198,7 +198,9 @@ class FilteredList extends Paginated
         ";
         $average = $this->mysql->query($sql, $params);
         if (count($average)) {
-            return round($average[0]['average'], 2);
+            if ($average[0]['average']) {
+                return round($average[0]['average'], 2);
+            }
         }
         return 0;
     }
@@ -220,7 +222,7 @@ class FilteredList extends Paginated
             'type' => array('value' => $type, 'type' => PDO::PARAM_INT)
         );
 
-        if($type != self::TO_DO) {
+        if ($type != self::TO_DO) {
             $innerJoin = "INNER JOIN brava_review AS br ON br.id_brava = b.id_brava $innerJoin";
             if ($year != null) {
                 $innerJoin      .= ' AND last_visit LIKE :year';
