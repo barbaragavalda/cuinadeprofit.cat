@@ -139,7 +139,8 @@ const CustomMap = function (staticDomain, dictionary, Map, AdvancedMarkerElement
                 }),
         };
 
-        map.data.loadGeoJson('https://cuinadeprofit.cat/public/static/js/bcn-districts.geojson?v=1');
+        //map.data.loadGeoJson('https://cuinadeprofit.cat/public/static/js/bcn-districts.geojson');
+        map.data.loadGeoJson('http://cuina-de-profit.local/public/static/js/bcn-districts.geojson');
         map.data.setStyle({
             fillColor: '#212e3e',
             fillOpacity: 0.1,

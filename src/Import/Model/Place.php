@@ -23,18 +23,12 @@ class Place extends Model
             ORDER BY name ASC
         ';
         $items = $this->mysql->query($sql);
-        $items = array_slice($items, 0, 50);
-//        $items = array_slice($items, 50, 50);
-//        $items = array_slice($items, 100, 50);
-//        $items = array_slice($items, 150, 50);
-//        $items = array_slice($items, 200, 50);
-//        $items = array_slice($items, 250, 50);
-//        $items = array_slice($items, 300, 50);
-//        $items = array_slice($items, 350, 50);
-//        $items = array_slice($items, 400, 50);
-//        $items = array_slice($items, 450, 50);
-//        $items = array_slice($items, 500, 50);
-//        $items = array_slice($items, 550, 50);
+        $items = array_slice($items, 0, 100);
+//        $items = array_slice($items, 100, 100);
+//        $items = array_slice($items, 200, 100);
+//        $items = array_slice($items, 300, 100);
+//        $items = array_slice($items, 400, 100);
+//        $items = array_slice($items, 500, 100);
 
         $this->closed = array();
         foreach ($items as $item) {
@@ -105,7 +99,7 @@ class Place extends Model
             $this->closed[] = $item;
             echo "<h1 style='color: red'>" . $item['name'] . " (CLOSED_PERMANENTLY)</h1>";
         }else{
-            echo "<h1 style='color: green'>" . $item['name'] . "</h1>";
+//            echo "<h1 style='color: green'>" . $item['name'] . "</h1>";
         }
     }
 
