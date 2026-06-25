@@ -9,13 +9,13 @@ class Detail extends Controller
 
     private \Web\Model\Recipe\Detail $recipe;
 
-    public function run()
+    public function run(): void
     {
         $uri = $this->getParam('uri');
 
         if (!empty($uri)) {
-            $this->recipe     = new \Web\Model\Recipe\Detail();
-            $recipeInfo = $this->recipe->get($uri);
+            $this->recipe = new \Web\Model\Recipe\Detail();
+            $recipeInfo   = $this->recipe->get($uri);
             if (count($recipeInfo)) {
                 $this->assign('recipe', $recipeInfo);
                 $this->overrideMetadata($recipeInfo);
@@ -30,7 +30,8 @@ class Detail extends Controller
         $this->redirect($this->domain . '404');
     }
 
-    protected function translate(): array{
+    protected function translate(): array
+    {
         return $this->translate->translate(array('recepta'), 'recipe', $this->recipe->getID());
     }
 

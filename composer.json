@@ -19,11 +19,13 @@
     }
   ],
   "require": {
+    "php": "^8.5",
     "appaqui/freimguork-core": "dev-master",
     "appaqui/freimguork-appacman": "dev-master",
-    "ext-pdo": "*",
     "ext-gettext": "*",
     "ext-intl": "*",
+    "ext-libxml": "*",
+    "ext-pdo": "*",
     "ext-simplexml": "*"
   },
   "autoload": {

@@ -5,11 +5,12 @@ namespace Import\Model;
 use Core\Model\Model;
 use Core\Model\Utils\StringUtils;
 use PDO;
+use SimpleXMLElement;
 
 class Braves extends Model
 {
 
-    private $xml = null;
+    private SimpleXMLElement|false $xml;
 
     public function __construct()
     {
@@ -27,7 +28,7 @@ class Braves extends Model
         $this->xml = simplexml_load_string($file, 'SimpleXMLElement', LIBXML_NOCDATA);
     }
 
-    public function parse()
+    public function parse(): void
     {
         foreach ($this->xml->Document->Folder as $folder) {
             $typeID = $this->getType((string) $folder->name);
@@ -50,10 +51,9 @@ class Braves extends Model
                 );
             }
         }
-        //echo '<pre>'.print_r($this->xml->Document->Folder, true).'</pre>';
     }
 
-    private function insert($typeID, $name, $address, $latitude, $longitude, $text)
+    private function insert($typeID, $name, $address, $latitude, $longitude, $text): bool
     {
         $this->mysql->beginTransaction();
 
@@ -216,9 +216,9 @@ class Braves extends Model
 
     private function checkNumber($number): string
     {
-        $number = trim($number);
+        $number  = trim($number);
         $explode = explode('.', $number);
-        if(count($explode) > 0){
+        if (count($explode) > 0) {
             $number = $explode[0];
         }
         $number = trim($number);
@@ -230,7 +230,7 @@ class Braves extends Model
         $number = str_replace(' racio', '', $number);
         $number = str_replace(', pel preu', '', $number);
         $number = str_replace(',', '.', $number);
-        if(empty($number)){
+        if (empty($number)) {
             return 0;
         }
         return $number;

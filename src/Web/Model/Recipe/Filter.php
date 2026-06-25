@@ -8,31 +8,31 @@ use PDO;
 class Filter extends Model
 {
 
-    const CATEGORY       = 'ingredient_category';
-    const DIFFICULTY     = 'difficulty';
-    const INGREDIENT     = 'ingredient';
-    const POTATO_TYPES   = 'brava_type';
-    const RATE           = 'rate';
-    const TAG            = 'tag';
-    const TIME           = 'time';
-    const YEAR           = 'year';
-    const PREVENT_CLOSED = 'prevent_closed';
-    const LOCAL_TYPE     = 'local_type';
+    const string CATEGORY       = 'ingredient_category';
+    const string DIFFICULTY     = 'difficulty';
+    const string INGREDIENT     = 'ingredient';
+    const string POTATO_TYPES   = 'brava_type';
+    const string RATE           = 'rate';
+    const string TAG            = 'tag';
+    const string TIME           = 'time';
+    const string YEAR           = 'year';
+    const string PREVENT_CLOSED = 'prevent_closed';
+    const string LOCAL_TYPE     = 'local_type';
 
-    const LESS_15M        = '<15min';
-    const BETWEEN_15M_30M = '15min-30min';
-    const BETWEEN_30M_1H  = '30min-1h';
-    const BETWEEN_1H_2H   = '1h-2h';
-    const MORE_2H         = '>2h';
+    const string LESS_15M        = '<15min';
+    const string BETWEEN_15M_30M = '15min-30min';
+    const string BETWEEN_30M_1H  = '30min-1h';
+    const string BETWEEN_1H_2H   = '1h-2h';
+    const string MORE_2H         = '>2h';
 
-    const LESS_5      = '0-4.9';
-    const BETWEEN_5_7 = '5-6.9';
-    const BETWEEN_7_9 = '7-8.9';
-    const MORE_9      = '9-10';
+    const string LESS_5      = '0-4.9';
+    const string BETWEEN_5_7 = '5-6.9';
+    const string BETWEEN_7_9 = '7-8.9';
+    const string MORE_9      = '9-10';
 
-    private $filters = array();
+    private array $filters = array();
 
-    public function setFilters($filters)
+    public function setFilters($filters): void
     {
         $this->filters = $filters;
     }

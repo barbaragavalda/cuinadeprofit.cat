@@ -5,7 +5,7 @@ namespace Web\Controller;
 class DefaultController extends Controller
 {
 
-    public function run()
+    public function run(): void
     {
         $this->assign('menu', '404');
         $this->assign('translations', $this->translate());

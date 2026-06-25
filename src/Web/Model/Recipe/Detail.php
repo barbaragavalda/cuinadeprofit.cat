@@ -11,9 +11,9 @@ use PDO;
 class Detail extends Model
 {
 
-    const PATTERN_RECIPE      = '/\[(\d*)]/';
-    const PATTERN_DINERS      = '$diners';
-    const PATTERN_PARENTHESIS = '/([(]([^)]+)[)])?/';
+    const string PATTERN_RECIPE      = '/\[(\d*)]/';
+    const string PATTERN_DINERS      = '$diners';
+    const string PATTERN_PARENTHESIS = '/([(]([^)]+)[)])?/';
 
     public function get($uri = null): array
     {

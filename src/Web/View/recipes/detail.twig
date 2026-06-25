@@ -15,7 +15,7 @@
             {% endif %}
             {% endfor %}
 
-            var totalSteps = {{ recipe.steps|length }},
+            let totalSteps = {{ recipe.steps|length }},
                 ingredients = {{ recipe.ingredients|json_encode|raw }};
             new Recipe(totalSteps, ingredients, {{ currentAmount }});
         });
@@ -112,7 +112,7 @@
                     {% if recipe.steps|length > 1 %}
                         <h3></h3>
                         <div class="progress">
-                            <div class="progress-bar secondary-bg" role="progressbar" style="width: 0%"></div>
+                            <div class="progress-bar secondary-bg" role="progressbar" style="width: 0"></div>
                         </div>
                         <div id="arrows" class="clearfix">
                             <button type="button"
@@ -127,7 +127,7 @@
                                 {{ step.description|raw }}
                                 {% if step.image %}
                                     <div>
-                                        <img src="{{ step.image }}" name="{{ recipe.name }} - {{ currentStep }}"/>
+                                        <img src="{{ step.image }}" title="{{ recipe.name }} - {{ currentStep }}"/>
                                     </div>
                                 {% endif %}
                                 {% if step.video %}

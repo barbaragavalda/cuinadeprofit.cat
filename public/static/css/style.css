@@ -235,10 +235,6 @@ section {
 }
 
 .hover-effect .item .text, .hover-effect .item .img:before, .hover-effect .item .img:after {
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    -ms-transition: all .4s;
-    -o-transition: all .4s;
     transition: all .4s;
 }
 
@@ -327,10 +323,6 @@ section {
 }
 
 #main-header ul li a, #main-header ul li a:after {
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
     transition: all 0.2s;
 }
 
@@ -429,11 +421,7 @@ footer ul a {
     top: 30px;
     right: 30px;
     cursor: pointer;
-    -webkit-transform: rotate(45deg);;
-    -moz-transform: rotate(45deg);;
-    -ms-transform: rotate(45deg);;
-    -o-transform: rotate(45deg);;
-    transform: rotate(45deg);;
+    transform: rotate(45deg);
 }
 
 #search-model form {
@@ -580,10 +568,6 @@ section h2 {
     border-top-style: solid;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    -webkit-transform: translateX(-10px);
-    -moz-transform: translateX(-10px);
-    -ms-transform: translateX(-10px);
-    -o-transform: translateX(-10px);
     transform: translateX(-10px);
 }
 
@@ -656,8 +640,6 @@ section h2 {
 
 .filter .input-group-text {
     background: none;
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
     border-radius: 0 !important;
 }
 
@@ -717,8 +699,6 @@ section h2 {
 }
 
 .resume-title, .resume, .ingredients > ul {
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
     border-radius: 15px;
     overflow: hidden;
 }
@@ -1063,10 +1043,6 @@ div[class^='custom-marker'] img {
 }
 
 /* device */
-@media (hover: none), (hover: on-demand) {
-
-}
-
 @media only screen and (max-width: 993px) {
 
     section .col-lg-12 {

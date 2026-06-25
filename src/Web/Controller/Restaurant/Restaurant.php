@@ -7,7 +7,7 @@ use Web\Controller\Search;
 abstract class Restaurant extends Search
 {
 
-    function search()
+    function search(): void
     {
         $this->assign('menu', 'restaurants');
         $this->overrideMetadata(array('metatag_title' => _('Restaurantes')));

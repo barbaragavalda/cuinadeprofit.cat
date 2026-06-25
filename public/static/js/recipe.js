@@ -1,13 +1,13 @@
 'use strict';
 
-var Recipe = function (totalSteps, ingredients, currentAmount) {
+const Recipe = function (totalSteps, ingredients, currentAmount) {
 
     function init() {
         initSteps();
         initAmounts();
     }
 
-    var _totalSteps = totalSteps,
+    const _totalSteps = totalSteps,
         _progressBar = $('.progress-bar'),
         _steps = $('#recipe-detail h3');
 
@@ -36,14 +36,14 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
      * @param step integer
      */
     function updateStates(step) {
-        var steps = LANG.localize('step_x_of_total');
+        let steps = LANG.localize('step_x_of_total');
         steps = steps.replace('%x', step);
         steps = steps.replace('%t', _totalSteps);
         _steps.html(steps);
         _progressBar.css('width', ((100 / (_totalSteps - 1)) * (step - 1)) + '%');
     }
 
-    var _ingredients = ingredients,
+    const _ingredients = ingredients,
         _currentAmount = currentAmount,
         _amount = $('#amount');
 
@@ -52,7 +52,7 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
      */
     function initAmounts() {
         $('#add, #subtract').click(function (e) {
-            var amount = parseFloat(_amount.val());
+            let amount = parseFloat(_amount.val());
 
             if (amount % 1 === 0) {
                 if ($(this).attr('id') === 'add') amount++;
@@ -69,7 +69,7 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
         });
 
         _amount.change(function () {
-            var amount = parseFloat(_amount.val());
+            const amount = parseFloat(_amount.val());
             amountChanged(amount);
         });
     }
@@ -84,9 +84,9 @@ var Recipe = function (totalSteps, ingredients, currentAmount) {
 
         $('span.diners').html(amount);
 
-        for (var i in _ingredients) {
+        for (const i in _ingredients) {
             $('span.ingredient-' + _ingredients[i]['uri']).each(function () {
-                var unit = $(this).attr('data-unit'),
+                let unit = $(this).attr('data-unit'),
                     unitPlural = $(this).attr('data-plural'),
                     unitary = $(this).attr('data-unitary') === '1',
                     fraction = parseFloat($(this).attr('data-fraction')),

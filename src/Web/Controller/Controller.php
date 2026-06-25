@@ -20,9 +20,9 @@ abstract class Controller extends \Core\Controller\Controller
 
     abstract protected function translate(): array;
 
-    public function build()
+    public function build(): void
     {
-        $this->defaultMetatags();
+        $this->defaultMetadata();
 
         $config = Config::getInstance();
         $this->assign('donateButton', $config->get('donate-button'));
@@ -31,7 +31,7 @@ abstract class Controller extends \Core\Controller\Controller
         $this->run();
     }
 
-    private function defaultMetatags()
+    private function defaultMetadata(): void
     {
         $this->assign('canonical', $this->getCanonicalURL());
         $this->assign('webName', 'Cuina de Profit');
@@ -58,7 +58,7 @@ abstract class Controller extends \Core\Controller\Controller
         );
     }
 
-    protected function overrideMetadata($info)
+    protected function overrideMetadata($info): void
     {
         if (array_key_exists('metatag_title', $info) && $info['metatag_title']) {
             $this->assign('metatagTitle', $info['metatag_title'] . ' | Cuina de Profit');

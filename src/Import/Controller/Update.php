@@ -8,7 +8,7 @@ use Import\Model\Place;
 class Update extends Controller
 {
 
-    public function build()
+    public function build(): void
     {
         $model = new Place();
         $model->init();

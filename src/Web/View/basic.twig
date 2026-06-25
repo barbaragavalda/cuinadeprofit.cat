@@ -163,7 +163,7 @@
 <script src="{{ staticDomain }}js/lang{{ min }}.js?v={{ staticVersion }}"></script>
 <script src="{{ staticDomain }}js/main{{ min }}.js?v={{ staticVersion }}"></script>
 <script>
-    var LANG = new Language('{{ lang }}');
+    const LANG = new Language('{{ lang }}');
 </script>
 {% block extraBody %}{% endblock %}
 </body>

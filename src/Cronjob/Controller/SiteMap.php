@@ -10,7 +10,7 @@ use Web\Model\Recipe\FilteredList;
 class SiteMap extends Controller
 {
 
-    public function build()
+    public function build(): void
     {
         $config = Config::getInstance();
         $this->assign('domain', $config->getBaseDomain());

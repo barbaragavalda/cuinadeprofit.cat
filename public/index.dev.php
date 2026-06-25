@@ -2,7 +2,8 @@
 
 //defines
 session_start();
-define('DIR_ROOT', '../' );
+error_reporting(E_ALL);
+const DIR_ROOT = '../';
 
 //auto include all classes
 include DIR_ROOT . 'vendor/autoload.php';

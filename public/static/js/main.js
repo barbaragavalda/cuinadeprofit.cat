@@ -6,14 +6,14 @@
             this.src = this.dataset.src;
         });
     } else {
-        var script = document.createElement('script');
+        const script = document.createElement('script');
         script.async = true;
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js';
         document.body.appendChild(script);
     }
 
     $(document).ready(function () {
-        var search = $('#search-model'),
+        const search = $('#search-model'),
             input = $('input[name="q"]');
         $('.search-button').on('click', function () {
             search.fadeIn(400);

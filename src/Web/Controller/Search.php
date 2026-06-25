@@ -14,7 +14,7 @@ abstract class Search extends Controller
     protected ?Paginated $list           = null;
     protected string     $template;
 
-    public function run()
+    public function run(): void
     {
         $this->filter = new Filter();
         $this->filter();
@@ -42,7 +42,7 @@ abstract class Search extends Controller
 
     abstract function search();
 
-    protected function filter()
+    protected function filter(): void
     {
         $params = $this->checkParams();
 
@@ -82,7 +82,7 @@ abstract class Search extends Controller
         return $params;
     }
 
-    private function checkParam($value)
+    private function checkParam($value): void
     {
         // prevent closed
         if ($value == _('ocultar-tancats')) {
@@ -143,7 +143,7 @@ abstract class Search extends Controller
         }
     }
 
-    private function addFilter($key, $value)
+    private function addFilter($key, $value): void
     {
         if (!array_key_exists($key, $this->filters)) {
             $this->filters[ $key ] = array();

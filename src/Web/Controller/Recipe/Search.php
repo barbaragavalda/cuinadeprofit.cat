@@ -7,7 +7,7 @@ use Web\Model\Recipe\FilteredList;
 class Search extends \Web\Controller\Search
 {
 
-    function search()
+    function search(): void
     {
         $this->list = new FilteredList($this->filters['page']);
         $this->assign('link', _('receptes'));
@@ -27,7 +27,8 @@ class Search extends \Web\Controller\Search
         $this->overrideMetadata(array('metatag_title' => _('Receptes')));
     }
 
-    protected function translate(): array{
+    protected function translate(): array
+    {
         return $this->translate->translate(array('receptes'));
     }
 

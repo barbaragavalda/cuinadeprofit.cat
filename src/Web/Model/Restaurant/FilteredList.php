@@ -18,7 +18,7 @@ class FilteredList extends Paginated
         $this->apiKey = $apiKey;
     }
 
-    public function initAll()
+    public function initAll(): void
     {
 
         $where  = '';

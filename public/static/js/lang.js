@@ -1,8 +1,8 @@
 /**
  * Class that handles javascript localization
  */
-var Language = function(lang){
-    var _lang = null,
+const Language = function (lang) {
+    let _lang = null,
         _dictionary = {
             es: {
                 step_x_of_total: 'Paso %x de %t'
@@ -12,12 +12,12 @@ var Language = function(lang){
             }
         };
 
-    function init(lang){
+    function init(lang) {
         change(lang);
     }
 
-    function change(lang){
-        if( ['es', 'ca'].indexOf(lang) === -1 ){
+    function change(lang) {
+        if (['es', 'ca'].indexOf(lang) === -1) {
             lang = 'es';
         }
 
@@ -26,10 +26,10 @@ var Language = function(lang){
 
     init(lang);
     return {
-        localize: function(key){
+        localize: function (key) {
             return _dictionary[_lang][key];
         },
-        getLang: function(){
+        getLang: function () {
             return _lang;
         }
     };

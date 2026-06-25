@@ -11,16 +11,16 @@ use PDO;
 class FilteredList extends Paginated
 {
 
-    const TO_DO      = 1;
-    const DONE       = 3;
-    const DONE_OTHER = 4;
+    const int TO_DO      = 1;
+    const int DONE       = 3;
+    const int DONE_OTHER = 4;
 
     public function __construct($page, $itemsPerPage = 12)
     {
         parent::__construct($page, $itemsPerPage, false);
     }
 
-    public function initAll()
+    public function initAll(): void
     {
         $needsScore = false;
         $where      = $innerJoin = $limit = $having = '';
@@ -100,7 +100,7 @@ class FilteredList extends Paginated
         return $items;
     }
 
-    private function prepare(&$item)
+    private function prepare(&$item): void
     {
         $item['link'] = \Web\Model\Restaurant\FilteredList::getLinkMaps($item);
         if (array_key_exists('view', $this->filters) && $this->filters['view'] == 'home') {

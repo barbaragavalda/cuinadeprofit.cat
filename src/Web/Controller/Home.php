@@ -5,7 +5,7 @@ namespace Web\Controller;
 class Home extends Controller
 {
 
-    public function run()
+    public function run(): void
     {
         $model = new \Web\Model\Home();
         $this->assign('recent', $model->getRecent());
@@ -15,7 +15,8 @@ class Home extends Controller
         $this->template('home.twig');
     }
 
-    protected function translate(): array{
+    protected function translate(): array
+    {
         return array();
     }
 

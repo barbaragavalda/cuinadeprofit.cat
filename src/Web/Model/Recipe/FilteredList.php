@@ -22,7 +22,7 @@ class FilteredList extends Paginated
         }
     }
 
-    public function initAll()
+    public function initAll(): void
     {
         $where     = array();
         $innerJoin = '';

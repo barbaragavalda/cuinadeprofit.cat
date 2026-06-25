@@ -8,7 +8,7 @@ use Import\Model\Braves;
 class Import extends Controller
 {
 
-    public function build()
+    public function build(): void
     {
         $model = new Braves();
         $model->parse();

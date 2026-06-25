@@ -8,7 +8,7 @@ use Web\Model\Restaurant\FilteredList;
 class Search extends Restaurant
 {
 
-    function search()
+    function search(): void
     {
         parent::search();
 

@@ -1,8 +1,8 @@
 'use strict';
 
-var Search = function (link) {
+const Search = function (link) {
 
-    var _link = link,
+    const _link = link,
         _search = $('.search');
 
     function init() {
@@ -15,13 +15,13 @@ var Search = function (link) {
      */
     function search() {
         $('.input-group-append').click(function () {
-            var input = $(this).parent().find('input');
+            const input = $(this).parent().find('input');
             input.val('');
             close(input);
         });
 
         _search.keyup(function () {
-            var query = $(this).val();
+            const query = $(this).val();
 
             if (query === '') {
                 close($(this));
@@ -37,16 +37,16 @@ var Search = function (link) {
      * @param query
      */
     function open(obj, query) {
-        var search = obj.parent(),
+        const search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
             append = search.find('.input-group-append');
 
         append.css('display', 'flex');
         prepend.hide();
 
-        var lis = search.parent().find('ul li');
+        const lis = search.parent().find('ul li');
         lis.each(function () {
-            var text = normalize($(this).text());
+            const text = normalize($(this).text());
             if (text.indexOf(query) === -1) {
                 $(this).hide();
             }
@@ -62,19 +62,19 @@ var Search = function (link) {
      * @param obj
      */
     function close(obj) {
-        var search = obj.parent(),
+        const search = obj.parent(),
             prepend = search.find('.input-group-prepend'),
             append = search.find('.input-group-append');
 
         prepend.css('display', 'flex');
         append.hide();
 
-        var lis = search.parent().find('ul li');
+        const lis = search.parent().find('ul li');
         lis.show();
     }
 
     function filter() {
-        var form = $('#list form');
+        const form = $('#list form');
 
         $('#show-filters').click(function (e) {
             form.find('> div').fadeToggle();
@@ -83,7 +83,7 @@ var Search = function (link) {
             return false;
         });
 
-        var difficulty = $('input[name="difficulty[]"]'),
+        const difficulty = $('input[name="difficulty[]"]'),
             time = $('input[name="time"]'),
             tag = $('input[name="tag[]"]'),
             category = $('input[name="ingredient_category[]"]'),
@@ -96,7 +96,7 @@ var Search = function (link) {
             q = $('input[name="q"]');
 
         form.submit(function (e) {
-            var url = [],
+            const url = [],
                 difficulties = addArray(difficulty),
                 times = addArray(time),
                 tags = addArray(tag),
@@ -141,7 +141,7 @@ var Search = function (link) {
             }
 
             if (url.length > 0 || query != '') {
-                var location = _link + url.join('/');
+                let location = _link + url.join('/');
                 if (query != '') {
                     location += '?q=' + query;
                 }
@@ -154,13 +154,13 @@ var Search = function (link) {
     }
 
     function addArray(object) {
-        var values = object.map(function (idx, elem) {
+        const values = object.map(function (idx, elem) {
             if ($(this).is(':checked')) {
                 return $(elem).val();
             }
         }).get();
 
-        var url = '';
+        let url = '';
         if (values.length > 0) {
             url = values.join('&');
         }

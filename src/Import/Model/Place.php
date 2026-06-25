@@ -3,18 +3,15 @@
 namespace Import\Model;
 
 use Core\Model\Model;
-use Core\Model\Utils\Curl;
 use Core\Model\Utils\Mail;
-use Core\Model\Utils\StringUtils;
 use Core\Utils\Config;
-use PDO;
 
 class Place extends Model
 {
 
     private array $closed = array();
 
-    public function init()
+    public function init(): void
     {
         $sql   = '
             SELECT id_brava, id_brava_type, name, latitude, longitude
@@ -36,19 +33,18 @@ class Place extends Model
         }
 
         if (count($this->closed)) {
-            $mail = new Mail();
-            $result = $mail->send(
-                null,
+            $mail   = new Mail();
+            $mail->send(
+                array(),
                 array(array("email" => "barbaragavalda@gmail.com", "name" => "Bàrbara")),
                 "Braves tancades?",
-                '<pre>'.print_r($this->closed, true). '</pre>'
+                '<pre>' . print_r($this->closed, true) . '</pre>'
             );
         }
         echo '<pre>' . print_r($this->closed, true) . '</pre>';
-        exit;
     }
 
-    public function check($item)
+    public function check($item): void
     {
         $config = Config::getInstance();
         $key    = $config->get('places-key');
@@ -92,14 +88,12 @@ class Place extends Model
         }
     }
 
-    private function checkCandidate($candidate, $item)
+    private function checkCandidate($candidate, $item): void
     {
         if ($candidate['business_status'] == 'CLOSED_PERMANENTLY') {
             // closed
             $this->closed[] = $item;
             echo "<h1 style='color: red'>" . $item['name'] . " (CLOSED_PERMANENTLY)</h1>";
-        }else{
-//            echo "<h1 style='color: green'>" . $item['name'] . "</h1>";
         }
     }
 
@@ -107,10 +101,8 @@ class Place extends Model
         $latitudeFrom,
         $longitudeFrom,
         $latitudeTo,
-        $longitudeTo,
-        $earthRadius = 6371000
-    ) {
-        // convert from degrees to radians
+        $longitudeTo
+    ): float {// convert from degrees to radians
         $latFrom = deg2rad($latitudeFrom);
         $lonFrom = deg2rad($longitudeFrom);
         $latTo   = deg2rad($latitudeTo);
@@ -124,7 +116,7 @@ class Place extends Model
         $b        = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
 
         $angle = atan2(sqrt($a), $b);
-        return $angle * $earthRadius;
+        return $angle * 6371000;
     }
 
 }

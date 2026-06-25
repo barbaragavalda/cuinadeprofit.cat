@@ -9,7 +9,7 @@ use Web\Model\Potato\FilteredList;
 class Map extends Search
 {
 
-    function search()
+    function search(): void
     {
         $this->list = new FilteredList(1, PHP_INT_MAX);
         $this->assign('stats', $this->list->getStats());
@@ -36,7 +36,7 @@ class Map extends Search
         $this->template = 'potatoes/map.twig';
     }
 
-    protected function filter()
+    protected function filter(): void
     {
         parent::filter();
         $this->filters['pro'] = in_array('pro', $this->parts);
