@@ -2,6 +2,9 @@
 
 namespace Web\Controller;
 
+use Core\Routing\Attribute\Route;
+
+#[Route('/', name: 'web.home')]
 class Home extends Controller
 {
 

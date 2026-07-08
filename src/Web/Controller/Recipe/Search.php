@@ -2,8 +2,10 @@
 
 namespace Web\Controller\Recipe;
 
+use Core\Routing\Attribute\Route;
 use Web\Model\Recipe\FilteredList;
 
+#[Route('/receptes/{param1?}/{param2?}/{param3?}/{param4?}/{param5?}', name: 'recipe.search')]
 class Search extends \Web\Controller\Search
 {
 

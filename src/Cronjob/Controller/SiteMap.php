@@ -3,6 +3,7 @@
 namespace Cronjob\Controller;
 
 use Core\Controller\Controller;
+use Core\Routing\Attribute\Route;
 use Core\Utils\Config;
 use DateTime;
 use Web\Model\Recipe\FilteredList;
@@ -10,6 +11,7 @@ use Web\Model\Recipe\FilteredList;
 class SiteMap extends Controller
 {
 
+    #[Route('/sitemap', methods: ['GET', 'POST'], name: 'cronjob.sitemap')]
     public function build(): void
     {
         $config = Config::getInstance();

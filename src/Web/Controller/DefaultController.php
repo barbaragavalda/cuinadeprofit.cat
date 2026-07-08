@@ -2,6 +2,9 @@
 
 namespace Web\Controller;
 
+use Core\Routing\Attribute\Route;
+
+#[Route('/404', name: 'web.default')]
 class DefaultController extends Controller
 {
 

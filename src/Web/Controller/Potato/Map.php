@@ -2,10 +2,17 @@
 
 namespace Web\Controller\Potato;
 
+use Core\Routing\Attribute\Route;
 use Core\Utils\Config;
 use Web\Controller\Search;
 use Web\Model\Potato\FilteredList;
 
+// more specific "pro" variant must come first: attributes are read in
+// declaration order and the router returns the first match, and
+// "/braves/{param1?}/..." below would otherwise also match "/braves/pro/..."
+// (param1 = "pro")
+#[Route('/braves/pro/{param1?}/{param2?}/{param3?}/{param4?}/{param5?}', name: 'potato.map.pro')]
+#[Route('/braves/{param1?}/{param2?}/{param3?}/{param4?}', name: 'potato.map')]
 class Map extends Search
 {
 

@@ -2,9 +2,11 @@
 
 namespace Web\Controller\Restaurant;
 
+use Core\Routing\Attribute\Route;
 use Core\Utils\Config;
 use Web\Model\Restaurant\FilteredList;
 
+#[Route('/restaurants/mapa', name: 'restaurant.map')]
 class Map extends Restaurant
 {
 

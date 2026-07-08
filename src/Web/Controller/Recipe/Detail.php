@@ -2,8 +2,10 @@
 
 namespace Web\Controller\Recipe;
 
+use Core\Routing\Attribute\Route;
 use Web\Controller\Controller;
 
+#[Route('/recepta/{uri}', name: 'recipe.detail')]
 class Detail extends Controller
 {
 
