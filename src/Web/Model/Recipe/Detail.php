@@ -273,9 +273,11 @@ class Detail extends Model
 
     private function isVideo($file): bool
     {
-        $file_parts = pathinfo($file);
-        if ($file_parts['extension'] == 'mp4') {
-            return true;
+        if ($file) {
+            $file_parts = pathinfo($file);
+            if ($file_parts['extension'] == 'mp4') {
+                return true;
+            }
         }
         return false;
     }

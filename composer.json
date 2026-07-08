@@ -11,17 +11,21 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:appaqui/freimguork-core.git"
+      "url": "git@bitbucket.org:optisistem/freimguork-core.git"
     },
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:appaqui/freimguork-appacman.git"
+      "url": "git@bitbucket.org:optisistem/freimguork-appacman.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:optisistem/php-ref.git"
     }
   ],
   "require": {
     "php": "^8.5",
-    "appaqui/freimguork-core": "dev-master",
-    "appaqui/freimguork-appacman": "dev-master",
+    "optisistem/freimguork-core": "dev-master",
+    "optisistem/freimguork-appacman": "dev-master",
     "ext-gettext": "*",
     "ext-intl": "*",
     "ext-libxml": "*",

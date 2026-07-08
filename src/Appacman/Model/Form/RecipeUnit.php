@@ -5,7 +5,7 @@ namespace Appacman\Model\Form;
 class RecipeUnit extends Select
 {
 
-    protected function getOptions($table = null, $extraFields = '')
+    protected function getOptions(?string $table = null, string $extraFields = ''): array
     {
         $options = parent::getOptions($table, $extraFields);
 

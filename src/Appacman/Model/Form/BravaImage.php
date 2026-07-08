@@ -8,7 +8,7 @@ use PDO;
 class BravaImage extends Dynamic
 {
 
-    public function getListValue($langID = null): string
+    public function getListValue(?int $langID = null): string
     {
         $sql    = '
             SELECT br.image, br.score, bl.text

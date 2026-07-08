@@ -9,5 +9,5 @@ const DIR_ROOT = '../';
 include DIR_ROOT . 'vendor/autoload.php';
 
 //init app debug mode
-$b = new Core\Bootstrap( true );
+$b = new Core\Bootstrap(true);
 $b->run();
