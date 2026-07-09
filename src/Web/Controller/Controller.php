@@ -2,6 +2,7 @@
 
 namespace Web\Controller;
 
+use Core\Controller\CacheManager;
 use Core\Utils\Config;
 use Web\Model\Translate;
 
@@ -10,9 +11,9 @@ abstract class Controller extends \Core\Controller\Controller
 
     protected Translate $translate;
 
-    public function __construct()
+    public function __construct(Config $config, CacheManager $modelCache)
     {
-        parent::__construct();
+        parent::__construct($config, $modelCache);
         $this->translate = new Translate();
     }
 
