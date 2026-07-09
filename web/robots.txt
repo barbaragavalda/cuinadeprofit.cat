@@ -1,0 +1,5 @@
+# robots.txt for https://cuinadeprofit.cat/
+
+User-agent: *
+Crawl-delay: 60
+Sitemap: https://cuinadeprofit.cat/sitemap.xml

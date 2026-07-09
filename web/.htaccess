@@ -12,4 +12,4 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !^(.+)\.(js|css|gif|png|PNG|jpe?g|JPE?G|webp|swf|ico|txt|html|eot|svg|ttf|woff|pdf|mp4|xml|json|geojson)$
 
 # Rewrite all other URLs to index.php
-RewriteRule ^(.*)$ public/index.dev.php [QSA,L]
+RewriteRule ^(.*)$ index.dev.php [QSA,L]

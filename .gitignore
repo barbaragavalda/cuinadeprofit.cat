@@ -2,8 +2,8 @@
 # freimguork cache #
 ####################
 src/cache/*
-public/upload/*
-public/static/import/*
+web/upload/*
+web/static/import/*
 
 ######################
 # OS generated files #
