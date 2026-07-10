@@ -37,6 +37,10 @@
       "": "src/"
     }
   },
+  "scripts": {
+    "post-install-cmd": ["Appacman\\Composer\\AssetPublisher::publish"],
+    "post-update-cmd": ["Appacman\\Composer\\AssetPublisher::publish"]
+  },
   "minimum-stability": "dev",
   "config": {
     "allow-plugins": {
