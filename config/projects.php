@@ -2,8 +2,6 @@
 
 $config = array(
 
-    'base_domain' => 'https://cuinadeprofit.cat/',
-
     'wallaby' => array(
         'app'       => 'Appacman',
         'folders'   => array('freimguork-appacman'),
@@ -23,3 +21,11 @@ $config = array(
     )
 
 );
+
+if (IS_DEV) {
+    $config['import'] = array(
+        'app'       => 'Import',
+        'folders'   => array('import'),
+        'languages' => array('ca')
+    );
+}
