@@ -5,6 +5,14 @@ src/cache/*
 web/upload/*
 web/static/import/*
 
+##########################
+# Per-environment secrets #
+##########################
+# The encryption master secret (Core\Model\Encryptor\Secret) - real values must
+# never be committed. See keys.php.dist in each folder for the expected shape.
+config/dev/keys.php
+config/prod/keys.php
+
 ######################
 # OS generated files #
 ######################

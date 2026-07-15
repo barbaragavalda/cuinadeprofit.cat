@@ -1,0 +1,14 @@
+<?php
+
+// Copy this file to keys.php (gitignored) and fill in a real value.
+// Generate with: php -r "echo bin2hex(random_bytes(32));"
+// Use a different secret than dev - never reuse the dev value in prod.
+// See Core\Model\Encryptor\Secret for how this is used (derives per-purpose
+// subkeys for TwoWay/OneWay/BlindIndex via HKDF).
+$config = array(
+
+    'encryption' => array(
+        'secret' => '<64 hex chars>'
+    )
+
+);
