@@ -4,10 +4,10 @@
 $config = array(
 
     'db' => array(
-        'host'     => '<db-host>',
+        'host'     => 'mariadb',
         'user'     => '<db-user>',
         'password' => '<db-password>',
-        'name'     => 'cuina-de-profit'
+        'name'     => '<db-name>'
     )
 
 );

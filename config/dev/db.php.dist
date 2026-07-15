@@ -7,7 +7,7 @@ $config = array(
         'host'     => 'mariadb',
         'user'     => '<db-user>',
         'password' => '<db-password>',
-        'name'     => 'cuina-de-profit'
+        'name'     => '<db-name>'
     )
 
 );
