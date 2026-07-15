@@ -1,0 +1,9 @@
+<?php
+
+// Copy this file to keys.php (gitignored) and fill in real values.
+$config = array(
+
+    'maps-key'      => '<google-maps-api-key>',
+    'places-key'    => '<google-places-api-key>',
+    'donate-button' => 'https://www.paypal.com/donate/?hosted_button_id=WRC8YSLEDVVTJ'
+);

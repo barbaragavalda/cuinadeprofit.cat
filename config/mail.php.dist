@@ -1,0 +1,24 @@
+<?php
+
+// Copy this file to mail.php (gitignored) and fill in real values.
+$config = array(
+
+    'mail' => array(
+        'protocol'     => 'smtp',
+        'host'         => 'smtp.cuinadeprofit.cat',
+        'port'         => 25,
+        'from_name'    => 'Cuina de profit',
+        'username'     => 'noreply@cuinadeprofit.cat',
+        'password'     => '<smtp-password>',
+        'timeout'      => 30,
+        'smtp_auth'    => true,
+        'smtp_secure'  => 'tls',
+        'smtp_options' => array(
+            'ssl' => array(
+                'verify_peer'       => false,
+                'verify_peer_name'  => false,
+                'allow_self_signed' => true
+            )
+        )
+    )
+);

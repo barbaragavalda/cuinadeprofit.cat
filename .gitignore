@@ -8,10 +8,14 @@ web/static/import/*
 ##########################
 # Per-environment secrets #
 ##########################
-# The encryption master secret (Core\Model\Encryptor\Secret) - real values must
-# never be committed. See keys.php.dist in each folder for the expected shape.
+# Real credentials must never be committed - see the matching .php.dist file
+# in each location for the expected shape.
 config/dev/keys.php
 config/prod/keys.php
+config/dev/db.php
+config/prod/db.php
+config/mail.php
+config/keys.php
 
 ######################
 # OS generated files #
