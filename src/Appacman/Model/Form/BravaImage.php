@@ -26,8 +26,11 @@ class BravaImage extends Dynamic
             $item  = $items[0];
             $score = $item['score'];
             if ($score > 0) {
-                $file  = new File($item['image']);
-                $img   = $file->getAbsolutePath('thumb');
+                $img = null;
+                if ($item['image']) {
+                    $file = new File($item['image']);
+                    $img  = $file->getAbsolutePath('thumb');
+                }
                 $class = 'bg-yellow';
                 if ($score < 5) {
                     $class = 'bg-red';
