@@ -24,8 +24,8 @@
   ],
   "require": {
     "php": "^8.5",
-    "optisistem/freimguork-core": "dev-master",
-    "optisistem/freimguork-appacman": "dev-master",
+    "optisistem/freimguork-core": "v2.2",
+    "optisistem/freimguork-appacman": "v2.1",
     "ext-gettext": "*",
     "ext-intl": "*",
     "ext-libxml": "*",
