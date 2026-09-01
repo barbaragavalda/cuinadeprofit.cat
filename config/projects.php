@@ -1,6 +1,16 @@
 <?php
 
-$config = array(
+$config = array();
+
+if (IS_DEV) {
+    $config['import'] = array(
+        'app'       => 'Import',
+        'folders'   => array('import'),
+        'languages' => array('ca')
+    );
+}
+
+$config = array_merge($config, array(
 
     'wallaby' => array(
         'app'       => 'Appacman',
@@ -20,12 +30,4 @@ $config = array(
         'languages' => array('ca', 'es')
     )
 
-);
-
-if (IS_DEV) {
-    $config['import'] = array(
-        'app'       => 'Import',
-        'folders'   => array('import'),
-        'languages' => array('ca')
-    );
-}
+));
