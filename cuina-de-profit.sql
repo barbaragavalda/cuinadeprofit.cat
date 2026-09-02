@@ -1631,7 +1631,8 @@ CREATE TABLE `brava_lang` (
   `id_brava` smallint(5) unsigned NOT NULL,
   `id_appacman_lang` tinyint(3) unsigned NOT NULL,
   `text` text DEFAULT NULL,
-  PRIMARY KEY (`id_brava_lang`) USING BTREE
+  PRIMARY KEY (`id_brava_lang`) USING BTREE,
+  KEY `idx_brava_lang` (`id_brava`,`id_appacman_lang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1167 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
@@ -2660,7 +2661,8 @@ CREATE TABLE `brava_review` (
   `sauce` double(3,1) unsigned DEFAULT NULL,
   `score` double(3,1) unsigned DEFAULT NULL,
   `last_visit` date DEFAULT NULL,
-  PRIMARY KEY (`id_brava_review`) USING BTREE
+  PRIMARY KEY (`id_brava_review`) USING BTREE,
+  KEY `idx_brava_last_visit` (`id_brava`,`last_visit`)
 ) ENGINE=InnoDB AUTO_INCREMENT=305 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
